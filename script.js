@@ -16,7 +16,7 @@ window.addEventListener('load', () => {
   removeWow();
 });
 window.addEventListener('resize', removeWow);
-
+const mapLeaflet= document.getElementById('map');
 const imgAboutUs = document.getElementById('img-about-us');
 const toggler = document.querySelector('.navbar-toggler');
 const callNumber = document.querySelector('.disappear-large');
@@ -47,7 +47,9 @@ function removeWow() {
 
   if (window.innerWidth < 768) {
     imgAboutUs.classList.remove('animate__animated');
+    mapLeaflet.classList.remove('animate__animated');
   } else {
     imgAboutUs.classList.add('animate__animated');
+    mapLeaflet.classList.add('animate__animated');
   }
 }
