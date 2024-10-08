@@ -14,3 +14,29 @@ L.marker([44.8189, 20.4559]) // Promenjene koordinate markera
 window.addEventListener('load', () => {
   window.scrollTo(0, 0); // Scroll to top on load
 });
+
+
+document.querySelectorAll('.nav-link').forEach((link) => {
+  // Dodavanje event listenera na svaki link
+  link.addEventListener('click', () => {
+      // Selektovanje nav-toggler dugmeta
+      const toggler = document.querySelector('.navbar-toggler');
+      // Provera da li je nav-toggler otvoren
+      if (toggler) {
+          // Zatvaranje navigacije (uklanjanje klase 'show' na navbar)
+          const navbar = document.querySelector('.navbar-collapse');
+          if (navbar.classList.contains('show')) {
+              navbar.classList.remove('show');
+          }
+      }
+  });
+});
+
+
+
+
+
+
+
+
+
