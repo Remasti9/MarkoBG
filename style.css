@@ -106,6 +106,10 @@ section {
     display: flex !important ;
       flex-direction: column-reverse !important;
   }
+  .margin{
+    display: block;
+    margin-bottom: 40px;
+  }
 }
 
 
