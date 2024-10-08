@@ -22,7 +22,7 @@ var switcher = true;
 toggler.addEventListener('click', () => {
   
   if (switcher) {callNumber.classList.add('margin-auto');} 
-  else {setTimeout(()=>{callNumber.classList.remove('margin-auto');},300)}
+  else {setTimeout(()=>{callNumber.classList.remove('margin-auto');},350)}
   switcher=!switcher;
 });
 
@@ -32,6 +32,7 @@ document.querySelectorAll('.nav-link').forEach((link) => {
       navbar.classList.remove('show');
       callNumber.classList.remove('margin-auto');
     }
+    switcher=true;
   });
 });
 
