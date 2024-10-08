@@ -99,5 +99,11 @@ section {
   .p-5{
     padding: 1rem 0  !important;
   }
+  /* .navbar {
+    background-color: rgba(155,155,155,.5) !important;
+  }
+  .navbar-toggler{
+    background-color: blue;
+  } */
 }
   
