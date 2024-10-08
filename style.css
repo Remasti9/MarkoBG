@@ -80,10 +80,16 @@ section {
     width: 50%;
   }
   .dissapear-small{display: block;}
-}/*# sourceMappingURL=style.css.map */
+  .disappear-large{
+    display: none;
+  }
+}
 
 @media  (max-width: 768px){
   .disappear-small{display: none;
+  }
+  .disappear-large{
+    display: block;
   }
   .p-5{
     padding: 1rem 0  !important;
