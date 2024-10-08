@@ -13,17 +13,23 @@ L.marker([44.8189, 20.4559])
 
 window.addEventListener('load', () => {
   window.scrollTo(0, 0); 
+  removeWow();
 });
+window.addEventListener('resize', removeWow);
 
+const imgAboutUs = document.getElementById('img-about-us');
 const toggler = document.querySelector('.navbar-toggler');
 const callNumber = document.querySelector('.disappear-large');
 const navbar = document.querySelector('.navbar-collapse');
 var switcher = true;
+
 toggler.addEventListener('click', () => {
-  
-  if (switcher) {callNumber.classList.add('margin-auto');} 
-  else {setTimeout(()=>{callNumber.classList.remove('margin-auto');},350)}
-  switcher=!switcher;
+  if (switcher) {
+    callNumber.classList.add('margin-auto');
+  } else {
+    callNumber.classList.remove('margin-auto');
+  }
+  switcher = !switcher;
 });
 
 document.querySelectorAll('.nav-link').forEach((link) => {
@@ -32,16 +38,16 @@ document.querySelectorAll('.nav-link').forEach((link) => {
       navbar.classList.remove('show');
       callNumber.classList.remove('margin-auto');
     }
-    switcher=true;
+    switcher = true;
   });
 });
 
+function removeWow() {
+  if (!imgAboutUs) return; // Proveri da li imgAboutUs postoji
 
-
-
-
-
-
-
-
-
+  if (window.innerWidth < 768) {
+    imgAboutUs.classList.remove('animate__animated');
+  } else {
+    imgAboutUs.classList.add('animate__animated');
+  }
+}
