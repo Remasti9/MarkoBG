@@ -97,13 +97,13 @@ section {
     display: block;
   }
   .p-5{
-    padding: 1rem 0  !important;
+    padding: 3rem 0  !important;
   }
 }
 
 @media (min-width: 150px) and (max-width: 768px) {
   .d-sm-flex {
-    display: flex !important;
+    display: flex !important ;
       flex-direction: column-reverse !important;
   }
 }
