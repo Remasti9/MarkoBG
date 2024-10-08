@@ -111,6 +111,9 @@ section {
     margin-bottom: 40px;
     width: 70% !important;
   }
+  a.nav-link{
+    text-align: right;
+  }
 }
 
 
