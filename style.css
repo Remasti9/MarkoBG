@@ -95,6 +95,7 @@ section {
   }
   .disappear-large{
     display: block;
+    width: fit-content;
   }
   .p-5{
     padding: 3rem 0  !important;
@@ -116,5 +117,7 @@ section {
   }
 }
 
-
+.margin-auto{
+  margin: 0 auto;
+}
   

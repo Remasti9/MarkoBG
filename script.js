@@ -6,31 +6,35 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 // Dodavanje markera na Dorćol
-L.marker([44.8189, 20.4559]) // Promenjene koordinate markera
+L.marker([44.8189, 20.4559]) 
   .addTo(map)
-  .bindPopup('We are here.') // Popup tekst
+  .bindPopup('We are here.') 
   .openPopup();
 
 window.addEventListener('load', () => {
-  window.scrollTo(0, 0); // Scroll to top on load
+  window.scrollTo(0, 0); 
 });
 
+const toggler = document.querySelector('.navbar-toggler');
+const callNumber = document.querySelector('.disappear-large');
+const navbar = document.querySelector('.navbar-collapse');
+var switcher = true;
+toggler.addEventListener('click', () => {
+  
+  if (switcher) {callNumber.classList.add('margin-auto');} 
+  else {setTimeout(()=>{callNumber.classList.remove('margin-auto');},300)}
+  switcher=!switcher;
+});
 
 document.querySelectorAll('.nav-link').forEach((link) => {
-  // Dodavanje event listenera na svaki link
   link.addEventListener('click', () => {
-      // Selektovanje nav-toggler dugmeta
-      const toggler = document.querySelector('.navbar-toggler');
-      // Provera da li je nav-toggler otvoren
-      if (toggler) {
-          // Zatvaranje navigacije (uklanjanje klase 'show' na navbar)
-          const navbar = document.querySelector('.navbar-collapse');
-          if (navbar.classList.contains('show')) {
-              navbar.classList.remove('show');
-          }
-      }
+    if (navbar.classList.contains('show')) {
+      navbar.classList.remove('show');
+      callNumber.classList.remove('margin-auto');
+    }
   });
 });
+
 
 
 
