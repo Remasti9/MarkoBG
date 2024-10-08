@@ -1,0 +1,84 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body::before {
+  display: block;
+  content: "";
+  height: 70px;
+}
+
+body::-webkit-scrollbar-track {
+  background: blue !important;
+}
+
+
+section {
+  min-height: 100vh !important;
+  display: grid;
+  place-items: center;
+  margin-top: 2rem;
+}
+
+
+.grey {
+  background-color: rgb(243, 243, 243);
+}
+
+.bg-primary.rounded-bottom {
+  border-bottom-left-radius: 2rem !important;
+  border-bottom-right-radius: 2rem !important;
+}
+
+.bg-primary.rounded {
+  border-radius: 2rem !important;
+}
+
+.accordion-item {
+  border: none !important;
+}
+
+#contact {
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+}
+
+.white-border {
+  border: 10px solid white !important;
+}
+
+#email:hover {
+  font-weight: 600 !important;
+}
+
+#youtube:hover {
+  color: red !important;
+  background: radial-gradient(circle, white 30%, transparent 30% 100%) !important;
+}
+
+#github:hover {
+  background: radial-gradient(circle, black 70%, transparent 70% 100%) !important;
+}
+
+#linkendin:hover {
+  background: radial-gradient(circle, white 63%, transparent 63% 100%) !important;
+  color: blue !important;
+}
+
+#instagram:hover {
+  background: linear-gradient(45deg, #F58529, #EB5286, #C05AED, #3490DC) !important;
+  color: white !important;
+  border-radius: 5px !important;
+}
+
+@media (min-width: 768px) {
+  .news-input {
+    width: 50%;
+  }
+  .dissapear-small{display: block;}
+}/*# sourceMappingURL=style.css.map */
+
+@media  (max-width: 768px){
+  .disappear-small{display: none;}
+}
+  
