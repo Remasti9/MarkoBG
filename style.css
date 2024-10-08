@@ -14,10 +14,14 @@ body::-webkit-scrollbar-track {
 
 
 section {
+  width: 100vw !important;
   min-height: 100vh !important;
   display: grid;
   place-items: center;
   margin-top: 2rem;
+}
+#about-us img, #landing img {
+  border-radius: 10px;
 }
 
 
@@ -79,6 +83,10 @@ section {
 }/*# sourceMappingURL=style.css.map */
 
 @media  (max-width: 768px){
-  .disappear-small{display: none;}
+  .disappear-small{display: none;
+  }
+  .p-5{
+    padding: 1rem 0  !important;
+  }
 }
   
