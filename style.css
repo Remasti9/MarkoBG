@@ -145,7 +145,7 @@ section {
   #about-us img{
     border-radius: 40px;
   }
-  .call-frame,.single-call{display:none}
+  /* .call-frame,.single-call{display:none} */
 }
 
 .margin-auto{
