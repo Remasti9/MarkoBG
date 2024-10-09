@@ -122,6 +122,9 @@ section {
     visibility: visible;
     animation: none !important;
   }
+  #about-us img{
+    border-radius: 40px;
+  }
 }
 
 .margin-auto{
