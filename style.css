@@ -10,6 +10,26 @@ body::before {
   content: "";
   height: 70px;
 }
+.call-frame{
+  position: fixed;
+  z-index: 999;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 2%;
+  width: fit-content;
+  height: fit-content;
+  display:flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 50px;
+
+}
+
+.single-call img{
+  width: 60px;
+  aspect-ratio: 1;
+}
+
 
 body::-webkit-scrollbar-track {
   background: blue !important;
@@ -125,6 +145,7 @@ section {
   #about-us img{
     border-radius: 40px;
   }
+  .call-frame,.single-call{display:none}
 }
 
 .margin-auto{
