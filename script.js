@@ -41,6 +41,9 @@ document.querySelectorAll('.nav-link').forEach((link) => {
       navbar.classList.remove('show');
       setTimeout(()=>{callNumber.classList.remove('margin-auto');},300);
     }
+    setTimeout(() => {
+      window.scrollBy(0, 20); // Pomeranje stranice za 30px niže
+    }, 1000);
     switcher = true;
   });
 });
