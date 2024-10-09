@@ -13,8 +13,8 @@ body::before {
 .call-frame{
   position: fixed;
   z-index: 999;
-  top: 50%;
-  transform: translateY(-50%);
+  bottom: 50%;
+  transform: translateY(50%);
   right: 2%;
   width: fit-content;
   height: fit-content;
@@ -93,14 +93,14 @@ section {
   background: radial-gradient(circle, black 70%, transparent 70% 100%) !important;
 }
 
-#linkendin:hover {
+#linkendin:hover, #facebook:hover {
   background: radial-gradient(circle, white 63%, transparent 63% 100%) !important;
   color: blue !important;
 }
 
 #instagram:hover {
   background: linear-gradient(45deg, #F58529, #EB5286, #C05AED, #3490DC) !important;
-  color: white !important;
+  color: rgba(255, 255, 255, 0.786) !important;
   border-radius: 5px !important;
 }
 
@@ -118,7 +118,7 @@ section {
 
 @media (min-width: 150px) and (max-width: 768px) {
   .call-frame{
-    top: 70%;
+    bottom: 25%;
     gap: 40px;
   }
   .d-sm-flex {
