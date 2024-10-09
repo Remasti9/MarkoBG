@@ -44,7 +44,9 @@ window.addEventListener('load', () => {
 
 window.addEventListener('scroll',()=>{
    callFrame.style.display='flex';
-   setTimeout(()=>{
-    callFrame.style.display='none';
-   }, 5000)
+   window.addEventListener('scrollend',()=>{
+    setTimeout(()=>{
+      callFrame.style.display='none';
+     }, 3000)
+   })
 })
