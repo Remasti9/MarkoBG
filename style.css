@@ -120,6 +120,7 @@ section {
     text-align: right;
   }
   .stop-animate{
+    visibility: visible;
     animation: none !important;
   }
 }
