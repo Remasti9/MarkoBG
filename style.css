@@ -119,6 +119,9 @@ section {
   a.nav-link{
     text-align: right;
   }
+  .stop-animate{
+    animation: none !important;
+  }
 }
 
 .margin-auto{
