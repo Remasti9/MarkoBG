@@ -57,21 +57,47 @@ document.querySelectorAll('.nav-link').forEach((link) => {
 });
 
 function removeWow() {
-  if (!imgAboutUs) return; // Proveri da li imgAboutUs postoji
-
   if (window.innerWidth < 768) {
-    console.log(arrayAnimatedEl)
+    imgAboutUs.style.visibility = 'visible'; // Postavi na vidljivo
+    mapLeaflet.style.visibility = 'visible'; // Postavi na vidljivo
+    text1.style.visibility = 'visible';
+    text2.style.visibility = 'visible';
+    text3.style.visibility = 'visible';
+
     imgAboutUs.classList.remove('animate__animated');
+    imgAboutUs.classList.remove('animate__backInRight');
+    
     mapLeaflet.classList.remove('animate__animated');
+    mapLeaflet.classList.remove('animate__backInRight');
+
     text1.classList.remove('animate__animated');
+    text1.classList.remove('animate__backInUp');
+
     text2.classList.remove('animate__animated');
+    text2.classList.remove('animate__backInUp');
+
     text3.classList.remove('animate__animated');
+    text3.classList.remove('animate__backInUp');
   } else {
+    imgAboutUs.style.visibility = 'visible'; // Postavi na vidljivo
+    mapLeaflet.style.visibility = 'visible'; // Postavi na vidljivo
+    text1.style.visibility = 'visible';
+    text2.style.visibility = 'visible';
+    text3.style.visibility = 'visible';
+
     imgAboutUs.classList.add('animate__animated');
+    imgAboutUs.classList.add('animate__backInRight');
+    
     mapLeaflet.classList.add('animate__animated');
+    mapLeaflet.classList.add('animate__backInRight');
+
     text1.classList.add('animate__animated');
+    text1.classList.add('animate__backInUp');
+
     text2.classList.add('animate__animated');
+    text2.classList.add('animate__backInUp');
+
     text3.classList.add('animate__animated');
-   
+    text3.classList.add('animate__backInUp');
   }
 }
