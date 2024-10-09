@@ -26,6 +26,21 @@ map.on('touchstart', function(e) {
       e.preventDefault(); // Sprečava premestanje mape na dodir jednim prstom
   }
 });
+map.dragging.disable();
+map.touchZoom.disable();
+map.doubleClickZoom.disable();
+map.scrollWheelZoom.disable();
+
+// Omogućavanje pomeranja mape samo sa dva prsta
+map.on('touchmove', function(e) {
+    if (e.touches.length > 1) {
+        // Omogućava pomeranje mape kada su korišćena dva ili više prstiju
+        map.dragging.enable();
+    } else {
+        // Onemogućava pomeranje mape kada je jedan prst
+        map.dragging.disable();
+    }
+});
 
   toggler.addEventListener('click', () => {
   if (switcher) {
