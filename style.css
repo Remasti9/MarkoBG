@@ -18,7 +18,7 @@ body::before {
   right: 2%;
   width: fit-content;
   height: fit-content;
-  display:flex;
+  display:none;
   justify-content: space-between;
   flex-direction: column;
   gap: 50px;
@@ -145,7 +145,7 @@ section {
   #about-us img{
     border-radius: 40px;
   }
-  /* .call-frame,.single-call{display:none} */
+  
 }
 
 .margin-auto{

@@ -2,6 +2,7 @@ const toggler = document.querySelector('.navbar-toggler');
 const callNumber = document.querySelector('.disappear-large');
 const navbar = document.querySelector('.navbar-collapse');
 var switcher = true;
+const callFrame = document.querySelector('.call-frame')
 
 var map = L.map('map').setView([44.8189, 20.4559], 15); // Promenjene koordinate na Dorćol, Beograd
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -40,3 +41,10 @@ document.querySelectorAll('.nav-link').forEach((link) => {
 window.addEventListener('load', () => {
   window.scrollTo(0, 0); 
 });
+
+window.addEventListener('scroll',()=>{
+   callFrame.style.display='flex';
+   setTimeout(()=>{
+    callFrame.style.display='none';
+   }, 5000)
+})
