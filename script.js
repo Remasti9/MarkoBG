@@ -26,10 +26,7 @@ map.on('touchstart', function(e) {
       e.preventDefault(); // Sprečava premestanje mape na dodir jednim prstom
   }
 });
-map.dragging.disable();
-map.touchZoom.disable();
-map.doubleClickZoom.disable();
-map.scrollWheelZoom.disable();
+
 
 // Omogućavanje pomeranja mape samo sa dva prsta
 map.on('touchmove', function(e) {
