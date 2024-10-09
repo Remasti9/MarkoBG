@@ -117,6 +117,10 @@ section {
 
 
 @media (min-width: 150px) and (max-width: 768px) {
+  .call-frame{
+    top: 65%;
+    gap: 30px;
+  }
   .d-sm-flex {
     display: flex !important ;
       flex-direction: column-reverse !important;
