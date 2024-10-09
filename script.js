@@ -42,7 +42,7 @@ document.querySelectorAll('.nav-link').forEach((link) => {
       setTimeout(()=>{callNumber.classList.remove('margin-auto');},300);
     }
     setTimeout(() => {
-      window.scrollBy(0, 20); // Pomeranje stranice za 30px niže
+      window.scrollBy(0, -30); // Pomeranje stranice za 30px niže
     }, 1000);
     switcher = true;
   });
