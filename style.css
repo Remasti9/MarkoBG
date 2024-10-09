@@ -118,8 +118,8 @@ section {
 
 @media (min-width: 150px) and (max-width: 768px) {
   .call-frame{
-    top: 65%;
-    gap: 30px;
+    top: 70%;
+    gap: 40px;
   }
   .d-sm-flex {
     display: flex !important ;
