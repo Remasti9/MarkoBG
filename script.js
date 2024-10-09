@@ -21,9 +21,10 @@ L.marker([44.8189, 20.4559])
     }
 });
 
-// Onemogućavanje premestanja mape na dodir jednim prstom
-map.on('click', function(e) {
-    e.preventDefault(); // Sprečava premestanje mape na klik
+map.on('touchstart', function(e) {
+  if (e.touches.length === 1) {
+      e.preventDefault(); // Sprečava premestanje mape na dodir jednim prstom
+  }
 });
 
   toggler.addEventListener('click', () => {
