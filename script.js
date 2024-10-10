@@ -15,9 +15,6 @@ L.marker([44.8189, 20.4559])
   .addTo(map)
   .bindPopup('We are here.') 
   .openPopup();
-
-
-
   toggler.addEventListener('click', () => {
   if (switcher) {
     callNumber.classList.add('margin-auto');
@@ -40,21 +37,24 @@ document.querySelectorAll('.nav-link').forEach((link) => {
     switcher = true;
   });
 });
+function adjustLineBreak() {
+  const span = document.querySelector('.br-tag');
+  
+  if (window.innerWidth < 768) {
+      if (!span.innerHTML.includes('<br>')) {
+          span.innerHTML = '<br>' + span.innerText;
+      }
+  } else {
+      span.innerHTML = span.innerHTML.replace('<br>', '');
+  }
+}
 window.addEventListener('load', () => {
   window.scrollTo(0, 0); 
+  adjustLineBreak()
 });
-
+window.onresize = adjustLineBreak;
 window.addEventListener('scroll',()=>{
    callFrame.style.display='flex';
-  // //  document.querySelectorAll('.single-call img').forEach((img,index)=>{
-  // //   setTimeout(()=>{
-  // //     img.style.transform = 'scale(1.15)';
-  // //     setTimeout(()=>{
-  // //       img.style.transform='scale(1.0)';
-  // //     },((index*300)+300));
-  // //   },((index*300))+300);
-    
-  // });
    window.addEventListener('scrollend',()=>{
     setTimeout(()=>{
       callFrame.style.display='none';
