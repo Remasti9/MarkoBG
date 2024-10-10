@@ -29,6 +29,9 @@ body::before {
 body::-webkit-scrollbar-track {
   background: blue !important;
 }
+.text-orange{
+  color: #FFA500 !important;
+}
 .w-full{
   width: 100vw !important;
 }
