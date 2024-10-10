@@ -33,7 +33,9 @@ document.querySelectorAll('.nav-link').forEach((link) => {
       setTimeout(()=>{callNumber.classList.remove('margin-auto');},300);
     }
     setTimeout(() => {
-      window.scrollBy(0, -60); // Pomeranje stranice za 30px niže
+      if(window.innerWidth<768){
+        window.scrollBy(0, -60); 
+      }
     }, 1000);
     switcher = true;
   });
