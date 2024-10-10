@@ -4,7 +4,6 @@ html {
 body{
   overflow-x: hidden;
 }
-
 body::before {
   display: block;
   content: "";
@@ -22,15 +21,11 @@ body::before {
   justify-content: space-between;
   flex-direction: column;
   gap: 50px;
-
 }
-
 .single-call img{
   width: 60px;
   aspect-ratio: 1;
 }
-
-
 body::-webkit-scrollbar-track {
   background: blue !important;
 }
@@ -41,7 +36,6 @@ body::-webkit-scrollbar-track {
   height: 400px;
   border-radius: 10px;
 }
-
 section {
   width: 100vw !important;
   min-height: 100vh !important;
@@ -52,58 +46,45 @@ section {
 #about-us img, #landing img {
   border-radius: 10px;
 }
-
-
 .grey {
   background-color: rgb(243, 243, 243);
 }
-
 .bg-primary.rounded-bottom {
   border-bottom-left-radius: 2rem !important;
   border-bottom-right-radius: 2rem !important;
 }
-
 .bg-primary.rounded {
   border-radius: 2rem !important;
 }
-
 .accordion-item {
   border: none !important;
 }
-
 #contact {
   border-top-left-radius: 2rem;
   border-top-right-radius: 2rem;
 }
-
 .white-border {
   border: 10px solid white !important;
 }
-
 #email:hover {
   font-weight: 600 !important;
 }
-
 #youtube:hover {
   color: red !important;
   background: radial-gradient(circle, white 30%, transparent 30% 100%) !important;
 }
-
 #github:hover {
   background: radial-gradient(circle, black 70%, transparent 70% 100%) !important;
 }
-
 #linkendin:hover, #facebook:hover {
   background: radial-gradient(circle, white 63%, transparent 63% 100%) !important;
   color: blue !important;
 }
-
 #instagram:hover {
   background: linear-gradient(45deg, #F58529, #EB5286, #C05AED, #3490DC) !important;
   color: rgba(255, 255, 255, 0.786) !important;
   border-radius: 5px !important;
 }
-
 @media (min-width: 768px) {
   .news-input {
     width: 50%;
@@ -113,9 +94,6 @@ section {
     display: none;
   }
 }
-
-
-
 @media (min-width: 150px) and (max-width: 768px) {
   .call-frame{
     bottom: 25%;
@@ -149,9 +127,7 @@ section {
   #about-us img{
     border-radius: 40px;
   }
-  
 }
-
 .margin-auto{
   margin: 0 auto;
 }

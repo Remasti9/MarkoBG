@@ -44,9 +44,18 @@ window.addEventListener('load', () => {
 
 window.addEventListener('scroll',()=>{
    callFrame.style.display='flex';
+  // //  document.querySelectorAll('.single-call img').forEach((img,index)=>{
+  // //   setTimeout(()=>{
+  // //     img.style.transform = 'scale(1.15)';
+  // //     setTimeout(()=>{
+  // //       img.style.transform='scale(1.0)';
+  // //     },((index*300)+300));
+  // //   },((index*300))+300);
+    
+  // });
    window.addEventListener('scrollend',()=>{
     setTimeout(()=>{
       callFrame.style.display='none';
      }, 3000)
    })
-})
+});
