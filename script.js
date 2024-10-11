@@ -24,7 +24,6 @@ document.querySelectorAll('.nav-link').forEach((link) => {
   link.addEventListener('click', () => {
     if (navbar.classList.contains('show')) {
       navbar.classList.remove('show');
-      setTimeout(()=>{callNumber.classList.remove('margin-auto');},300);
     }
     setTimeout(() => {
       if(window.innerWidth<768){
