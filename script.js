@@ -23,9 +23,9 @@ L.marker([44.8189, 20.4559])
     logo.classList.add('logo-toggle');
     logoText.style.width='300px';
   } else {
-    setTimeout(()=>{
+    
       logoFrame.classList.remove('logo-frame-toggle');
-      logo.classList.remove('logo-toggle');},300);
+      logo.classList.remove('logo-toggle');
       logoText.style.width='200px';
   }
   switcher = !switcher;
