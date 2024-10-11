@@ -22,7 +22,7 @@ L.marker([44.8189, 20.4559])
     logoFrame.classList.add('logo-frame-toggle');
     logo.classList.add('logo-toggle');
     logoText.style.width='250px';
-    logoText.style.marginLeft='10%';
+    logoText.style.marginLeft='5%';
   } else {
     
       logoFrame.classList.remove('logo-frame-toggle');
