@@ -93,7 +93,7 @@ section {
     width: 50%;
   }
   .dissapear-small{display: block;}
-  .disappear-large{
+  .disappear-large-text{
     display: none;
   }
 }
@@ -108,9 +108,12 @@ section {
   }
   .disappear-small{display: none;
   }
-  .disappear-large{
+  .disappear-large-text{
     display: block;
-    width: fit-content;
+    width: 200px;
+    height: auto;
+    margin-left: 10%;
+    margin-bottom: 5px;
   }
   .p-5{
     padding: 1.5rem 0  !important;
