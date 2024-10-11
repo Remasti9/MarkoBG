@@ -32,6 +32,10 @@ L.marker([44.8189, 20.4559])
 });
 document.querySelectorAll('.nav-link').forEach((link) => {
   link.addEventListener('click', () => {
+    
+      logoFrame.classList.remove('logo-frame-toggle');
+      logo.classList.remove('logo-toggle');
+      logoText.style.width='200px';
     if (navbar.classList.contains('show')) {
       navbar.classList.remove('show');
     }
