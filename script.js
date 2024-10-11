@@ -1,8 +1,10 @@
 const toggler = document.querySelector('.navbar-toggler');
-const callNumber = document.querySelector('.disappear-large');
 const navbar = document.querySelector('.navbar-collapse');
 var switcher = true;
-const callFrame = document.querySelector('.call-frame')
+const callFrame = document.querySelector('.call-frame');
+const logo = document.getElementById('logo');
+const logoFrame = document.querySelector('.flex-center');
+const logoText = document.querySelector('.disappear-large-text');
 
 var map = L.map('map').setView([44.8189, 20.4559], 15); // Promenjene koordinate na Dorćol, Beograd
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -16,9 +18,17 @@ L.marker([44.8189, 20.4559])
   .bindPopup('We are here.') 
   .openPopup();
   toggler.addEventListener('click', () => {
-  if (!switcher)  switcher = !switcher;
-  
- 
+  if (switcher) {
+    logoFrame.classList.add('logo-frame-toggle');
+    logo.classList.add('logo-toggle');
+    logoText.style.width='300px';
+  } else {
+    setTimeout(()=>{
+      logoFrame.classList.remove('logo-frame-toggle');
+      logo.classList.remove('logo-toggle');},300);
+      logoText.style.width='200px';
+  }
+  switcher = !switcher;
 });
 document.querySelectorAll('.nav-link').forEach((link) => {
   link.addEventListener('click', () => {

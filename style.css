@@ -8,6 +8,13 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  left: 0%;
+  
+}
+.logo-frame-toggle{
+  flex-direction: row-reverse;
+  left: 0%;
 }
 body::before {
   display: block;
@@ -124,6 +131,11 @@ section {
     display: block;
     position: relative;
     left: 25%;
+  }
+  .logo-toggle{
+    width: 200px;
+     left: -70%;
+     bottom: 180px;
   }
   .p-5{
     padding: 1.5rem 0  !important;
