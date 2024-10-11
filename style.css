@@ -38,7 +38,11 @@ body::-webkit-scrollbar-track {
   background: blue !important;
 }
 .text-orange{
-  color: #000000 !important;
+  color: #f9f500 !important;
+  font-weight: 600;
+}
+.text-black{
+  color: black;
 }
 .w-full{
   width: 100vw !important;
