@@ -16,12 +16,9 @@ L.marker([44.8189, 20.4559])
   .bindPopup('We are here.') 
   .openPopup();
   toggler.addEventListener('click', () => {
-  if (switcher) {
-    callNumber.classList.add('margin-auto');
-  } else {
-    setTimeout(()=>{callNumber.classList.remove('margin-auto');},300);
-  }
-  switcher = !switcher;
+  if (!switcher)  switcher = !switcher;
+  
+ 
 });
 document.querySelectorAll('.nav-link').forEach((link) => {
   link.addEventListener('click', () => {
