@@ -21,12 +21,14 @@ L.marker([44.8189, 20.4559])
   if (switcher) {
     logoFrame.classList.add('logo-frame-toggle');
     logo.classList.add('logo-toggle');
-    logoText.style.width='300px';
+    logoText.style.width='250px';
+    logoText.style.marginLeft='10%';
   } else {
     
       logoFrame.classList.remove('logo-frame-toggle');
       logo.classList.remove('logo-toggle');
-      logoText.style.width='200px';
+      logoText.style.width='150px';
+      logoText.style.marginLeft='0%';
   }
   switcher = !switcher;
 });
@@ -35,7 +37,8 @@ document.querySelectorAll('.nav-link').forEach((link) => {
     
       logoFrame.classList.remove('logo-frame-toggle');
       logo.classList.remove('logo-toggle');
-      logoText.style.width='200px';
+      logoText.style.width='150px';
+      logoText.style.marginLeft='0%';
     if (navbar.classList.contains('show')) {
       navbar.classList.remove('show');
     }

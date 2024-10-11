@@ -8,13 +8,9 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  left: 0%;
-  
 }
 .logo-frame-toggle{
   flex-direction: row-reverse;
-  left: 0%;
 }
 body::before {
   display: block;
@@ -122,19 +118,17 @@ section {
   }
   .disappear-large-text{
     display: block;
-    width: 200px;
+    width: 150px;
     height: auto;
-    margin-left: 25%;
     margin-bottom: 5px;
   }
   .disappear-large-logo{
     display: block;
     position: relative;
-    left: 25%;
   }
   .logo-toggle{
     width: 200px;
-     left: -60%;
+     left: -50%;
      bottom: 180px;
   }
   .p-5{
