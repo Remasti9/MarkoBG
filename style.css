@@ -139,6 +139,10 @@ section {
     margin-bottom: 40px;
     width: 70% !important;
   }
+  .navbar{
+    padding-top: .5rem !important;
+    padding-bottom: .5rem !important;
+  }
   a.nav-link{
     text-align: right;
   }
