@@ -33,12 +33,6 @@ setTimeout(function() {
 map.touchZoom.disable();  // Onemogući touch zoom u jednom prstu
 map.touchZoom.enable({ touch: 2 });  // Omogući zoom samo sa dva prsta
 
-map.getContainer().addEventListener('touchstart', function(event) {
-  if (event.touches.length === 1) {
-    alert('Koristite dva prsta za pomeranje mape.');
-  }
-});
-
 
 
 
