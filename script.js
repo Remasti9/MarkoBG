@@ -22,10 +22,12 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 // Dodavanje markera na Dorćolu
-L.marker([44.8189, 20.4559])
-  .addTo(map)
-  .bindPopup('We are here.')
-  .openPopup();
+setTimeout(function() {
+  L.marker([44.8189, 20.4559])
+    .addTo(map)
+    .bindPopup('We are here.')
+    .openPopup();
+}, 1000);
 
 // Dodavanje ograničenja za dva prsta na mobilnim uređajima
 map.touchZoom.disable();  // Onemogući touch zoom u jednom prstu
