@@ -83,7 +83,7 @@ locateControl.onAdd = function(map) {
 
                         // Prikaz informacija
                         alert('Udaljenost: ' + (totalDistance / 1000).toFixed(2) + ' km\n' + 
-                              'Trajanje: ' + (totalTime / 60).toFixed(0) + ' minuta');
+                              'Autom(regularno): ' + (totalTime / 60).toFixed(0) + ' minuta');
                     });
                 } else {
                     // Ako već postoji routingControl, resetujemo ga

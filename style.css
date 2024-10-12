@@ -182,6 +182,16 @@ section {
   border-radius: 3px; /* Zaobljeni uglovi */
   padding: 5px; /* Unutrašnji razmak */
 }
+.leaflet-routing-container-hide .leaflet-routing-collapse-btn{
+  left: 2px !important;
+}
 .leaflet-routing-collapse-btn::after{
   color: red !important;
 }
+@media   (min-width:641px) {
+  .leaflet-routing-container-hide .leaflet-routing-collapse-btn{
+    left: -7px !important;
+    top: -7px !important;
+  }
+}
+
