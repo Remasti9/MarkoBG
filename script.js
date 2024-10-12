@@ -6,17 +6,27 @@ const logo = document.getElementById('logo');
 const logoFrame = document.querySelector('.flex-center');
 const logoText = document.querySelector('.disappear-large-text');
 
-var map = L.map('map').setView([44.8189, 20.4559], 15); // Promenjene koordinate na Dorćol, Beograd
+var map = L.map('map').setView([44.8189, 20.4559], 15);
+
+// Dodajte tile sloj
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
   maxZoom: 18,
- 
 }).addTo(map);
-// Dodavanje markera na Dorćol
-L.marker([44.8189, 20.4559]) 
-  .addTo(map)
-  .bindPopup('We are here.') 
-  .openPopup();
+
+// Odložite dodavanje markera
+setTimeout(function() {
+  L.marker([44.8189, 20.4559])
+    .addTo(map)
+    .bindPopup('We are here.')
+    .openPopup();
+}, 1000); // Odlaganje od 1 sekunde
+
+
+
+
+
+
   toggler.addEventListener('click', () => {
   if (switcher) {
     logoFrame.classList.add('logo-frame-toggle');
