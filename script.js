@@ -31,7 +31,17 @@ L.marker([44.8189, 20.4559])
 map.touchZoom.disable();  // Onemogući touch zoom u jednom prstu
 map.touchZoom.enable({ touch: 2 });  // Omogući zoom samo sa dva prsta
 
+map.getContainer().addEventListener('touchstart', function(event) {
+  if (event.touches.length === 1) {
+    var notification = document.getElementById('notification');
+    notification.style.display = 'block';
 
+    // Sakrij obaveštenje nakon 2 sekunde
+    setTimeout(function() {
+      notification.style.display = 'none';
+    }, 2000);
+  }
+});
 
 
 
