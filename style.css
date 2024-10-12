@@ -162,3 +162,26 @@ section {
   margin: 0 auto;
 }
   
+.leaflet-routing-container {
+  background-color: rgba(255, 255, 255, 0.8); /* Poluprovidna pozadina */
+  border-radius: 5px; /* Zaobljeni uglovi */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Senka za dubinu */
+  padding: 10px; /* Unutrašnji razmak */
+  width: 300px; /* Širina prozora */
+  color: black;
+}
+
+.leaflet-routing-alternatives {
+  display: none; /* Sakrij alternativne rute ako ne želite da se prikazuju */
+}
+
+
+.leaflet-routing-waypoint {
+  background-color: #f9f9f9; /* Boja tačke */
+  border: 1px solid #ccc; /* Okvir oko tačke */
+  border-radius: 3px; /* Zaobljeni uglovi */
+  padding: 5px; /* Unutrašnji razmak */
+}
+.leaflet-routing-collapse-btn::after{
+  color: red !important;
+}
