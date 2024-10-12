@@ -25,13 +25,92 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 setTimeout(function() {
   L.marker([44.8189, 20.4559])
     .addTo(map)
-    .bindPopup('Tu smo!.Koristite dva prsta za mapiranje.')
+    .bindPopup('Tu smo! Koristite dva prsta za mapiranje.')
     .openPopup();
 }, 1000);
 
 // Dodavanje ograničenja za dva prsta na mobilnim uređajima
 map.touchZoom.disable();  // Onemogući touch zoom u jednom prstu
 map.touchZoom.enable({ touch: 2 });  // Omogući zoom samo sa dva prsta
+
+var locateControl = L.control({ position: 'topleft' });
+var routingControl; // Globalna promenljiva za Routing Control
+
+locateControl.onAdd = function(map) {
+    var div = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+    div.innerHTML = 'Directions'; 
+    div.style.backgroundColor = 'white';
+    div.style.color = 'black';
+    div.style.width = 'fit-content'; 
+    div.style.padding = '0 3px';
+    div.style.fontSize = '20px';
+    div.style.height = '30px';
+    div.style.cursor = 'pointer';
+    div.title = 'Prikaži moju lokaciju';
+    div.style.textAlign = 'center'; 
+    div.style.lineHeight = '30px'; 
+
+    div.onclick = function() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var userLat = position.coords.latitude;
+                var userLng = position.coords.longitude;
+
+                // Prikazivanje trenutne lokacije korisnika
+                L.marker([userLat, userLng]).addTo(map)
+                    .bindPopup('Vaša trenutna lokacija').openPopup();
+
+                // Proverite da li je routingControl već inicijalizovan
+                if (!routingControl) {
+                    // Dodavanje rute između trenutne lokacije i Dorćola
+                    routingControl = L.Routing.control({
+                        waypoints: [
+                            L.latLng(userLat, userLng),  // Trenutna lokacija korisnika
+                            L.latLng(44.8189, 20.4559)   // Dorćol, Beograd
+                        ],
+                        routeWhileDragging: true,
+                        geocoder: L.Control.Geocoder.nominatim(),  // Opcija za geokodiranje
+                        showAlternatives: false,  // Prikazuje samo jednu rutu
+                    }).addTo(map);
+
+                    // Prikazivanje informacija o ruti
+                    routingControl.on('routesfound', function(e) {
+                        var routes = e.routes;
+                        var totalDistance = routes[0].summary.totalDistance; // Udaljenost u metrima
+                        var totalTime = routes[0].summary.totalTime; // Vreme u sekundama
+
+                        // Prikaz informacija
+                        alert('Udaljenost: ' + (totalDistance / 1000).toFixed(2) + ' km\n' + 
+                              'Trajanje: ' + (totalTime / 60).toFixed(0) + ' minuta');
+                    });
+                } else {
+                    // Ako već postoji routingControl, resetujemo ga
+                    routingControl.getPlan().setWaypoints([
+                        L.latLng(userLat, userLng),  // Trenutna lokacija korisnika
+                        L.latLng(44.8189, 20.4559)   // Dorćol, Beograd
+                    ]);
+                }
+
+                // Uklanjanje Routing Control kada se zatvori
+                routingControl.on('clear', function() {
+                    routingControl = null; // Postavljanje na null kada se ukloni
+                });
+            }, function() {
+                alert("Geolokacija nije dostupna ili nije omogućena.");
+            });
+        } else {
+            alert("Vaš pretraživač ne podržava geolokaciju.");
+        }
+    };
+
+    return div;
+};
+
+locateControl.addTo(map);
+
+
+
+
 
 
 
