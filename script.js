@@ -52,6 +52,11 @@ document.querySelectorAll('.nav-link').forEach((link) => {
 });
 function adjustLineBreak() {
   const span = document.querySelector('.br-tag');
+  if(window.innerWidth>=768 && window.innerWidth<992){
+    logoFrame.style.display='none';
+  }else{
+    logoFrame.style.display='flex';
+  }
   
   if (window.innerWidth < 768) {
       if (!span.innerHTML.includes('<br>')) {
