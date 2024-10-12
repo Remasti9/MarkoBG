@@ -25,7 +25,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 setTimeout(function() {
   L.marker([44.8189, 20.4559])
     .addTo(map)
-    .bindPopup('We are here. Use two fingers to move the map.')
+    .bindPopup('Tu smo!.Koristite dva prsta za mapiranje.')
     .openPopup();
 }, 1000);
 
