@@ -6,21 +6,31 @@ const logo = document.getElementById('logo');
 const logoFrame = document.querySelector('.flex-center');
 const logoText = document.querySelector('.disappear-large-text');
 
-var map = L.map('map').setView([44.8189, 20.4559], 15);
+var map = L.map('map', {
+  center: [44.8189, 20.4559],  // Dorćol, Beograd
+  zoom: 15,
+  dragging: !L.Browser.mobile,  // Onemogući dragging na mobilnim uređajima
+  touchZoom: true,  // Dozvoljava touch zoom
+  tap: false,  // Sprečava zoom na jedan prst
+  zoomControl: false  // Ako želite sakriti dugmiće za zoom
+});
 
-// Dodajte tile sloj
+// Dodavanje tile sloja
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
   maxZoom: 18,
 }).addTo(map);
 
-// Odložite dodavanje markera
-setTimeout(function() {
-  L.marker([44.8189, 20.4559])
-    .addTo(map)
-    .bindPopup('We are here.')
-    .openPopup();
-}, 1000); // Odlaganje od 1 sekunde
+// Dodavanje markera na Dorćolu
+L.marker([44.8189, 20.4559])
+  .addTo(map)
+  .bindPopup('We are here.')
+  .openPopup();
+
+// Dodavanje ograničenja za dva prsta na mobilnim uređajima
+map.touchZoom.disable();  // Onemogući touch zoom u jednom prstu
+map.touchZoom.enable({ touch: 2 });  // Omogući zoom samo sa dva prsta
+
 
 
 
