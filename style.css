@@ -17,6 +17,9 @@ body::before {
   content: "";
   height: 70px;
 }
+.text-light{
+  color: #fff !important;
+}
 .call-frame{
   position: fixed;
   z-index: 999;
