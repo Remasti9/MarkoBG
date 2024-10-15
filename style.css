@@ -64,6 +64,11 @@ body::-webkit-scrollbar-track {
 #landingCarousel{
   height: fit-content;
   padding-bottom: 3rem !important;
+  text-align: justify;
+}
+.landing-text-wrapper{
+  width: 20%;
+
 }
 .carousel-item{
   margin-top: 1rem;
@@ -162,6 +167,10 @@ section.blanc{
     top: 2rem;
     gap: 2rem;
   }
+  .landing-text-wrapper{
+    width: 100%;
+  
+  }
   .call-frame{
     bottom: 25%;
     gap: 40px;
@@ -216,7 +225,7 @@ section.blanc{
   }
   .set-abs2{
     top: 35%;
-    left: 5%;
+    left: 15%;
     font-weight: 600;
   }
 }
