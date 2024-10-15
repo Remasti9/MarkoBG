@@ -193,8 +193,8 @@ function handleBodyImg() {
 
   // Menjaj src slike na osnovu pozicije skrola
   if (scrollPosition < 3000) {
-    bodyBg.src = '/images/material/body2.jpg'; // Promeni src na prvu sliku
+    bodyBg.src = './images/material/body2.jpg'; // Promeni src na prvu sliku
   } else {
-    bodyBg.src = '/images/material/body.jpg'; // Promeni src na drugu sliku
+    bodyBg.src = './images/material/body.jpg'; // Promeni src na drugu sliku
   }
 }
