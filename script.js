@@ -172,6 +172,7 @@ window.addEventListener('load', () => {
 });
 window.onresize = adjustLineBreak;
 window.addEventListener('scroll',()=>{
+  handleBodyImg()
    callFrame.style.display='flex';
    window.addEventListener('scrollend',()=>{
     setTimeout(()=>{
@@ -179,3 +180,21 @@ window.addEventListener('scroll',()=>{
      }, 3000)
    })
 });
+
+function handleBodyImg() {
+  const bodyBg = document.querySelector('.body-background img'); // Odaberi sliku
+  const viewportHeight = window.innerHeight;
+  const bodyHeight = document.body.scrollHeight; // Visina body-ja
+  const scrollPosition = window.scrollY; // Trenutna pozicija skrola
+
+  // Razlika između visine body-ja i trenutnog viewporta
+  const difference = bodyHeight - viewportHeight;
+  console.log(scrollPosition);
+
+  // Menjaj src slike na osnovu pozicije skrola
+  if (scrollPosition < 3000) {
+    bodyBg.src = '/images/material/body2.jpg'; // Promeni src na prvu sliku
+  } else {
+    bodyBg.src = '/images/material/body.jpg'; // Promeni src na drugu sliku
+  }
+}

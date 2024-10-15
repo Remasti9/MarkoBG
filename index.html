@@ -15,23 +15,7 @@
     
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 
-    <!-- Inline kritični CSS -->
-    <style>
-        /* Kritični stilovi za početne elemente */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            overflow-x: hidden;
-        }
-        header {
-            background-color: #f8f9fa;
-            padding: 1rem;
-        }
-    </style>
+  
 
     <!-- Preostali CSS -->
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"></noscript>
@@ -50,6 +34,9 @@
 </head>
 
   <body>
+    <div class="body-background">
+      <img src="/images/material/body2.jpg" alt="slika" class="img-fluid">
+    </div>
         <div class="call-frame">
           <div class="single-call"><a href="tel:+381600780650"><img src="./images/mobilecall.webP" alt="Poziv sa mobilnog" loading="lazy"></a></div>
           <div class="single-call"><a href="viber://chat?number=381600780650"><img src="./images/viber.webP" alt="Viber poziv" loading="lazy"></a></div>
@@ -59,7 +46,7 @@
 
    <nav class="navbar navbar-expand-lg bg-primary  navbar-dark  py-3 fixed-top w-full">
     <div class="container ">
-        <a href="#" class="navbar-brand text-orange disappear-small "> &nbsp;Vreme da se krećemo brže nego ikad!</a>
+        <a href="#" class="navbar-brand  disappear-small "> &nbsp;Vreme da se krećemo brže nego ikad!</a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -92,51 +79,117 @@
     </div>
    </nav>
 
-   <!--Home-Logo-->
+<div class="breaking-section"></div>
+<!--try-->
+<section id="landing" class="bg-primary rounded-bottom text-white   text-center text-sm-start">
+  <div class="container auto">
+      <div id="landingCarousel" class="d-sm-flex align-items-center justify-content-center">
+        <div style="width: 20%;">
+         
+          <h2 class="animate__animated animate__backInLeft">Zakazivanje 24/7. Otkrijte nas!</h2>
+          <h3 class="animate__animated animate__backInLeft">Zakazivanje 24/7. Otkrijte nas!</h3>
+          <p class="lead my-4 animate__animated animate__backInLeft">
+              Pružamo profesionalne usluge selidbe sa dugogodišnjim iskustvom.<br/>
+              Naš tim je dostupan non-stop dnevno da vam pomogne u svim fazama selidbe.<br/>
+              Bez obzira na to da li se selite lokalno ili na duže relacije, mi smo tu da vam olakšamo ceo proces.
+          </p>
+      </div>
+          <!-- Carousel for image rotation -->
+          <div  class="carousel slide img-c-width flex-grow-1 animate__animated animate__backInRight" data-bs-ride="carousel" data-bs-interval="2000">
+            <div class="carousel-inner text-white">
+                <!-- First image -->
+                <div class="carousel-item active ">
+                    <img src="images/van.webP" class="img-fluid img-c-width  d-sm-block" alt="img1" width="500" height="300">
+                    <h1 class="set-abs wow animate__animated animate__backInLeft mb-5 ">Selidbe Beograd. Idemo odma!</h1>
+                    <h2 class="set-abs2 wow animate__animated animate__backInLeft">+381-60-0780-650</h2>
+                </div>
+                <!-- Second image -->
+                <div class="carousel-item">
+                    <img src="images/img3.avif" class="img-fluid img-c-width  d-sm-block" alt="img2" width="500" height="300">
+                    <h1 class="set-abs wow animate__animated animate__backInLeft mb-5 ">Samo pozovi i idemo odma!</h1>
+                    <h2 class="set-abs2 wow animate__animated animate__backInLeft">+381-60-0780-650</h2>
+                </div>
+                <!-- Third image -->
+                <div class="carousel-item ">
+                    <img src="images/img1.avif" class="img-fluid img-c-width  d-sm-block " alt="img3" width="500" height="300">
+                    <h1 class="set-abs wow animate__animated animate__backInLeft mb-5  ">Otvoreni za svaki dogovor.</h1>
+                    <h2 class="set-abs2 wow animate__animated animate__backInLeft">+381-60-0780-650</h2>
+                </div>
+                <!-- Fourth image -->
+                <div class="carousel-item text-black">
+                    <img src="images/material/kombi1.webP" class="img-fluid img-c-width  d-sm-block" alt="img4" width="500" height="300">
+                    <h1 class="set-abs wow animate__animated animate__backInLeft mb-5 ">Imamo rešenje za svaku situaciju.</h1>
+                    <h2 class="set-abs2 wow animate__animated animate__backInLeft">+381-60-0780-650</h2>
+                </div>
+            </div>
+        </div>
+      </div>
+  </div>
+</section>
+<!--Principles Sections-->
 
-   <section id="landing" class="bg-primary rounded-bottom  text-white p-5 p-lg-0 py-lg-5 text-center text-sm-start">
+<section class="p-5 bg-white" id="principles">
+  <div class="container text-primary text-center ">
+      <h2  class=" stop-animate wow animate__animated animate__backInUp mb-5">Prioriteti i principi</h2>
+      <h3 class=" stop-animate wow animate__animated animate__backInUp"> <span class="text-black">Poziv!</span>  <span class="text-danger">Dogovor!</span>  <span class="text-secondary">Realizacija!</span></h3>
+      <h3  class=" stop-animate wow animate__animated animate__backInUp"><span class="text-danger">Sigurno!</span>  <span class="text-secondary">Brzo!</span> <span class="text-black">Jednostavno!</span> Perfektno!</h3>
+      
+      <div class="col-md">
+          <img src="./images/prioritet.webP" loading="lazy" class="img-fluid stop-animate wow animate__animated animate__backInUp"  alt="img2">
+      </div> 
+      <div class="row align-items-center justify-content-between">
+          
+                  <div class="col-md p-5">
+                      
+                      <p class=" stop-animate wow animate__animated animate__backInUp" data-wow-delay="0.1s">Možete primetiti da su klijenti pobeleli do izvršenja selidbe.</p>
+                      <p class="stop-animate wow animate__animated animate__backInUp" data-wow-delay="0.2s">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos unde, accusantium sapiente, quam fugit, mollitia eaque asperiores fugiat distinctio accusamus possimus aut dolore? Asperiores soluta eos, officia commodi alias laboriosam.</p>
+                  <a href="#" aria-label="Saznajte više o našim uslugama selidbe" class="btn btn-primary mt-3 stop-animate wow animate__animated animate__backInUp" data-wow-delay="0.3s">
+                      Read more <i class="bi bi-chevron-right"></i> 
+                  </a>
+                  </div>
+      </div>
+  </div>
+ </section>
+
+<!--blank-->
+<section class="blanc">
+
+</section>
+
+   <!--showing-->
+
+   <section  class="bg-primary rounded-bottom  text-white p-5 p-lg-0 py-lg-5 text-center text-sm-start">
     <div class="container ">
         <div class="d-sm-flex align-items-center justify-content-between">
             <div class="pe-3">
-                <h1 class="animate__animated animate__backInLeft mb-5">Selidbe Beograd<span class="text-orange br-tag"><br> Idemo odma !</span> </h1>
-                <h2 class="animate__animated animate__backInLeft">Zakazivanje 24/7.<span class="text-orange"> Otkrijte nas!</span> </h2>
-                <p class="lead my-4 animate__animated animate__backInLeft">Pružamo profesionalne usluge selidbe sa dugogodišnjim iskustvom.<br/>Naš tim je dostupan non-stop dnevno da vam pomogne u svim fazama selidbe.<br/>Bez obzira na to da li se selite lokalno ili na duže relacije, mi smo tu da vam olakšamo ceo proces.
+                <h1 class="wow animate__animated animate__backInLeft mb-5">Selidbe Beograd<span class="text-orange br-tag"><br> Idemo odma !</span> </h1>
+                <h2 class="wow animate__animated animate__backInLeft">Zakazivanje 24/7.<span class="text-orange"> Otkrijte nas!</span> </h2>
+                <p class="lead my-4 wow animate__animated animate__backInLeft">Pružamo profesionalne usluge selidbe sa dugogodišnjim iskustvom.<br/>Naš tim je dostupan non-stop dnevno da vam pomogne u svim fazama selidbe.<br/>Bez obzira na to da li se selite lokalno ili na duže relacije, mi smo tu da vam olakšamo ceo proces.
                 </p>
                 
 
             </div>
-            <img class="img-fluid w-50 margin d-sm-block animate__animated animate__backInRight" src="images/van.webP" alt="img1"  width="500" height="300" >
+            <img class="img-fluid w-50 margin d-sm-block wow animate__animated animate__backInRight" src="images/material/IMG_2307.jpeg" alt="img1"  width="500" height="300" >
         </div>
     </div>
    </section>
+
+   <section  class="bg-white text-primary rounded-bottom  p-5 p-lg-0 py-lg-5 text-center text-sm-start">
+    <div class="container">
+        <div class="d-sm-flex align-items-center justify-content-between">
+            <img class="img-fluid w-50 margin d-sm-block wow animate__animated animate__backInLeft" src="images/material/section1.webP" alt="img1" width="500" height="300">
+            <div class="ps-3">
+                <h1 class="wow animate__animated animate__backInRight mb-5">Selidbe Beograd<span class="text-orange br-tag"><br> Idemo odma !</span> </h1>
+                <h2 class="wow animate__animated animate__backInRight">Zakazivanje 24/7.<span class="text-orange"> Otkrijte nas!</span> </h2>
+                <p class="lead my-4 wow animate__animated animate__backInRight">Pružamo profesionalne usluge selidbe sa dugogodišnjim iskustvom.<br />Naš tim je dostupan non-stop dnevno da vam pomogne u svim fazama selidbe.<br />Bez obzira na to da li se selite lokalno ili na duže relacije, mi smo tu da vam olakšamo ceo proces.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 
    
-
-
-   <!--Principles Sections-->
-
-   <section class="p-5" id="principles">
-    <div class="container text-primary text-center ">
-        <h2  class=" stop-animate wow animate__animated animate__backInUp mb-5">Prioriteti i principi</h2>
-        <h3 class=" stop-animate wow animate__animated animate__backInUp"> <span class="text-black">Poziv!</span>  <span class="text-danger">Dogovor!</span>  <span class="text-secondary">Realizacija!</span></h3>
-        <h3  class=" stop-animate wow animate__animated animate__backInUp"><span class="text-danger">Sigurno!</span>  <span class="text-secondary">Brzo!</span> <span class="text-black">Jednostavno!</span> Perfektno!</h3>
-        
-        <div class="col-md">
-            <img src="./images/prioritet.webP" loading="lazy" class="img-fluid stop-animate wow animate__animated animate__backInUp"  alt="img2">
-        </div> 
-        <div class="row align-items-center justify-content-between">
-            
-                    <div class="col-md p-5">
-                        
-                        <p class=" stop-animate wow animate__animated animate__backInUp" data-wow-delay="0.1s">Možete primetiti da su klijenti pobeleli do izvršenja selidbe.</p>
-                        <p class="stop-animate wow animate__animated animate__backInUp" data-wow-delay="0.2s">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos unde, accusantium sapiente, quam fugit, mollitia eaque asperiores fugiat distinctio accusamus possimus aut dolore? Asperiores soluta eos, officia commodi alias laboriosam.</p>
-                    <a href="#" aria-label="Saznajte više o našim uslugama selidbe" class="btn btn-primary mt-3 stop-animate wow animate__animated animate__backInUp" data-wow-delay="0.3s">
-                        Read more <i class="bi bi-chevron-right"></i> 
-                    </a>
-                    </div>
-        </div>
-    </div>
-   </section>
 
 
   <!--#################    About Us          ################-->
@@ -254,6 +307,10 @@
 </section>
 
 
+<!--blanc-->
+<section class="blanc">
+
+</section>
      <!--###################  INFORMATION ##################-->
 
      <section id="information" class="p-5" >
@@ -400,7 +457,7 @@
                        </ul>
                 </div>
                  <div class="col-md ">
-                 <div id="map" class="white-border stop-animate wow animate__animated animate__backInRight" data-wow-delay="0.6s" ></div> 
+                 <div id="map" class="white-border stop-animate wow animate__animated animate__backInRight" ></div> 
                  
                  </div>
             </div>
@@ -408,10 +465,10 @@
         </div>
     </section>
     
-    
+    <div class="breaking-section"></div>
     <!--Footer-->
 
-    <footer id="footer" class="p-3 bg-primary mt-4 text-white text-center position-relative">
+    <footer id="footer" class="p-3 bg-primary  text-white text-center position-relative">
         <div class="container">
             <p class="lead me-4">Copyright &copy; 2024 </p>
             <a href="#" class="position-absolute bottom-0 end-0 p-3 text-white" aria-label="Povratak na početnu">

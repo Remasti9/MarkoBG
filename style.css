@@ -1,9 +1,30 @@
 html {
   scroll-behavior: smooth;
 }
-body{
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
   overflow-x: hidden;
 }
+.body-background{
+  position: fixed;
+  top: 0%;
+  left: 0;
+  z-index: -1;
+  width: 100vw;
+  height: fit-content;
+}
+
+
+header {
+  background-color: #f8f9fa;
+  padding: 1rem;
+}
+
 .flex-center{
   display: flex;
   justify-content: center;
@@ -40,10 +61,36 @@ body::before {
 body::-webkit-scrollbar-track {
   background: blue !important;
 }
-.text-orange{
-  color: #010100 !important;
-  font-weight: 600;
+#landingCarousel{
+  height: fit-content;
+  padding-bottom: 3rem !important;
 }
+.carousel-item{
+  margin-top: 1rem;
+}
+.set-abs{
+  position: absolute;
+  z-index: 999;
+  top: 5%;
+  left: 20%;
+  font-weight: 900;
+}
+.set-abs2{
+  position: absolute;
+  z-index: 999;
+  top: 25%;
+  left: 35%;
+  font-weight: 900;
+}
+
+.img-c-width{
+  width: 95%;
+  height: auto;
+  margin: 0 auto !important;
+  border-radius: 20px !important;
+  /* padding: 1rem 0 !important; */
+}
+
 .text-black{
   color: black;
 }
@@ -59,27 +106,24 @@ section {
   min-height: 100vh !important;
   display: grid;
   place-items: center;
-  margin-top: 2rem;
+ background-color: white;
+}
+section.blanc{
+ 
+  background-color: transparent !important;
+}
+.breaking-section{
+  height: 2rem;
+  background-color: white;
 }
 #about-us img, #landing img {
   border-radius: 10px;
 }
-.grey {
-  background-color: rgb(243, 243, 243);
-}
-.bg-primary.rounded-bottom {
-  border-bottom-left-radius: 2rem !important;
-  border-bottom-right-radius: 2rem !important;
-}
-.bg-primary.rounded {
-  border-radius: 2rem !important;
-}
+
+
+
 .accordion-item {
   border: none !important;
-}
-#contact {
-  border-top-left-radius: 2rem;
-  border-top-right-radius: 2rem;
 }
 .white-border {
   border: 10px solid white !important;
@@ -113,6 +157,11 @@ section {
   
 }
 @media (min-width: 150px) and (max-width: 768px) {
+  #landingCarousel{
+    position: relative;
+    top: 2rem;
+    gap: 2rem;
+  }
   .call-frame{
     bottom: 25%;
     gap: 40px;
