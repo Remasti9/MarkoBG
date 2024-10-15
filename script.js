@@ -107,16 +107,9 @@ locateControl.onAdd = function(map) {
 
     return div;
 };
-
 locateControl.addTo(map);
 
-
-
-
-
-
-
-
+//site logic on load and scroll event
   toggler.addEventListener('click', () => {
   if (switcher) {
     logoFrame.classList.add('logo-frame-toggle');

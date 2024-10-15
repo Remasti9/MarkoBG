@@ -93,7 +93,7 @@ body::-webkit-scrollbar-track {
   height: auto;
   margin: 0 auto !important;
   border-radius: 20px !important;
-  /* padding: 1rem 0 !important; */
+ 
 }
 
 .text-black{
@@ -162,6 +162,9 @@ section.blanc{
   
 }
 @media (min-width: 150px) and (max-width: 768px) {
+  .container{
+    padding: 0 !important;
+  }
   #landingCarousel{
     position: relative;
     top: 2rem;
@@ -169,7 +172,7 @@ section.blanc{
   }
   .landing-text-wrapper{
     width: 100%;
-  
+   padding: 0 5px !important;
   }
   .call-frame{
     bottom: 25%;
@@ -178,6 +181,12 @@ section.blanc{
   .d-sm-flex {
     display: flex !important ;
       flex-direction: column-reverse !important;
+  }
+  .img-c-width{
+    width: 100%;
+    height: auto;
+    border-radius: 0 !important;
+   
   }
   .disappear-small{display: none;
   }
@@ -266,3 +275,8 @@ section.blanc{
   }
 }
 
+@media (max-width:1014px) {
+  .set-abs{
+    left: 5%;
+  }
+}
