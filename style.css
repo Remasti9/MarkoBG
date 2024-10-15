@@ -209,6 +209,16 @@ section.blanc{
   #about-us img{
     border-radius: 40px;
   }
+  .set-abs{
+    top: 5%;
+    left:5% ;
+    font-weight: 600;
+  }
+  .set-abs2{
+    top: 35%;
+    left: 5%;
+    font-weight: 600;
+  }
 }
 .margin-auto{
   margin: 0 auto;
