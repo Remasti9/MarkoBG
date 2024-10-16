@@ -134,14 +134,15 @@ body::-webkit-scrollbar-track {
   border-radius: 10px;
 }
 section {
-  width: 100vw !important;
+  width: 100% !important;
   min-height: 100vh !important;
+  overflow-x: hidden;
   display: grid;
   place-items: center;
  background-color: white;
 }
 section.blanc{
- 
+ width: 100%;
   background-color: transparent !important;
 }
 .breaking-section{
