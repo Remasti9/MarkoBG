@@ -18,7 +18,11 @@ body {
   width: 100vw;
   height: fit-content;
 }
-
+body::before {
+  display: block;
+  content: "";
+  height: 70px;
+}
 
 header {
   background-color: #f8f9fa;
@@ -33,11 +37,29 @@ header {
 .logo-frame-toggle{
   flex-direction: row-reverse;
 }
-body::before {
-  display: block;
-  content: "";
-  height: 70px;
+
+.nav-link {
+  position: relative;
 }
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #ffffff; /* Boja linije */
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%; /* Linija se širi preko celog linka */
+}
+.nav-link.active::after {
+  width: 100%;
+}
+
 .text-light{
   color: #fff !important;
 }
@@ -141,7 +163,7 @@ section.blanc{
  width: 500px !important;
  transform: scale(0.7);
  transition: all .8s;
- background: rgba(0, 0, 0, 0.5);
+ background: rgba(0, 0, 0, 0.3);
 }
 .text-stroke{
   color: rgb(0, 0, 0);
@@ -274,6 +296,8 @@ section.blanc{
   a.nav-link{
     text-align: right;
   }
+  
+ 
   .stop-animate{
     visibility: visible;
     animation: none !important;

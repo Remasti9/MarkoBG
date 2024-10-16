@@ -126,8 +126,10 @@ locateControl.addTo(map);
   switcher = !switcher;
 });
 document.querySelectorAll('.nav-link').forEach((link) => {
+      
   link.addEventListener('click', () => {
-    
+    document.querySelectorAll('.nav-link').forEach((marked) =>marked.classList.remove('active'));
+       link.classList.add('active');
       logoFrame.classList.remove('logo-frame-toggle');
       logo.classList.remove('logo-toggle');
       logoText.style.width='150px';
