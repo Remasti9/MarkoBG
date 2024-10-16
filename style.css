@@ -44,6 +44,7 @@ header {
 
 .nav-link {
   position: relative;
+  margin-right: 0;
 }
 
 .nav-link::after {
@@ -245,6 +246,7 @@ section.blanc{
   .container{
     padding: 0 !important;
   }
+  .nav-link{margin-right: 5px;}
   #landingCarousel{
     position: relative;
     top: -3.3rem;
