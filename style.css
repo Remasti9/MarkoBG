@@ -313,9 +313,7 @@ section.blanc{
     visibility: visible;
     animation: none !important;
   }
- #about-us{
-  display: none;
- }
+ 
   .set-abs{
     top: 5%;
     left:5% ;
@@ -368,4 +366,13 @@ section.blanc{
   .set-abs{
     left: 5%;
   }
+  #about-us{
+    display: none;
+   }
+}
+
+@media (min-width:1015px){
+  #about-us-small{
+    display: none;
+   }
 }
