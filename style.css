@@ -37,6 +37,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 5px;
 }
 .logo-frame-toggle{
   flex-direction: row-reverse;
@@ -312,9 +313,20 @@ section.blanc{
     visibility: visible;
     animation: none !important;
   }
-  #about-us img{
-    border-radius: 40px;
-  }
+ #about-us{
+  filter: saturate(1);
+  
+  
+ }
+  #text-about-me,
+   #profile-image{
+    width: 100% !important;
+    margin-left: 0%;
+    filter: saturate(1);
+   }
+ #about-me-btn{
+  display: none;
+ }
   .set-abs{
     top: 5%;
     left:5% ;
