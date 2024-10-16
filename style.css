@@ -314,17 +314,6 @@ section.blanc{
     animation: none !important;
   }
  #about-us{
-  filter: saturate(1);
-  
-  
- }
-  #text-about-me,
-   #profile-image{
-    width: 100% !important;
-    margin-left: 0%;
-    filter: saturate(1);
-   }
- #about-me-btn{
   display: none;
  }
   .set-abs{
