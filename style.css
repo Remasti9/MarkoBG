@@ -296,7 +296,9 @@ section.blanc{
   a.nav-link{
     text-align: right;
   }
-  
+  .nav-link.active::after {
+    width: 0;
+  }
  
   .stop-animate{
     visibility: visible;
