@@ -185,11 +185,23 @@ function handleBodyImg() {
   // Razlika između visine body-ja i trenutnog viewporta
   const difference = bodyHeight - viewportHeight;
   console.log(scrollPosition);
-
-  // Menjaj src slike na osnovu pozicije skrola
-  if (scrollPosition < 3000) {
-    bodyBg.src = './images/material/body2.jpg'; // Promeni src na prvu sliku
-  } else {
-    bodyBg.src = './images/material/body.jpg'; // Promeni src na drugu sliku
-  }
+   if(window.innerWidth>768){
+    if (scrollPosition < 3000) {
+      bodyBg.src = './images/material/body2.jpg'; 
+      bodyBg.style.marginTop='0px';
+    } else {
+      bodyBg.src = './images/material/body.jpg'; 
+      bodyBg.style.marginTop='0px';
+    }
+   } else{
+    if(scrollPosition<3000){
+      bodyBg.src = './images/material/body-small.webP';
+      bodyBg.style.marginTop='50px';
+    } else{
+      bodyBg.src = './images/material/IMG_2433.jpeg';
+      bodyBg.style.marginTop='50px';
+    }
+    
+   }
+  
 }
