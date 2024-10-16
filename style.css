@@ -248,6 +248,7 @@ section.blanc{
     padding: 0 !important;
   }
   .nav-link{margin-right: 5px;}
+  .navbar-toggler{margin-left: 5px;}
   #landingCarousel{
     position: relative;
     top: -3.3rem;
