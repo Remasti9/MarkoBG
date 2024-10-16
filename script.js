@@ -196,10 +196,10 @@ function handleBodyImg() {
    } else{
     if(scrollPosition<3000){
       bodyBg.src = './images/material/body-small.webP';
-      bodyBg.style.marginTop='50px';
+      bodyBg.style.marginTop='150px';
     } else{
       bodyBg.src = './images/material/IMG_2433.jpeg';
-      bodyBg.style.marginTop='50px';
+      bodyBg.style.marginTop='150px';
     }
     
    }
