@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
 
     <!-- Deferred JavaScript -->
+     <script defer src="about-me.js"></script>
     <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script defer src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
     <script defer src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
@@ -193,10 +194,32 @@
 
 
    
+   <!--about me-->
+   <section   id="about-us" >
+    <div  class="container-fluid ">
+      <h1 class="  about-us-title text-stroke">O NAMA</h1>
+    <div  class="row align-items-center justify-content-between ">
+                <div  class=" col-md ms-0 mb-3 p-2 p-md-5  " >
+                    <img id="profile-image" src="./images/material/about me/we.jpg"   class="img-fluid "  alt="Profile picture"/>
+                </div>
+                
+                <div  class="col p-0 col-md p-0">
+                  <div id="text-about-me">
+                  <h2 id="title-of-text" class="text-center text-stroke" >Lorem, ipsum dolor.</h2>
+                    <p  class="lead p-2 text-white">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum laborum inventore quas aperiam nemo rem, voluptatum culpa cupiditate quidem sunt. Odio ipsam quibusdam molestias! Deleniti incidunt suscipit, error facere unde asperiores, harum ipsam deserunt minus libero molestias est repudiandae quis aspernatur possimus. Quo magnam ipsam, maxime voluptas eaque eum facilis.</p>
+                    <p id="second-text" class="p-2 text-white ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id perferendis eum itaque beatae illum aspernatur recusandae tempora, quas sapiente. Architecto, ullam beatae sed dolorum neque natus vel. Eum ipsa expedita excepturi repellat! Ducimus, reprehenderit tempora. Cum voluptates placeat quisquam eius?</p>
+                    <a id="about-me-btn" href="#about-us" >Tačni kao sat! Klikni</a>
+               
+              </div>
+              
+                </div>
+    </div>
+    </div>
+</section>
 
 
   <!--#################    About Us          ################-->
-
+<!-- 
    <section id="about-us" class="p-5 bg-primary rounded text-white" >
     <div class="container">
         <div class="row align-items-center justify-content-between">
@@ -214,10 +237,10 @@
                         </div>
         </div>
     </div>
-   </section>
+   </section> -->
 
    <!--Questions accordion-->
-<section id="services" class="p-5" >
+<section id="services" class="p-5 mt-4" >
   <div class="container">
       <h1 class="text-center mb-4">Servisi</h1>
       <div class="accordion" id="questions">

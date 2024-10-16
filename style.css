@@ -121,10 +121,64 @@ section.blanc{
   height: 2rem;
   background-color: white;
 }
+#about-us{
+   margin: 150px 0;
+   background:url('./images/material/about me/pexels-padrinan-3785932.jpg');
+   background-repeat: no-repeat;
+   background-size: cover;
+   filter: saturate(0);
+   transform: scale(1.4);
+   transition: all .8s;
+}
+.about-us-title{
+  
+  text-align: center;
+  margin-top: 50px;
+  font-weight: 900;
+  
+}
+#text-about-me{
+ width: 500px !important;
+ transform: scale(0.7);
+ transition: all .8s;
+ background: rgba(0, 0, 0, 0.5);
+}
+.text-stroke{
+  color: rgb(0, 0, 0);
+  -webkit-text-stroke:2px rgb(255, 255, 255);
+  font-size: 30px;
+  font-weight: bold;
+}
+
 #about-us img, #landing img {
   border-radius: 10px;
 }
-
+#profile-image{
+  filter: saturate(0);
+  width: 400px;
+  height: auto;
+  margin-left: 20%;
+  border: 10px solid white;
+  transform: scale(0.7);
+  transition: all .8s;
+}
+#about-me-btn {
+  position: relative;
+  
+  color: white  ;
+  font-weight: bold;
+  font-style: italic;
+  padding: 4px 7px;
+  border: 1px dotted white;
+  border-radius: 10px;
+  font-size: 24px;
+  margin-left: 100px;
+  text-decoration: none;
+ 
+}
+#about-me-btn:hover{
+  border: 2px solid white;
+}
 
 
 .accordion-item {
