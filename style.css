@@ -256,7 +256,7 @@ section.blanc{
   .container{
     padding: 0 !important;
   }
-  .nav-link{margin-right: 5px;}
+  .nav-link{margin-right: 10px;}
   .navbar-toggler{margin-left: 5px;}
   #landingCarousel{
     position: relative;
@@ -313,10 +313,6 @@ section.blanc{
   a.nav-link{
     text-align: right;
   }
-
- 
- 
- 
   .stop-animate{
     visibility: visible;
     animation: none !important;
