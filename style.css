@@ -252,7 +252,7 @@ section.blanc{
    
   
 }
-@media (min-width: 150px) and (max-width: 768px) {
+@media (min-width: 150px) and (max-width: 768px) {  
   .container{
     padding: 0 !important;
   }
@@ -313,6 +313,8 @@ section.blanc{
   a.nav-link{
     text-align: right;
   }
+
+ 
  
  
   .stop-animate{
@@ -330,7 +332,7 @@ section.blanc{
     left: 15%;
     font-weight: 600;
   }
-}
+
 .margin-auto{
   margin: 0 auto;
 }
@@ -389,7 +391,16 @@ section.blanc{
    }
 }
 
+
+}
 footer a{
   text-decoration: none;
   color: white;
+}
+
+.show-odd{
+  background: linear-gradient(155.5deg,gray 50%,white 50%) !important;
+}
+.show-even{
+  background: linear-gradient(335.5deg,gray 50%,white 50%) !important;
 }
