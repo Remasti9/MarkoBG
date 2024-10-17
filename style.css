@@ -243,14 +243,23 @@ section.blanc{
   color: rgba(255, 255, 255, 0.786) !important;
   border-radius: 5px !important;
 }
+
+.show-odd{
+  background: linear-gradient(155.5deg,gray 50%,white 50%) !important;
+}
+.show-even{
+  background: linear-gradient(335.5deg,gray 50%,white 50%) !important;
+}
+
+
+/*---=====########  Responsivity  #######=======-----*/
+
 @media (min-width: 768px) {
   .news-input {
     width: 50%;
   }
   .dissapear-small{display: block;}
   .disappear-large-text, .disappear-large-logo{ display: none;}
-   
-  
 }
 @media (min-width: 150px) and (max-width: 768px) {  
   .container{
@@ -379,6 +388,12 @@ section.blanc{
    .nav-link.active::after {
     width: 0;
   }
+  .show-odd{
+    background: linear-gradient(50.5deg,gray 50%,white 50%) !important;
+  }
+  .show-even{
+    background: linear-gradient(230.5deg,gray 50%,white 50%) !important;
+  }
 }
 
 @media (min-width:1015px){
@@ -394,9 +409,3 @@ footer a{
   color: white;
 }
 
-.show-odd{
-  background: linear-gradient(155.5deg,gray 50%,white 50%) !important;
-}
-.show-even{
-  background: linear-gradient(335.5deg,gray 50%,white 50%) !important;
-}
