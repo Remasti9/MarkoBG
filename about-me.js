@@ -28,6 +28,7 @@ click.addEventListener('click', () => {
         }
     } else {
         // Ako je već u full screen režimu, izađi iz njega
+       
         exitFullscreen();
     }
 });
@@ -56,11 +57,11 @@ function exitFullscreen() {
     }, 800);
 }
 
-// Događaj za pritisak na dugme 'Esc'
-document.addEventListener('keydown', (event) => {
-    event.preventDefault()
-    console.log(event); // Debugging
-    if (event.key === 'Escape') {
-        exitFullscreen();
+
+
+document.addEventListener('fullscreenchange', () => {
+   
+    if (!document.fullscreenElement && !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
+     exitFullscreen()
     }
 });
