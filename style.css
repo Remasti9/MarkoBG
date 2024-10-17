@@ -42,7 +42,9 @@ header {
 .logo-frame-toggle{
   flex-direction: row-reverse;
 }
-
+.navbar{
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5) !important;
+}
 .nav-link {
   position: relative;
   margin-right: 0;
