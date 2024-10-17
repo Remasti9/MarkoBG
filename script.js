@@ -140,6 +140,8 @@ document.querySelectorAll('.nav-link').forEach((link) => {
     setTimeout(() => {
       if(window.innerWidth<768){
         window.scrollBy(0, -60); 
+      } else {
+        window.scrollBy(0,-80)
       }
     }, 1000);
     switcher = true;
