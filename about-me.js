@@ -16,6 +16,7 @@ click.addEventListener('click', () => {
             click.style.top = '-5px';
             click.style.borderColor = 'white';
             click.style.color = 'white';
+            click.textContent='Povratak u glavni meni';
         }, 800);
 
         // Ako nije u full screen režimu, pokreni full screen
@@ -30,23 +31,6 @@ click.addEventListener('click', () => {
         // Ako je već u full screen režimu, izađi iz njega
        
         exitFullscreen();
-    }
-});
-
-// Izlazak iz fullscreen režima
-function exitFullscreen() {
-    profileImg.style.transform = 'scale(.7)';
-    textAboutMe.style.transform = 'scale(.7)';
-    textAboutMe.style.marginLeft = '';
-    textAboutMe.style.color = 'black';
-    profileImg.style.marginTop = '';
-    profileImg.style.filter = 'saturate(0)';
-    click.style.top = '0';
-    click.style.borderColor = 'black';
-    click.style.color = 'black';
-    
-    setTimeout(() => {
-        aboutMe.style.filter = 'saturate(0)';
         if (document.exitFullscreen) {
             document.exitFullscreen();
         } else if (document.webkitExitFullscreen) { /* Safari/Opera/Chrome */
@@ -54,8 +38,29 @@ function exitFullscreen() {
         } else if (document.msExitFullscreen) { /* IE/Edge */
             document.msExitFullscreen();
         }
-    }, 800);
-}
+    }
+});
+
+// Izlazak iz fullscreen režima
+function exitFullscreen() {
+
+
+        profileImg.style.transform = 'scale(.7)';
+        textAboutMe.style.transform = 'scale(.7)';
+        textAboutMe.style.marginLeft = '';
+        textAboutMe.style.color = 'black';
+        profileImg.style.marginTop = '';
+        profileImg.style.filter = 'saturate(0)';
+        click.style.top = '0';
+        click.style.borderColor = 'black';
+        click.style.color = 'black';
+        click.textContent='Tačni kao sat. Klikni!';
+            aboutMe.style.filter = 'saturate(0)';
+            
+    }
+    
+  
+
 
 
 
