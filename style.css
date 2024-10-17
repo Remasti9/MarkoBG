@@ -233,9 +233,7 @@ section.blanc{
   color: red !important;
   background: radial-gradient(circle, white 30%, transparent 30% 100%) !important;
 }
-#github:hover {
-  background: radial-gradient(circle, black 70%, transparent 70% 100%) !important;
-}
+
 #linkendin:hover, #facebook:hover {
   background: radial-gradient(circle, white 63%, transparent 63% 100%) !important;
   color: blue !important;
@@ -315,9 +313,7 @@ section.blanc{
   a.nav-link{
     text-align: right;
   }
-  .nav-link.active::after {
-    width: 0;
-  }
+ 
  
   .stop-animate{
     visibility: visible;
@@ -379,10 +375,21 @@ section.blanc{
   #about-us{
     display: none;
    }
+   .nav-link:hover::after {
+    width: 0%; /* Linija se širi preko celog linka */
+  }
+   .nav-link.active::after {
+    width: 0;
+  }
 }
 
 @media (min-width:1015px){
   #about-us-small{
     display: none;
    }
+}
+
+footer a{
+  text-decoration: none;
+  color: white;
 }
