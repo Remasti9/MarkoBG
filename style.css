@@ -45,6 +45,16 @@ body::before {
   background: #555; /* Boja klizača na hover */
 }
 
+#main-title::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10px;
+  height: 10px;
+  background-color: rgb(255, 255, 255);
+}
+
 header {
   background-color: #f8f9fa;
   padding: 1rem;

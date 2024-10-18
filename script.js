@@ -171,8 +171,9 @@ function adjustLineBreak() {
   }
 }
 window.addEventListener('load', () => {
-  window.scrollTo(0, 0); 
+  
   adjustLineBreak()
+  window.scrollTo(0, 0); 
 });
 window.onresize = adjustLineBreak;
 window.addEventListener('scroll',()=>{
