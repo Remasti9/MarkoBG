@@ -50,7 +50,8 @@
    <nav class="navbar navbar-expand-lg  navbar-light bg-white text-black  py-3 fixed-top w-full">
    
       
-    <div class="container ">
+    <div class="container position-relative">
+      <a href="#services" class="price">Cene</a>
       <img src="./images/logo.webP" alt="Logo" width="32px" height="auto" class="navbar-brand disappear-small">
       <img src="./images/logo-text.webP" alt="Logo" width="250px" height="auto" class="navbar-brand disappear-small">
         <!-- <a href="#" class="navbar-brand  disappear-small "> &nbsp;Vreme da se krećemo brže nego ikad!</a> -->
@@ -62,7 +63,7 @@
          <div class="collapse  navbar-collapse" id="navmenu">
             <ul class="navbar-nav  ms-auto">
                 <li class="nav-item">
-                    <a href="#principles" class="nav-link " ><b>Početna</b></a>
+                    <a href="#landing" class="nav-link " ><b>Početna</b></a>
                 </li>
                 <li class="nav-item">
                     <a href="#gallery" class="nav-link "><b>Galerija</b></a>
@@ -70,8 +71,8 @@
                 <li class="nav-item">
                   <a href="#about-us" class="nav-link "><b>O nama</b></a>
               </li>
-                <li class="nav-item">
-                    <a href="#services" class="nav-link "><b>Servisi</b></a>
+                <li  class="nav-item">
+                    <a id="set-services" href="#services" class="nav-link "><b>Servisi</b></a>
                 </li>
                 <li class="nav-item">
                     <a href="#blog" class="nav-link "><b>Blog</b></a>
@@ -94,6 +95,11 @@
 
 <div class="breaking-section"></div>
 <main>
+
+<div class="blog-on">
+
+
+
 <!--try-->
 <section id="landing" class="bg-white rounded-bottom text-black   text-center text-sm-start">
   <div class="container auto">
@@ -166,7 +172,9 @@
  </section>
 
 <!--blank-->
-<section class="blanc">
+<section id="first-blanc" class="blanc">
+          <h2 class="text-danger   wow animate__animated animate__backInUp">Selidbe Beograd Inostranstvo</h2>
+          <h3 class="text-danger  mt-5  wow animate__animated animate__backInUp">Selidbe Beograd Unutrašnjost</h3>
 
 </section>
 
@@ -404,8 +412,9 @@
 
 
 <!--blanc-->
-<section class="blanc">
-
+<section id="second-blanc" class="blanc">
+          <h2 class="text-danger   wow animate__animated animate__backInUp">Vodimo računa o svakom komadu.</h2>
+          <h3 class="text-danger  mt-5  wow animate__animated animate__backInUp">Tu smo da sve prodje bez stresa.</h3>
 </section>
      <!--###################  INFORMATION ##################-->
 
@@ -508,53 +517,65 @@
       </div>
   </section>
   
+</div>
 
-  
+<section id="blog" class="blog">
+        <h1 class="mt-4">Nemate pretplatu na ovaj kanal!</h1>
+</section>
+
 
   <!--Contact & Map-->
 
-    <section id="contact" class="p-5 bg-dark text-white">
-        <div class="container">
-            <div class="row g-4 d-md-flex justify-content-center align-items-center">
-                <div class="col-md mt-4 wow animate__animated animate__backInLeft " data-wow-delay="0.6s">
-                    <h2 class="text-center text-warning mb-4">Contact Info</h2>
-                       <ul class="list-group list-group-flash lead ">
-                        <li class="list-group-item border-0 border-bottom bg-dark text-white ">
-                            <span class="fw-bold">Naša lokacija:</span>Beograd Dorćol BB
-                        </li>
-                        <li class="list-group-item border-0 border-bottom bg-dark text-white ">
-                            <span class="fw-bold">Službeni telefon:</span>&nbsp; 555-333
-                        </li>
-                        <li class="list-group-item border-0 border-bottom bg-dark text-white ">
-                            <span class="fw-bold">Fiksni:</span>&nbsp;&nbsp;&nbsp;(011)69-69-69
-                        </li>
-                        <li class="list-group-item border-0 border-bottom bg-dark text-white ">
-                            <span class="fw-bold ">Email:</span><a id="email" class="text-white text-decoration-none" href="mailto:markomarkovic">&nbsp;&nbsp;&nbsp;&nbsp;marko.markovic@gamil.com</a>
-                        </li>
-                        <li class="list-group-item border-0 border-bottom bg-dark text-white ">
-                            
-                            <ul class="fab list-group list-group-horizontal list-unstyled">
-                                <li><span class=" fw-bold me-4 me-lg-5  fs-2">Linkovi:</span></li>
-                                 <li><a href="https://instagram.com" ><span id="instagram" class="fab fa-instagram text-white  me-lg-5 me-3 mt-1 fs-2"></span></a></li>
-                                 <li><a href="https://facebook.com/" target="_blank" rel="noopener noreferrer"><span id="facebook" class="fab fa-facebook text-white me-lg-5 me-3 mt-1 fs-2"></span></a></li>
-                                <li><a href="https://www.linkedin.com" ><span id="linkendin" class=" fab fa-linkedin text-white  me-lg-5 me-3 mt-1 fs-2"></span></a></li>
-                                <li><a href="https://youtube.com/" ><span id="youtube" class="fab fa-youtube text-white  me-lg-5 me-3 mt-1 fs-2 "></span></a></li>
-                            </ul>
-                        </li>
-                       </ul>
-                </div>
-                 <div class="col-md ">
-                 <div id="map" class="white-border stop-animate wow animate__animated animate__backInRight" ></div> 
-                 
-                 </div>
+  <section id="contact" class="p-5 bg-dark text-white">
+    <div class="container">
+        <div class="row g-4 d-md-flex justify-content-center align-items-center">
+            <div class="col-md mt-4 wow animate__animated animate__backInLeft " data-wow-delay="0.6s">
+                <h2 class="text-center text-warning mb-4">Contact Info</h2>
+                   <ul class="list-group list-group-flash lead ">
+                    <li class="list-group-item border-0 border-bottom bg-dark text-white ">
+                        <span class="fw-bold">Naša lokacija:</span>Beograd Dorćol BB
+                    </li>
+                    <li class="list-group-item border-0 border-bottom bg-dark text-white ">
+                        <span class="fw-bold">Službeni telefon:</span>&nbsp; 555-333
+                    </li>
+                    <li class="list-group-item border-0 border-bottom bg-dark text-white ">
+                        <span class="fw-bold">Fiksni:</span>&nbsp;&nbsp;&nbsp;(011)69-69-69
+                    </li>
+                    <li class="list-group-item border-0 border-bottom bg-dark text-white ">
+                        <span class="fw-bold ">Email:</span><a id="email" class="text-white text-decoration-none" href="mailto:markomarkovic">&nbsp;&nbsp;&nbsp;&nbsp;marko.markovic@gamil.com</a>
+                    </li>
+                    <li class="list-group-item border-0 border-bottom bg-dark text-white ">
+                        
+                        <ul class="fab list-group list-group-horizontal list-unstyled">
+                            <li><span class=" fw-bold me-4 me-lg-5  fs-2">Linkovi:</span></li>
+                             <li><a href="https://instagram.com" ><span id="instagram" class="fab fa-instagram text-white  me-lg-5 me-3 mt-1 fs-2"></span></a></li>
+                             <li><a href="https://facebook.com/" target="_blank" rel="noopener noreferrer"><span id="facebook" class="fab fa-facebook text-white me-lg-5 me-3 mt-1 fs-2"></span></a></li>
+                            <li><a href="https://www.linkedin.com" ><span id="linkendin" class=" fab fa-linkedin text-white  me-lg-5 me-3 mt-1 fs-2"></span></a></li>
+                            <li><a href="https://youtube.com/" ><span id="youtube" class="fab fa-youtube text-white  me-lg-5 me-3 mt-1 fs-2 "></span></a></li>
+                        </ul>
+                    </li>
+                   </ul>
             </div>
-                     
+             <div class="col-md ">
+             <div id="map" class="white-border stop-animate wow animate__animated animate__backInRight" ></div> 
+             
+             </div>
         </div>
-    </section>
-    
-    <div class="breaking-section"></div>
-    <!--Footer-->
+                 
+    </div>
+</section>
+
+<div class="breaking-section"></div>
+  
+
+  
   </main>
+
+
+
+
+
+<!--Footer-->
     <footer id="footer" class="p-3 bg-dark text-white    position-relative">
         <div class="container ">
 
@@ -648,13 +669,6 @@
         </div>
         
     </footer>
-    
-
-    
-
-     
-     
-   
      <script>
         new WOW().init();
         </script>

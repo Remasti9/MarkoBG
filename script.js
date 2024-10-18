@@ -126,8 +126,15 @@ locateControl.addTo(map);
   switcher = !switcher;
 });
 document.querySelectorAll('.nav-link').forEach((link) => {
-      
-  link.addEventListener('click', () => {
+  
+  link.addEventListener('click', e => {
+     if(link.firstChild.textContent === 'Blog'){
+      document.querySelector('.blog-on').style.display='none';
+      document.getElementById('blog').style.display='block';
+     } else{
+      document.querySelector('.blog-on').style.display='block';
+      document.getElementById('blog').style.display='none';
+     }
     document.querySelectorAll('.nav-link').forEach((marked) =>marked.classList.remove('active'));
        link.classList.add('active');
       logoFrame.classList.remove('logo-frame-toggle');
@@ -207,3 +214,14 @@ function handleBodyImg() {
    }
   
 }
+
+document.querySelector('.price').addEventListener('click',()=>{
+  setTimeout(()=>{window.scrollBy(0, -60); },1000)
+  document.querySelector('.price').style.display = 'none';
+  document.querySelector('.blog-on').style.display='block';
+      document.getElementById('blog').style.display='none';
+      document.querySelectorAll('.nav-link').forEach((marked) =>marked.classList.remove('active'));
+      document.getElementById('set-services').classList.add('active');
+ 
+});
+

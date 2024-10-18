@@ -27,6 +27,23 @@ body::before {
   content: "";
   height: 70px;
 }
+::-webkit-scrollbar {
+  width: 12px; /* Širina scrollbara */
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1); /* Boja pozadine scrollbara */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333; /* Tamna boja klizača */
+  border-radius: 10px; /* Zaobljeni ivici klizača */
+}
+
+/* Opcionalno: hover efekat za klizač */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Boja klizača na hover */
+}
 
 header {
   background-color: #f8f9fa;
@@ -44,6 +61,23 @@ header {
 }
 .navbar{
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5) !important;
+}
+.price{
+  position: absolute;
+  right: 0;
+  bottom: -140%;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  background-color: #ffc107;
+  padding: 3px 15px;
+  border-radius: 10px;
+  font-size: 2rem;
+}
+.price:hover{
+  color: #ffc107;
+  background-color: rgb(255, 255, 255);
+  border: 2px solid #ffc107;
 }
 .nav-link {
   position: relative;
@@ -250,6 +284,34 @@ section.blanc{
 .show-even{
   background: linear-gradient(335.5deg,gray 50%,white 50%) !important;
 }
+.blog-on{
+  display: block;
+}
+
+#blog{
+  display: none;
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  min-height: 100vh;
+}
+
+#first-blanc,
+#second-blanc{
+  display: grid;
+  place-items: center;
+  font-size: 2.5rem;
+}
+#first-blanc h2,
+#first-blanc h3,
+#second-blanc h2,
+#second-blanc h3{
+  font: bold 2.5rem sans-serif;
+  background: rgba(255, 255, 255, 0.7);
+  padding: .5rem;
+  border-radius: 10px;
+}
+
+
 
 
 /*---=====########  Responsivity  #######=======-----*/
