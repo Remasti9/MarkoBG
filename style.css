@@ -394,6 +394,9 @@ section.blanc{
   .show-even{
     background: linear-gradient(230.5deg,gray 50%,white 50%) !important;
   }
+  i{
+    display: none;
+  }
 }
 
 @media (min-width:1015px){
