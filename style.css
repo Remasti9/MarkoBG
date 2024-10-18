@@ -27,23 +27,7 @@ body::before {
   content: "";
   height: 70px;
 }
-::-webkit-scrollbar {
-  width: 12px; /* Širina scrollbara */
-}
 
-::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1); /* Boja pozadine scrollbara */
-}
-
-::-webkit-scrollbar-thumb {
-  background: #333; /* Tamna boja klizača */
-  border-radius: 10px; /* Zaobljeni ivici klizača */
-}
-
-/* Opcionalno: hover efekat za klizač */
-::-webkit-scrollbar-thumb:hover {
-  background: #555; /* Boja klizača na hover */
-}
 
 #main-title::after{
   content: '';
@@ -483,4 +467,9 @@ footer a{
   text-decoration: none;
   color: white;
 }
+
+
+
+
+
 
