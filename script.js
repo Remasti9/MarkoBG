@@ -188,13 +188,11 @@ window.addEventListener('scroll',()=>{
 
 function handleBodyImg() {
   const bodyBg = document.querySelector('.body-background img'); // Odaberi sliku
-  const viewportHeight = window.innerHeight;
-  const bodyHeight = document.body.scrollHeight; // Visina body-ja
+ 
   const scrollPosition = window.scrollY; // Trenutna pozicija skrola
 
-  // Razlika između visine body-ja i trenutnog viewporta
-  const difference = bodyHeight - viewportHeight;
-  console.log(scrollPosition);
+ 
+ // console.log(scrollPosition);
    if(window.innerWidth>768){
     if (scrollPosition < 3000) {
       bodyBg.src = './images/material/body2.jpg'; 
