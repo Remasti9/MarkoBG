@@ -112,6 +112,7 @@ locateControl.addTo(map);
 //site logic on load and scroll event
   toggler.addEventListener('click', () => {
   if (switcher) {
+    document.querySelector('.price').style.display='none';
     logoFrame.classList.add('logo-frame-toggle');
     logo.classList.add('logo-toggle');
     logoText.style.width='250px';
@@ -122,6 +123,7 @@ locateControl.addTo(map);
       logo.classList.remove('logo-toggle');
       logoText.style.width='150px';
       logoText.style.marginLeft='0%';
+      setTimeout(()=>{document.querySelector('.price').style.display='block';},300)
   }
   switcher = !switcher;
 });
