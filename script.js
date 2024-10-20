@@ -218,11 +218,11 @@ function handleBodyImg() {
 
 document.querySelector('.price').addEventListener('click',()=>{
   setTimeout(()=>{window.scrollBy(0, -60); },1000)
-  document.querySelector('.price').style.display = 'none';
+  if(window.innerWidth>768)  document.querySelector('.price').style.display = 'none';
   document.querySelector('.blog-on').style.display='block';
-      document.getElementById('blog').style.display='none';
-      document.querySelectorAll('.nav-link').forEach((marked) =>marked.classList.remove('active'));
-      document.getElementById('set-services').classList.add('active');
+  document.getElementById('blog').style.display='none';
+  document.querySelectorAll('.nav-link').forEach((marked) =>marked.classList.remove('active'));
+  document.getElementById('set-services').classList.add('active');
  
 });
 
