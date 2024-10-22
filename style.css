@@ -136,24 +136,35 @@ body::-webkit-scrollbar-track {
 .carousel-item{
   margin-top: 1rem;
 }
+
 .set-abs{
   position: absolute;
   z-index: 999;
   top: 5%;
   left: 20%;
   font-weight: 900;
+  padding: .5rem 2rem;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+.set-abs1{
+ 
+  top: 5%;
+  left: 20%;
+
 }
 .set-abs2{
-  position: absolute;
-  z-index: 999;
+ 
   top: 25%;
   left: 35%;
-  font-weight: 900;
+ 
 }
+
 
 .img-c-width{
   width: 95%;
   height: auto;
+  overflow-y: hidden;
   margin: 0 auto !important;
   border-radius: 20px !important;
  
@@ -275,6 +286,16 @@ section.blanc{
 .show-odd{
   background: linear-gradient(155.5deg,gray 50%,white 50%) !important;
 }
+.show-odd-last{
+  background: linear-gradient(155.5deg,gray 50%,transparent 50%) !important;
+}
+.show-odd-last .last{
+  padding: 1rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.7);
+  margin-left: 1rem;
+}
+
 .show-even{
   background: linear-gradient(335.5deg,gray 50%,white 50%) !important;
 }
