@@ -101,7 +101,9 @@ header {
   color: red;
 }
 .accordion-button:not(.collapsed){
-  color: red !important;
+  color: rgb(0, 0, 0) !important;
+  font-weight: bold;
+  border-color: black;
 }
 
 .text-light{
