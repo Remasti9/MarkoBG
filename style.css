@@ -309,20 +309,17 @@ section.blanc{
   background: linear-gradient(335.5deg,gray 50%,white 50%) !important;
 }
 .switcher{
-  display: block;
+  display: block;  
 }
 
 
 #blog{
   display: none;
-  background-color: rgb(255, 255, 255);
   width: 100%;
   min-height: 100vh;
 }
 #gallery{
   display: none;
-  background-color: rgb(0, 0, 0);
-  color: aliceblue;
   width: 100%;
   min-height: 100vh;
 }
