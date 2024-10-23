@@ -124,6 +124,10 @@ header {
 body::-webkit-scrollbar-track {
   background: blue !important;
 }
+#landing h2{
+  display: inline-block;
+  margin-right: 1rem;
+}
 #landingCarousel{
   height: fit-content;
   padding-bottom: 3rem !important;
