@@ -128,14 +128,20 @@ locateControl.addTo(map);
   switcher = !switcher;
 });
 document.querySelectorAll('.nav-link').forEach((link) => {
-  
+  //DOM manipulation pages
   link.addEventListener('click', e => {
      if(link.firstChild.textContent === 'Blog'){
       document.querySelector('.blog-on').style.display='none';
       document.getElementById('blog').style.display='block';
-     } else{
+     } else if(link.firstChild.textContent === 'Galerija'){
+      document.querySelector('.blog-on').style.display='none';
+      document.getElementById('gallery').style.display='block';
+     }
+     
+     else{
       document.querySelector('.blog-on').style.display='block';
       document.getElementById('blog').style.display='none';
+      document.getElementById('gallery').style.display='none';
      }
     document.querySelectorAll('.nav-link').forEach((marked) =>marked.classList.remove('active'));
        link.classList.add('active');
