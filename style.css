@@ -63,15 +63,15 @@ header {
   text-decoration: none;
   color: white;
   font-weight: bold;
-  background-color: #ffc107;
+  background-color: #9a7401;
   padding: 3px 15px;
   border-radius: 10px;
   font-size: 2rem;
 }
 .price:hover{
-  color: #ffc107;
+  color: #9a7401;
   background-color: rgb(255, 255, 255);
-  border: 2px solid #ffc107;
+  border: 2px solid #9a7401;
 }
 .nav-link {
   position: relative;
@@ -422,7 +422,7 @@ footer a{
     text-decoration: none;
     color: white;
     font-weight: bold;
-    background-color: #ffc107;
+    background-color: #9a7401;
     padding: 3px 15px;
     border-radius: 10px;
     font-size: 1.4rem;
