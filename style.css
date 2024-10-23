@@ -128,8 +128,8 @@ body::-webkit-scrollbar-track {
   background: blue !important;
 }
 #landing h2{
-  display: inline-block;
   margin-right: 1rem;
+  font-size: 1.5rem;
 }
 #landingCarousel{
   height: fit-content;
@@ -363,6 +363,11 @@ footer a{
     position: relative;
     top: -3.3rem;
     gap: 2rem;
+  }
+  #landing h2{
+    display: inline-block;
+    margin-right: 1rem;
+    font-size: 1rem;
   }
   .landing-text-wrapper{
     width: 100%;
