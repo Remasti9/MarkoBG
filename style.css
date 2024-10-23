@@ -100,6 +100,9 @@ header {
   border: 1px solid rgb(255, 0, 0);
   color: red;
 }
+.accordion-button:not(.collapsed){
+  color: red !important;
+}
 
 .text-light{
   color: #fff !important;
