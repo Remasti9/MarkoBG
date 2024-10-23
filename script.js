@@ -127,21 +127,30 @@ locateControl.addTo(map);
   }
   switcher = !switcher;
 });
+
+
+//DOM manipulation pages
+
+function backAtMain(){
+  document.querySelector('.switcher').style.display='block';
+  document.getElementById('blog').style.display='none';
+  document.getElementById('gallery').style.display='none';
+}
 document.querySelectorAll('.nav-link').forEach((link) => {
-  //DOM manipulation pages
+
   link.addEventListener('click', e => {
      if(link.firstChild.textContent === 'Blog'){
-      document.querySelector('.blog-on').style.display='none';
+      document.querySelector('.switcher').style.display='none';
       document.getElementById('blog').style.display='block';
+      document.getElementById('gallery').style.display='none';
      } else if(link.firstChild.textContent === 'Galerija'){
-      document.querySelector('.blog-on').style.display='none';
+      document.querySelector('.switcher').style.display='none';
       document.getElementById('gallery').style.display='block';
+      document.getElementById('blog').style.display='none';
      }
      
      else{
-      document.querySelector('.blog-on').style.display='block';
-      document.getElementById('blog').style.display='none';
-      document.getElementById('gallery').style.display='none';
+             backAtMain();
      }
     document.querySelectorAll('.nav-link').forEach((marked) =>marked.classList.remove('active'));
        link.classList.add('active');
@@ -225,10 +234,21 @@ function handleBodyImg() {
 document.querySelector('.price').addEventListener('click',()=>{
   setTimeout(()=>{window.scrollBy(0, -60); },1000)
   if(window.innerWidth>768)  document.querySelector('.price').style.display = 'none';
-  document.querySelector('.blog-on').style.display='block';
+  document.querySelector('.switcher').style.display='block';
   document.getElementById('blog').style.display='none';
   document.querySelectorAll('.nav-link').forEach((marked) =>marked.classList.remove('active'));
   document.getElementById('set-services').classList.add('active');
  
 });
 
+// ---===== Footer=====---
+
+document.querySelectorAll('#footer a').forEach(link => {
+  link.addEventListener('click', () => {
+      
+    backAtMain();
+    setTimeout(() => {
+      window.scrollBy(0, -60);
+    }, 1000);
+  });
+});
