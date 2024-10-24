@@ -529,6 +529,9 @@ footer a{
   i{
     display: none;
   }
+  #material-reverse{
+    flex-direction: column !important;
+  }
   
 }
 }
