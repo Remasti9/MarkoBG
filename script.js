@@ -229,7 +229,9 @@ function handleBodyImg() {
     }
     
    }
-  
+   bodyBg.style.width = '100%';        
+  bodyBg.style.height = 'auto';       
+  bodyBg.style.objectFit = 'contain';
 }
 
 document.querySelector('.price').addEventListener('click',()=>{
