@@ -35,7 +35,7 @@ body::before {
   left: 0;
   right: 0;
   bottom: -10px;
-  height: 10px;
+  height: 12px;
   background-color: rgb(255, 255, 255);
 }
 
@@ -369,9 +369,13 @@ footer a{
   #landing{
     min-height: fit-content  !important;
   }
+ #landing{
+  padding-top: 2rem !important;
+ }
+ 
   #landingCarousel{
     position: relative;
-    top: -3.3rem;
+    top: 0;
     gap: 2rem;
   }
   #landing h2{
@@ -524,6 +528,7 @@ footer a{
   i{
     display: none;
   }
+  
 }
 }
 
