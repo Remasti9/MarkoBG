@@ -27,6 +27,11 @@ body::before {
   content: "";
   height: 70px;
 }
+#logo-text{
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+}
 
 
 #main-title::after{
