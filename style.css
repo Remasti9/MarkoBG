@@ -366,7 +366,8 @@ footer a{
   }
   .nav-link{margin-right: 10px;}
   .navbar-toggler{margin-left: 5px;}
-  #landing{
+  #landing,
+  #principles{
     min-height: fit-content  !important;
   }
  #landing{
