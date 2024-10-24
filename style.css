@@ -59,7 +59,7 @@ header {
 .price{
   position: absolute;
   right: 0;
-  bottom: -140%;
+  bottom: -100%;
   text-decoration: none;
   color: white;
   font-weight: bold;
@@ -446,11 +446,6 @@ footer a{
 
   .price{
     position: relative;
-    
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    background-color: #9a7401;
     padding: 3px 15px;
     border-radius: 10px;
     font-size: 1.4rem;
