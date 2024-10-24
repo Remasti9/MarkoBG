@@ -439,10 +439,10 @@ footer a{
   a.nav-link{
     text-align: right;
   }
-  .stop-animate{
+  /* .stop-animate{
     visibility: visible;
     animation: none !important;
-  }
+  } */
 
   .price{
     position: relative;
