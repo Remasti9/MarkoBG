@@ -366,6 +366,9 @@ footer a{
   }
   .nav-link{margin-right: 10px;}
   .navbar-toggler{margin-left: 5px;}
+  #landing{
+    min-height: fit-content  !important;
+  }
   #landingCarousel{
     position: relative;
     top: -3.3rem;
@@ -379,6 +382,7 @@ footer a{
   .landing-text-wrapper{
     width: 100%;
    padding: 0 5px !important;
+   font-size: 3rem;
   }
   .call-frame{
     bottom: 25%;
