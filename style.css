@@ -296,12 +296,12 @@ section.blanc{
   background: linear-gradient(155.5deg,gray 50%,white 50%) !important;
 }
 .show-odd-last{
-  background: linear-gradient(155.5deg,white 50%,transparent 50%) !important;
+  background: linear-gradient(155.5deg,white 50%,gray 50%) !important;
 }
 .show-odd-last .last{
   padding: 1rem;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.8);
   margin-left: 1rem;
 }
 
@@ -526,6 +526,9 @@ footer a{
   }
   #material-reverse{
     flex-direction: column !important;
+  }
+  .show-odd-last{
+    background: linear-gradient(155.5deg,white 50%,transparent 50%) !important;
   }
   
 }
