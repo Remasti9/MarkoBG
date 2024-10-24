@@ -153,7 +153,7 @@ body::-webkit-scrollbar-track {
   left: 20%;
   font-weight: 900;
   padding: .5rem 2rem;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.5);
   border-radius: 10px;
 }
 .set-abs1{
