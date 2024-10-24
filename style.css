@@ -296,13 +296,13 @@ section.blanc{
   background: linear-gradient(155.5deg,gray 50%,white 50%) !important;
 }
 .show-odd-last{
-  background: linear-gradient(155.5deg,white 50%,gray 50%) !important;
+  background: linear-gradient(155.5deg,gray 50%,white 50%) !important;
   
 }
 .show-odd-last .last{
   padding: 1.5rem !important;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(200, 200, 200, 1);
   margin-left: 1rem;
 }
 .principles-text{
