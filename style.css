@@ -419,6 +419,10 @@ footer a{
     margin-bottom: 40px;
     width: 70% !important;
   }
+  .no-p-sm{
+    padding: .5rem !important;
+    text-align: justify;
+  }
   .navbar{
     padding-top: .5rem !important;
     padding-bottom: .5rem !important;
@@ -441,6 +445,9 @@ footer a{
     padding: 3px 15px;
     border-radius: 10px;
     font-size: 1.4rem;
+  }
+  .show-odd-last .last{
+    margin-left: 0;
   }
  
   .set-abs1{
