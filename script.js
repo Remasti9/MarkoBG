@@ -168,6 +168,7 @@ document.querySelectorAll('.nav-link').forEach((link) => {
         window.scrollBy(0,-80)
       }
     }, 1000);
+    document.querySelector('.price').style.display = 'block';
     switcher = true;
   });
 });
