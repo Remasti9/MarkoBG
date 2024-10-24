@@ -34,8 +34,14 @@ click.addEventListener('click', () => {
         }
     } else {
         // Ako je već u full screen režimu, izađi iz njega
-       
-        exitFullscreen();
+       setTimeout(() => {
+        document.getElementById('about-us').scrollIntoView({
+            behavior: 'smooth', 
+            block: 'start'
+        });
+        setTimeout(()=>{window.scrollBy(0,-60)},150)
+       }, 100);
+       // exitFullscreen();
         if (document.exitFullscreen) {
             document.exitFullscreen();
         } else if (document.webkitExitFullscreen) { /* Safari/Opera/Chrome */
@@ -43,6 +49,7 @@ click.addEventListener('click', () => {
         } else if (document.msExitFullscreen) { /* IE/Edge */
             document.msExitFullscreen();
         }
+       
     }
 });
 
