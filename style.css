@@ -435,9 +435,9 @@ footer a{
     position: relative;
   }
   .logo-toggle{
-    width: 100px;
-     left: -50%;
-     bottom: 180px;
+    max-width: 80px !important;
+    left: -50%;
+    bottom: 180px;
   }
   .p-5{
     padding: 1.5rem 0  !important;
