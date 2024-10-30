@@ -139,21 +139,42 @@ function backAtMain(){
 document.querySelectorAll('.nav-link').forEach((link) => {
 
   link.addEventListener('click', e => {
-     if(link.firstChild.textContent === 'Blog'){
+    if(link.firstChild.textContent === 'O nama') {
+      console.log('test')
       document.querySelector('.switcher').style.display='none';
+      document.querySelector('.breaking-section').style.display='none';
+      document.getElementById('blog').style.display='none';
+      document.getElementById('gallery').style.display='none';
+      document.getElementById('contact').style.display='none';
+      document.getElementById('footer').style.display='none';
+    if(window.innerWidth>1014)  document.getElementById('about-us').style.display='block';
+      document.querySelector('.breaking-section').style.backgroundColor='white';
+    } else if(link.firstChild.textContent === 'Blog'){
+      document.querySelector('.switcher').style.display='none';
+      document.querySelector('.breaking-section').style.display='block';
       document.getElementById('blog').style.display='block';
       document.getElementById('gallery').style.display='none';
+      document.getElementById('contact').style.display='block';
+      if(window.innerWidth>1014)  document.getElementById('about-us').style.display='none';
+      document.getElementById('footer').style.display='block';
       document.querySelector('.breaking-section').style.backgroundColor='#212529';
      } else if(link.firstChild.textContent === 'Galerija'){
       document.querySelector('.switcher').style.display='none';
+      document.querySelector('.breaking-section').style.display='block';
       document.getElementById('gallery').style.display='block';
       document.getElementById('blog').style.display='none';
+      document.getElementById('contact').style.display='block';
+      if(window.innerWidth>1014)  document.getElementById('about-us').style.display='none';
+      document.getElementById('footer').style.display='block';
       document.querySelector('.breaking-section').style.backgroundColor='#212529';
      }
      
      else{
              backAtMain();
              document.querySelector('.breaking-section').style.backgroundColor='white';
+             document.querySelector('.breaking-section').style.display='block';
+             document.getElementById('contact').style.display='block';
+      document.getElementById('footer').style.display='block';
      }
     document.querySelectorAll('.nav-link').forEach((marked) =>marked.classList.remove('active'));
        link.classList.add('active');

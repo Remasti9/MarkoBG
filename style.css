@@ -519,7 +519,7 @@ footer a{
     left: 5%;
   }
   #about-us{
-    display: none;
+    display: none !important;
    }
    .nav-link:hover::after {
     width: 0%; /* Linija se širi preko celog linka */
