@@ -439,6 +439,7 @@ footer a{
     margin-bottom: 40px;
     width: 70% !important;
   }
+  
   .no-p-sm{
     padding: .5rem !important;
     text-align: justify;
@@ -560,4 +561,10 @@ footer a{
   width: 40px;        
   height: auto !important;       
   object-fit: contain;
+}
+.text-empf{
+  color: rgb(255, 255, 255) !important;
+  background-color: black;
+  padding-inline: 1rem;
+  font-weight: 700!important;
 }

@@ -153,7 +153,7 @@ document.querySelectorAll('.nav-link').forEach((link) => {
      
      else{
              backAtMain();
-             document.querySelector('.breaking-section').style.backgroundColor='#white';
+             document.querySelector('.breaking-section').style.backgroundColor='white';
      }
     document.querySelectorAll('.nav-link').forEach((marked) =>marked.classList.remove('active'));
        link.classList.add('active');
