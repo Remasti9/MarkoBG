@@ -271,10 +271,12 @@ section.blanc{
   font-size: 24px;
   margin-left: 100px;
   text-decoration: none;
+  border: 2px solid black;
  
 }
 #about-me-btn:hover{
-  border: 2px solid black;
+  background-color: black;
+  color: white !important;
 }
 
 

@@ -68,7 +68,7 @@ function exitFullscreen() {
         click.style.top = '0';
         click.style.borderColor = 'black';
         click.style.color = 'black';
-        click.textContent='Tačni kao sat. Klikni!';
+        click.textContent=' Klikni !';
             aboutMe.style.filter = 'saturate(0)';
             
     }
