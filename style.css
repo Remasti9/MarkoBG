@@ -328,7 +328,9 @@ section.blanc{
 .switcher{
   display: block;  
 }
-
+#about-us{
+  display: none ;
+ }
 
 #blog{
   display: none;
@@ -520,9 +522,7 @@ footer a{
   .set-abs{
     left: 5%;
   }
-  #about-us{
-    display: none !important;
-   }
+  
    .nav-link:hover::after {
     width: 0%; /* Linija se širi preko celog linka */
   }

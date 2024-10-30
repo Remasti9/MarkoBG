@@ -171,6 +171,7 @@ document.querySelectorAll('.nav-link').forEach((link) => {
      
      else{
              backAtMain();
+             if(window.innerWidth>1014)  document.getElementById('about-us').style.display='none';
              document.querySelector('.breaking-section').style.backgroundColor='white';
              document.querySelector('.breaking-section').style.display='block';
              document.getElementById('contact').style.display='block';
