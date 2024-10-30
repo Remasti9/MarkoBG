@@ -143,14 +143,17 @@ document.querySelectorAll('.nav-link').forEach((link) => {
       document.querySelector('.switcher').style.display='none';
       document.getElementById('blog').style.display='block';
       document.getElementById('gallery').style.display='none';
+      document.querySelector('.breaking-section').style.backgroundColor='#212529';
      } else if(link.firstChild.textContent === 'Galerija'){
       document.querySelector('.switcher').style.display='none';
       document.getElementById('gallery').style.display='block';
       document.getElementById('blog').style.display='none';
+      document.querySelector('.breaking-section').style.backgroundColor='#212529';
      }
      
      else{
              backAtMain();
+             document.querySelector('.breaking-section').style.backgroundColor='#white';
      }
     document.querySelectorAll('.nav-link').forEach((marked) =>marked.classList.remove('active'));
        link.classList.add('active');

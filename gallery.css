@@ -1,0 +1,51 @@
+#gallery{
+    display: none;
+    width: 100%;
+    min-height: 100vh;
+  }
+  .gallery-frame{
+    width: 100%;
+    min-height:fit-content;
+    background-color: white;
+    margin: 3rem 2rem;
+  }
+
+  .gallery .row{
+    margin: 0 2rem !important;
+  }
+ 
+  .card {
+    height: 400px; 
+    overflow: hidden;
+}
+.card-img {
+  height: 100%;
+  object-fit: cover; 
+  transition: all 600ms;
+}
+
+.card-title{
+  background-color: rgba(0, 0, 0, .5);
+}
+
+@media (min-width: 768px) {
+    .card {
+        height: 450px; 
+    }
+    .card h3,
+.card p {
+  opacity: 0;
+  transition: 600ms;
+}
+.card:hover p,
+.card:hover h3{
+  opacity: 1;
+  transition: 600ms;
+}
+
+.card:hover .card-img{
+  transform: scale(1.2);
+}
+
+
+}

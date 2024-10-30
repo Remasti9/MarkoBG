@@ -333,11 +333,7 @@ section.blanc{
   width: 100%;
   min-height: 100vh;
 }
-#gallery{
-  display: none;
-  width: 100%;
-  min-height: 100vh;
-}
+
 
 #first-blanc,
 #second-blanc{
