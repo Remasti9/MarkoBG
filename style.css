@@ -198,6 +198,10 @@ body::-webkit-scrollbar-track {
 #map {
   height: 400px;
   border-radius: 10px;
+  color: #000000;
+}
+span.leaflet-routing-collapse-btn::after{
+  color:red !important
 }
 section {
   width: 100% !important;
@@ -508,9 +512,9 @@ footer a{
 .leaflet-routing-container-hide .leaflet-routing-collapse-btn{
   left: 2px !important;
 }
-.leaflet-routing-collapse-btn::after{
-  color: red !important;
-}
+
+
+
 @media   (min-width:641px) {
   .leaflet-routing-container-hide .leaflet-routing-collapse-btn{
     left: -7px !important;
