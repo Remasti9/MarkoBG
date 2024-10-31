@@ -3,53 +3,57 @@
     width: 100%;
     min-height: 100vh;
   }
-  .gallery-frame{
+.gallery-frame{
     width: 100%;
     min-height:fit-content;
     background-color: white;
     margin: 3rem 2rem;
   }
 
-  .gallery .row{
+.gallery .row{
     margin: 0 !important;
   }
- 
-  .card {
+.card {
     height: 400px; 
     overflow: hidden;
-}
+    border: 5px solid white !important;
+  }
+
 .card-img {
-  height: 100%;
-  object-fit: cover; 
-  transition: all 600ms;
-}
+    height: 100%;
+    object-fit: cover; 
+    transition: all 600ms;
+  }
 
 .card-title{
-  background-color: rgba(0, 0, 0, .5);
-}
+    background-color: rgba(0, 0, 0, .5);
+  }
+
+
+  /*---==== DESKTOP =====------*/
 
 @media (min-width: 768px) {
   .gallery .row{
-    margin: 0 2rem !important;
-  }
-
-    .card {
-        height: 250px; 
+      margin: 0 2rem !important;
     }
-    .card h3,
-.card p {
-  opacity: 0;
-  transition: 600ms;
-}
-.card:hover p,
-.card:hover h3{
-  opacity: 1;
-  transition: 600ms;
+
+  .card {
+      height: 250px; 
+      border: none !important;
+    }
+  .card h3,
+  .card p {
+      opacity: 0;
+      transition: 600ms;
+    }
+  .card:hover p,
+  .card:hover h3{
+     opacity: 1;
+     transition: 600ms;
+    }
+
+  .card:hover .card-img{
+     transform: scale(1.2);
+    }
 }
 
-.card:hover .card-img{
-  transform: scale(1.2);
-}
-
-
-}
