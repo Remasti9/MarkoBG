@@ -573,4 +573,5 @@ footer a{
   background-color: black;
   padding-inline: 1rem;
   font-weight: 700!important;
+  border-radius: 10px;
 }
