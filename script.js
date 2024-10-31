@@ -148,18 +148,21 @@ document.querySelectorAll('.nav-link').forEach((link) => {
       document.getElementById('contact').style.display='none';
       document.getElementById('footer').style.display='none';
     if(window.innerWidth>1014)  document.getElementById('about-us').style.display='block';
+    if(window.innerWidth<=1014)  document.getElementById('about-us-small').style.display='block';
       document.querySelector('.breaking-section').style.backgroundColor='white';
     } else if(link.firstChild.textContent === 'Blog'){
       document.querySelector('.switcher').style.display='none';
+      if(window.innerWidth>1014)  document.getElementById('about-us').style.display='none';
+      if(window.innerWidth<=1014)  document.getElementById('about-us-small').style.display='none';
       document.querySelector('.breaking-section').style.display='block';
       document.getElementById('blog').style.display='block';
       document.getElementById('gallery').style.display='none';
       document.getElementById('contact').style.display='block';
-      if(window.innerWidth>1014)  document.getElementById('about-us').style.display='none';
       document.getElementById('footer').style.display='block';
       document.querySelector('.breaking-section').style.backgroundColor='#212529';
      } else if(link.firstChild.textContent === 'Galerija'){
       if(window.innerWidth>1014)  document.getElementById('about-us').style.display='none';
+      if(window.innerWidth<=1014)  document.getElementById('about-us-small').style.display='none';
       document.querySelector('.switcher').style.display='none';
       
       document.getElementById('blog').style.display='none';
@@ -174,6 +177,7 @@ document.querySelectorAll('.nav-link').forEach((link) => {
      else{
              backAtMain();
              if(window.innerWidth>1014)  document.getElementById('about-us').style.display='none';
+             if(window.innerWidth<=1014)  document.getElementById('about-us-small').style.display='none';
              document.querySelector('.breaking-section').style.backgroundColor='white';
              document.querySelector('.breaking-section').style.display='block';
              document.getElementById('contact').style.display='block';
@@ -235,7 +239,6 @@ window.addEventListener('load', () => {
 });
 window.onresize =()=>{
   adjustLineBreak();
-  heroTextAnimate();
 } 
 window.addEventListener('scroll',()=>{
   handleBodyImg()
