@@ -229,6 +229,18 @@ function heroTextAnimate (){
   }
   
 }
+function adjustAboutUS(){
+  if(document.getElementById('about-us').style.display ==='block' || document.getElementById('about-us-small').style.display ==='block'){
+    if(window.innerWidth>1014){
+      document.getElementById('about-us').style.display ='block';
+      document.getElementById('about-us-small').style.display ='none';
+    } else{
+      document.getElementById('about-us').style.display ='none';
+      document.getElementById('about-us-small').style.display ='block';
+    }
+
+  }
+}
 
 
 window.addEventListener('load', () => {
@@ -238,6 +250,7 @@ window.addEventListener('load', () => {
   window.scrollTo(0, 0); 
 });
 window.onresize =()=>{
+  adjustAboutUS();
   adjustLineBreak();
 } 
 window.addEventListener('scroll',()=>{
