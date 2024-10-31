@@ -215,12 +215,28 @@ function adjustLineBreak() {
       span.innerHTML = span.innerHTML.replace('<br>', '');
   }
 }
+
+function heroTextAnimate (){
+  if(window.innerWidth<768){
+    console.log('load')
+    document.querySelectorAll('.stop-hero-animate').forEach(text=>text.classList.remove('animate__animated'));
+  } else{
+    document.querySelectorAll('.stop-hero-animate').forEach(text=>text.classList.add('animate__animated'));
+  }
+  
+}
+
+
 window.addEventListener('load', () => {
   
-  adjustLineBreak()
+  adjustLineBreak();
+  heroTextAnimate();
   window.scrollTo(0, 0); 
 });
-window.onresize = adjustLineBreak;
+window.onresize =()=>{
+  adjustLineBreak();
+  heroTextAnimate();
+} 
 window.addEventListener('scroll',()=>{
   handleBodyImg()
    callFrame.style.display='flex';
@@ -282,3 +298,4 @@ document.querySelectorAll('#footer a').forEach(link => {
     }, 1000);
   });
 });
+
