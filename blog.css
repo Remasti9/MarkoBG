@@ -62,6 +62,17 @@
         bottom: -35%; /* Zadrži se na -20% na kraju */
     }
 }
+@keyframes blog-animate-reverse {
+    0% {
+        bottom: -35%;
+    }
+    50% {
+        bottom: 10%;
+    }
+    100% {
+        bottom: -100%; /* Zadrži se na -20% na kraju */
+    }
+}
 .blog-text{
     height: 100px;
     overflow-y: hidden;
