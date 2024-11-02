@@ -1,0 +1,95 @@
+.container-fluid{
+    padding: none;
+    margin: none;
+    width: 100vw !important;
+}
+
+.blog-frame {
+    width: 95%;
+    margin: 0 auto;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+    
+    
+}
+.blog-article{
+  flex: 1 1 300px;
+  min-width: 300px;
+  max-width: 47%;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+  
+}
+
+.blog-img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;    
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+.blog-card-data{
+    position: absolute;
+    bottom: -200%;
+    z-index: 2;
+    background: rgb(255, 255, 255);
+    width: 100%;
+    text-align: center;
+    border-radius: 10px;
+}
+
+
+
+
+@keyframes blog-animate {
+    0% {
+        bottom: -100%;
+    }
+    50% {
+        bottom: 10%;
+    }
+    100% {
+        bottom: -15%; /* Zadrži se na -20% na kraju */
+    }
+}
+.blog-text{
+    height: 50px;
+    
+}
+
+.data-btn{
+   display: block;
+    text-decoration: none;
+    margin-bottom: 10px;
+    background-color: white;
+    position:absolute;
+    z-index: 3;
+    left: 50%;
+    top: 70%;
+    transform: translate(-50% ,-50%);
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 3px 10px;
+    font-size: 1.5rem;
+}
+.data-btn:hover{
+    background-color: black;
+    color: white;
+}
+
+@media (max-width:768px){
+   .blog-article{
+    max-width: 100%;
+   }
+    
+}
+.data-btn{
+    text-decoration: none;
+}
