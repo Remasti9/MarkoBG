@@ -1,10 +1,6 @@
 document.querySelectorAll('.blog-article').forEach(article => {
-    let isAnimating = false; // Varijabla koja prati da li je animacija u toku za ovaj article
 
     article.addEventListener('mouseover', (event) => {
-        // Proveri da li je animacija već pokrenuta za ovaj article
-        if (isAnimating) return;
-
         const cardData = Array.from(article.children).find(child => 
             child.classList.contains('blog-card-data')
         );
@@ -18,8 +14,6 @@ document.querySelectorAll('.blog-article').forEach(article => {
         if (event.target === cardData || cardData.contains(event.target) && bottomValue > -700) {
             return;
         }
-
-        isAnimating = true; // Obeleži da je animacija u toku za ovaj article
 
         // Prođi kroz sve ostale članke i dodaj suprotnu animaciju samo onima koji imaju blog-animate
         document.querySelectorAll('.blog-article').forEach(otherArticle => {
@@ -60,18 +54,9 @@ document.querySelectorAll('.blog-article').forEach(article => {
                     // Resetuj klasu animacije nakon što se animacija završi
                     cardData.addEventListener('animationend', () => {
                         cardData.classList.remove('animating');
-                        isAnimating = false; // Ponovo postavi varijablu na false kada se animacija završi
                     }, { once: true });
                 }, 1); 
             });
         }
     });
 });
-
-
-
-
-
-
-
-
