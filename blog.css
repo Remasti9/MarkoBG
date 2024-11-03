@@ -42,7 +42,7 @@
     position: absolute;
     bottom: -200%;
     z-index: 2;
-    background: rgb(255, 255, 255);
+    background: rgba(255, 255, 255,.8);
     width: 100%;
     text-align: center;
     border-radius: 10px;
@@ -55,18 +55,18 @@
     0% {
         bottom: -100%;
     }
-    50% {
+    35% {
         bottom: 10%;
     }
     100% {
-        bottom: -35%; /* Zadrži se na -20% na kraju */
+        bottom: -5%; /* Zadrži se na -20% na kraju */
     }
 }
 @keyframes blog-animate-reverse {
     0% {
-        bottom: -35%;
+        bottom: -5%;
     }
-    50% {
+    35% {
         bottom: 10%;
     }
     100% {
@@ -74,9 +74,12 @@
     }
 }
 .blog-text{
-    height: 100px;
+    height: 80px;
     overflow-y: hidden;
     
+}
+.data-title{
+    margin-top: 1rem;
 }
 
 .data-btn{
