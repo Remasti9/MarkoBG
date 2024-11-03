@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const showBlogText = document.getElementById('show-blog-text');
       const showBlogImg = document.querySelector('#blog-show img');
   
-      showBlogTitle.innerHTML = `Obratite pažnju<span class="text-orange"> ${title}</span>`;
+      showBlogTitle.innerHTML = `${title}</span>`;
       showBlogText.textContent = text;
       showBlogImg.src = imgSrc;
     }
