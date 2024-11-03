@@ -1,19 +1,25 @@
 document.querySelectorAll('.blog-article').forEach(article => {
+    let isAnimating = false; // Promenljiva za praćenje animacije
 
     article.addEventListener('mouseover', (event) => {
+        if (isAnimating) return; // Sprečava pokretanje animacije ako je već u toku
+
         const cardData = Array.from(article.children).find(child => 
             child.classList.contains('blog-card-data')
         );
 
-        if (!cardData) return; // Ako nema cardData, ne nastavljaj dalje
+        if (!cardData) return; // Ako nema cardData, prekini
 
         const computedStyles = window.getComputedStyle(cardData);
-        const bottomValue = parseFloat(computedStyles.bottom); // Uzmi vrednost kao broj
+        const bottomValue = parseFloat(computedStyles.bottom);
 
-        // Ako je mouseover došao sa cardData ili je bottom vrednost -60px, ne pokreći animaciju
+        // Ako je mouseover na cardData ili je bottom vrednost -60px, ne pokreći animaciju
         if (event.target === cardData || cardData.contains(event.target) && bottomValue > -700) {
             return;
         }
+
+        // Sprečavanje višestrukih animacija
+        isAnimating = true;
 
         // Prođi kroz sve ostale članke i dodaj suprotnu animaciju samo onima koji imaju blog-animate
         document.querySelectorAll('.blog-article').forEach(otherArticle => {
@@ -21,11 +27,10 @@ document.querySelectorAll('.blog-article').forEach(article => {
                 const otherCardData = Array.from(otherArticle.children).find(child => 
                     child.classList.contains('blog-card-data')
                 );
-                
+
                 if (otherCardData && otherCardData.style.animation.includes('blog-animate')) {
                     otherCardData.style.animation = 'blog-animate-reverse 2s forwards';
 
-                    // Dodaj odlaganje od 1 sekunde pre postavljanja overflow: hidden
                     setTimeout(() => {
                         otherArticle.style.overflow = 'hidden';
                     }, 800);
@@ -33,30 +38,54 @@ document.querySelectorAll('.blog-article').forEach(article => {
             }
         });
 
-        // Postavi overflow na visible za trenutni članak nakon 1 sekunde
         setTimeout(() => {
             article.style.overflow = 'visible';
             article.style.borderRadius = '20px';
         }, 800);
 
         if (cardData) {
-            // Dodaj klasu koja označava da je animacija u toku
             cardData.classList.add('animating');
 
-            // Resetuj animaciju
+            // Reset animacije
             cardData.style.animation = 'none'; 
             article.style.animation = 'none';
 
             requestAnimationFrame(() => {
                 setTimeout(() => {
                     cardData.style.animation = 'blog-animate 2s forwards'; 
-                    
-                    // Resetuj klasu animacije nakon što se animacija završi
+
                     cardData.addEventListener('animationend', () => {
                         cardData.classList.remove('animating');
+                        isAnimating = false; // Reset promenljive kad se animacija završi
                     }, { once: true });
-                }, 1); 
+                }, 1);
             });
         }
+    });
+
+    // Event listener za mouseout - pokretanje obrnute animacije
+    article.addEventListener('mouseout', (event) => {
+        const cardData = Array.from(article.children).find(child => 
+            child.classList.contains('blog-card-data')
+        );
+
+        if (!cardData || cardData.classList.contains('animating')) return; // Ako nema cardData ili je animacija u toku, ne radi ništa
+
+        cardData.style.animation = 'none'; // Reset animacije pre pokretanja obrnute
+
+        requestAnimationFrame(() => {
+            setTimeout(() => {
+                cardData.style.animation = 'blog-animate-reverse 2s forwards'; // Pokreni obrnutu animaciju
+
+                setTimeout(() => {
+                    article.style.overflow = 'hidden'; // Nakon animacije sakrij overflow
+                }, 800); // Vreme trajanja animacije
+
+                cardData.addEventListener('animationend', () => {
+                    article.style.overflow = 'hidden';
+                    article.style.borderRadius = '0px'; // Resetuj borderRadius
+                }, { once: true });
+            }, 1);
+        });
     });
 });
