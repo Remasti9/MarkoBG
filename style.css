@@ -363,6 +363,9 @@ footer a{
   text-decoration: none;
   color: white;
 }
+#about-us-small{
+  display: none;
+}
 
 
 /*---=====########  Responsivity  #######=======-----*/
