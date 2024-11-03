@@ -10,19 +10,21 @@ document.querySelectorAll('.blog-article').forEach(article => {
 
         if (!cardData) return; // Ako nema cardData, prekini
 
+        const relatedTarget = event.relatedTarget; // Element sa kojeg je miš otišao
+        if (relatedTarget && (article.contains(relatedTarget) || cardData.contains(relatedTarget))) {
+            return; // Ako je miš još uvek unutar article ili cardData, ne pokreći animaciju
+        }
+
         const computedStyles = window.getComputedStyle(cardData);
         const bottomValue = parseFloat(computedStyles.bottom);
 
-        // Proveri da li je mouseover unutar cardData ili a-taga, ako jeste, ne pokreći animaciju
         const link = article.querySelector('a');
         if (cardData.contains(event.target) || (link && link.contains(event.target))) {
             return; // Ne pokreći animaciju unutar istog članka
         }
 
-        // Sprečavanje višestrukih animacija
         isAnimating = true;
 
-        // Prođi kroz sve ostale članke i dodaj suprotnu animaciju samo onima koji imaju blog-animate
         document.querySelectorAll('.blog-article').forEach(otherArticle => {
             if (otherArticle !== article) {
                 const otherCardData = Array.from(otherArticle.children).find(child => 
@@ -47,7 +49,6 @@ document.querySelectorAll('.blog-article').forEach(article => {
         if (cardData) {
             cardData.classList.add('animating');
 
-            // Reset animacije
             cardData.style.animation = 'none'; 
             article.style.animation = 'none';
 
@@ -57,45 +58,44 @@ document.querySelectorAll('.blog-article').forEach(article => {
 
                     cardData.addEventListener('animationend', () => {
                         cardData.classList.remove('animating');
-                        isAnimating = false; // Reset promenljive kad se animacija završi
+                        isAnimating = false;
                     }, { once: true });
                 }, 1);
             });
         }
     });
 
-    // Event listener za mouseout - pokretanje obrnute animacije
     article.addEventListener('mouseout', (event) => {
         const cardData = Array.from(article.children).find(child => 
             child.classList.contains('blog-card-data')
         );
 
-        if (!cardData || cardData.classList.contains('animating')) return; // Ako nema cardData ili je animacija u toku, ne radi ništa
+        if (!cardData || cardData.classList.contains('animating')) return;
 
-        // Proveri da li je mouseout unutar cardData ili a-taga, ako jeste, ne pokreći obrnutu animaciju
-        const link = article.querySelector('a');
-        if (cardData.contains(event.target) || (link && link.contains(event.target))) {
-            return; // Ne pokreći animaciju unutar istog članka
+        const relatedTarget = event.relatedTarget; // Element na koji je miš prešao
+        if (relatedTarget && (article.contains(relatedTarget) || cardData.contains(relatedTarget))) {
+            return; // Ako je miš još uvek unutar article ili cardData, ne pokreći obrnutu animaciju
         }
 
-        cardData.style.animation = 'none'; // Reset animacije pre pokretanja obrnute
+        cardData.style.animation = 'none';
 
         requestAnimationFrame(() => {
             setTimeout(() => {
-                cardData.style.animation = 'blog-animate-reverse 1s forwards'; // Pokreni obrnutu animaciju
+                cardData.style.animation = 'blog-animate-reverse 1s forwards'; 
 
                 setTimeout(() => {
-                    article.style.overflow = 'hidden'; // Nakon animacije sakrij overflow
-                }, 200); // Vreme trajanja animacije
+                    article.style.overflow = 'hidden';
+                }, 200);
 
                 cardData.addEventListener('animationend', () => {
                     article.style.overflow = 'hidden';
-                    article.style.borderRadius = '0px'; // Resetuj borderRadius
+                    article.style.borderRadius = '0px';
                 }, { once: true });
             }, 1);
         });
     });
 });
+
 
 
 
