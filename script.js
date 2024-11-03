@@ -155,11 +155,12 @@ document.querySelectorAll('.nav-link').forEach((link) => {
       if(window.innerWidth>1014)  document.getElementById('about-us').style.display='none';
       if(window.innerWidth<=1014)  document.getElementById('about-us-small').style.display='none';
       document.querySelector('.breaking-section').style.display='block';
+      document.querySelector('.breaking-section').style.backgroundColor='white';
       document.getElementById('blog').style.display='block';
       document.getElementById('gallery').style.display='none';
       document.getElementById('contact').style.display='block';
       document.getElementById('footer').style.display='block';
-      document.querySelector('.breaking-section').style.backgroundColor='#212529';
+      
      } else if(link.firstChild.textContent === 'Galerija'){
       if(window.innerWidth>1014)  document.getElementById('about-us').style.display='none';
       if(window.innerWidth<=1014)  document.getElementById('about-us-small').style.display='none';

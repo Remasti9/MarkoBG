@@ -89,3 +89,32 @@ document.querySelectorAll('.blog-article').forEach(article => {
         });
     });
 });
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Funkcija za ažuriranje sadržaja blog-show sekcije
+    function updateBlogShow(title, text, imgSrc) {
+      const showBlogTitle = document.getElementById('show-blog-title');
+      const showBlogText = document.getElementById('show-blog-text');
+      const showBlogImg = document.querySelector('#blog-show img');
+  
+      showBlogTitle.innerHTML = `Obratite pažnju<span class="text-orange"> ${title}</span>`;
+      showBlogText.textContent = text;
+      showBlogImg.src = imgSrc;
+    }
+  
+    // Dodavanje event listenera za sve 'a' tagove unutar članaka
+    const articles = document.querySelectorAll('.blog-article');
+    articles.forEach((article) => {
+      const link = article.querySelector('a');
+      const h2 = article.querySelector('h2').textContent;
+      const p = article.querySelector('p').textContent;
+      const imgSrc = article.querySelector('img').src;
+  
+      link.addEventListener('click', function (event) {
+        // Sprečava default ponašanje linka
+        updateBlogShow(h2, p, imgSrc);
+      });
+    });
+  });
+  
