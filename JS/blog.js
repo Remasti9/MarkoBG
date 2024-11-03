@@ -13,9 +13,10 @@ document.querySelectorAll('.blog-article').forEach(article => {
         const computedStyles = window.getComputedStyle(cardData);
         const bottomValue = parseFloat(computedStyles.bottom);
 
-        // Ako je mouseover na cardData ili je bottom vrednost -60px, ne pokreći animaciju
-        if (event.target === cardData || cardData.contains(event.target) && bottomValue > -700) {
-            return;
+        // Proveri da li je mouseover unutar cardData ili a-taga, ako jeste, ne pokreći animaciju
+        const link = article.querySelector('a');
+        if (cardData.contains(event.target) || (link && link.contains(event.target))) {
+            return; // Ne pokreći animaciju unutar istog članka
         }
 
         // Sprečavanje višestrukih animacija
@@ -71,6 +72,12 @@ document.querySelectorAll('.blog-article').forEach(article => {
 
         if (!cardData || cardData.classList.contains('animating')) return; // Ako nema cardData ili je animacija u toku, ne radi ništa
 
+        // Proveri da li je mouseout unutar cardData ili a-taga, ako jeste, ne pokreći obrnutu animaciju
+        const link = article.querySelector('a');
+        if (cardData.contains(event.target) || (link && link.contains(event.target))) {
+            return; // Ne pokreći animaciju unutar istog članka
+        }
+
         cardData.style.animation = 'none'; // Reset animacije pre pokretanja obrnute
 
         requestAnimationFrame(() => {
@@ -89,6 +96,7 @@ document.querySelectorAll('.blog-article').forEach(article => {
         });
     });
 });
+
 
 
 document.addEventListener('DOMContentLoaded', function () {
