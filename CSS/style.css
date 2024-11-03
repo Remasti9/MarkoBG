@@ -225,7 +225,7 @@ section.blanc{
 #about-us .container{
    margin:  0;
    background-color: white;
-   background:url('./images/material/about me/pexels-padrinan-transparent.webP');
+   background:url('../images/material/about me/pexels-padrinan-transparent.webP');
    background-repeat: no-repeat;
    background-size: cover;
    filter: saturate(0);
