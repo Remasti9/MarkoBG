@@ -29,11 +29,11 @@ document.querySelectorAll('.blog-article').forEach(article => {
                 );
 
                 if (otherCardData && otherCardData.style.animation.includes('blog-animate')) {
-                    otherCardData.style.animation = 'blog-animate-reverse 2s forwards';
+                    otherCardData.style.animation = 'blog-animate-reverse 1s forwards';
 
                     setTimeout(() => {
                         otherArticle.style.overflow = 'hidden';
-                    }, 800);
+                    }, 200);
                 }
             }
         });
@@ -41,7 +41,7 @@ document.querySelectorAll('.blog-article').forEach(article => {
         setTimeout(() => {
             article.style.overflow = 'visible';
             article.style.borderRadius = '20px';
-        }, 800);
+        }, 600);
 
         if (cardData) {
             cardData.classList.add('animating');
@@ -52,7 +52,7 @@ document.querySelectorAll('.blog-article').forEach(article => {
 
             requestAnimationFrame(() => {
                 setTimeout(() => {
-                    cardData.style.animation = 'blog-animate 2s forwards'; 
+                    cardData.style.animation = 'blog-animate 1.5s forwards'; 
 
                     cardData.addEventListener('animationend', () => {
                         cardData.classList.remove('animating');
@@ -75,11 +75,11 @@ document.querySelectorAll('.blog-article').forEach(article => {
 
         requestAnimationFrame(() => {
             setTimeout(() => {
-                cardData.style.animation = 'blog-animate-reverse 2s forwards'; // Pokreni obrnutu animaciju
+                cardData.style.animation = 'blog-animate-reverse 1s forwards'; // Pokreni obrnutu animaciju
 
                 setTimeout(() => {
                     article.style.overflow = 'hidden'; // Nakon animacije sakrij overflow
-                }, 800); // Vreme trajanja animacije
+                }, 200); // Vreme trajanja animacije
 
                 cardData.addEventListener('animationend', () => {
                     article.style.overflow = 'hidden';
