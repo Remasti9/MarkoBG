@@ -102,16 +102,12 @@
 
     // Funkcija za proveru pozicije i dodavanje/uklanjanje animacija
     const checkArticlePosition = () => {
-        // Proveri da li je neka kartica animirana
-        let anyAnimating = Array.from(blogArticles).some(article => 
-            article.getAttribute('data-animating') === 'true'
-        );
+        let currentAnimatingArticle = null; // Članak koji je trenutno animiran
     
         blogArticles.forEach(article => {
             const rect = article.getBoundingClientRect();
             const top = rect.top;
             const bottom = rect.bottom;
-            const height = rect.height;
             const windowHeight = window.innerHeight;
     
             // Provera da li je članak već animiran
@@ -123,21 +119,21 @@
     
             if (!cardData) return;
     
-            // Provera da li je članak 100% vidljiv i udaljen bar 5% od vrha ili dna viewporta
-            const isVisible = top > -(0.3 * height) && bottom < windowHeight + (0.1 * height);
-            const isFullyInViewport = top > 0.05 * windowHeight && bottom < windowHeight - 0.05 * windowHeight;
+            // Provera da li je članak u sredini ekrana
+            const isInMiddle = top < windowHeight / 2 && bottom > windowHeight / 2;
     
-            // Pokretanje animacije kada je članak u potpunosti vidljiv i nije već animiran
-            if (isVisible && isFullyInViewport && !isAnimating) {
+            // Ako je članak u sredini ekrana i nije već animiran
+            if (isInMiddle && !isAnimating) {
+                // Postavi trenutni animirani članak
+                currentAnimatingArticle = article;
+    
+                // Animacija za trenutni članak
                 article.style.overflow = 'visible';
                 article.style.borderRadius = '20px';
+                article.setAttribute('data-animating', 'true');
     
-                article.setAttribute('data-animating', 'true'); // Postavi da je animiranje u toku
-    
-                // Resetovanje animacija
+                // Resetovanje animacije
                 cardData.style.animation = 'none';
-                article.style.animation = 'none';
-    
                 requestAnimationFrame(() => {
                     setTimeout(() => {
                         cardData.style.animation = 'blog-animate 1.5s forwards';
@@ -149,48 +145,43 @@
                     }, 1);
                 });
             }
-            // Uklanjanje animacije kada članak izađe iz vidnog polja
-            else if (!isVisible && isAnimating) {
-                // Ako jedna kartica napušta vidno polje, sve ostale dobijaju reverse animaciju
-                if (!anyAnimating) {
-                    blogArticles.forEach(otherArticle => {
-                        const otherCardData = Array.from(otherArticle.children).find(child => 
-                            child.classList.contains('blog-card-data')
-                        );
-                        if (otherCardData && otherArticle !== article) {
-                            otherCardData.style.animation = 'blog-animate-reverse 1s forwards';
-                            otherArticle.style.overflow = 'hidden';
-                        }
-                    });
-                }
-    
-                // Resetovanje animacije
-                cardData.style.animation = 'none';
-    
-                requestAnimationFrame(() => {
-                    setTimeout(() => {
-                        cardData.style.animation = 'blog-animate-reverse 1s forwards'; 
-    
-                        setTimeout(() => {
-                            article.style.overflow = 'hidden';
-                        }, 200);
-    
-                        cardData.addEventListener('animationend', () => {
-                            article.style.overflow = 'hidden';
-                            article.style.borderRadius = '0px';
-                            article.setAttribute('data-animating', 'false'); // Ukloni animiranje
-                        }, { once: true });
-                    }, 1);
-                });
-            }
         });
+    
+        // Uklanjanje animacije za sve ostale članke kada se trenutni animira
+        if (currentAnimatingArticle) {
+            blogArticles.forEach(otherArticle => {
+                if (otherArticle !== currentAnimatingArticle) {
+                    const otherCardData = Array.from(otherArticle.children).find(child => 
+                        child.classList.contains('blog-card-data')
+                    );
+    
+                    if (otherCardData && otherArticle.getAttribute('data-animating') === 'true') {
+                        // Samo pokreni reverse animaciju ako je drugi članak već animiran
+                        otherCardData.style.animation = 'blog-animate-reverse 1s forwards';
+                        otherArticle.style.overflow = 'hidden';
+    
+                        otherCardData.addEventListener('animationend', () => {
+                            otherArticle.style.overflow = 'hidden';
+                            otherArticle.style.borderRadius = '0px';
+                            otherArticle.setAttribute('data-animating', 'false'); // Ukloni animiranje
+                        }, { once: true });
+                    }
+                }
+            });
+        }
     };
     
     // Pokreni proveru prilikom svakog skrola
-    window.addEventListener('scroll', checkArticlePosition);
+    window.addEventListener('scroll', () => {
+        checkArticlePosition();
+    });
     
     // Takođe proveri poziciju odmah po učitavanju stranice
     checkArticlePosition();
+    
+    
+
+    
     
 
 
