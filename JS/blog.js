@@ -100,6 +100,8 @@
   } else{
     const blogArticles = document.querySelectorAll('.blog-article');
 
+    let lastAnimatingArticle = null; // Članak koji je poslednji bio animiran
+    
     // Funkcija za proveru pozicije i dodavanje/uklanjanje animacija
     const checkArticlePosition = () => {
         let currentAnimatingArticle = null; // Članak koji je trenutno animiran
@@ -110,7 +112,6 @@
             const bottom = rect.bottom;
             const windowHeight = window.innerHeight;
     
-            // Provera da li je članak već animiran
             const isAnimating = article.getAttribute('data-animating') === 'true';
     
             const cardData = Array.from(article.children).find(child => 
@@ -122,28 +123,49 @@
             // Provera da li je članak u sredini ekrana
             const isInMiddle = top < windowHeight / 2 && bottom > windowHeight / 2;
     
-            // Ako je članak u sredini ekrana i nije već animiran
-            if (isInMiddle && !isAnimating) {
-                // Postavi trenutni animirani članak
-                currentAnimatingArticle = article;
+            // Ako je članak u sredini ekrana
+            if (isInMiddle) {
+                // Ako trenutni članak nije animiran i nije poslednji animirani članak
+                if (!isAnimating && article !== lastAnimatingArticle) {
+                    currentAnimatingArticle = article;
     
-                // Animacija za trenutni članak
-                article.style.overflow = 'visible';
-                article.style.borderRadius = '20px';
-                article.setAttribute('data-animating', 'true');
+                    // Animacija za trenutni članak
+                    article.style.overflow = 'visible';
+                    article.style.borderRadius = '20px';
+                    article.setAttribute('data-animating', 'true');
     
-                // Resetovanje animacije
-                cardData.style.animation = 'none';
-                requestAnimationFrame(() => {
-                    setTimeout(() => {
-                        cardData.style.animation = 'blog-animate 1.5s forwards';
+                    // Resetovanje animacije
+                    cardData.style.animation = 'none';
+                    requestAnimationFrame(() => {
+                        setTimeout(() => {
+                            cardData.style.animation = 'blog-animate 1.5s forwards';
     
-                        // Ukloni status animacije kada se završi
-                        cardData.addEventListener('animationend', () => {
-                            article.setAttribute('data-animating', 'false');
+                            // Ukloni status animacije kada se završi
+                            cardData.addEventListener('animationend', () => {
+                                article.setAttribute('data-animating', 'false');
+                                lastAnimatingArticle = article; // Ažuriraj poslednji animirani članak
+                            }, { once: true });
+                        }, 1);
+                    });
+                }
+            } else {
+                // Ako članak nije u sredini i trenutno se animira
+                if (isAnimating) {
+                    const otherCardData = Array.from(article.children).find(child => 
+                        child.classList.contains('blog-card-data')
+                    );
+    
+                    if (otherCardData) {
+                        otherCardData.style.animation = 'blog-animate-reverse 1s forwards';
+                        article.style.overflow = 'hidden';
+    
+                        otherCardData.addEventListener('animationend', () => {
+                            article.style.overflow = 'hidden';
+                            article.style.borderRadius = '0px';
+                            article.setAttribute('data-animating', 'false'); // Ukloni animiranje
                         }, { once: true });
-                    }, 1);
-                });
+                    }
+                }
             }
         });
     
@@ -178,6 +200,8 @@
     
     // Takođe proveri poziciju odmah po učitavanju stranice
     checkArticlePosition();
+    
+
     
     
 
