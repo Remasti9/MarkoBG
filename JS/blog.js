@@ -120,8 +120,9 @@
     
             if (!cardData) return;
     
-            // Provera da li je članak u sredini ekrana
-            const isInMiddle = top < windowHeight / 2 && bottom > windowHeight / 2;
+            // Provera da li je sredina viewporta između gornje i donje pozicije članka
+            const middleViewport = windowHeight / 2;
+            const isInMiddle = top < middleViewport && bottom > middleViewport;
     
             // Ako je članak u sredini ekrana
             if (isInMiddle) {
@@ -200,6 +201,7 @@
     
     // Takođe proveri poziciju odmah po učitavanju stranice
     checkArticlePosition();
+    
     
 
     
