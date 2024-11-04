@@ -148,6 +148,26 @@
                             }, { once: true });
                         }, 1);
                     });
+    
+                    // Dodaj animaciju za sve druge članke
+                    blogArticles.forEach(otherArticle => {
+                        if (otherArticle !== currentAnimatingArticle) {
+                            const otherCardData = Array.from(otherArticle.children).find(child => 
+                                child.classList.contains('blog-card-data')
+                            );
+    
+                            if (otherCardData && otherArticle.getAttribute('data-animating') !== 'true') {
+                                otherCardData.style.animation = 'blog-animate-reverse 1s forwards';
+                                otherArticle.style.overflow = 'hidden';
+    
+                                otherCardData.addEventListener('animationend', () => {
+                                    otherArticle.style.overflow = 'hidden';
+                                    otherArticle.style.borderRadius = '0px';
+                                    otherArticle.setAttribute('data-animating', 'false'); // Ukloni animiranje
+                                }, { once: true });
+                            }
+                        }
+                    });
                 }
             } else {
                 // Ako članak nije u sredini i trenutno se animira
@@ -169,29 +189,6 @@
                 }
             }
         });
-    
-        // Uklanjanje animacije za sve ostale članke kada se trenutni animira
-        if (currentAnimatingArticle) {
-            blogArticles.forEach(otherArticle => {
-                if (otherArticle !== currentAnimatingArticle) {
-                    const otherCardData = Array.from(otherArticle.children).find(child => 
-                        child.classList.contains('blog-card-data')
-                    );
-    
-                    if (otherCardData && otherArticle.getAttribute('data-animating') === 'true') {
-                        // Samo pokreni reverse animaciju ako je drugi članak već animiran
-                        otherCardData.style.animation = 'blog-animate-reverse 1s forwards';
-                        otherArticle.style.overflow = 'hidden';
-    
-                        otherCardData.addEventListener('animationend', () => {
-                            otherArticle.style.overflow = 'hidden';
-                            otherArticle.style.borderRadius = '0px';
-                            otherArticle.setAttribute('data-animating', 'false'); // Ukloni animiranje
-                        }, { once: true });
-                    }
-                }
-            });
-        }
     };
     
     // Pokreni proveru prilikom svakog skrola
@@ -201,6 +198,7 @@
     
     // Takođe proveri poziciju odmah po učitavanju stranice
     checkArticlePosition();
+    
     
     
 
