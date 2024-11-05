@@ -181,8 +181,8 @@
                         article.style.overflow = 'hidden';
     
                         otherCardData.addEventListener('animationend', () => {
-                            article.style.overflow = 'hidden';
-                            article.style.borderRadius = '0px';
+                            article.style.overflow = 'visible';
+                            article.style.borderRadius = '10px';
                             article.setAttribute('data-animating', 'false'); // Ukloni animiranje
                         }, { once: true });
                     }
