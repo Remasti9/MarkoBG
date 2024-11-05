@@ -162,7 +162,7 @@ const checkArticlePosition = () => {
                                 const secondAnimate = (secondTimestamp) => {
                                     if (!secondStartTime) secondStartTime = secondTimestamp;
                                     const secondProgress = secondTimestamp - secondStartTime;
-                                    const secondDuration = 500; // trajanje druge animacije
+                                    const secondDuration = 300; // trajanje druge animacije
 
                                     const secondPercent = Math.min(secondProgress / secondDuration, 1);
                                     const secondEased = easeInOutQuad(secondPercent);
@@ -204,7 +204,7 @@ const checkArticlePosition = () => {
                             const reverseAnimate = (timestamp) => {
                                 if (!startTime) startTime = timestamp;
                                 const progress = timestamp - startTime;
-                                const duration = 500; // trajanje animacije u ms
+                                const duration = 300; // trajanje animacije u ms
                                 const percent = Math.min(progress / duration, 1);
 
                                 // Ažuriraj stilove na osnovu progresije
@@ -238,7 +238,7 @@ const checkArticlePosition = () => {
                     const reverseAnimate = (timestamp) => {
                         if (!startTime) startTime = timestamp;
                         const progress = timestamp - startTime;
-                        const duration = 500; // trajanje animacije u ms
+                        const duration = 300; // trajanje animacije u ms
                         const percent = Math.min(progress / duration, 1);
 
                         // Ažuriraj stilove na osnovu progresije
