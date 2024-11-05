@@ -135,21 +135,37 @@
                     article.style.borderRadius = '20px';
                     article.setAttribute('data-animating', 'true');
     
-                    // Resetovanje animacije
-                    cardData.style.animation = 'none';
+                    // Simuliraj animaciju
+                    cardData.style.opacity = '0';
+                    cardData.style.bottom = '-100%'; // Postavi početnu poziciju
                     requestAnimationFrame(() => {
-                        setTimeout(() => {
-                            cardData.style.animation = 'blog-animate 1.5s forwards';
+                        // Postepeno menjaj stilove da simulira animaciju
+                        let startTime = null;
     
-                            // Ukloni status animacije kada se završi
-                            cardData.addEventListener('animationend', () => {
+                        const animate = (timestamp) => {
+                            if (!startTime) startTime = timestamp;
+                            const progress = timestamp - startTime;
+                            const duration = 1500; // trajanje animacije u ms
+                            const easeInOutQuad = (t) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t; // funkcija za jednostavno animiranje
+    
+                            const percent = Math.min(progress / duration, 1);
+                            const eased = easeInOutQuad(percent);
+    
+                            // Ažuriraj stilove na osnovu progresije
+                            cardData.style.opacity = eased;
+                            cardData.style.bottom = `${eased * 10}%`; // Promenimo poziciju od -100% do 10%
+    
+                            if (percent < 1) {
+                                requestAnimationFrame(animate);
+                            } else {
                                 article.setAttribute('data-animating', 'false');
                                 lastAnimatingArticle = article; // Ažuriraj poslednji animirani članak
-                            }, { once: true });
-                        }, 1);
+                            }
+                        };
+                        requestAnimationFrame(animate);
                     });
     
-                    // Dodaj animaciju za sve druge članke
+                    // Dodaj simulaciju za sve druge članke
                     blogArticles.forEach(otherArticle => {
                         if (otherArticle !== currentAnimatingArticle) {
                             const otherCardData = Array.from(otherArticle.children).find(child => 
@@ -157,14 +173,33 @@
                             );
     
                             if (otherCardData) {
-                                otherCardData.style.animation = 'blog-animate-reverse 1s forwards';
+                                // Postavi druge članke na "sakriven"
+                                otherCardData.style.opacity = '1';
+                                otherCardData.style.bottom = '10%'; // Postavi na finalnu poziciju
                                 otherArticle.style.overflow = 'hidden'; // Uveri se da su drugi članci sakriveni
     
-                                otherCardData.addEventListener('animationend', () => {
-                                    otherArticle.style.overflow = 'visible';
-                                    otherArticle.style.borderRadius = '10px';
-                                    otherArticle.setAttribute('data-animating', 'false'); // Ukloni animiranje
-                                }, { once: true });
+                                // Simuliraj animaciju "obrnuto"
+                                let startTime = null;
+    
+                                const reverseAnimate = (timestamp) => {
+                                    if (!startTime) startTime = timestamp;
+                                    const progress = timestamp - startTime;
+                                    const duration = 1000; // trajanje animacije u ms
+                                    const percent = Math.min(progress / duration, 1);
+    
+                                    // Ažuriraj stilove na osnovu progresije
+                                    otherCardData.style.opacity = 1 - percent; // Fade out
+                                    otherCardData.style.bottom = `${10 - (10 * percent)}%`; // Kreće se do -100%
+    
+                                    if (percent < 1) {
+                                        requestAnimationFrame(reverseAnimate);
+                                    } else {
+                                        otherArticle.style.overflow = 'visible';
+                                        otherArticle.style.borderRadius = '10px';
+                                        otherArticle.setAttribute('data-animating', 'false'); // Ukloni animiranje
+                                    }
+                                };
+                                requestAnimationFrame(reverseAnimate);
                             }
                         }
                     });
@@ -177,14 +212,28 @@
                     );
     
                     if (otherCardData) {
-                        otherCardData.style.animation = 'blog-animate-reverse 1s forwards';
-                        article.style.overflow = 'hidden';
+                        // Simuliraj animaciju "obrnuto"
+                        let startTime = null;
     
-                        otherCardData.addEventListener('animationend', () => {
-                            article.style.overflow = 'visible';
-                            article.style.borderRadius = '10px';
-                            article.setAttribute('data-animating', 'false'); // Ukloni animiranje
-                        }, { once: true });
+                        const reverseAnimate = (timestamp) => {
+                            if (!startTime) startTime = timestamp;
+                            const progress = timestamp - startTime;
+                            const duration = 1000; // trajanje animacije u ms
+                            const percent = Math.min(progress / duration, 1);
+    
+                            // Ažuriraj stilove na osnovu progresije
+                            otherCardData.style.opacity = 1 - percent; // Fade out
+                            otherCardData.style.bottom = `${10 - (10 * percent)}%`; // Kreće se do -100%
+    
+                            if (percent < 1) {
+                                requestAnimationFrame(reverseAnimate);
+                            } else {
+                                article.style.overflow = 'visible';
+                                article.style.borderRadius = '10px';
+                                article.setAttribute('data-animating', 'false'); // Ukloni animiranje
+                            }
+                        };
+                        requestAnimationFrame(reverseAnimate);
                     }
                 }
             }
@@ -198,6 +247,9 @@
     
     // Takođe proveri poziciju odmah po učitavanju stranice
     checkArticlePosition();
+    
+    
+    
     
 
     
