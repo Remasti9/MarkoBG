@@ -161,8 +161,8 @@
                                 otherArticle.style.overflow = 'hidden'; // Uveri se da su drugi članci sakriveni
     
                                 otherCardData.addEventListener('animationend', () => {
-                                    otherArticle.style.overflow = 'hidden';
-                                    otherArticle.style.borderRadius = '0px';
+                                    otherArticle.style.overflow = 'visible';
+                                    otherArticle.style.borderRadius = '10px';
                                     otherArticle.setAttribute('data-animating', 'false'); // Ukloni animiranje
                                 }, { once: true });
                             }
