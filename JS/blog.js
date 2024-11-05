@@ -143,7 +143,7 @@
                         const animate = (timestamp) => {
                             if (!startTime) startTime = timestamp;
                             const progress = timestamp - startTime;
-                            const duration = 1500; // trajanje animacije u ms
+                            const duration = 500; // trajanje animacije u ms
                             const easeInOutQuad = (t) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t; // funkcija za jednostavno animiranje
     
                             const percent = Math.min(progress / duration, 1);
@@ -182,7 +182,7 @@
                                 const reverseAnimate = (timestamp) => {
                                     if (!startTime) startTime = timestamp;
                                     const progress = timestamp - startTime;
-                                    const duration = 1000; // trajanje animacije u ms
+                                    const duration = 500; // trajanje animacije u ms
                                     const percent = Math.min(progress / duration, 1);
     
                                     // Ažuriraj stilove na osnovu progresije
@@ -216,7 +216,7 @@
                         const reverseAnimate = (timestamp) => {
                             if (!startTime) startTime = timestamp;
                             const progress = timestamp - startTime;
-                            const duration = 1000; // trajanje animacije u ms
+                            const duration = 500; // trajanje animacije u ms
                             const percent = Math.min(progress / duration, 1);
     
                             // Ažuriraj stilove na osnovu progresije
