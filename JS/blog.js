@@ -101,11 +101,10 @@
     const blogArticles = document.querySelectorAll('.blog-article');
 
     let lastAnimatingArticle = null; // Članak koji je poslednji bio animiran
+    let currentAnimatingArticle = null; // Članak koji je trenutno animiran
     
     // Funkcija za proveru pozicije i dodavanje/uklanjanje animacija
     const checkArticlePosition = () => {
-        let currentAnimatingArticle = null; // Članak koji je trenutno animiran
-    
         blogArticles.forEach(article => {
             const rect = article.getBoundingClientRect();
             const top = rect.top;
@@ -113,8 +112,7 @@
             const windowHeight = window.innerHeight;
     
             const isAnimating = article.getAttribute('data-animating') === 'true';
-    
-            const cardData = Array.from(article.children).find(child => 
+            const cardData = Array.from(article.children).find(child =>
                 child.classList.contains('blog-card-data')
             );
     
@@ -128,7 +126,7 @@
             if (isInMiddle) {
                 // Ako trenutni članak nije animiran i nije poslednji animirani članak
                 if (!isAnimating && article !== lastAnimatingArticle) {
-                    currentAnimatingArticle = article;
+                    currentAnimatingArticle = article; // Postavi trenutni animirani članak
     
                     // Postavi overflow na visible
                     article.style.overflow = 'visible';
@@ -168,7 +166,7 @@
                     // Dodaj simulaciju za sve druge članke
                     blogArticles.forEach(otherArticle => {
                         if (otherArticle !== currentAnimatingArticle) {
-                            const otherCardData = Array.from(otherArticle.children).find(child => 
+                            const otherCardData = Array.from(otherArticle.children).find(child =>
                                 child.classList.contains('blog-card-data')
                             );
     
@@ -206,8 +204,8 @@
                 }
             } else {
                 // Ako članak nije u sredini i trenutno se animira
-                if (isAnimating) {
-                    const otherCardData = Array.from(article.children).find(child => 
+                if (isAnimating && currentAnimatingArticle === article) {
+                    const otherCardData = Array.from(article.children).find(child =>
                         child.classList.contains('blog-card-data')
                     );
     
@@ -247,6 +245,7 @@
     
     // Takođe proveri poziciju odmah po učitavanju stranice
     checkArticlePosition();
+    
     
     
     
