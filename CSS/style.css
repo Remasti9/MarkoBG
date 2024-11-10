@@ -229,7 +229,7 @@ section.blanc{
   bottom: 0%;
   right: -1800px;
   z-index: 999999999;
-  transition: right 3.5s;
+  transition: right 6s;
 }
 
 .breaking-section{
@@ -333,7 +333,7 @@ section.blanc{
     padding: 1rem;
   }
   #trolley{
-    transition: right 6s;
+    transition: right 9s;
   }
   
 }
