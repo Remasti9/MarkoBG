@@ -5,6 +5,8 @@ const callFrame = document.querySelector('.call-frame');
 const logo = document.getElementById('logo');
 const logoFrame = document.querySelector('.flex-center');
 const logoText = document.querySelector('.disappear-large-text');
+const trolleyBtn= document.getElementById('trolley-animation');
+const trolley= document.getElementById('trolley');
 
 var map = L.map('map', {
   center: [44.8189, 20.4559],  // Dorćol, Beograd
@@ -316,3 +318,8 @@ document.querySelectorAll('#footer a').forEach(link => {
   });
 });
 
+trolleyBtn.addEventListener('click',e=>{
+  e.preventDefault();
+  trolleyBtn.style.display='none';
+  trolley.style.right='1000px';
+});

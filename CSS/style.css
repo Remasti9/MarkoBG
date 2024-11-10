@@ -218,6 +218,25 @@ section.blanc{
  width: 100%;
   background-color: transparent !important;
 }
+/* #trolley-frame{
+  position: relative;
+  left: -15%;
+  
+  height: 70vh;
+  width: 100vw;
+  background: url('/images/businessman-2108029_1280.jpg');
+} */
+
+#trolley{
+  background: url('/images/favicon-transparent.webP');
+  background-position: center center;
+  width: 600px;
+  height: 750px;
+  position: relative;
+  top: -40vh;
+  right: -1800px;
+  transition: right 3.5s;
+}
 .breaking-section{
   height: 2rem;
   background-color: white;
