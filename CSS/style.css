@@ -231,6 +231,7 @@ section.blanc{
   z-index: 999999999;
   transition: right 3.5s;
 }
+
 .breaking-section{
   height: 2rem;
   background-color: white;
@@ -330,6 +331,9 @@ section.blanc{
   #ask-section{
     margin-right: 0;
     padding: 1rem;
+  }
+  #trolley{
+    transition: right 6s;
   }
   
 }
