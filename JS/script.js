@@ -321,5 +321,5 @@ document.querySelectorAll('#footer a').forEach(link => {
 trolleyBtn.addEventListener('click',e=>{
   e.preventDefault();
   trolleyBtn.style.display='none';
-  trolley.style.right='1000px';
+  trolley.style.right='1800px';
 });

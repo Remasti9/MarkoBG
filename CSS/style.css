@@ -218,23 +218,17 @@ section.blanc{
  width: 100%;
   background-color: transparent !important;
 }
-/* #trolley-frame{
-  position: relative;
-  left: -15%;
-  
-  height: 70vh;
-  width: 100vw;
-  background: url('/images/businessman-2108029_1280.jpg');
-} */
+
 
 #trolley{
   background: url('/images/favicon-transparent.webP');
   background-position: center center;
   width: 600px;
   height: 750px;
-  position: relative;
-  top: -40vh;
+  position: fixed;
+  bottom: 0%;
   right: -1800px;
+  z-index: 999999999;
   transition: right 3.5s;
 }
 .breaking-section{
@@ -377,6 +371,9 @@ section.blanc{
   border-radius: 10px;
   background: rgba(200, 200, 200, 1);
   margin-left: 1rem;
+}
+#principles{
+  position: relative;
 }
 .principles-text{
   padding: 0 1.5rem !important;
