@@ -213,6 +213,7 @@ section {
   display: grid;
   place-items: center;
  background-color: white;
+ overflow-y: hidden;
 }
 section.blanc{
  width: 100%;
