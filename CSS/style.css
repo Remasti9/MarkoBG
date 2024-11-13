@@ -299,6 +299,12 @@ section.blanc{
   color: white !important;
   background-color: rgba(0,0,0,.5);
 }
+
+@media (min-width: 1400px) {
+ #landing .container {
+      max-width: 85vw !important;  /* Postavlja maksimalnu širinu na 100% širine viewport-a */
+  }
+}
 #ask-section{
   position: absolute;
   z-index: 99999999;
