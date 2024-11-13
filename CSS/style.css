@@ -310,6 +310,19 @@ section.blanc{
   margin-top: 3rem;
    margin-right:40%;
 }
+.hero-small-screen{
+  display: none;
+}
+@media (max-width: 993px) {
+  #ask-section{
+    display: none;
+  }
+  .hero-small-screen{
+    display: block;
+  }
+  
+}
+
 #ask-section .mb-3{
   width: 300px !important;
 }
