@@ -184,7 +184,7 @@ body::-webkit-scrollbar-track {
 
 
 .img-c-width{
-  width: 95%;
+  width: 100%;
   height: auto;
   overflow-y: hidden;
   margin: 0 auto !important;
@@ -293,7 +293,6 @@ section.blanc{
   margin-left: 100px;
   text-decoration: none;
   border: 2px solid black;
- 
 }
 #about-me-btn:hover{
   background-color: black;
@@ -301,11 +300,15 @@ section.blanc{
   background-color: rgba(0,0,0,.5);
 }
 #ask-section{
+  position: absolute;
+  z-index: 99999999;
+  top: 20%;
+  left: 0%;
   border: 1px solid white;
-  border-radius: 20px;
+  border-radius: 20px; 
   padding: 1rem 6rem;
   margin-top: 3rem;
-  margin-right:40% ;
+   margin-right:40%;
 }
 #ask-section .mb-3{
   width: 300px !important;
