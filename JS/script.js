@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(()=>{
       offcanvasBody.scrollTop = 0;
 
-    },700)
+    },1000)
   });
 });
 
