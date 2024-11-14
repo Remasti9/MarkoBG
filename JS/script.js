@@ -1,12 +1,62 @@
-const toggler = document.querySelector('.navbar-toggler');
 const navbar = document.querySelector('.navbar-collapse');
-var switcher = true;
 const callFrame = document.querySelector('.call-frame');
 const logo = document.getElementById('logo');
 const logoFrame = document.querySelector('.flex-center');
 const logoText = document.querySelector('.disappear-large-text');
 const trolleyBtn= document.getElementById('trolley-animation');
 const trolley= document.getElementById('trolley');
+
+
+
+
+// Selektuj sve <li> elemente unutar ofcanvas menija
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  var switcher = true;
+  var navItems = document.querySelectorAll('#offcanvasNavbar .nav-item');
+  var offcanvasElement = document.getElementById('offcanvasNavbar');
+  var offcanvas = new bootstrap.Offcanvas(offcanvasElement); // Inicijalizacija offcanvas objekta
+  
+  navItems.forEach(function(item) {
+    item.addEventListener('click', function() {
+      if (switcher) {
+        if (offcanvasElement.classList.contains('show')) {
+          // Ako je offcanvas otvoren, zatvori ga
+          offcanvas.hide();
+        } else {
+          // Ako nije otvoren, otvori ga
+          offcanvas.show();
+        }
+        switcher = false; // Postavi switcher na false
+      }
+    });
+  });
+
+  // Event listener za dugme za zatvaranje
+  document.querySelector('.btn-close').addEventListener('click', function() {
+    // Kada je dugme za zatvaranje kliknuto, resetuj switcher
+    switcher = true;
+    offcanvas.hide();
+  });
+
+  // Event listener za praćenje zatvaranja offcanvas-a
+  offcanvasElement.addEventListener('hidden.bs.offcanvas', function () {
+    // Kada je offcanvas zatvoren, resetuj switcher na true
+    switcher = true;
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
 
 var map = L.map('map', {
   center: [44.8189, 20.4559],  // Dorćol, Beograd
@@ -112,24 +162,7 @@ locateControl.onAdd = function(map) {
 locateControl.addTo(map);
 
 //site logic on load and scroll event
-  toggler.addEventListener('click', () => {
-  if (switcher) {
-    document.querySelector('.price').style.display='none';
-    logoFrame.classList.add('logo-frame-toggle');
-    logo.classList.add('logo-toggle');
-    logoText.style.width='250px';
-    logoText.style.marginLeft='5%';
-  } else {
-    
-      logoFrame.classList.remove('logo-frame-toggle');
-      logo.classList.remove('logo-toggle');
-      logoText.style.width='150px';
-      logoText.style.marginLeft='0%';
-      setTimeout(()=>{document.querySelector('.price').style.display='block';},300)
-  }
-  switcher = !switcher;
-});
-
+ 
 
 //DOM manipulation pages
 

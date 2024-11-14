@@ -71,8 +71,89 @@
         </div>
         <div id="trolley"></div>
 <!--NAVBAR-->
+<nav class="navbar navbar-expand-lg navbar-light bg-white text-black fixed-top w-full">
+  <div class="container position-relative">
+    <img src="./images/logo.webP" alt="Logo" width="40px" height="auto" class="navbar-brand logo disappear-small">
+    <img id="logo-text" src="./images/logo-text.webP" alt="Logo-text" class="navbar-brand disappear-small">
+    
+    <!-- Offcanvas toggle button - visible only on small screens -->
+    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <a href="#services" class="price">Cene</a>
+
+    <!-- Standard navbar collapse for large screens -->
+    <div class="collapse navbar-collapse d-none d-lg-block" id="navmenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a href="#landing" class="nav-link"><b>Početna</b></a>
+        </li>
+        <li class="nav-item">
+          <a href="#gallery" class="nav-link"><b>Galerija</b></a>
+        </li>
+        <li class="nav-item">
+          <a href="#about-us" class="nav-link"><b>O nama</b></a>
+        </li>
+        <li class="nav-item">
+          <a id="set-services" href="#services" class="nav-link"><b>Servisi</b></a>
+        </li>
+        <li class="nav-item">
+          <a href="#blog" class="nav-link"><b>Blog</b></a>
+        </li>
+        <li class="nav-item">
+          <a href="#information" class="nav-link"><b>Informacije</b></a>
+        </li>
+        <li class="nav-item">
+          <a href="#contact" class="nav-link"><b>Kontakt</b></a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Offcanvas - visible only on small screens -->
+    <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" style="height: 100vh; width: 100vw;">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Navigacija</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a href="#landing" class="nav-link"><b>Početna</b></a>
+          </li>
+          <li class="nav-item">
+            <a href="#gallery" class="nav-link"><b>Galerija</b></a>
+          </li>
+          <li class="nav-item">
+            <a href="#about-us" class="nav-link"><b>O nama</b></a>
+          </li>
+          <li class="nav-item">
+            <a id="set-services" href="#services" class="nav-link"><b>Servisi</b></a>
+          </li>
+          <li class="nav-item">
+            <a href="#blog" class="nav-link"><b>Blog</b></a>
+          </li>
+          <li class="nav-item">
+            <a href="#information" class="nav-link"><b>Informacije</b></a>
+          </li>
+          <li class="nav-item">
+            <a href="#contact" class="nav-link"><b>Kontakt</b></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="flex-center">
+      <img src="./images/logo.webP" id="logo" alt="logo-text" class="disappear-large-logo" loading="lazy">
+      <img src="./images/logo-text-mobile.webP" width="250px" height="26" alt="logo-text" class="disappear-large-text" loading="lazy">
+    </div>
+  </div>
+</nav>
+
+
+
    
-   <nav class="navbar navbar-expand-lg  navbar-light bg-white text-black   fixed-top w-full">
+   <!-- <nav class="navbar navbar-expand-lg  navbar-light bg-white text-black   fixed-top w-full">
    
       
     <div class="container position-relative">
@@ -114,7 +195,7 @@
          <img src="./images/logo-text-mobile.webP" width="250px" height="26" alt="logo-text" class="disappear-large-text" loading="lazy">
         </div>
     </div>
-   </nav>
+   </nav> -->
 
 <div  class="breaking-section"></div>
 <main>
