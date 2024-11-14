@@ -16,20 +16,21 @@ document.addEventListener('DOMContentLoaded', function() {
   var switcher = true;
   var navItems = document.querySelectorAll('#offcanvasNavbar .nav-item');
   var offcanvasElement = document.getElementById('offcanvasNavbar');
-  var offcanvas = new bootstrap.Offcanvas(offcanvasElement); 
+  var offcanvas = new bootstrap.Offcanvas(offcanvasElement);
   var smallForm = document.getElementById('ask-section-small');
-  
+  var offcanvasBody = offcanvasElement.querySelector('.offcanvas-body'); // Selektujte .offcanvas-body
+
   navItems.forEach(function(item) {
     item.addEventListener('click', function() {
       if (switcher) {
         if (offcanvasElement.classList.contains('show')) {
-          smallForm.style.display='block';
+          smallForm.style.display = 'block';
           offcanvas.hide();
         } else {
           offcanvas.show();
-          smallForm.style.display='block';
+          smallForm.style.display = 'block';
         }
-        switcher = false; 
+        switcher = false;
       }
     });
   });
@@ -46,7 +47,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // Kada je offcanvas zatvoren, resetuj switcher na true
     switcher = true;
   });
+
+  // Dodajte event listener za 'shown.bs.offcanvas' da biste čekali da se offcanvas prikaže
+  offcanvasElement.addEventListener('shown.bs.offcanvas', function() {
+   
+    offcanvasBody.scrollTop = offcanvasBody.scrollHeight; 
+    setTimeout(()=>{
+      offcanvasBody.scrollTop = 0;
+
+    },700)
+  });
 });
+
+
 
 
 

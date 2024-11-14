@@ -220,6 +220,7 @@ section.blanc{
   background-color: transparent !important;
 }
 .offcanvas-body {
+  scroll-behavior: smooth;
   overflow-y: scroll; 
 }
 
