@@ -220,8 +220,13 @@ section.blanc{
   background-color: transparent !important;
 }
 .offcanvas-body {
-  scroll-behavior: smooth;
-  overflow-y: scroll; 
+  overflow-y: scroll !important;
+}
+
+@media (max-width: 768px) {
+  .offcanvas-body {
+    overflow-y: auto !important;
+  }
 }
 
 .offcanvas-body::-webkit-scrollbar {
