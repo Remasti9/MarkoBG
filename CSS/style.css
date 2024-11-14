@@ -221,6 +221,7 @@ section.blanc{
 }
 .offcanvas-body {
   overflow-y: scroll !important;
+  scroll-behavior: smooth !important;
 }
 
 @media (max-width: 768px) {
