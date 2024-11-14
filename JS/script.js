@@ -16,19 +16,20 @@ document.addEventListener('DOMContentLoaded', function() {
   var switcher = true;
   var navItems = document.querySelectorAll('#offcanvasNavbar .nav-item');
   var offcanvasElement = document.getElementById('offcanvasNavbar');
-  var offcanvas = new bootstrap.Offcanvas(offcanvasElement); // Inicijalizacija offcanvas objekta
+  var offcanvas = new bootstrap.Offcanvas(offcanvasElement); 
+  var smallForm = document.getElementById('ask-section-small');
   
   navItems.forEach(function(item) {
     item.addEventListener('click', function() {
       if (switcher) {
         if (offcanvasElement.classList.contains('show')) {
-          // Ako je offcanvas otvoren, zatvori ga
+          smallForm.style.display='block';
           offcanvas.hide();
         } else {
-          // Ako nije otvoren, otvori ga
           offcanvas.show();
+          smallForm.style.display='block';
         }
-        switcher = false; // Postavi switcher na false
+        switcher = false; 
       }
     });
   });

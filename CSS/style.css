@@ -219,7 +219,13 @@ section.blanc{
  width: 100%;
   background-color: transparent !important;
 }
+.offcanvas-body {
+  overflow-y: scroll; 
+}
 
+.offcanvas-body::-webkit-scrollbar {
+  display: none; 
+}
 
 #trolley{
   background: url('/images/favicon-transparent.webP');
@@ -659,3 +665,5 @@ footer a{
   font-weight: 700!important;
   border-radius: 10px;
 }
+
+
