@@ -536,12 +536,7 @@ footer a{
   }
   .disappear-small{display: none;
   }
-  .disappear-large-text{
-    display: block;
-    width: 150px;
-    height: auto;
-    margin-bottom: 5px;
-  }
+  
   
   
   .p-5{
@@ -663,12 +658,6 @@ footer a{
     padding: 3px 10px;
   }
 }
-
-
-
-
-
-
 .text-empf{
   color: rgb(255, 255, 255) !important;
   background-color: black;
@@ -676,5 +665,6 @@ footer a{
   font-weight: 700!important;
   border-radius: 10px;
 }
+
 
 
