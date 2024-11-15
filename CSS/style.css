@@ -36,8 +36,13 @@ body::before {
   height: auto;
 }
 
+
 .logo{
-  width: 100px;        
+  position: absolute;
+  top: -23px;
+  left: -33px;
+  z-index: 9999999999999999999999999999999999 !important;
+  width: 180px;        
   height: auto !important;       
   object-fit: contain;
 }
@@ -68,11 +73,14 @@ header {
 
 .navbar{
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5) !important;
+  min-height: 70px;
+  z-index: 99999999999999999 !important;
+  
 }
 .price{
   position: absolute;
   right: 0;
-  bottom: -100%;
+  bottom: -200%;
   text-decoration: none;
   color: white;
   font-weight: bold;
@@ -246,7 +254,7 @@ section.blanc{
   width: 600px;
   height: 750px;
   position: fixed;
-  bottom: 0%;
+  bottom: -70px;
   right: -1800px;
   z-index: 999999999;
   transition: right 6s;
