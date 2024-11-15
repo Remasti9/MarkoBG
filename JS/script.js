@@ -1,8 +1,5 @@
 const navbar = document.querySelector('.navbar-collapse');
 const callFrame = document.querySelector('.call-frame');
-const logo = document.getElementById('logo');
-const logoFrame = document.querySelector('.flex-center');
-const logoText = document.querySelector('.disappear-large-text');
 const trolleyBtn= document.getElementById('trolley-animation');
 const trolley= document.getElementById('trolley');
 
@@ -235,10 +232,6 @@ document.querySelectorAll('.nav-link').forEach((link) => {
      }
     document.querySelectorAll('.nav-link').forEach((marked) =>marked.classList.remove('active'));
        link.classList.add('active');
-      logoFrame.classList.remove('logo-frame-toggle');
-      logo.classList.remove('logo-toggle');
-      logoText.style.width='150px';
-      logoText.style.marginLeft='0%';
     if (navbar.classList.contains('show')) {
       navbar.classList.remove('show');
     }
@@ -255,11 +248,7 @@ document.querySelectorAll('.nav-link').forEach((link) => {
 });
 function adjustLineBreak() {
   const span = document.querySelector('.br-tag');
-  if(window.innerWidth>=768 && window.innerWidth<992){
-    logoFrame.style.display='none';
-  }else{
-    logoFrame.style.display='flex';
-  }
+ 
   
   if (window.innerWidth < 768) {
       if (!span.innerHTML.includes('<br>')) {
