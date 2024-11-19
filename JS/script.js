@@ -2,6 +2,7 @@ const navbar = document.querySelector('.navbar-collapse');
 const callFrame = document.querySelector('.call-frame');
 const trolleyBtn= document.getElementById('trolley-animation');
 const trolley= document.getElementById('trolley');
+const logoBig = document.querySelector('.logo');
 
 
 
@@ -283,12 +284,13 @@ function adjustAboutUS(){
 
 
 window.addEventListener('load', () => {
-  
+  positionOfLogoBig();
   adjustLineBreak();
   heroTextAnimate();
   window.scrollTo(0, 0); 
 });
 window.onresize =()=>{
+  positionOfLogoBig();
   adjustAboutUS();
   adjustLineBreak();
 } 
@@ -301,6 +303,7 @@ window.addEventListener('scroll',()=>{
      }, 3000)
    })
 });
+
 
 function handleBodyImg() {
   const bodyBg = document.querySelector('.body-background img'); // Odaberi sliku
@@ -359,3 +362,23 @@ trolleyBtn.addEventListener('click',e=>{
   trolleyBtn.style.display='none';
   trolley.style.right='1800px';
 });
+
+
+function positionOfLogoBig() {
+  const windowWidth = window.innerWidth; // Trenutna širina prozora
+  const computedStyle = getComputedStyle(logoBig); // Uzimamo trenutne stilove elementa
+  const originalLeft = parseInt(computedStyle.left, 10); // Parsiramo `left` u broj
+
+  if (windowWidth > 1400) {
+    // Izračunaj višak širine i oduzmi ga od `left`
+    const excessWidth = windowWidth - 1400;
+    const newLeftValue = originalLeft - excessWidth;
+    console.log(newLeftValue); // Ovo će biti broj
+    logoBig.style.left = `${newLeftValue/3}px`;
+  } else {
+    // Resetuj `left` na originalnu vrednost iz CSS-a
+    logoBig.style.left = ""; // Ovo vraća na stil iz CSS-a
+  }
+}
+
+
