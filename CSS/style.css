@@ -34,6 +34,9 @@ body::before {
   width: 100%;
   max-width: 100px;
   height: auto;
+  position: absolute;
+  right: 0px;
+  top: -15px;
 }
 
 
