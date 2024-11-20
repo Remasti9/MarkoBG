@@ -512,7 +512,13 @@ footer a{
     padding: 0 !important;
   }
   .nav-link{margin-right: 10px;}
-  .navbar-toggler{margin-left: 5px;position: absolute; right: 0;}
+  .navbar-toggler{
+    margin-left: 5px;
+    position: absolute;
+    right: 5px;
+    color: #3490DC !important;
+  }
+ 
   #landing,
   #principles{
     min-height: fit-content  !important;
