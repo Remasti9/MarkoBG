@@ -35,7 +35,7 @@ body::before {
   max-width: 100px;
   height: auto;
   position: absolute;
-  right: 0px;
+  left: 0px;
   top: -15px;
 }
 
@@ -498,16 +498,21 @@ footer a{
   .news-input {
     width: 50%;
   }
-  
- 
 }
+
+@media  (min-width: 993px) and (max-width:1224px){
+  .price{
+    right: 55%;
+  }
+}
+
 @media  (max-width: 993px) {  
   
   .container{
     padding: 0 !important;
   }
   .nav-link{margin-right: 10px;}
-  .navbar-toggler{margin-left: 5px;}
+  .navbar-toggler{margin-left: 5px;position: absolute; right: 0;}
   #landing,
   #principles{
     min-height: fit-content  !important;
@@ -577,7 +582,7 @@ footer a{
 
   .price{
     position: relative;
-    right: 0;
+    right: -40%;
   bottom: 0;
     padding: 3px 15px;
     font-size: 1.4rem;
@@ -680,5 +685,9 @@ footer a{
   border-radius: 10px;
 }
 
-
+@media  (width: 992px) {
+  .price{
+    right: -30%;
+  }
+}
 
