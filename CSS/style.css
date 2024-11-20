@@ -82,20 +82,20 @@ header {
 }
 .price{
   position: absolute;
-  right: 0;
-  bottom: -200%;
+  right: 75%;
+  bottom: -7px;
   text-decoration: none;
   color: white;
   font-weight: bold;
-  background-color: #9a7401;
+  background-color: rgb(1, 158, 216);
   padding: 3px 15px;
-  border-radius: 10px;
+  border-radius: 5px;
   font-size: 2rem;
 }
 .price:hover{
-  color: #9a7401;
+  color: rgb(1, 158, 216);
   background-color: rgb(255, 255, 255);
-  border: 2px solid #9a7401;
+  border: 2px solid rgb(1, 158, 216);
 }
 .nav-link {
   position: relative;
@@ -247,7 +247,7 @@ section.blanc{
 .offcanvas-logo{
   position: absolute;
   width: 250px;
-  top: 10%;
+  top: 2%;
   left: 2%;
 }
 
@@ -577,8 +577,9 @@ footer a{
 
   .price{
     position: relative;
+    right: 0;
+  bottom: 0;
     padding: 3px 15px;
-    border-radius: 10px;
     font-size: 1.4rem;
   }
   .show-odd-last .last{

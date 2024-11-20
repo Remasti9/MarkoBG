@@ -243,7 +243,6 @@ document.querySelectorAll('.nav-link').forEach((link) => {
         window.scrollBy(0,-80)
       }
     }, 1000);
-    document.querySelector('.price').style.display = 'block';
     switcher = true;
   });
 });
@@ -313,7 +312,7 @@ function handleBodyImg() {
  
  // console.log(scrollPosition);
    if(window.innerWidth>768){
-    if (scrollPosition < 3000) {
+    if (scrollPosition < 4000) {
       bodyBg.src = './images/material/body2.jpg'; 
       bodyBg.style.marginTop='0px';
     } else {
@@ -321,7 +320,7 @@ function handleBodyImg() {
       bodyBg.style.marginTop='0px';
     }
    } else{
-    if(scrollPosition<3000){
+    if(scrollPosition<4000){
       bodyBg.src = './images/material/body-small.webP';
       bodyBg.style.marginTop='150px';
     } else{
@@ -337,7 +336,7 @@ function handleBodyImg() {
 
 document.querySelector('.price').addEventListener('click',()=>{
   setTimeout(()=>{window.scrollBy(0, -60); },1000)
-  if(window.innerWidth>768)  document.querySelector('.price').style.display = 'none';
+  
   document.querySelector('.switcher').style.display='block';
   document.getElementById('blog').style.display='none';
   document.querySelectorAll('.nav-link').forEach((marked) =>marked.classList.remove('active'));
