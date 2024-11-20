@@ -305,6 +305,7 @@ document.addEventListener('DOMContentLoaded', function () {
       showBlogTitle.innerHTML = `${title}</span>`;
       showBlogText.textContent = text;
       showBlogImg.src = imgSrc;
+      window.scrollTo(0,0)
     }
   
     // Dodavanje event listenera za sve 'a' tagove unutar članaka
@@ -317,7 +318,9 @@ document.addEventListener('DOMContentLoaded', function () {
   
       link.addEventListener('click', function (event) {
         // Sprečava default ponašanje linka
+        event.preventDefault();
         updateBlogShow(h2, p, imgSrc);
+        
       });
     });
   });
