@@ -535,7 +535,9 @@ footer a{
   #landing h2{
     display: inline-block;
     margin-right: 1rem;
-    font-size: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-style: italic;
   }
   .landing-text-wrapper{
     width: 100%;
