@@ -83,19 +83,19 @@ header {
 .price{
   position: absolute;
   right: 75%;
-  bottom: -7px;
+  bottom: -9px;
   text-decoration: none;
-  color: white;
+  color: rgb(0, 0, 0);
   font-weight: bold;
   background-color: rgb(1, 158, 216);
   padding: 3px 15px;
   border-radius: 5px;
   font-size: 2rem;
+  border: 3px solid black;
 }
 .price:hover{
-  color: rgb(1, 158, 216);
+  color: rgb(0, 0, 0);
   background-color: rgb(255, 255, 255);
-  border: 2px solid rgb(1, 158, 216);
 }
 .nav-link {
   position: relative;
