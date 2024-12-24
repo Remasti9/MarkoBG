@@ -27,7 +27,7 @@ document.getElementById("send-button1").addEventListener("click", function () {
     const body = encodeURIComponent(
       `Ime: ${name}\nEmail: ${email}\nPoruka: ${message}`
     );
-    const mailtoLink = `mailto:marko.vracaricic.83@gmail.com?subject=${subject}&body=${body}`;
+    const mailtoLink = `mailto:vdmmarko@gmail.com?subject=${subject}&body=${body}`;
 
     // Otvaranje mailto linka u novom prozoru
     window.open(mailtoLink, '_blank');
@@ -54,7 +54,7 @@ document.getElementById("send-button2").addEventListener("click", function () {
     const body = encodeURIComponent(
       `Ime: ${name}\nEmail: ${email}\nPoruka: ${message}`
     );
-    const mailtoLink = `mailto:marko.vracaricic.83@gmail.com?subject=${subject}&body=${body}`;
+    const mailtoLink = `mailto:vdmmarko@gmail.com?subject=${subject}&body=${body}`;
 
     // Otvaranje mailto linka u novom prozoru
     window.open(mailtoLink, '_blank');
