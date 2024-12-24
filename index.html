@@ -105,6 +105,7 @@
 
 <!-- Deferred JavaScript -->
      <script defer src="JS/about-me.js"></script>
+     <script defer src="JS/form.js"></script>
      <script defer src="JS/blog.js"></script>
     <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script defer src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
@@ -233,7 +234,9 @@
 
 
 <!--Break-->   
-<!-- <div  class="breaking-section"></div> -->
+<div  class="breaking-section text-center">
+  <h2 class=" mob-phone-pos wow animate__animated animate__backInLeft">+381-65-43-43-363</h2>
+</div>
 <main>
 
 <div class="switcher">
@@ -248,21 +251,21 @@
     <form>
         <div className="mb-3">
             <label htmlFor="first-name" class="col-form-label">Ime:</label>
-            <input type="text" class="form-control" id="first-name" />
+            <input type="text" class="form-control" id="first-name1" />
         </div>
        
         <div class="mb-3">
-            <label htmlFor="email" class="col-form-label">Email:</label>
-            <input type="email" class="form-control" id="email" />
+            <label htmlFor="email1" class="col-form-label">Email:</label>
+            <input type="email" class="form-control" id="email1" />
         </div>
         
 <div class="mb-3">
-<textarea id="textarea" class="form-control mt-4" rows="6" placeholder="Unesite vašu poruku ovde..."></textarea>
+<textarea id="textarea1" class="form-control mt-4" rows="6" placeholder="Unesite vašu poruku ovde..."></textarea>
 </div>
     </form>
     <div >
-    <button type="button" class="btn btn-secondary me-1" data-bs-dismiss="modal">poništi</button>
-    <button type="button" class="btn btn-primary">Pošalji</button>
+    <button type="button" id="reset-button1" class="btn btn-secondary me-1" data-bs-dismiss="modal">Poništi</button>
+    <button type="button" id="send-button1" class="btn btn-primary">Pošalji</button>
     </div>
     </div>
  
@@ -294,21 +297,21 @@
                 <div class="carousel-item active ">
                     <img src="images/hero1Img.webP" class="img-fluid img-c-width  d-sm-block" alt="img1"  style="aspect-ratio: 640/427;" loading="eager">
                     <h1 class="set-abs set-abs1 wow animate__animated animate__backInLeft mb-5 ">Selidbe - Beograd - Prevoz</h1>
-                    <h2 class="set-abs set-abs2 wow animate__animated animate__backInLeft">+381-65-43-43-363</h2>
+                    
                 </div>
-                <!-- Second image -->
-                <div class="carousel-item">
+                
+                <!-- <div class="carousel-item">
                     <img src="images/hero2img.webP" class="img-fluid img-c-width  d-sm-block" alt="img2" loading="lazy">
                     <h1 class="set-abs  set-abs1 wow animate__animated animate__backInLeft  ">Transport - Stvari - Robe</h1>
                     <h2 class="set-abs  set-abs2 wow animate__animated animate__backInLeft">+381-65-43-43-363</h2>
                 </div>
-                <!-- Third image -->
+                
                 <div class="carousel-item  ">
                     <img src="images/hero3img.jpg" class="img-fluid img-c-width  d-sm-block " alt="img3"  loading="lazy">
                     <h1 class="set-abs  set-abs1 wow animate__animated animate__backInLeft   ">Otvoreni za svaki dogovor.</h1>
                     <h2 class="set-abs  set-abs2 wow animate__animated animate__backInLeft">+381-65-43-43-363</h2>
                 </div>
-                <!-- Fourth image -->
+                
                 <div class="carousel-item ">
                     <img src="images/material/kombi1.webP" class="img-fluid img-c-width  d-sm-block" alt="img4"  loading="lazy">
                     <h1 class="set-abs  set-abs1 wow animate__animated animate__backInLeft  ">Rešenje za svaku situaciju.</h1>
@@ -338,7 +341,7 @@
                     <img src="images/pexels-cottonbro-4554395.jpg" class="img-fluid img-c-width  d-sm-block" alt="img4"  loading="lazy">
                     <h1 class="set-abs  set-abs1 wow animate__animated animate__backInLeft ">Javite se i zaigrajmo!</h1>
                     <h2 class="set-abs  set-abs2 wow animate__animated animate__backInLeft">+381-65-43-43-363</h2>
-                </div>
+                </div> -->
             </div>
         </div>
       </div>
@@ -938,7 +941,7 @@
                         <span class="fw-bold">Fiksni:</span>&nbsp;&nbsp;&nbsp;xxxxxxxxxx
                     </li>
                     <li class="list-group-item border-0 border-bottom bg-dark text-white ">
-                        <span class="fw-bold ">Email:</span><a id="email" class="text-white text-decoration-none" href="mailto:vdmmarko@gmail.com">&nbsp;&nbsp;&nbsp;&nbsp;vdmmarko@gmail.com</a>
+                        <span class="fw-bold ">Email:</span><a id="email-contact" class="text-white text-decoration-none" href="mailto:marko.vracaricic.83@gmail.com">&nbsp;&nbsp;&nbsp;&nbsp;vdmmarko@gmail.com</a>
                     </li>
                     <li class="list-group-item border-0 border-bottom bg-dark text-white ">
                         
