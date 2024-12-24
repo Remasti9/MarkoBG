@@ -719,3 +719,6 @@ footer a{
   }
 }
 
+.text-decoration-none:hover{
+  color: gray !important;
+}
