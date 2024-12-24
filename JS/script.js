@@ -237,11 +237,20 @@ document.querySelectorAll('.nav-link').forEach((link) => {
       navbar.classList.remove('show');
     }
     setTimeout(() => {
-      if(window.innerWidth<768){
-        window.scrollBy(0, -60); 
-      } else {
-        window.scrollBy(0,-80)
+      if(document.getElementById('blog').style.display ==='block' || document.getElementById('gallery' ).style.display=== 'block'){
+        window.scrollTo(0,-100)
+        return
+      } 
+      if(e.target.textContent==='Početna'){
+        window.scrollTo(0,0)
+        return
       }
+      if(window.innerWidth<768){
+        window.scrollBy(0, -70); 
+      } else {
+        window.scrollBy(0,-60)
+      }
+      
     }, 1000);
     switcher = true;
   });
@@ -335,7 +344,7 @@ function handleBodyImg() {
 }
 
 document.querySelector('.price').addEventListener('click',()=>{
-  setTimeout(()=>{window.scrollBy(0, -60); },1000)
+  setTimeout(()=>{window.scrollBy(0, -40); },1000)
   
   document.querySelector('.switcher').style.display='block';
   document.getElementById('blog').style.display='none';
@@ -351,7 +360,7 @@ document.querySelectorAll('#footer a').forEach(link => {
       
     backAtMain();
     setTimeout(() => {
-      window.scrollBy(0, -60);
+      window.scrollBy(0, -40);
     }, 1000);
   });
 });
