@@ -402,7 +402,7 @@ section.blanc{
 #textarea::placeholder{
   color: black;
 }
-#email, #first-name{
+#email1, #first-name1, #email2, #first-name2{
   background-color: rgba(255, 255, 255, 0.7) !important;
 }
 @media (max-width:1024px) {
