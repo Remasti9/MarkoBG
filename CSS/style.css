@@ -119,12 +119,17 @@ header {
 .nav-link.active::after {
   width: 100%;
 }
-
+#main-mobile-nav{
+  top: 1%;
+  left: 35%;
+  cursor: pointer;
+}
 .mob-phone-pos{
   position: relative;
   top: 5px;
   left: 0;
   font-weight: bold;
+  cursor: pointer;
 }
 @media (max-width:993px) {
   .mob-phone-pos{

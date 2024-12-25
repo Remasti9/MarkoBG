@@ -393,10 +393,13 @@ function positionOfLogoBig() {
 
 function mainMobilePhone(){
    const mobilePhone = document.getElementById('main-mobile-phone-break');
+   const mobileNav = document.getElementById('main-mobile-nav');
   if(window.innerWidth>1225) {
     mobilePhone.style.display='none';
+    mobileNav.style.display='block';
   } else {
     mobilePhone.style.display='block';
+    mobileNav.style.display='none';
   }
 }
 
