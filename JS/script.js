@@ -1,6 +1,6 @@
 const navbar = document.querySelector('.navbar-collapse');
 const callFrame = document.querySelector('.call-frame');
-const trolleyBtn= document.getElementById('trolley-animation');
+
 const trolley= document.getElementById('trolley');
 const logoBig = document.querySelector('.logo');
 
@@ -305,6 +305,7 @@ window.onresize =()=>{
   mainMobilePhone();
 } 
 window.addEventListener('scroll',()=>{
+  handleTrolleyAnimation();
   handleBodyImg()
    callFrame.style.display='flex';
    window.addEventListener('scrollend',()=>{
@@ -314,7 +315,16 @@ window.addEventListener('scroll',()=>{
    })
 });
 
+let hasAnimated = false; 
 
+function handleTrolleyAnimation() {
+  
+  if (!hasAnimated && window.scrollY > 5000) {
+   
+    trolley.style.right = '1800px';
+    hasAnimated = true; 
+  }
+}
 function handleBodyImg() {
   const bodyBg = document.querySelector('.body-background img'); // Odaberi sliku
  
@@ -367,11 +377,6 @@ document.querySelectorAll('#footer a').forEach(link => {
   });
 });
 
-trolleyBtn.addEventListener('click',e=>{
-  e.preventDefault();
-  trolleyBtn.style.display='none';
-  trolley.style.right='1800px';
-});
 
 
 function positionOfLogoBig() {
