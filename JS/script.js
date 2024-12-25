@@ -318,13 +318,20 @@ window.addEventListener('scroll',()=>{
 let hasAnimated = false; 
 
 function handleTrolleyAnimation() {
-  
-  if (!hasAnimated && window.scrollY > 5000) {
+  if(window.innerWidth>1224){
+    if (!hasAnimated && window.scrollY > 5000) {
    
-    trolley.style.right = '1800px';
-    hasAnimated = true; 
+      trolley.style.right = '1800px';
+      hasAnimated = true; 
+    } else{
+      if (!hasAnimated && window.scrollY > 6000) {
+   
+        trolley.style.right = '1800px';
+        hasAnimated = true; 
+    }
   }
-}
+  
+  }}
 function handleBodyImg() {
   const bodyBg = document.querySelector('.body-background img'); // Odaberi sliku
  
