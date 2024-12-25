@@ -120,11 +120,13 @@ header {
   width: 100%;
 }
 #main-mobile-nav{
+  display: none;
   top: 1%;
   left: 35%;
   cursor: pointer;
 }
 .mob-phone-pos{
+  display: none;
   position: relative;
   top: 5px;
   left: 0;
