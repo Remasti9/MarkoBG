@@ -323,15 +323,16 @@ function handleTrolleyAnimation() {
    
       trolley.style.right = '1800px';
       hasAnimated = true; 
-    } else{
-      if (!hasAnimated && window.scrollY > 6000) {
+    } 
+  } else {
+    if (!hasAnimated && window.scrollY > 6000) {
    
-        trolley.style.right = '1800px';
-        hasAnimated = true; 
-    }
+      trolley.style.right = '1800px';
+      hasAnimated = true; 
+    } 
   }
   
-  }}
+  }
 function handleBodyImg() {
   const bodyBg = document.querySelector('.body-background img'); // Odaberi sliku
  
