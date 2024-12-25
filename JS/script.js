@@ -344,7 +344,7 @@ function handleBodyImg() {
 }
 
 document.querySelector('.price').addEventListener('click',()=>{
-  setTimeout(()=>{window.scrollBy(0, -40); },1000)
+  setTimeout(()=>{window.scrollBy(0, -60); },1000)
   
   document.querySelector('.switcher').style.display='block';
   document.getElementById('blog').style.display='none';
