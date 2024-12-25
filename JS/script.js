@@ -295,12 +295,14 @@ window.addEventListener('load', () => {
   positionOfLogoBig();
   adjustLineBreak();
   heroTextAnimate();
+  mainMobilePhone();
   window.scrollTo(0, 0); 
 });
 window.onresize =()=>{
   positionOfLogoBig();
   adjustAboutUS();
   adjustLineBreak();
+  mainMobilePhone();
 } 
 window.addEventListener('scroll',()=>{
   handleBodyImg()
@@ -386,6 +388,15 @@ function positionOfLogoBig() {
   } else {
     // Resetuj `left` na originalnu vrednost iz CSS-a
     logoBig.style.left = ""; // Ovo vraća na stil iz CSS-a
+  }
+}
+
+function mainMobilePhone(){
+   const mobilePhone = document.getElementById('main-mobile-phone-break');
+  if(window.innerWidth>1225) {
+    mobilePhone.style.display='none';
+  } else {
+    mobilePhone.style.display='block';
   }
 }
 
