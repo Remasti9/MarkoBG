@@ -713,9 +713,6 @@ footer a{
 .text-empf{
   font-size: larger;
   font-weight: 900;
-  font-style: italic;
-  text-decoration: underline;
-  padding-inline: 1rem;
   font-weight: 700!important;
   border-radius: 10px;
 }

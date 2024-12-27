@@ -71,8 +71,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 var map = L.map('map', {
-  center: [44.8189, 20.4559],  // Dorćol, Beograd
-  zoom: 15,
+  center: [44.81887829183132, 20.46201289627609],  // Dorćol, Beograd
+  zoom: 14,
   dragging: !L.Browser.mobile,  // Onemogući dragging na mobilnim uređajima
   touchZoom: true,  // Dozvoljava touch zoom
   tap: false,  // Sprečava zoom na jedan prst
