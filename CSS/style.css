@@ -464,6 +464,9 @@ section.blanc{
 #principles{
   position: relative;
 }
+#principles p{
+  padding-inline: 1.5rem;
+}
 .principles-text{
   padding: 0 1.5rem !important;
   text-align: justify;
