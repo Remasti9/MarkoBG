@@ -592,7 +592,7 @@ footer a{
   .disappear-small{display: none;
   }
   
-  
+ 
   
   .p-5{
     padding: 1.5rem 0  !important;
@@ -743,4 +743,13 @@ nav{
 }
 .navbar-light .navbar-nav .nav-link {
   color: white !important;
+}
+
+@media (max-width: 992px) {
+  .navbar-light .navbar-nav .nav-link {
+    color: black !important;
+  }
+  .nav-link::after {
+    background-color: #000000; /* Boja linije */
+  }
 }
