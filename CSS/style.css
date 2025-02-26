@@ -735,6 +735,9 @@ footer a{
   background-color: rgba(243, 244, 246,1) !important;
 
 }
+.text-danger{
+  color: white !important;
+}
 nav{
   background-color:rgb(2, 114, 218);
 }
