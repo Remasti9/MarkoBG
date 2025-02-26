@@ -730,3 +730,8 @@ footer a{
 .text-decoration-none:hover{
   color: gray !important;
 }
+
+.bg-white{
+  background-color: rgba(245, 245, 220, 1) !important;
+
+}
