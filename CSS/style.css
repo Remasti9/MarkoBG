@@ -250,7 +250,7 @@ section {
   overflow-x: hidden;
   display: grid;
   place-items: center;
- background-color: white;
+ background-color: rgba(243, 244, 246,1) ;
  overflow-y: hidden;
 }
 section.blanc{
@@ -292,7 +292,7 @@ section.blanc{
 
 .breaking-section{
   height: 2rem;
-  background-color: white;
+  background-color: rgba(243, 244, 246,1) ;
 }
 #about-us .container{
    margin:  0;
