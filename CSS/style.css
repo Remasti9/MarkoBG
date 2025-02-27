@@ -205,6 +205,7 @@ body::-webkit-scrollbar-track {
   padding: .5rem 2rem;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 10px;
+  color: steelblue;
 }
 .set-abs1{
  
