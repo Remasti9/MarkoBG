@@ -371,10 +371,10 @@ section.blanc{
   position: absolute;
   z-index: 99999999;
   top: 20%;
-  left: -5%;
-  border: 3.5px solid white;
+  left: .3%;
+  border: 5px solid white;
   border-radius: 20px; 
-  padding: 1rem 5.5rem;
+  padding: 1rem .5rem;
   margin-top: 3rem;
    margin-right:40%;
 }
