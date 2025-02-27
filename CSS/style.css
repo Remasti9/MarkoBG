@@ -127,6 +127,9 @@ header {
     top: 30px;
     left: 0;
   }
+  #reviewsLarge{
+    display: none;
+  }
 }
 @media (min-width:993px) and (max-width:1200px) {
   .mob-phone-pos{
