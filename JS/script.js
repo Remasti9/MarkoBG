@@ -196,13 +196,13 @@ document.querySelectorAll('.nav-link').forEach((link) => {
       document.getElementById('footer').style.display='none';
     if(window.innerWidth>1014)  document.getElementById('about-us').style.display='block';
     if(window.innerWidth<=1014)  document.getElementById('about-us-small').style.display='block';
-      document.querySelector('.breaking-section').style.backgroundColor='white';
+      document.querySelector('.breaking-section').style.backgroundColor='rgba(243, 244, 246,1) ';
     } else if(link.firstChild.textContent === 'Blog'){
       document.querySelector('.switcher').style.display='none';
       if(window.innerWidth>1014)  document.getElementById('about-us').style.display='none';
       if(window.innerWidth<=1014)  document.getElementById('about-us-small').style.display='none';
       document.querySelector('.breaking-section').style.display='block';
-      document.querySelector('.breaking-section').style.backgroundColor='white';
+      document.querySelector('.breaking-section').style.backgroundColor='rgba(243, 244, 246,1) ';
       document.getElementById('blog').style.display='block';
       document.getElementById('gallery').style.display='none';
       document.getElementById('contact').style.display='block';
@@ -226,7 +226,7 @@ document.querySelectorAll('.nav-link').forEach((link) => {
              backAtMain();
              if(window.innerWidth>1014)  document.getElementById('about-us').style.display='none';
              if(window.innerWidth<=1014)  document.getElementById('about-us-small').style.display='none';
-             document.querySelector('.breaking-section').style.backgroundColor='white';
+             document.querySelector('.breaking-section').style.backgroundColor='rgba(243, 244, 246,1) ';
              document.querySelector('.breaking-section').style.display='block';
              document.getElementById('contact').style.display='block';
       document.getElementById('footer').style.display='block';
