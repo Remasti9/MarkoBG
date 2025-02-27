@@ -363,15 +363,7 @@ function handleBodyImg() {
   bodyBg.style.objectFit = 'contain';
 }
 
-document.querySelector('.price').addEventListener('click',()=>{
-  setTimeout(()=>{window.scrollBy(0, -60); },1000)
-  
-  document.querySelector('.switcher').style.display='block';
-  document.getElementById('blog').style.display='none';
-  document.querySelectorAll('.nav-link').forEach((marked) =>marked.classList.remove('active'));
-  document.getElementById('set-services').classList.add('active');
- 
-});
+
 
 // ---===== Footer=====---
 

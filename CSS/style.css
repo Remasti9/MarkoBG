@@ -80,23 +80,8 @@ header {
   z-index: 99999999999999999 !important;
   
 }
-.price{
-  position: absolute;
-  right: 74.5%;
-  bottom: -9px;
-  text-decoration: none;
-  color: rgb(0, 0, 0);
-  font-weight: 400;
-  background-color: #ffc107;
-  padding: 3px 15px;
-  border-radius: 5px;
-  font-size: 2rem;
-  border: 3px solid black;
-}
-.price:hover{
-  color: black;
-  outline: 3px solid green;
-}
+
+
 .nav-link {
   position: relative;
   margin-right: 0;
@@ -121,9 +106,10 @@ header {
 }
 #main-mobile-nav{
   display: none;
-  top: 1%;
-  left: 35%;
+  top: 20%;
+  left: 29%;
   cursor: pointer;
+  
 }
 .mob-phone-pos{
   display: none;
@@ -535,11 +521,6 @@ footer a{
   }
 }
 
-@media  (min-width: 993px) and (max-width:1224px){
-  .price{
-    right: 55%;
-  }
-}
 
 @media  (max-width: 993px) {  
   
@@ -623,13 +604,7 @@ footer a{
     animation: none !important;
   }
 
-  .price{
-    position: relative;
-    right: -40%;
-  bottom: 0;
-    padding: 3px 15px;
-    font-size: 1.4rem;
-  }
+  
   .show-odd-last .last{
     margin-left: 0;
   }
@@ -712,12 +687,7 @@ footer a{
 }
 }
 
-@media (max-width:340px){
-  .price{
-    font-size: 1rem;
-    padding: 3px 10px;
-  }
-}
+
 .text-empf{
   font-size: larger;
   font-weight: 900;
@@ -725,11 +695,7 @@ footer a{
   border-radius: 10px;
 }
 
-@media  (width: 992px) {
-  .price{
-    right: -30%;
-  }
-}
+
 
 .text-decoration-none:hover{
   color: gray !important;
