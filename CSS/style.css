@@ -36,7 +36,7 @@ body::before {
   height: auto;
   position: absolute;
   left: 3px;
-  top: -10px;
+  top: -17px;
 }
 
 
@@ -107,7 +107,7 @@ header {
 #main-mobile-nav{
   display: none;
   top: 20%;
-  left: 29%;
+  left: 20%;
   cursor: pointer;
   
 }
@@ -437,6 +437,19 @@ section.blanc{
   color: rgba(255, 255, 255, 0.786) !important;
   border-radius: 5px !important;
 }
+#instagram-nav{
+  background: linear-gradient(45deg, #F58529, #EB5286, #C05AED, #3490DC) !important;
+  color: rgba(255, 255, 255, 0.786) !important;
+  border-radius: 6px !important;
+  display: inline;
+}
+#main-mobile-nav li,
+.mob-phone-pos li{
+  display: inline;
+  list-style-type: none;
+  width: fit-content;
+  margin-left: 1rem;
+}
 
 .show-odd{
   background: linear-gradient(155.5deg,gray 50%,white 50%) !important;
@@ -735,4 +748,14 @@ nav{
     font-weight: normal !important;
     font-size: 24px !important;
   }
+}
+.fa-phone {
+  color: #1cd71c;
+  display: inline-block; /* Potrebno za transformaciju */
+  transform: rotate(90deg);
+  margin-right: 1rem;
+}
+
+.fa-phone:before {
+  color: #1cd71c;
 }
