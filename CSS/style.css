@@ -779,6 +779,8 @@ nav{
     color: #0d6efd !important;
     font-weight: normal !important;
     font-size: 24px !important;
+    position: relative;
+    z-index: 9999999999999999999;
     
   }
 }
