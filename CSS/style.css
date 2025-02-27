@@ -218,7 +218,7 @@ body::-webkit-scrollbar-track {
   transition: .3s;
 }
 .review-card:hover{
-transform: scale(1.1);
+transform: scale(1.08);
 transition: .3s;
 }
 
