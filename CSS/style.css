@@ -106,11 +106,12 @@ header {
 }
 #main-mobile-nav{
   display: none;
-  top: 20%;
-  left: 20%;
+  top: -5px;
+  left: 15%;
   cursor: pointer;
   
 }
+
 .mob-phone-pos{
   display: none;
   position: relative;
@@ -119,6 +120,8 @@ header {
   font-weight: bold;
   cursor: pointer;
 }
+
+
 @media (max-width:993px) {
   .mob-phone-pos{
     top: 30px;
@@ -466,6 +469,7 @@ section.blanc{
   list-style-type: none;
   width: fit-content;
   margin-left: 1rem;
+  
 }
 
 .show-odd{
@@ -772,6 +776,7 @@ nav{
     color: #0d6efd !important;
     font-weight: normal !important;
     font-size: 24px !important;
+    
   }
 }
 .fa-phone {
@@ -784,3 +789,18 @@ nav{
 .fa-phone:before {
   color: #1cd71c;
 }
+
+h2 img{
+ 
+  position: relative !important;
+  top: -10px !important;
+}
+
+@media (min-width:1200px) {
+  h2 img{
+    top: -7px !important;
+    margin-left: 4rem;
+  }
+}
+
+
