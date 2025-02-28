@@ -386,7 +386,7 @@ section.blanc{
 }
 #ask-section{
   position: absolute;
-  z-index: 99999999;
+  z-index: 99999999999999999999999999;
   top: 20%;
   left: .3%;
   border: 5px solid white;
@@ -788,7 +788,7 @@ nav{
     font-weight: normal !important;
     font-size: 24px !important;
     position: relative;
-    z-index: 9999999999999999999;
+    z-index: 99999;
     
   }
 }
