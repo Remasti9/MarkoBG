@@ -128,6 +128,14 @@ header {
     left: 0;
   }
   #reviewsLarge{
+   display: none;
+  }
+}
+#reviewsSmall{
+  display: block;
+}
+@media (min-width:992px) {
+  #reviewsSmall{
     display: none;
   }
 }
