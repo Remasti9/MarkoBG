@@ -216,8 +216,8 @@ body::-webkit-scrollbar-track {
 .set-abs2{
 
   top: 5%;
-  left: -2%;
-  right: -2%;
+  left: -3%;
+  right: -3%;
   height: 280px;
  display: flex;
  justify-content: space-between;
