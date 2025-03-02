@@ -484,18 +484,9 @@ section.blanc{
 }
 
 .show-odd{
-  background: linear-gradient(155.5deg,gray 50%,white 50%) !important;
+  background: rgba(243, 244, 246,1)  !important;
 }
-.show-odd-last{
-  background: linear-gradient(155.5deg,gray 50%,white 50%) !important;
-  
-}
-.show-odd-last .last{
-  padding: 1.5rem !important;
-  border-radius: 10px;
-  background: rgba(200, 200, 200, 1);
-  margin-left: 1rem;
-}
+
 #principles{
   position: relative;
 }
@@ -509,7 +500,7 @@ section.blanc{
 }
 
 .show-even{
-  background: linear-gradient(335.5deg,gray 50%,white 50%) !important;
+  background: rgba(243, 244, 246,1) !important;
 }
 .switcher{
   display: block;  
@@ -659,9 +650,7 @@ z-index: 99999999999999999999999999999999999999 !important;
   }
 
   
-  .show-odd-last .last{
-    margin-left: 0;
-  }
+ 
  
   .set-abs1{
     top: 5%;
@@ -723,10 +712,10 @@ z-index: 99999999999999999999999999999999999999 !important;
     width: 0;
   }
   .show-odd{
-    background: linear-gradient(50.5deg,gray 50%,white 50%) !important;
+    background: rgba(243, 244, 246,1)  !important;
   }
   .show-even{
-    background: linear-gradient(230.5deg,gray 50%,white 50%) !important;
+    background: rgba(243, 244, 246,1) !important;
   }
   i{
     display: none;
@@ -734,9 +723,7 @@ z-index: 99999999999999999999999999999999999999 !important;
   #material-reverse{
     flex-direction: column !important;
   }
-  .show-odd-last{
-    background: linear-gradient(155.5deg,white 50%,transparent 50%) !important;
-  }
+ 
   
 }
 }
