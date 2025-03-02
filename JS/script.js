@@ -319,13 +319,13 @@ let hasAnimated = false;
 
 function handleTrolleyAnimation() {
   if(window.innerWidth>1224){
-    if (!hasAnimated && window.scrollY > 5000) {
+    if (!hasAnimated && window.scrollY > 6000) {
    
       trolley.style.right = '1800px';
       hasAnimated = true; 
     } 
   } else {
-    if (!hasAnimated && window.scrollY > 6000) {
+    if (!hasAnimated && window.scrollY > 8000) {
    
       trolley.style.right = '1800px';
       hasAnimated = true; 
