@@ -806,5 +806,25 @@ h2 img{
 
 
 .hKNXgO .Popup__StyledContent-sc-bd151fd3-1{
+  position:relative;
   margin-top: 100px !important;
+  flex-grow: 0 !important;
+  border-radius: 10px;
 }
+.hKNXgO .Popup__StyledContent-sc-bd151fd3-1::after{
+  content: 'Zatvori';
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  padding: 2px 4px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+
+
+
+
