@@ -1282,47 +1282,28 @@
         new WOW().init();
 
         document.addEventListener("DOMContentLoaded", function() {
-    const observer = new MutationObserver(function(mutations) {
-      mutations.forEach(function(mutation) {
-        // Selektujemo popup element
-        const popup = document.querySelector(".hKNXgO .Popup__StyledContent-sc-bd151fd3-1");
-        
-        // Ako element postoji, dodajemo event listener
-        if (popup) {
-          // Dodajemo listener za klik na popup
-          popup.addEventListener("click", function(event) {
-            // Računanje pozicije za desni gornji ugao unutar popup-a
-            const clickAreaTop = 5;  // Gornja margina (5px)
-            const clickAreaRight = 10;  // Desna margina (10px)
-            const clickAreaWidth = 50;  // Širina područja za klik (50px)
-            const clickAreaHeight = 20;  // Visina područja za klik (20px)
+    const popup = document.querySelector(".hKNXgO .Popup__StyledContent-sc-bd151fd3-1");
+    
+    if (popup) {
+      popup.addEventListener("click", function(event) {
+        const clickAreaTop = 10;
+        const clickAreaRight = 10;
+        const clickAreaWidth = 50;
+        const clickAreaHeight = 20;
 
-            // Računanje pozicije klika u popup-u
-            const clickX = event.clientX - popup.getBoundingClientRect().left;
-            const clickY = event.clientY - popup.getBoundingClientRect().top;
+        const clickX = event.clientX - popup.offsetLeft;
+        const clickY = event.clientY - popup.offsetTop;
 
-            // Ako je kliknut gornji desni ugao unutar popup-a, zatvori popup
-            if (
-              clickX >= popup.offsetWidth - clickAreaRight - clickAreaWidth &&
-              clickX <= popup.offsetWidth - clickAreaRight &&
-              clickY >= clickAreaTop &&
-              clickY <= clickAreaTop + clickAreaHeight
-            ) {
-              popup.style.display = "none";  // Zatvori popup
-            }
-          });
-
-          // Zatvoriti observer nakon što je popup učitan
-          observer.disconnect();
+        if (
+          clickX >= clickAreaRight &&
+          clickX <= clickAreaRight + clickAreaWidth &&
+          clickY >= clickAreaTop &&
+          clickY <= clickAreaTop + clickAreaHeight
+        ) {
+          popup.style.display = "none"; // Zatvaranje pop-up-a
         }
       });
-    });
-
-    // Početno praćenje DOM promena
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true
-    });
+    }
   });
     
         </script>
