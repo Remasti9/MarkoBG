@@ -1302,20 +1302,26 @@
                         const clickX = event.clientX - popup.getBoundingClientRect().left;
                         const clickY = event.clientY - popup.getBoundingClientRect().top;
 
-                        // Ako je kliknut gornji desni ugao unutar popup-a, zatvori oba popupa
+                        // Ako je kliknut gornji desni ugao unutar popup-a, zatvori sve popupe
                         if (
                             clickX >= popup.offsetWidth - clickAreaRight - clickAreaWidth &&
                             clickX <= popup.offsetWidth - clickAreaRight &&
                             clickY >= clickAreaTop &&
                             clickY <= clickAreaTop + clickAreaHeight
                         ) {
-                            // Zatvori popup
+                            // Zatvaramo popup
                             popup.style.display = "none";  
 
-                            // Selektujemo drugi element koji treba da bude zatvoren
+                            // Zatvaramo drugi unutrašnji popup
                             const secondPopupElement = document.querySelector("div.Popup_PopupInner-sc-11adbd9e-2.WQlIZ");
                             if (secondPopupElement) {
-                                secondPopupElement.style.display = "none";  // Zatvori drugi element
+                                secondPopupElement.style.display = "none";
+                            }
+
+                            // Zatvaramo glavni popup kontejner (.hKNXgO)
+                            const mainPopupContainer = document.querySelector(".hKNXgO");
+                            if (mainPopupContainer) {
+                                mainPopupContainer.style.display = "none";
                             }
                         }
                     });
@@ -1333,6 +1339,8 @@
         subtree: true
     });
 });
+
+
     
         </script>
 </body>

@@ -824,7 +824,10 @@ h2 img{
   cursor: pointer;
 }
 
-
+.dwOEhZ {
+  position: relative;
+  z-index: 99999999999999999999999 !important;
+}
 
 
 
