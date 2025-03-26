@@ -829,11 +829,17 @@ h2 img{
   z-index: 99999999999999999999999 !important;
 }
 
-element.style {
-}
+
 .bfTLJe {
   margin-top: 45px !important;
 }
 
-
+.items-for-first-text{
+  display: block !important;
+  margin-left: 10% !important;
+}
+.items-for-second-text{
+  display: block !important;
+  margin-left: 2% !important;
+}
 
