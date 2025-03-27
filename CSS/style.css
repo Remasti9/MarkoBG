@@ -854,3 +854,26 @@ h2 img{
   top: -110px;
   left: 22px;
 }
+
+@media (max-width:992px){
+  .items-for-first-text{
+    display: block !important;
+    margin-left: 10% !important;
+    position: relative;
+    top: -20px;
+  }
+  .items-for-second-text{
+    display: block !important;
+    margin-left: 2% !important;
+  }
+  
+  .first-text-relative{
+    position: relative;
+    top: -30px;
+  }
+  .second-text-relative{
+    position: relative;
+    top: -40px;
+    left: 24px;
+  }
+}
