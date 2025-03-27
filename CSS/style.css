@@ -858,7 +858,7 @@ h2 img{
 @media (max-width:992px){
   .items-for-first-text{
     display: block !important;
-    margin-left: 10% !important;
+    margin-left: 0% !important;
     position: relative;
     top: -20px;
   }
@@ -880,5 +880,5 @@ h2 img{
 
 .levo-60px{
   position: relative;
-  left: 60px;
+  left: 30px;
 }
