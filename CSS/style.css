@@ -866,6 +866,9 @@ h2 img{
     display: block !important;
     width: fit-content;
     margin-left: 2% !important;
+   position: relative;
+   left: 10px;
+   width: 85%;
   }
   
   .first-text-relative{
