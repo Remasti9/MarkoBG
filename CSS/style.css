@@ -138,6 +138,9 @@ header {
   #reviewsSmall{
     display: none;
   }
+#landingCarousel{
+  padding-bottom: 3rem !important;
+}
 }
 @media (min-width:993px) and (max-width:1200px) {
   .mob-phone-pos{
@@ -186,7 +189,7 @@ body::-webkit-scrollbar-track {
 }
 #landingCarousel{
   height: fit-content;
-  padding-bottom: 3rem !important;
+  padding-bottom: 0rem !important;
   text-align: justify;
 }
 .landing-text-wrapper{
@@ -625,7 +628,7 @@ z-index: 99999999999999999999999999999999999999 !important;
  
   
   .p-5{
-    padding: 1.5rem 0  !important;
+    padding:0  !important;
   }
   .margin{
     display: block;
