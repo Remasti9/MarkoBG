@@ -765,9 +765,13 @@ nav{
   }
 }
 
-#img-radius .img-fluid{
-  border-radius: 50% !important;
+#img-radius .img-fluid {
+  border-radius: 0% !important;
 }
+
+
+
+
 
 
 @media (max-width:1224px){

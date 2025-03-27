@@ -62,14 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
-
-
-
-
-
-
-
 var map = L.map('map', {
   center: [44.81887829183132, 20.46201289627609],  // Dorćol, Beograd
   zoom: 14.5,
@@ -292,6 +284,7 @@ function adjustAboutUS(){
 
 
 window.addEventListener('load', () => {
+ 
   positionOfLogoBig();
   adjustLineBreak();
   heroTextAnimate();
