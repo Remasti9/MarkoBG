@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 var map = L.map('map', {
-  center: [44.81887829183132, 20.46201289627609],  // Dorćol, Beograd
+  center: [44.82400303237991, 20.462886520045917],  // Dorćol, Beograd 44.82400303237991, 20.462886520045917
   zoom: 14.5,
   dragging: !L.Browser.mobile,  // Onemogući dragging na mobilnim uređajima
   touchZoom: true,  // Dozvoljava touch zoom
@@ -79,7 +79,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // Dodavanje markera na Dorćolu
 setTimeout(function() {
-  L.marker([44.8189, 20.4620])
+  L.marker([44.82400303237991, 20.462886520045917])
     .addTo(map)
     .bindPopup('Tu smo! Koristite dva prsta za mapiranje.')
     .openPopup();
