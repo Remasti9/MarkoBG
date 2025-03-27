@@ -887,3 +887,6 @@ h2 img{
   left: 30px;
   width: 85%;
 }
+.bold{
+  font-weight: bold;
+}
