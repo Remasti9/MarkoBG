@@ -864,6 +864,7 @@ h2 img{
   }
   .items-for-second-text{
     display: block !important;
+    width: fit-content;
     margin-left: 2% !important;
   }
   
@@ -881,4 +882,5 @@ h2 img{
 .levo-60px{
   position: relative;
   left: 30px;
+  width: 85%;
 }
