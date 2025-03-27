@@ -877,3 +877,8 @@ h2 img{
     left: 24px;
   }
 }
+
+.levo-60px{
+  position: relative;
+  left: 60px;
+}
