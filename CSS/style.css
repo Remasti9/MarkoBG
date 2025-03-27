@@ -837,9 +837,20 @@ h2 img{
 .items-for-first-text{
   display: block !important;
   margin-left: 10% !important;
+  position: relative;
+  top: -60px;
 }
 .items-for-second-text{
   display: block !important;
   margin-left: 2% !important;
 }
 
+.first-text-relative{
+  position: relative;
+  top: -100px;
+}
+.second-text-relative{
+  position: relative;
+  top: -110px;
+  left: 22px;
+}
