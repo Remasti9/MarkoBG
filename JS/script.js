@@ -234,7 +234,7 @@ document.querySelectorAll('.nav-link').forEach((link) => {
         return
       } 
       if(e.target.textContent==='Početna'){
-        document.getElementById('main-mobile-phone-break').style.display='block';
+        document.getElementById('main-mobile-phone-break').style.display='none';
         window.scrollTo(0,0)
         return
       }
