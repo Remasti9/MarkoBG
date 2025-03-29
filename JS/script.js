@@ -297,6 +297,9 @@ window.onresize =()=>{
   adjustAboutUS();
   adjustLineBreak();
   mainMobilePhone();
+  if(document.getElementById('gallery').style.display==="block" ) {
+    document.getElementById('main-mobile-phone-break').style.display="none"
+  }
 } 
 window.addEventListener('scroll',()=>{
   handleTrolleyAnimation();
