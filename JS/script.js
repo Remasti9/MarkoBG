@@ -176,7 +176,7 @@ function backAtMain(){
   document.getElementById('gallery').style.display='none';
 }
 document.querySelectorAll('.nav-link').forEach((link) => {
-
+  document.getElementById('main-mobile-phone-break').style.display='block';
   link.addEventListener('click', e => {
     if(link.firstChild.textContent === 'O nama') {
       console.log('test')
@@ -204,10 +204,9 @@ document.querySelectorAll('.nav-link').forEach((link) => {
       if(window.innerWidth>1014)  document.getElementById('about-us').style.display='none';
       if(window.innerWidth<=1014)  document.getElementById('about-us-small').style.display='none';
       document.querySelector('.switcher').style.display='none';
-      
+      document.getElementById('main-mobile-phone-break').style.display='block';
       document.getElementById('blog').style.display='none';
       document.getElementById('contact').style.display='block';
-      
       document.getElementById('footer').style.display='block';
       document.querySelector('.breaking-section').style.backgroundColor='#212529';
       document.querySelector('.breaking-section').style.display='block';
@@ -230,10 +229,12 @@ document.querySelectorAll('.nav-link').forEach((link) => {
     }
     setTimeout(() => {
       if(document.getElementById('blog').style.display ==='block' || document.getElementById('gallery' ).style.display=== 'block'){
+        document.getElementById('main-mobile-phone-break').style.display='none';
         window.scrollTo(0,-100)
         return
       } 
       if(e.target.textContent==='Početna'){
+        document.getElementById('main-mobile-phone-break').style.display='block';
         window.scrollTo(0,0)
         return
       }
