@@ -234,7 +234,12 @@ document.querySelectorAll('.nav-link').forEach((link) => {
         return
       } 
       if(e.target.textContent==='Početna'){
-        document.getElementById('main-mobile-phone-break').style.display='none';
+        if(window.innerWidth>992){
+          document.getElementById('main-mobile-phone-break').style.display='none';
+        } else {
+          document.getElementById('main-mobile-phone-break').style.display='block';
+        }
+        
         window.scrollTo(0,0)
         return
       }
