@@ -897,3 +897,8 @@ h2 img{
 .bold{
   font-weight: bold;
 }
+/*pos-contact-top za contact i mapu za centriranje*/
+.pos-contact-top{
+  position: relative;
+  top: 70px;
+}
