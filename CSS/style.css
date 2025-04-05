@@ -572,7 +572,7 @@ footer a{
     position: absolute;
     right: 5px;
     color: #3490DC !important;
-  }
+  } 
  
   #landing,
   #principles{
@@ -589,7 +589,9 @@ z-index: 99999999999999999999999999999999999999 !important;
  height: 100px;
  background-color: white;
  border-radius: 10px;
+ overflow-y: visible !important;
  }
+
  
   #landingCarousel{
     position: relative;
@@ -619,6 +621,7 @@ z-index: 99999999999999999999999999999999999999 !important;
   .img-c-width{
     width: 100%;
     height: auto;
+    
     border-radius: 0 !important;
    
   }
@@ -902,3 +905,15 @@ h2 img{
   position: relative;
   top: 50px;
 }
+
+
+/*Review cards on carousel */
+
+@media (min-width:992px) {
+  .Carousel__CarouselInner-sc-7aac7883-2, .bnRBsP,.ArrowControl__ArrowControlContainer-sc-5eb19fa8-0{
+ 
+    position: relative !important;
+    top: 370px !important;
+  }
+}
+
