@@ -410,4 +410,25 @@ function mainMobilePhone(){
   }
 }
 
+//Removing google widget FREE gedget
+const hideElfsightLink = () => {
+  document.querySelectorAll('a[href*="google-reviews-widget"]').forEach(el => {
+      el.style.display = "none";
+      el.style.visibility = "hidden";
+      el.style.opacity = "0";
+      el.style.pointerEvents = "none";
+  });
+};
+
+// Pozovi odmah pri učitavanju stranice
+setTimeout(hideElfsightLink, 100); 
+
+// Posmatraj DOM promene (za slučaj da Elfsight ponovo doda link)
+const observer = new MutationObserver(hideElfsightLink);
+observer.observe(document.body, { childList: true, subtree: true });
+
+// Ponovi proveru na svake 1000ms (1 sekundu)
+setInterval(hideElfsightLink, 1000);
+
+
 

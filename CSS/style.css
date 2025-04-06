@@ -918,3 +918,12 @@ h2 img{
   }
 }
 
+/*Removing google widget FREE gedget*/
+a[href*="google-reviews-widget"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+
