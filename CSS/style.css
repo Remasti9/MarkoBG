@@ -389,7 +389,7 @@ section.blanc{
 }
 #ask-section{
   position: absolute;
-  z-index: 99999999999999999999999999;
+  z-index:99 !important;
   top: 20%;
   left: .3%;
   border: 5px solid white;
