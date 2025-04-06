@@ -709,6 +709,7 @@ z-index: 99999999999999999999999999999999999999 !important;
 @media (max-width:1014px) {
   .set-abs{
     left: 5%;
+    opacity: 0;
   }
   
    .nav-link:hover::after {
