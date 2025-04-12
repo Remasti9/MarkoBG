@@ -918,7 +918,7 @@ h2 img{
   }
   .Carousel__CarouselOuter-sc-fe392fd7-1.fHmBnn{
     position: relative;
-    top: 400px !;
+    top: 400px !important;
    
   }
 }
