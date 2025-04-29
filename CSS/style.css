@@ -486,6 +486,7 @@ section.blanc{
   
 }
 
+
 .show-odd{
   background: rgba(243, 244, 246,1)  !important;
 }
@@ -790,6 +791,7 @@ nav{
     z-index: 99999;
     
   }
+  #main-mobile-phone-break{display: none;}
 }
 .fa-phone {
   color: #1cd71c;
@@ -937,6 +939,10 @@ a[href*="google-reviews-widget"] {
   pointer-events: none !important;
 }
 
-
+@media (min-width:1224px) {
+  .mob-phone-pos{
+    display: none;
+  }
+}
 
 

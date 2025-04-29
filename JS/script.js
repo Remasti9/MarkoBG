@@ -73,7 +73,8 @@ var map = L.map('map', {
 
 // Dodavanje tile sloja
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+//  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+attribution:false,
   maxZoom: 18,
 }).addTo(map);
 
@@ -163,6 +164,12 @@ locateControl.onAdd = function(map) {
 
     return div;
 };
+window.addEventListener('load', function() {
+  const attribution = document.querySelector('.leaflet-control-attribution');
+  if (attribution) {
+    attribution.remove(); // POTPUNO briše attribution sa mape
+  }
+});
 locateControl.addTo(map);
 
 //site logic on load and scroll event
