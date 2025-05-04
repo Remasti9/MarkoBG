@@ -242,7 +242,7 @@ transition: .3s;
 
 
 .img-c-width{
-  width: 100%;
+  width: 97.5%;
   height: auto;
   overflow-y: hidden;
   margin: 0 auto !important;
@@ -926,7 +926,7 @@ h2 img{
   [class*="es-carousel-layout-container"],
   [class*="Carousel__StyledCarousel"] {
     position: relative !important;
-    top: 400px !important;
+    top: 375px !important;
   }
 }
 
