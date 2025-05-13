@@ -771,6 +771,8 @@ nav{
   .nav-link::after {
     background-color: #000000; /* Boja linije */
   }
+ 
+  
 }
 
 #img-radius .img-fluid {
@@ -958,4 +960,9 @@ a[href*="google-reviews-widget"] {
       position: relative;
       top: -3rem !important;
     }
+   
+  }
+   #img-radius p,
+   #text-after-main{
+    font-size: 1rem !important;
   }
