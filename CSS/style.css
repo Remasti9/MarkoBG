@@ -948,3 +948,14 @@ a[href*="google-reviews-widget"] {
 .boldirano{
   font-weight: bold;
 }
+
+@media (min-width: 992px) {
+    .py-lg-5 {
+        margin-top: -8rem !important;
+        margin-bottom: -8rem !important;
+    }
+    #service-title{
+      position: relative;
+      top: 0rem !important;
+    }
+  }
