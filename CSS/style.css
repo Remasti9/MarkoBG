@@ -934,9 +934,9 @@ h2 img{
   overflow-y: hidden !important;
  }
   .gVqCtV{
-    min-height: 1150px;
-    position: relative;
-    top: 352px;
+    min-height: 1150px !important;
+    position: relative !important;
+    top: 352px !important;
     
   }
 }
