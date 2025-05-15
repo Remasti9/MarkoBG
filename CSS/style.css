@@ -933,14 +933,15 @@ h2 img{
  .fYDyjG {
   overflow-y: hidden !important;
  }
- .ga-DaEy, .ga-DaEy *{
-  overflow: visible !important;
- }
+ 
   .gVqCtV{
     min-height: 1150px !important;
     position: relative !important;
     top: 352px !important;
     
+  }
+  .kpSFSv {
+    overflow: hidden !important;
   }
 }
 
