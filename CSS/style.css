@@ -943,6 +943,12 @@ h2 img{
   .kpSFSv {
     overflow: hidden !important;
   }
+   .es-main-content {
+    min-height: 1150px !important;
+    position: relative !important;
+    top: 352px !important;
+    overflow: visible !important;
+  }
 }
 
 
