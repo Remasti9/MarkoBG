@@ -196,7 +196,7 @@ document.querySelectorAll('.nav-link').forEach((link) => {
     if(window.innerWidth>1014)  document.getElementById('about-us').style.display='block';
     if(window.innerWidth<=1014)  document.getElementById('about-us-small').style.display='block';
       document.querySelector('.breaking-section').style.backgroundColor='rgba(243, 244, 246,1) ';
-    } else if(link.firstChild.textContent === 'Blog'){
+    } else if(link.firstChild.textContent === 'BLOG'){
       document.querySelector('.switcher').style.display='none';
       if(window.innerWidth>1014)  document.getElementById('about-us').style.display='none';
       if(window.innerWidth<=1014)  document.getElementById('about-us-small').style.display='none';
@@ -207,7 +207,7 @@ document.querySelectorAll('.nav-link').forEach((link) => {
       document.getElementById('contact').style.display='block';
       document.getElementById('footer').style.display='block';
       
-     } else if(link.firstChild.textContent === 'Galerija'){
+     } else if(link.firstChild.textContent === 'GALERIJA'){
       if(window.innerWidth>1014)  document.getElementById('about-us').style.display='none';
       if(window.innerWidth<=1014)  document.getElementById('about-us-small').style.display='none';
       document.querySelector('.switcher').style.display='none';
@@ -240,7 +240,7 @@ document.querySelectorAll('.nav-link').forEach((link) => {
         window.scrollTo(0,-100)
         return
       } 
-      if(e.target.textContent==='Početna'){
+      if(e.target.textContent==='POČETNA'){
         if(window.innerWidth>992){
           document.getElementById('main-mobile-phone-break').style.display='none';
         } else {
