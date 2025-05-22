@@ -5,6 +5,7 @@
   box-sizing: border-box;
 }
 html {
+  
   scroll-behavior: smooth;
   max-width: 100vw;
   overflow-x: hidden;
@@ -12,9 +13,11 @@ html {
 body {
   font-family: Arial, sans-serif;
   overflow-x: hidden !important;
-  max-width: 100%;
+  margin: 0 auto;
+  max-width: 1519px;
   min-height: 100vh;
 }
+
 .body-background{
   position: fixed;
   top: 0;

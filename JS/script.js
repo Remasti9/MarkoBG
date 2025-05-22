@@ -330,13 +330,13 @@ function handleTrolleyAnimation() {
   if(window.innerWidth>1224){
     if (!hasAnimated && window.scrollY > 6000) {
    
-      trolley.style.right = '1800px';
+      trolley.style.right = '2000px';
       hasAnimated = true; 
     } 
   } else {
     if (!hasAnimated && window.scrollY > 8000) {
    
-      trolley.style.right = '1800px';
+      trolley.style.right = '2000px';
       hasAnimated = true; 
     } 
   }
@@ -437,5 +437,31 @@ observer.observe(document.body, { childList: true, subtree: true });
 // Ponovi proveru na svake 1000ms (1 sekundu)
 setInterval(hideElfsightLink, 1000);
 
+function updateBodyRelatedWidths() {
+  const bg = document.querySelector('.body-background');
+  const nav = document.querySelector('nav');
+  const body = document.body;
 
+  if (body) {
+    const bodyWidth = body.getBoundingClientRect().width;
+    const bodyLeft = body.getBoundingClientRect().left;
+
+    if (bg) {
+      bg.style.width = bodyWidth + 'px';
+      bg.style.left = bodyLeft + 'px';
+    }
+
+    if (nav) {
+      nav.style.width = bodyWidth + 'px';
+      nav.style.left = bodyLeft + 'px';
+      nav.style.position = 'fixed'; // ako nije već fiksiran
+      nav.style.top = '0'; // da bude na vrhu
+      nav.style.zIndex = '1000'; // da bude iznad pozadine
+    }
+  }
+}
+
+// Pozovi pri učitavanju i resize-u
+window.addEventListener('resize', updateBodyRelatedWidths);
+window.addEventListener('load', updateBodyRelatedWidths);
 
