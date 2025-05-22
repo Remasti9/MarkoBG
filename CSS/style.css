@@ -5,17 +5,19 @@
   box-sizing: border-box;
 }
 html {
-  
+  background: black;
   scroll-behavior: smooth;
   max-width: 100vw;
   overflow-x: hidden;
+  height: 100%;
 }
 body {
   font-family: Arial, sans-serif;
   overflow-x: hidden !important;
   margin: 0 auto;
-  max-width: 1519px;
+  max-width: 1200px;
   min-height: 100vh;
+   background-color: transparent; 
 }
 
 .body-background{
