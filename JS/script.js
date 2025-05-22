@@ -441,10 +441,12 @@ function updateBodyRelatedWidths() {
   const bg = document.querySelector('.body-background');
   const nav = document.querySelector('nav');
   const body = document.body;
+  const logo = document.querySelector('.logo');
 
   if (body) {
     const bodyWidth = body.getBoundingClientRect().width;
     const bodyLeft = body.getBoundingClientRect().left;
+    const bodyTop = body.getBoundingClientRect().top;
 
     if (bg) {
       bg.style.width = bodyWidth + 'px';
@@ -457,6 +459,12 @@ function updateBodyRelatedWidths() {
       nav.style.position = 'fixed'; // ako nije već fiksiran
       nav.style.top = '0'; // da bude na vrhu
       nav.style.zIndex = '1000'; // da bude iznad pozadine
+    }
+     if (logo) {
+      logo.style.position = 'fixed'; // ili absolute ako je unutar nav
+      logo.style.left = bodyLeft + 'px';
+      logo.style.top = bodyTop  + 'px';
+      logo.style.zIndex = '1001'; // iznad nav-a ako treba
     }
   }
 }
