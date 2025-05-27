@@ -52,7 +52,10 @@ body::before {
 
 #reviewsLarge, #reviewsSmall{
   margin-top: 10px;
-  border: 5px solid black;
+  
+}
+nav b, nav strong{
+  font-weight: 200 !important;
 }
 
 #main-title::after{
@@ -593,7 +596,7 @@ z-index: 99999999999999999999999999999999999999 !important;
  width: 100px;
  height: 100px;
  background-color: white;
- border-radius: 10px;
+
  overflow-y: visible !important;
  }
 
