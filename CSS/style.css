@@ -388,10 +388,11 @@ section.blanc{
   }
 }
 #ask-section{
-  position: absolute;
+  position: relative;
+  background-color: white;
   z-index:99 !important;
-  top: 20%;
-  left: .3%;
+  top: 8%;
+  left: 40%;
   border: 5px solid white;
   border-radius: 20px; 
   padding: 1rem .5rem;
