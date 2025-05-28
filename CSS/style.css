@@ -118,21 +118,11 @@ header {
   
 }
 
-.mob-phone-pos{
-  display: none;
-  position: relative;
-  top: 5px;
-  left: 0;
-  font-weight: bold;
-  cursor: pointer;
-}
+
 
 
 @media (max-width:993px) {
-  .mob-phone-pos{
-    top: 30px;
-    left: 0;
-  }
+  
   #reviewsLarge{
    display: none;
   }
@@ -148,12 +138,7 @@ header {
   padding-bottom: 3rem !important;
 }
 }
-@media (min-width:993px) and (max-width:1200px) {
-  .mob-phone-pos{
-    top: 35px;
-    left: 100px;
-  }
-}
+
 
 .accordion-button{
   margin-bottom: 20px !important;
@@ -484,8 +469,7 @@ section.blanc{
   border-radius: 6px !important;
   display: inline;
 }
-#main-mobile-nav li,
-.mob-phone-pos li{
+#main-mobile-nav li{
   display: inline;
   list-style-type: none;
   width: fit-content;
@@ -798,14 +782,7 @@ nav{
 
 
 @media (max-width:1224px){
-  .mob-phone-pos{
-    color: #0d6efd !important;
-    font-weight: normal !important;
-    font-size: 24px !important;
-    position: relative;
-    z-index: 99999;
-    
-  }
+  
   #main-mobile-phone-break{display: none;}
 }
 .fa-phone {
@@ -946,11 +923,7 @@ a[href*="google-reviews-widget"] {
   pointer-events: none !important;
 }
 
-@media (min-width:1224px) {
-  .mob-phone-pos{
-    display: none;
-  }
-}
+
 
 .boldirano{
   font-weight: bold;
