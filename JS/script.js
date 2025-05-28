@@ -165,6 +165,7 @@ locateControl.onAdd = function(map) {
     return div;
 };
 window.addEventListener('load', function() {
+  
   const attribution = document.querySelector('.leaflet-control-attribution');
   if (attribution) {
     attribution.remove(); // POTPUNO briše attribution sa mape
@@ -297,7 +298,7 @@ function adjustAboutUS(){
 
 
 window.addEventListener('load', () => {
- 
+ setMainImg();
   positionOfLogoBig();
   adjustLineBreak();
   heroTextAnimate();
@@ -305,6 +306,7 @@ window.addEventListener('load', () => {
   window.scrollTo(0, 0); 
 });
 window.onresize =()=>{
+  setMainImg();
   positionOfLogoBig();
   adjustAboutUS();
   adjustLineBreak();
@@ -438,4 +440,19 @@ observer.observe(document.body, { childList: true, subtree: true });
 setInterval(hideElfsightLink, 1000);
 
 
+const mainImg = document.getElementById('main-img');
 
+function setMainImg () {
+  if(window.innerWidth>=600 && window.innerWidth <= 750){
+    mainImg.src='images/750x750-template.png'
+     mainImg.style.aspectRatio='1/.7'
+  } else if(window.innerWidth>=751 && window.innerWidth <=992){
+    mainImg.src='images/1000px.webP'
+     mainImg.style.aspectRatio='1/.6'
+  } 
+  else {
+    mainImg.src='images/test.jpg'
+    mainImg.style.aspectRatio='2.7/1'
+  
+  }
+}
