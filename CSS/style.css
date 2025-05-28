@@ -117,6 +117,13 @@ header {
   cursor: pointer;
   
 }
+#main-mobile-nav-icons{
+  display: none;
+  top: -5px;
+  left: 12%;
+  cursor: pointer;
+}
+
 
 
 
@@ -469,7 +476,8 @@ section.blanc{
   border-radius: 6px !important;
   display: inline;
 }
-#main-mobile-nav li{
+#main-mobile-nav li,
+#main-mobile-nav-icons li{
   display: inline;
   list-style-type: none;
   width: fit-content;
@@ -477,7 +485,8 @@ section.blanc{
   
 }
 
-#main-mobile-nav a{
+#main-mobile-nav a,
+#main-mobile-nav-icons a{
   margin-right: -5rem;
  position: relative;
  top: 5px;
@@ -761,6 +770,7 @@ nav{
 }
 
 @media (max-width: 992px) {
+ 
   .navbar-light .navbar-nav .nav-link {
     color: black !important;
   }
@@ -782,8 +792,8 @@ nav{
 
 
 @media (max-width:1224px){
-  
   #main-mobile-phone-break{display: none;}
+  #main-mobile-nav-icons{display: flex;}
 }
 .fa-phone {
   color: #1cd71c;
@@ -861,6 +871,7 @@ h2 img{
 }
 
 @media (max-width:992px){
+  #main-mobile-nav-icons{display: flex;}
   .items-for-first-text{
     display: block !important;
     margin-left: 0% !important;
@@ -948,3 +959,4 @@ a[href*="google-reviews-widget"] {
    #landing{
   width: 100vw !important;
 }
+
