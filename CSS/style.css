@@ -203,7 +203,7 @@ body::-webkit-scrollbar-track {
 
 }
 .carousel-item{
-  margin-top: 1rem;
+  margin-top: -1rem;
 }
 
 .set-abs{
@@ -248,12 +248,10 @@ transition: .3s;
 
 
 .img-c-width{
-  width: 97.5%;
+  width: 100vw;
   height: auto;
   overflow-y: hidden;
   margin: 0 auto !important;
-  border-radius: 20px !important;
- 
 }
 
 .text-black{
@@ -279,6 +277,7 @@ section {
  background-color: rgba(243, 244, 246,1) ;
  overflow-y: hidden;
 }
+
 section.blanc{
  width: 100%;
   background-color: transparent !important;
@@ -477,6 +476,7 @@ section.blanc{
   background: linear-gradient(45deg, #F58529, #EB5286, #C05AED, #3490DC) !important;
   color: rgba(255, 255, 255, 0.786) !important;
   border-radius: 5px !important;
+  filter: saturate(2);
 }
 #instagram-nav{
   background: linear-gradient(45deg, #F58529, #EB5286, #C05AED, #3490DC) !important;
@@ -489,8 +489,14 @@ section.blanc{
   display: inline;
   list-style-type: none;
   width: fit-content;
-  margin-left: 1rem;
+  margin-left: 4rem;
   
+}
+
+#main-mobile-nav a{
+  margin-right: -5rem;
+ position: relative;
+ top: 5px;
 }
 
 
@@ -515,6 +521,8 @@ section.blanc{
 }
 .switcher{
   display: block;  
+  position: relative;
+  top: -2rem;
 }
 #about-us{
   display: none ;
@@ -586,10 +594,7 @@ footer a{
   #principles{
     min-height: fit-content  !important;
   }
- #landing{
-  padding-top: 2rem !important;
-  
- }
+
  #reviewsLarge{
 position: absolute  ;
 z-index: 99999999999999999999999999999999999999 !important;
@@ -993,3 +998,7 @@ a[href*="google-reviews-widget"] {
    #text-after-main{
     font-size: 1rem !important;
   }
+
+   #landing{
+  width: 100vw !important;
+}
