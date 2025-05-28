@@ -455,7 +455,7 @@ function setMainImg () {
   } 
   else if(window.innerWidth<=575) {
       mainImg.src='images/576x1024.png'
-    mainImg.style.aspectRatio='1/1.4'
+    mainImg.style.aspectRatio='1/1.3'
   }
   else {
     mainImg.src='images/test.jpg'
