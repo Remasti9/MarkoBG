@@ -439,7 +439,7 @@ observer.observe(document.body, { childList: true, subtree: true });
 // Ponovi proveru na svake 1000ms (1 sekundu)
 setInterval(hideElfsightLink, 1000);
 
-
+//settings of imgMain sizes on a different screen
 const mainImg = document.getElementById('main-img');
 
 function setMainImg () {
