@@ -97,7 +97,7 @@ header {
   content: '';
   position: absolute;
   width: 0;
-  height: 2px;
+  height: 1.3px;
   bottom: 0;
   left: 0;
   background-color: #ffffff; /* Boja linije */
@@ -924,45 +924,18 @@ h2 img{
   top: 50px;
 }
 
-
-/*Review cards on carousel */
-
-/* @media (min-width:992px) {
- 
-
-  .CarouselLayout__CarouselContainer-sc-1cwaio7-1.kfTGGc.es-carousel-layout-container.Carousel__StyledCarousel-sc-1mwl51c-1.bvefXw {
-    position: relative !important;
-   top: 400px;
-  } 
-} */
-
-/* @media (min-width: 992px) {
-  [class*="CarouselLayout__CarouselContainer"],
-  [class*="es-carousel-layout-container"],
-  [class*="Carousel__StyledCarousel"] {
-    position: relative !important;
-    top: 375px !important;
-  }
- .fYDyjG {
-  overflow-y: hidden !important;
- }
- 
-  .gVqCtV{
-    min-height: 1150px !important;
-    position: relative !important;
-    top: 352px !important;
-    
-  }
-  .kpSFSv {
-    overflow: hidden !important;
-  }
-   .es-main-content {
-    min-height: 1150px !important;
-    position: relative !important;
-    top: 352px !important;
-    overflow: visible !important;
-  }
-} */
+#contact{
+  position: relative;
+  overflow: visible;
+}
+#contact-after{
+  position: absolute;
+  left: 0;
+  top: -2rem;
+  width: 100vw;
+  height: 2.1rem;
+  background: #212529;
+}
 
 
 /*Removing google widget FREE gedget*/
