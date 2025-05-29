@@ -237,7 +237,9 @@ transform: scale(1.08);
 transition: .3s;
 }
 
-
+.navbar-light .navbar-toggler {
+  border-color: white !important;
+}
 
 .img-c-width{
   width: 100vw;
@@ -971,6 +973,7 @@ div[class*="PopupContent__Container"]{
 
 button[class^="CloseComponent__PopupCloseControlContainer"] {
   top: 60px;
+  
 }
 @media (max-width:800px) {
   button[class^="CloseComponent__PopupCloseControlContainer"] {
