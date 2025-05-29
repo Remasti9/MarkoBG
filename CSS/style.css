@@ -960,9 +960,9 @@ a[href*="google-reviews-widget"] {
   width: 100vw !important;
 }
 
-
+/* Settings for pop-up widget on small screen */
 .hojyOt .Popup__StyledContent-sc-9cbe8804-1{
   position: relative;
   top: 20%;
-  flex-grow: 0;
+  height: 300px !important;
 }
