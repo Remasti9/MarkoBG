@@ -972,11 +972,11 @@ div[class*="PopupContent__Container"]{
 }
 
 button[class^="CloseComponent__PopupCloseControlContainer"] {
-  top: 60px;
+  top: 80px;
   
 }
 @media (max-width:800px) {
   button[class^="CloseComponent__PopupCloseControlContainer"] {
-  top: 120px;
+  top: 140px;
 }
 }
