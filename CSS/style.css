@@ -961,4 +961,8 @@ a[href*="google-reviews-widget"] {
 }
 
 
-
+.hojyOt .Popup__StyledContent-sc-9cbe8804-1{
+  position: relative;
+  top: 20%;
+  flex-grow: 0;
+}
