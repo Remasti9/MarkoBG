@@ -977,6 +977,6 @@ button[class^="CloseComponent__PopupCloseControlContainer"] {
 }
 @media (max-width:800px) {
   button[class^="CloseComponent__PopupCloseControlContainer"] {
-  top: 140px;
+  top: 150px;
 }
 }
