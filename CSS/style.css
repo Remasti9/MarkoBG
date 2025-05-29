@@ -968,3 +968,12 @@ div[class*="PopupContent__Container"]{
   top: 20%;
  flex-grow: 0 !important;
 }
+
+button[class^="CloseComponent__PopupCloseControlContainer"] {
+  top: 60px;
+}
+@media (max-width:800px) {
+  button[class^="CloseComponent__PopupCloseControlContainer"] {
+  top: 120px;
+}
+}
