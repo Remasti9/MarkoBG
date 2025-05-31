@@ -978,76 +978,92 @@ button[class^="CloseComponent__PopupCloseControlContainer"] {
 }
 }
 
-#service-title{
-      position: relative;
-      top: 0rem !important;
-      overflow: visible;
-      background-color: rgba(243, 244, 246, 1);
-      padding: 1rem 0;
-    }
-    #service-cover{
-      position: relative;
-      top: -1rem;
-    }
+#service-title {
+  position: relative;
+  top: 0rem !important;
+  overflow: visible;
+  background-color: rgba(243, 244, 246, 1);
+  padding: 1rem 0;
+}
 
-  #service-frame{
-    position: relative;
-    overflow: visible;
-    width: 80% !important;
-    margin: 0 auto;
-    height: fit-content;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 30px;
-    background-color: rgba(243, 244, 246, 1);
-    padding: 1rem;
-  }  
-   @media (max-width:992px) {
-    #service-frame{
-    justify-content: space-evenly;
-    
-  }  
-  }
+#service-cover {
+  position: relative;
+  top: -1rem;
+}
 
- 
-  .service-card{
-    flex: 1 1 300px;
-    min-width: 300px;
-    max-width: 47%;
-    height: 400px;
-    overflow: hidden;
-    position: relative;
-    background-color: rgb(255, 255, 255);
-    
-  }
-  .service-img,
-  .service-text{
-    height: 50%;
-  }
-  
-  .service-img{
-    object-fit: cover;
-    padding: 0.5rem;
-  }
-  .service-img img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .service-subtitle{
-    font-size: 1.3rem;
-     font-weight: bold;
-     margin:15px 5px  !important; color: red;
-  }
-  .service-subtext{
-    padding: .5rem;
-  }
-  .service-cover{
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    height: 1rem;
-    background-color: white;
-  }
+#service-frame {
+  position: relative;
+  overflow: visible;
+  width: 90% !important;
+  margin: 0 auto;
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  background-color: rgba(243, 244, 246, 1);
+  padding: 1rem;
+}
 
+.service-card {
+  flex: 1 1 calc(33.333% - 20px); /* 3 u redu, sa malo prostora */
+  max-width: calc(33.333% - 20px);
+  min-width: 300px;
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+}
+
+.service-img,
+.service-text {
+  height: 50%;
+}
+
+.service-img {
+  object-fit: cover;
+  padding: 1rem;
+}
+
+.service-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.service-subtitle {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 15px 5px !important;
+  color: red;
+}
+
+.service-subtext {
+  padding: 0.5rem;
+}
+
+.service-cover {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  height: 1rem;
+  background-color: white;
+}
+
+/* Responsivnost: 2 u redu */
+@media (max-width: 992px) {
+  .service-card {
+    flex: 1 1 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+  }
+}
+
+/* Responsivnost: 1 u redu */
+@media (max-width: 600px) {
+  .service-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
