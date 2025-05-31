@@ -1021,6 +1021,9 @@ button[class^="CloseComponent__PopupCloseControlContainer"] {
 .service-text {
   height: 50%;
 }
+.service-text{
+  overflow-y: scroll;
+}
 
 .service-img {
   object-fit: cover;
