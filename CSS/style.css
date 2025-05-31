@@ -985,6 +985,14 @@ button[class^="CloseComponent__PopupCloseControlContainer"] {
       background-color: rgba(243, 244, 246, 1);
       padding: 1rem 0;
     }
+    #service-cover{
+      position: relative;
+      top: -1rem;
+    }
+
+
+
+
   #service-frame{
     position: relative;
     overflow: visible;
@@ -1000,7 +1008,6 @@ button[class^="CloseComponent__PopupCloseControlContainer"] {
   }  
    @media (max-width:992px) {
     #service-frame{
-   
     justify-content: space-evenly;
     
   }  
