@@ -1022,14 +1022,13 @@ button[class^="CloseComponent__PopupCloseControlContainer"] {
     overflow: hidden;
     position: relative;
     background-color: rgb(255, 255, 255);
-    display: flex;
-    flex-direction: column;
+    
   }
   .service-img,
   .service-text{
-    flex-grow: 1;
     height: 50%;
   }
+  
   .service-img{
     object-fit: cover;
     padding: 0.5rem;
@@ -1046,5 +1045,12 @@ button[class^="CloseComponent__PopupCloseControlContainer"] {
   }
   .service-subtext{
     padding: .5rem;
+  }
+  .service-cover{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    height: 1rem;
+    background-color: white;
   }
 
