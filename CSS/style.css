@@ -981,13 +981,14 @@ button[class^="CloseComponent__PopupCloseControlContainer"] {
 #service-title{
       position: relative;
       top: 0rem !important;
+      overflow: visible;
       background-color: rgba(243, 244, 246, 1);
       padding: 1rem 0;
     }
   #service-frame{
     position: relative;
     overflow: visible;
-    width: 100%;
+    width: 80% !important;
     margin: 0 auto;
     height: fit-content;
     display: flex;
@@ -1005,15 +1006,7 @@ button[class^="CloseComponent__PopupCloseControlContainer"] {
   }  
   }
 
-  #service-frame::before{
-    content: "";
-    position: absolute;
-    background-color:rgba(243, 244, 246, 1);
-    width: 100%;
-    height: 1rem;
-    top:-1rem;
-    z-index: 9999;
-  }
+ 
   .service-card{
     flex: 1 1 300px;
     min-width: 300px;
