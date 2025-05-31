@@ -996,8 +996,7 @@ button[class^="CloseComponent__PopupCloseControlContainer"] {
   overflow: visible;
   width: 90% !important;
   margin: 0 auto;
-  min-height: 370vh;
-  max-height: fit-content;
+  height: fit-content;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
