@@ -251,6 +251,12 @@ document.querySelectorAll('.nav-link').forEach((link) => {
         window.scrollTo(0,0)
         return
       }
+      if(e.target.textContent==='USLUGE'){
+      
+        window.scrollBy(0,-220)
+        
+        return
+      }
       if(window.innerWidth<768){
         window.scrollBy(0, -70); 
       } else {
