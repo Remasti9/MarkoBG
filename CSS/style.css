@@ -980,7 +980,7 @@ button[class^="CloseComponent__PopupCloseControlContainer"] {
 
 #service-title {
   position: relative;
-  top: 0rem !important;
+  top: -9rem !important;
   overflow: visible;
   background-color: rgba(243, 244, 246, 1);
   padding: 1rem 0;
@@ -988,7 +988,7 @@ button[class^="CloseComponent__PopupCloseControlContainer"] {
 
 #service-cover {
   position: relative;
-  top: -1rem;
+  top: -6rem;
 }
 
 #service-frame {
