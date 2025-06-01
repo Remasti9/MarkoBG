@@ -97,7 +97,7 @@ header {
   content: '';
   position: absolute;
   width: 0;
-  height: 1.3px;
+  height: 1px;
   bottom: 0;
   left: 0;
   background-color: #ffffff; /* Boja linije */
