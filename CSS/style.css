@@ -501,6 +501,7 @@ section.blanc{
 
 #principles{
   position: relative;
+  padding-bottom: 100px !important;
 }
 #principles p,
  #principles h3{
