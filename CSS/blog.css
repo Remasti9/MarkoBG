@@ -23,6 +23,10 @@
   position: relative;
   
 }
+
+.blog-article:last-of-type {
+  margin-bottom: 40px;
+}
 .blog-article h2{
     font-size: 1.5rem;
     font-weight: bold;
