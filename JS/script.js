@@ -456,7 +456,7 @@ function setMainImg () {
   
   }
 }
-   SLIDER-GALLERY
+   //SLIDER-GALLERY
 const galleryCards = document.querySelectorAll('.card-last > div');
 
 galleryCards.forEach((card) => {
