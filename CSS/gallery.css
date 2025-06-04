@@ -18,6 +18,9 @@
     overflow: hidden;
     border: 5px solid white !important;
   }
+  .card-last > div:last-of-type {
+  margin-bottom: 100px;
+}
 
 .card-img {
     height: 100%;
