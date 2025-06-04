@@ -566,6 +566,7 @@ function showImage(index) {
 // Dodaj event listener za sve kartice
 galleryCards.forEach((card, index) => {
   card.addEventListener('click', () => {
+    if(window.innerWidth < 1200) return;
     showImage(index);
   });
 });
