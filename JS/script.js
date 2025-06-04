@@ -456,3 +456,76 @@ function setMainImg () {
   
   }
 }
+//    SLIDER-GALLERY
+// const galleryCards = document.querySelectorAll('.card-last > div');
+
+// galleryCards.forEach((card) => {
+//   card.addEventListener('click', () => {
+//     const popUp = document.getElementById('gallery-pop-up-slide');
+
+//     // 1. Prikaži popUp
+//     popUp.style.display = 'flex';
+//     popUp.style.flexDirection = 'column';
+//     popUp.style.justifyContent = 'flex-start';
+//     popUp.style.alignItems = 'center';
+//     popUp.style.position = 'fixed';
+//     popUp.style.top = '0';
+//     popUp.style.left = '0';
+//     popUp.style.width = '100%';
+//     popUp.style.height = '100%';
+//     popUp.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+//     popUp.style.zIndex = '1000';
+//     popUp.style.paddingTop = '100px'; // spustili smo za 20px više
+
+//     // 2. Očisti prethodni sadržaj
+//     popUp.innerHTML = '';
+
+//     // 3. Dodaj wrapper sa fiksnim dimenzijama (prošireno)
+//     const imageWrapper = document.createElement('div');
+//     imageWrapper.style.position = 'relative';
+//     imageWrapper.style.width = '1000px';    // prošireno
+//     imageWrapper.style.height = '600px';   // prošireno
+//     imageWrapper.style.display = 'flex';
+//     imageWrapper.style.justifyContent = 'center';
+//     imageWrapper.style.alignItems = 'center';
+//     imageWrapper.style.backgroundColor = '#222';
+//     imageWrapper.style.borderRadius = '12px';
+//     imageWrapper.style.boxShadow = '0 0 20px rgba(0,0,0,0.5)';
+
+//     // 4. Dodaj sliku (klon) i prilagodi je okviru
+//     const img = card.querySelector('img').cloneNode(true);
+//     img.style.maxWidth = '100%';
+//     img.style.maxHeight = '100%';
+//     img.style.objectFit = 'cover';
+//     img.style.borderRadius = '10px';
+//     imageWrapper.appendChild(img);
+
+//     // 5. Napravi "X" dugme
+//     const closeButton = document.createElement('button');
+//     closeButton.innerHTML = '&times;';
+//     closeButton.style.position = 'absolute';
+//     closeButton.style.top = '-15px';
+//     closeButton.style.right = '-15px';
+//     closeButton.style.background = 'red';
+//     closeButton.style.color = 'white';
+//     closeButton.style.padding = '0 1rem';
+//     closeButton.style.border = 'none';
+//     closeButton.style.borderRadius = '50%';
+//     closeButton.style.fontSize = '2rem';
+//     closeButton.style.cursor = 'pointer';
+//     closeButton.style.zIndex = '1002';
+
+//     // 6. Event za zatvaranje
+//     closeButton.addEventListener('click', () => {
+//       popUp.style.display = 'none';
+//     });
+
+//     // 7. Dodaj dugme i sliku u wrapper, pa wrapper u popup
+//     imageWrapper.appendChild(closeButton);
+//     popUp.appendChild(imageWrapper);
+//   });
+// });
+
+
+
+
