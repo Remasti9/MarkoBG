@@ -458,71 +458,115 @@ function setMainImg () {
 }
    //SLIDER-GALLERY
 const galleryCards = document.querySelectorAll('.card-last > div');
+const popUp = document.getElementById('gallery-pop-up-slide');
 
-galleryCards.forEach((card) => {
+let currentIndex = 0;
+
+function showImage(index) {
+  if (index < 0) index = galleryCards.length - 1;
+  if (index >= galleryCards.length) index = 0;
+  currentIndex = index;
+
+  const card = galleryCards[currentIndex];
+  const imgSrc = card.querySelector('img').src;
+
+  // Očisti prethodni sadržaj
+  popUp.innerHTML = '';
+
+  // Popup stil
+  popUp.style.display = 'flex';
+  popUp.style.flexDirection = 'column';
+  popUp.style.justifyContent = 'flex-start';
+  popUp.style.alignItems = 'center';
+  popUp.style.position = 'fixed';
+  popUp.style.top = '10px';
+  popUp.style.left = '0';
+  popUp.style.width = '100%';
+  popUp.style.height = '100%';
+  popUp.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+  popUp.style.zIndex = '1000';
+  popUp.style.paddingTop = '100px';
+
+  // Wrapper
+  const imageWrapper = document.createElement('div');
+  imageWrapper.style.position = 'relative';
+  imageWrapper.style.width = '1000px';
+  imageWrapper.style.height = '600px';
+  imageWrapper.style.display = 'flex';
+  imageWrapper.style.justifyContent = 'center';
+  imageWrapper.style.alignItems = 'center';
+  imageWrapper.style.backgroundColor = '#222';
+  imageWrapper.style.borderRadius = '12px';
+  imageWrapper.style.boxShadow = '0 0 20px rgba(0,0,0,0.5)';
+
+  // Slika
+  const img = document.createElement('img');
+  img.src = imgSrc;
+  img.style.maxWidth = '100%';
+  img.style.maxHeight = '100%';
+  img.style.borderRadius = '10px';
+
+  // Leva strelica
+  const leftArrow = document.createElement('button');
+  leftArrow.innerHTML = '&#8592;';
+  leftArrow.style.position = 'absolute';
+  leftArrow.style.left = '-60px';
+  leftArrow.style.top = '50%';
+  leftArrow.style.transform = 'translateY(-50%)';
+  leftArrow.style.fontSize = '40px';
+  leftArrow.style.background = 'none';
+  leftArrow.style.color = 'white';
+  leftArrow.style.border = 'none';
+  leftArrow.style.cursor = 'pointer';
+
+  leftArrow.addEventListener('click', () => {
+    showImage(currentIndex - 1);
+  });
+
+  // Desna strelica
+  const rightArrow = document.createElement('button');
+  rightArrow.innerHTML = '&#8594;';
+  rightArrow.style.position = 'absolute';
+  rightArrow.style.right = '-60px';
+  rightArrow.style.top = '50%';
+  rightArrow.style.transform = 'translateY(-50%)';
+  rightArrow.style.fontSize = '40px';
+  rightArrow.style.background = 'none';
+  rightArrow.style.color = 'white';
+  rightArrow.style.border = 'none';
+  rightArrow.style.cursor = 'pointer';
+
+  rightArrow.addEventListener('click', () => {
+    showImage(currentIndex + 1);
+  });
+
+  // X dugme
+  const closeButton = document.createElement('button');
+  closeButton.innerHTML = '&times;';
+  closeButton.style.position = 'absolute';
+  closeButton.style.top = '-50px';
+  closeButton.style.right = '0';
+  closeButton.style.fontSize = '36px';
+  closeButton.style.background = 'none';
+  closeButton.style.color = 'white';
+  closeButton.style.border = 'none';
+  closeButton.style.cursor = 'pointer';
+  closeButton.addEventListener('click', () => {
+    popUp.style.display = 'none';
+  });
+
+  // Dodavanje elemenata
+  imageWrapper.appendChild(img);
+  imageWrapper.appendChild(leftArrow);
+  imageWrapper.appendChild(rightArrow);
+  imageWrapper.appendChild(closeButton);
+  popUp.appendChild(imageWrapper);
+}
+
+// Dodaj event listener za sve kartice
+galleryCards.forEach((card, index) => {
   card.addEventListener('click', () => {
-    const popUp = document.getElementById('gallery-pop-up-slide');
-
-    // 1. Prikaži popUp
-    popUp.style.display = 'flex';
-    popUp.style.flexDirection = 'column';
-    popUp.style.justifyContent = 'flex-start';
-    popUp.style.alignItems = 'center';
-    popUp.style.position = 'fixed';
-    popUp.style.top = '0';
-    popUp.style.left = '0';
-    popUp.style.width = '100%';
-    popUp.style.height = '100%';
-    popUp.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-    popUp.style.zIndex = '1000';
-    popUp.style.paddingTop = '100px'; // spustili smo za 20px više
-
-    // 2. Očisti prethodni sadržaj
-    popUp.innerHTML = '';
-
-    // 3. Dodaj wrapper sa fiksnim dimenzijama (prošireno)
-    const imageWrapper = document.createElement('div');
-    imageWrapper.style.position = 'relative';
-    imageWrapper.style.width = '1000px';    // prošireno
-    imageWrapper.style.height = '600px';   // prošireno
-    imageWrapper.style.display = 'flex';
-    imageWrapper.style.justifyContent = 'center';
-    imageWrapper.style.alignItems = 'center';
-    imageWrapper.style.backgroundColor = '#222';
-    imageWrapper.style.borderRadius = '12px';
-    imageWrapper.style.boxShadow = '0 0 20px rgba(0,0,0,0.5)';
-
-    // 4. Dodaj sliku (klon) i prilagodi je okviru
-    const img = card.querySelector('img').cloneNode(true);
-    img.style.maxWidth = '100%';
-    img.style.maxHeight = '100%';
-    img.style.objectFit = 'cover';
-    img.style.borderRadius = '10px';
-    imageWrapper.appendChild(img);
-
-    // 5. Napravi "X" dugme
-    const closeButton = document.createElement('button');
-    closeButton.innerHTML = '&times;';
-    closeButton.style.position = 'absolute';
-    closeButton.style.top = '-15px';
-    closeButton.style.right = '-15px';
-    closeButton.style.background = 'red';
-    closeButton.style.color = 'white';
-    closeButton.style.padding = '0 1rem';
-    closeButton.style.border = 'none';
-    closeButton.style.borderRadius = '50%';
-    closeButton.style.fontSize = '2rem';
-    closeButton.style.cursor = 'pointer';
-    closeButton.style.zIndex = '1002';
-
-    // 6. Event za zatvaranje
-    closeButton.addEventListener('click', () => {
-      popUp.style.display = 'none';
-    });
-
-    // 7. Dodaj dugme i sliku u wrapper, pa wrapper u popup
-    imageWrapper.appendChild(closeButton);
-    popUp.appendChild(imageWrapper);
+    showImage(index);
   });
 });
 
