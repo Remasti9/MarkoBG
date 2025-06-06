@@ -503,7 +503,7 @@ function showImage(index) {
   const img = document.createElement('img');
   img.src = imgSrc;
   img.style.maxWidth = '100%';
-  img.style.maxHeight = '100%';
+  img.style.maxHeight = '90%';
   img.style.borderRadius = '10px';
 
   // Leva strelica
