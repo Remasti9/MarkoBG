@@ -589,18 +589,13 @@ document.addEventListener("DOMContentLoaded", function () {
       const atTop = scrollTop === 0;
       const atBottom = scrollTop + clientHeight >= scrollHeight - 1;
 
-      // Ako je skrol blokiran (na vrhu pa pokušava na gore, ili na dnu pa na dole)
       const scrollBlocked = (atTop && !directionDown) || (atBottom && directionDown);
 
       if (scrollBlocked) {
-        // Spreči zadršku i prebaci skrol na prozor
-        e.preventDefault(); // mora da bude { passive: false }
-        window.scrollBy({
-          top: delta,
-          behavior: 'smooth'
-        });
+        e.preventDefault(); // mora { passive: false }
+        window.scrollBy(0, delta*5);  // instant pomeranje, bez smooth
       }
-    }, { passive: false }); // važno za e.preventDefault()
+    }, { passive: false });
   });
 });
 
