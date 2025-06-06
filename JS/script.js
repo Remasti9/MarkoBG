@@ -573,4 +573,28 @@ galleryCards.forEach((card, index) => {
 
 
 
+// Skroll set up 
+  document.addEventListener("DOMContentLoaded", function () {
+  const scrollBoxes = document.querySelectorAll(".service-text");
+
+  scrollBoxes.forEach(box => {
+    box.addEventListener("wheel", function (e) {
+      const delta = e.deltaY;
+      const atTop = box.scrollTop === 0;
+      const atBottom = box.scrollTop + box.clientHeight >= box.scrollHeight - 1; // preciznije
+
+      if ((atTop && delta < 0) || (atBottom && delta > 0)) {
+        e.preventDefault();
+        window.scrollBy({
+          top: delta,
+          behavior: "smooth"
+        });
+      }
+    }, { passive: false });
+  });
+});
+
+
+
+
 
