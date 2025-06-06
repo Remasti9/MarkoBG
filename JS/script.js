@@ -345,7 +345,7 @@ function handleBodyImg() {
  
  // console.log(scrollPosition);
    if(window.innerWidth>768){
-    if (scrollPosition < 6000) {
+    if (scrollPosition < 5000) {
       bodyBg.src = './images/material/body2.jpg'; 
       bodyBg.style.marginTop='0px';
     } else {
