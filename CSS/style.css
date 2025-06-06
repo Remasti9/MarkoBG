@@ -1023,7 +1023,9 @@ button[class^="CloseComponent__PopupCloseControlContainer"] {
   height: 50%;
 }
 .service-text{
-  overflow-y: scroll;
+  max-height: 300px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
 }
 
 .service-img {

@@ -574,25 +574,37 @@ galleryCards.forEach((card, index) => {
 
 
 // Skroll set up 
-  document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
   const scrollBoxes = document.querySelectorAll(".service-text");
 
   scrollBoxes.forEach(box => {
     box.addEventListener("wheel", function (e) {
       const delta = e.deltaY;
-      const atTop = box.scrollTop === 0;
-      const atBottom = box.scrollTop + box.clientHeight >= box.scrollHeight - 1; // preciznije
+      const directionDown = delta > 0;
 
-      if ((atTop && delta < 0) || (atBottom && delta > 0)) {
-        e.preventDefault();
+      const scrollTop = box.scrollTop;
+      const scrollHeight = box.scrollHeight;
+      const clientHeight = box.clientHeight;
+
+      const atTop = scrollTop === 0;
+      const atBottom = scrollTop + clientHeight >= scrollHeight - 1;
+
+      // Ako je skrol blokiran (na vrhu pa pokušava na gore, ili na dnu pa na dole)
+      const scrollBlocked = (atTop && !directionDown) || (atBottom && directionDown);
+
+      if (scrollBlocked) {
+        // Spreči zadršku i prebaci skrol na prozor
+        e.preventDefault(); // mora da bude { passive: false }
         window.scrollBy({
           top: delta,
-          behavior: "smooth"
+          behavior: 'smooth'
         });
       }
-    }, { passive: false });
+    }, { passive: false }); // važno za e.preventDefault()
   });
 });
+
+
 
 
 
