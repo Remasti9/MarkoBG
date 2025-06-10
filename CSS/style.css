@@ -990,6 +990,7 @@ button[class^="CloseComponent__PopupCloseControlContainer"] {
 #service-cover {
   position: relative;
   top: -6rem;
+  padding-bottom: 3rem;
 }
 
 #service-frame {
