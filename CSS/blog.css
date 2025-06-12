@@ -92,6 +92,10 @@
     overflow-y: hidden;
     
 }
+.show-blog-text{
+    max-height: 1000px !important;
+    overflow-y: scroll !important;
+}
 .data-title{
     margin-top: 1rem;
 }

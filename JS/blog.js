@@ -303,7 +303,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const showBlogImg = document.querySelector('#blog-show img');
   
       showBlogTitle.innerHTML = `${title}</span>`;
-      showBlogText.textContent = text;
+      showBlogText.innerHTML = text;
       showBlogImg.src = imgSrc;
       window.scrollTo(0,0)
     }
@@ -313,13 +313,13 @@ document.addEventListener('DOMContentLoaded', function () {
     articles.forEach((article) => {
       const link = article.querySelector('a');
       const h2 = article.querySelector('h2').textContent;
-      const p = article.querySelector('p').textContent;
+      const div = article.querySelector('.blog-text').innerHTML;
       const imgSrc = article.querySelector('img').src;
   
       link.addEventListener('click', function (event) {
         // Sprečava default ponašanje linka
         event.preventDefault();
-        updateBlogShow(h2, p, imgSrc);
+        updateBlogShow(h2, div, imgSrc);
         
       });
     });
