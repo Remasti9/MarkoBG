@@ -96,6 +96,11 @@
     max-height: 1000px !important;
     overflow-y: scroll !important;
 }
+@media (max-width:992px) {
+    .show-blog-text{
+    max-height: fit-content !important;
+}
+}
 .data-title{
     margin-top: 1rem;
 }
