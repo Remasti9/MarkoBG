@@ -321,6 +321,13 @@ document.addEventListener('DOMContentLoaded', function () {
     animationFrameId = requestAnimationFrame(step);
   }
 
+  function stopScrollAnimation() {
+    if (animationFrameId) {
+      cancelAnimationFrame(animationFrameId);
+      animationFrameId = null;
+    }
+  }
+
   function updateBlogShow(title, text, imgSrc) {
     const showBlogTitle = document.getElementById('show-blog-title');
     const showBlogText = document.getElementById('show-blog-text');
@@ -338,15 +345,19 @@ document.addEventListener('DOMContentLoaded', function () {
       scrollDiv.scrollTop = 0;
 
       // Prekini bilo koju prethodnu animaciju odmah ako postoji
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-        animationFrameId = null;
-      }
+      stopScrollAnimation();
 
-      // Posle 1 sekunde pokreni polako skrolovanje
+      // Pokreni polako skrolovanje posle 1.5s
       setTimeout(() => {
         smoothScroll(scrollDiv, 15000);
       }, 1500);
+
+      // Dodaj event listenere koji će zaustaviti animaciju čim korisnik pokuša da skroluje ručno
+      const stopEvents = ['wheel', 'touchstart', 'mousedown'];
+
+      stopEvents.forEach(eventType => {
+        scrollDiv.addEventListener(eventType, stopScrollAnimation, { once: true, passive: true });
+      });
     }
   }
 
