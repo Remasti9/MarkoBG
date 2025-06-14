@@ -412,6 +412,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         if (windowAnimationFrameId) {
           cancelAnimationFrame(windowAnimationFrameId);
+          
           windowAnimationFrameId = null;
         }
       });
