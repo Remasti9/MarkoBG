@@ -302,7 +302,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const showBlogText = document.getElementById('show-blog-text');
       const showBlogImg = document.querySelector('#blog-show img');
   
-      showBlogTitle.innerHTML = `${title}</span>`;
+      showBlogTitle.innerHTML = `${title}`;
       showBlogText.innerHTML = text;
       showBlogImg.src = imgSrc;
       window.scrollTo(0,0)
