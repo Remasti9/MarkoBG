@@ -296,32 +296,73 @@ checkArticlePosition();
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Funkcija za ažuriranje sadržaja blog-show sekcije
-    function updateBlogShow(title, text, imgSrc) {
-      const showBlogTitle = document.getElementById('show-blog-title');
-      const showBlogText = document.getElementById('show-blog-text');
-      const showBlogImg = document.querySelector('#blog-show img');
-  
-      showBlogTitle.innerHTML = `${title}`;
-      showBlogText.innerHTML = text;
-      showBlogImg.src = imgSrc;
-      window.scrollTo(0,0)
+  let animationFrameId = null; // Čuva trenutno aktivni requestAnimationFrame ID
+
+  function smoothScroll(element, duration) {
+    if (animationFrameId) {
+      cancelAnimationFrame(animationFrameId); // Prekini prethodnu animaciju ako postoji
     }
-  
-    // Dodavanje event listenera za sve 'a' tagove unutar članaka
-    const articles = document.querySelectorAll('.blog-article');
-    articles.forEach((article) => {
-      const link = article.querySelector('a');
-      const h2 = article.querySelector('h2').textContent;
-      const div = article.querySelector('.blog-text').innerHTML;
-      const imgSrc = article.querySelector('img').src;
-  
-      link.addEventListener('click', function (event) {
-        // Sprečava default ponašanje linka
-        event.preventDefault();
-        updateBlogShow(h2, div, imgSrc);
-        
-      });
+
+    const start = element.scrollTop;
+    const end = element.scrollHeight - element.clientHeight;
+    const distance = end - start;
+    let startTime = null;
+
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      element.scrollTop = start + distance * progress;
+      if (progress < 1) {
+        animationFrameId = requestAnimationFrame(step);
+      }
+    }
+
+    animationFrameId = requestAnimationFrame(step);
+  }
+
+  function updateBlogShow(title, text, imgSrc) {
+    const showBlogTitle = document.getElementById('show-blog-title');
+    const showBlogText = document.getElementById('show-blog-text');
+    const showBlogImg = document.querySelector('#blog-show img');
+    const scrollDiv = document.querySelector('.show-blog-text');
+
+    showBlogTitle.innerHTML = title;
+    showBlogText.innerHTML = text;
+    showBlogImg.src = imgSrc;
+
+    window.scrollTo(0, 0);
+
+    if (scrollDiv) {
+      // Vrati scroll na početak odmah
+      scrollDiv.scrollTop = 0;
+
+      // Prekini bilo koju prethodnu animaciju odmah ako postoji
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+      }
+
+      // Posle 1 sekunde pokreni polako skrolovanje
+      setTimeout(() => {
+        smoothScroll(scrollDiv, 15000);
+      }, 1500);
+    }
+  }
+
+  const articles = document.querySelectorAll('.blog-article');
+  articles.forEach((article) => {
+    const link = article.querySelector('a');
+    const h2 = article.querySelector('h2').textContent;
+    const div = article.querySelector('.blog-text').innerHTML;
+    const imgSrc = article.querySelector('img').src;
+
+    link.addEventListener('click', function (event) {
+      event.preventDefault();
+      updateBlogShow(h2, div, imgSrc);
     });
   });
-  
+});
+
+
+
