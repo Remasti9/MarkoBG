@@ -391,7 +391,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const h2 = article.querySelector('h2').textContent;
     const div = article.querySelector('.blog-text').innerHTML;
     const imgSrc = article.querySelector('img').src;
-
     link.addEventListener('click', function (event) {
       event.preventDefault();
       updateBlogShow(h2, div, imgSrc);
@@ -412,7 +411,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         if (windowAnimationFrameId) {
           cancelAnimationFrame(windowAnimationFrameId);
-          
           windowAnimationFrameId = null;
         }
       });
