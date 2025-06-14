@@ -296,11 +296,13 @@ checkArticlePosition();
 
 
 document.addEventListener('DOMContentLoaded', function () {
-  let animationFrameId = null; // Čuva trenutno aktivni requestAnimationFrame ID
+  let animationFrameId = null; // Čuva trenutno aktivni requestAnimationFrame ID za scrollDiv
+  let scrollTimeoutId = null;  // Čuva timeout za window scroll
+  let windowAnimationFrameId = null; // Za animaciju window scrolla
 
   function smoothScroll(element, duration) {
     if (animationFrameId) {
-      cancelAnimationFrame(animationFrameId); // Prekini prethodnu animaciju ako postoji
+      cancelAnimationFrame(animationFrameId);
     }
 
     const start = element.scrollTop;
@@ -321,11 +323,26 @@ document.addEventListener('DOMContentLoaded', function () {
     animationFrameId = requestAnimationFrame(step);
   }
 
-  function stopScrollAnimation() {
-    if (animationFrameId) {
-      cancelAnimationFrame(animationFrameId);
-      animationFrameId = null;
+  function smoothWindowScrollBy(distance, duration) {
+    if (windowAnimationFrameId) {
+      cancelAnimationFrame(windowAnimationFrameId);
     }
+
+    const start = window.scrollY || window.pageYOffset;
+    const end = start + distance;
+    let startTime = null;
+
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      window.scrollTo(0, start + (distance * progress));
+      if (progress < 1) {
+        windowAnimationFrameId = requestAnimationFrame(step);
+      }
+    }
+
+    windowAnimationFrameId = requestAnimationFrame(step);
   }
 
   function updateBlogShow(title, text, imgSrc) {
@@ -341,23 +358,30 @@ document.addEventListener('DOMContentLoaded', function () {
     window.scrollTo(0, 0);
 
     if (scrollDiv) {
-      // Vrati scroll na početak odmah
       scrollDiv.scrollTop = 0;
 
-      // Prekini bilo koju prethodnu animaciju odmah ako postoji
-      stopScrollAnimation();
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+      }
+      if (scrollTimeoutId) {
+        clearTimeout(scrollTimeoutId);
+        scrollTimeoutId = null;
+      }
+      if (windowAnimationFrameId) {
+        cancelAnimationFrame(windowAnimationFrameId);
+        windowAnimationFrameId = null;
+      }
 
-      // Pokreni polako skrolovanje posle 1.5s
       setTimeout(() => {
         smoothScroll(scrollDiv, 15000);
       }, 1500);
 
-      // Dodaj event listenere koji će zaustaviti animaciju čim korisnik pokuša da skroluje ručno
-      const stopEvents = ['wheel', 'touchstart', 'mousedown'];
-
-      stopEvents.forEach(eventType => {
-        scrollDiv.addEventListener(eventType, stopScrollAnimation, { once: true, passive: true });
-      });
+      // Posle 4 sekunde startuj animaciju window scrolla za 100px u 3 sekunde
+      scrollTimeoutId = setTimeout(() => {
+        smoothWindowScrollBy(170, 4000);
+      }, 1000);
+     
     }
   }
 
@@ -373,7 +397,29 @@ document.addEventListener('DOMContentLoaded', function () {
       updateBlogShow(h2, div, imgSrc);
     });
   });
+
+  const scrollDiv = document.querySelector('.show-blog-text');
+  if(scrollDiv) {
+    ['wheel', 'touchstart', 'mousedown'].forEach(evt => {
+      scrollDiv.addEventListener(evt, () => {
+        if (animationFrameId) {
+          cancelAnimationFrame(animationFrameId);
+          animationFrameId = null;
+        }
+        if(scrollTimeoutId) {
+          clearTimeout(scrollTimeoutId);
+          scrollTimeoutId = null;
+        }
+        if (windowAnimationFrameId) {
+          cancelAnimationFrame(windowAnimationFrameId);
+          windowAnimationFrameId = null;
+        }
+      });
+    });
+  }
 });
+
+
 
 
 
