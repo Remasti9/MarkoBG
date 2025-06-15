@@ -342,7 +342,8 @@ document.addEventListener('DOMContentLoaded', function () {
         windowScrollInProgress = true;
         console.log('[smoothWindowScrollBy] Pokrećem scroll animaciju', {distance, duration});
 
-        const start = window.scrollY || window.pageYOffset;
+        const html = document.documentElement;
+        const start = html.scrollTop;
         const target = start + distance;
         let startTime = null;
 
@@ -352,7 +353,7 @@ document.addEventListener('DOMContentLoaded', function () {
           const progress = Math.min(elapsed / duration, 1);
           const current = start + distance * progress;
 
-          window.scrollTo(0, current);
+          html.scrollTop = current;
 
           if (progress < 1) {
             windowAnimationFrameId = requestAnimationFrame(step);
@@ -427,7 +428,7 @@ document.addEventListener('DOMContentLoaded', function () {
     showBlogText.innerHTML = text;
     showBlogImg.src = imgSrc;
 
-    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
     if (scrollDiv) scrollDiv.scrollTop = 0;
 
     await startDivScroll(scrollDiv, 25000);
@@ -467,6 +468,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }, { passive: true });
   });
 });
+
+
 
 
 
