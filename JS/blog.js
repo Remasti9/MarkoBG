@@ -321,11 +321,10 @@ document.addEventListener('DOMContentLoaded', function () {
     animationFrameId = requestAnimationFrame(step);
   }
 
-  // Sad smoothWindowScrollBy vraća Promise koji se rešava na kraju animacije
   function smoothWindowScrollBy(distance, duration) {
     return new Promise((resolve) => {
       if (windowScrollInProgress) {
-        resolve(); // ako je već u toku, odmah se rešavamo da ne blokiramo
+        resolve(); // ako je već u toku
         return;
       }
 
@@ -352,7 +351,7 @@ document.addEventListener('DOMContentLoaded', function () {
           windowAnimationFrameId = requestAnimationFrame(step);
         } else {
           windowScrollInProgress = false;
-          resolve(); // animacija završena
+          resolve();
         }
       }
 
@@ -360,7 +359,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  function resetAnimations() {
+  function resetAnimations(resetWindow = true) {
     if (animationFrameId) {
       cancelAnimationFrame(animationFrameId);
       animationFrameId = null;
@@ -369,16 +368,28 @@ document.addEventListener('DOMContentLoaded', function () {
       clearTimeout(scrollTimeoutId);
       scrollTimeoutId = null;
     }
-    if (windowAnimationFrameId) {
-      cancelAnimationFrame(windowAnimationFrameId);
-      windowAnimationFrameId = null;
+    if (resetWindow) {
+      if (windowAnimationFrameId) {
+        cancelAnimationFrame(windowAnimationFrameId);
+        windowAnimationFrameId = null;
+      }
+      windowScrollInProgress = false;
     }
-    windowScrollInProgress = false;
   }
 
-  // delay funkcija za čekanje
   function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  function startDivScroll(scrollDiv, duration) {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        if (scrollDiv) {
+          smoothScroll(scrollDiv, duration);
+        }
+        resolve(); // ne čekamo završetak
+      }, 1500);
+    });
   }
 
   async function updateBlogShow(title, text, imgSrc) {
@@ -387,7 +398,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const showBlogImg = document.querySelector('#blog-show img');
     const scrollDiv = document.querySelector('.show-blog-text');
 
-    resetAnimations();
+    resetAnimations(); // puni reset
 
     showBlogTitle.innerHTML = title;
     showBlogText.innerHTML = text;
@@ -396,15 +407,11 @@ document.addEventListener('DOMContentLoaded', function () {
     window.scrollTo(0, 0);
     if (scrollDiv) scrollDiv.scrollTop = 0;
 
-    // Pokreni smooth scroll div-a sa malim delay-jem (može i bez await da ne blokira)
-    setTimeout(() => {
-      if (scrollDiv) {
-        smoothScroll(scrollDiv, 15000);
-      }
-    }, 1500);
+    await startDivScroll(scrollDiv, 15000);
+    await delay(1000);
 
-    // Sačekaj 2.5s pa pokreni glatko skrolovanje prozora
-    await delay(2500);
+    // ⬇️ zaštita ako je korisnik nešto pipnuo i windowScrollInProgress ostao true
+    windowScrollInProgress = false;
     await smoothWindowScrollBy(170, 1300);
   }
 
@@ -414,6 +421,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const h2 = article.querySelector('h2').textContent;
     const div = article.querySelector('.blog-text').innerHTML;
     const imgSrc = article.querySelector('img').src;
+
     link.addEventListener('click', function (event) {
       event.preventDefault();
       updateBlogShow(h2, div, imgSrc);
@@ -424,11 +432,14 @@ document.addEventListener('DOMContentLoaded', function () {
   if (scrollDiv) {
     ['wheel', 'touchstart', 'mousedown'].forEach(evt => {
       scrollDiv.addEventListener(evt, () => {
-        resetAnimations();
+        resetAnimations(false); // samo div scroll prekidaš
       });
     });
   }
 });
+
+
+
 
 
 
