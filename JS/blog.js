@@ -296,6 +296,7 @@ document.addEventListener('DOMContentLoaded', function () {
   let scrollTimeoutId = null;
   let windowAnimationFrameId = null;
   let windowScrollInProgress = false;
+  let scrollQueue = Promise.resolve(); // queue za scroll pozive
 
   function smoothScroll(element, duration) {
     if (animationFrameId) {
@@ -322,41 +323,62 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function smoothWindowScrollBy(distance, duration) {
-    return new Promise((resolve) => {
-      if (windowScrollInProgress) {
-        resolve(); // ako je već u toku
-        return;
-      }
-
-      if (windowAnimationFrameId) {
-        cancelAnimationFrame(windowAnimationFrameId);
-        windowAnimationFrameId = null;
-      }
-
-      windowScrollInProgress = true;
-
-      const start = window.scrollY || window.pageYOffset;
-      const target = start + distance;
-      let startTime = null;
-
-      function step(timestamp) {
-        if (!startTime) startTime = timestamp;
-        const elapsed = timestamp - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const current = start + distance * progress;
-
-        window.scrollTo(0, current);
-
-        if (progress < 1) {
-          windowAnimationFrameId = requestAnimationFrame(step);
-        } else {
-          windowScrollInProgress = false;
+    // dodaj scroll u queue
+    scrollQueue = scrollQueue.then(() => {
+      return new Promise((resolve) => {
+        if (windowScrollInProgress) {
+          console.log('[smoothWindowScrollBy] Scroll je u toku, čekam da se oslobodi...');
+          // Ovde ćemo sačekati da prethodni scroll završi
+          // Ali zato što koristimo queue, nećemo doći do ovoga ako se poziva kroz queue
           resolve();
+          return;
         }
-      }
 
-      windowAnimationFrameId = requestAnimationFrame(step);
+        if (windowAnimationFrameId) {
+          cancelAnimationFrame(windowAnimationFrameId);
+          windowAnimationFrameId = null;
+        }
+
+        windowScrollInProgress = true;
+        console.log('[smoothWindowScrollBy] Pokrećem scroll animaciju', {distance, duration});
+
+        const start = window.scrollY || window.pageYOffset;
+        const target = start + distance;
+        let startTime = null;
+
+        function step(timestamp) {
+          if (!startTime) startTime = timestamp;
+          const elapsed = timestamp - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const current = start + distance * progress;
+
+          window.scrollTo(0, current);
+
+          if (progress < 1) {
+            windowAnimationFrameId = requestAnimationFrame(step);
+          } else {
+            windowScrollInProgress = false;
+            windowAnimationFrameId = null;
+            console.log('[smoothWindowScrollBy] Scroll animacija završena');
+            resolve();
+          }
+        }
+
+        // Sigurnosni fallback ako animacija ne završi na vreme
+        setTimeout(() => {
+          if (windowScrollInProgress) {
+            console.warn('[smoothWindowScrollBy] Timeout, forsiram završetak scrolla');
+            windowScrollInProgress = false;
+            windowAnimationFrameId = null;
+            resolve();
+          }
+        }, duration + 300);
+
+        windowAnimationFrameId = requestAnimationFrame(step);
+      });
     });
+
+    return scrollQueue;
   }
 
   function resetAnimations(resetWindow = true) {
@@ -374,6 +396,7 @@ document.addEventListener('DOMContentLoaded', function () {
         windowAnimationFrameId = null;
       }
       windowScrollInProgress = false;
+      console.log('[resetAnimations] Resetujem windowScrollInProgress');
     }
   }
 
@@ -398,7 +421,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const showBlogImg = document.querySelector('#blog-show img');
     const scrollDiv = document.querySelector('.show-blog-text');
 
-    resetAnimations(); // puni reset
+    resetAnimations();
 
     showBlogTitle.innerHTML = title;
     showBlogText.innerHTML = text;
@@ -407,11 +430,10 @@ document.addEventListener('DOMContentLoaded', function () {
     window.scrollTo(0, 0);
     if (scrollDiv) scrollDiv.scrollTop = 0;
 
-    await startDivScroll(scrollDiv, 15000);
+    await startDivScroll(scrollDiv, 25000);
     await delay(1000);
 
-    // ⬇️ zaštita ako je korisnik nešto pipnuo i windowScrollInProgress ostao true
-    windowScrollInProgress = false;
+    windowScrollInProgress = false; // osiguranje
     await smoothWindowScrollBy(170, 1300);
   }
 
@@ -432,11 +454,21 @@ document.addEventListener('DOMContentLoaded', function () {
   if (scrollDiv) {
     ['wheel', 'touchstart', 'mousedown'].forEach(evt => {
       scrollDiv.addEventListener(evt, () => {
-        resetAnimations(false); // samo div scroll prekidaš
+        resetAnimations(false); // samo div
       });
     });
   }
+
+  ['wheel', 'touchstart', 'mousedown'].forEach(evt => {
+    window.addEventListener(evt, () => {
+      if (windowScrollInProgress) {
+        resetAnimations(true);
+      }
+    }, { passive: true });
+  });
 });
+
+
 
 
 
