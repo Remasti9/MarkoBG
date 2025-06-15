@@ -293,16 +293,16 @@ checkArticlePosition();
 
 
 
-
-
 document.addEventListener('DOMContentLoaded', function () {
-  let animationFrameId = null; // Čuva trenutno aktivni requestAnimationFrame ID za scrollDiv
-  let scrollTimeoutId = null;  // Čuva timeout za window scroll
-  let windowAnimationFrameId = null; // Za animaciju window scrolla
+  let animationFrameId = null;
+  let scrollTimeoutId = null;
+  let windowAnimationFrameId = null;
+  let windowScrollInProgress = false;
 
   function smoothScroll(element, duration) {
     if (animationFrameId) {
       cancelAnimationFrame(animationFrameId);
+      animationFrameId = null;
     }
 
     const start = element.scrollTop;
@@ -324,25 +324,51 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function smoothWindowScrollBy(distance, duration) {
+    if (windowScrollInProgress) return;
+
     if (windowAnimationFrameId) {
       cancelAnimationFrame(windowAnimationFrameId);
+      windowAnimationFrameId = null;
     }
 
+    windowScrollInProgress = true;
+
     const start = window.scrollY || window.pageYOffset;
-    const end = start + distance;
+    const target = start + distance;
     let startTime = null;
 
     function step(timestamp) {
       if (!startTime) startTime = timestamp;
       const elapsed = timestamp - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      window.scrollTo(0, start + (distance * progress));
+      const current = start + distance * progress;
+
+      window.scrollTo(0, current);
+
       if (progress < 1) {
         windowAnimationFrameId = requestAnimationFrame(step);
+      } else {
+        windowScrollInProgress = false;
       }
     }
 
     windowAnimationFrameId = requestAnimationFrame(step);
+  }
+
+  function resetAnimations() {
+    if (animationFrameId) {
+      cancelAnimationFrame(animationFrameId);
+      animationFrameId = null;
+    }
+    if (scrollTimeoutId) {
+      clearTimeout(scrollTimeoutId);
+      scrollTimeoutId = null;
+    }
+    if (windowAnimationFrameId) {
+      cancelAnimationFrame(windowAnimationFrameId);
+      windowAnimationFrameId = null;
+    }
+    windowScrollInProgress = false;
   }
 
   function updateBlogShow(title, text, imgSrc) {
@@ -351,38 +377,24 @@ document.addEventListener('DOMContentLoaded', function () {
     const showBlogImg = document.querySelector('#blog-show img');
     const scrollDiv = document.querySelector('.show-blog-text');
 
+    resetAnimations();
+
     showBlogTitle.innerHTML = title;
     showBlogText.innerHTML = text;
     showBlogImg.src = imgSrc;
 
     window.scrollTo(0, 0);
+    if (scrollDiv) scrollDiv.scrollTop = 0;
 
-    if (scrollDiv) {
-      scrollDiv.scrollTop = 0;
-
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-        animationFrameId = null;
-      }
-      if (scrollTimeoutId) {
-        clearTimeout(scrollTimeoutId);
-        scrollTimeoutId = null;
-      }
-      if (windowAnimationFrameId) {
-        cancelAnimationFrame(windowAnimationFrameId);
-        windowAnimationFrameId = null;
-      }
-
-      setTimeout(() => {
+    setTimeout(() => {
+      if (scrollDiv) {
         smoothScroll(scrollDiv, 15000);
-      }, 1500);
+      }
+    }, 1500);
 
-      // Posle 4 sekunde startuj animaciju window scrolla za 100px u 3 sekunde
-      scrollTimeoutId = setTimeout(() => {
-        smoothWindowScrollBy(170, 4000);
-      }, 1000);
-     
-    }
+    scrollTimeoutId = setTimeout(() => {
+      smoothWindowScrollBy(170, 4000);
+    }, 1500);
   }
 
   const articles = document.querySelectorAll('.blog-article');
@@ -398,25 +410,19 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   const scrollDiv = document.querySelector('.show-blog-text');
-  if(scrollDiv) {
+  if (scrollDiv) {
     ['wheel', 'touchstart', 'mousedown'].forEach(evt => {
       scrollDiv.addEventListener(evt, () => {
-        if (animationFrameId) {
-          cancelAnimationFrame(animationFrameId);
-          animationFrameId = null;
-        }
-        if(scrollTimeoutId) {
-          clearTimeout(scrollTimeoutId);
-          scrollTimeoutId = null;
-        }
-        if (windowAnimationFrameId) {
-          cancelAnimationFrame(windowAnimationFrameId);
-          windowAnimationFrameId = null;
-        }
+        resetAnimations();
       });
     });
+
   }
 });
+
+
+
+
 
 
 
