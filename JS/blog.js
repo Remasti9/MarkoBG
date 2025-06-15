@@ -291,8 +291,6 @@ checkArticlePosition();
     
   }
 
-
-
 document.addEventListener('DOMContentLoaded', function () {
   let animationFrameId = null;
   let scrollTimeoutId = null;
@@ -323,36 +321,43 @@ document.addEventListener('DOMContentLoaded', function () {
     animationFrameId = requestAnimationFrame(step);
   }
 
+  // Sad smoothWindowScrollBy vraća Promise koji se rešava na kraju animacije
   function smoothWindowScrollBy(distance, duration) {
-    if (windowScrollInProgress) return;
-
-    if (windowAnimationFrameId) {
-      cancelAnimationFrame(windowAnimationFrameId);
-      windowAnimationFrameId = null;
-    }
-
-    windowScrollInProgress = true;
-
-    const start = window.scrollY || window.pageYOffset;
-    const target = start + distance;
-    let startTime = null;
-
-    function step(timestamp) {
-      if (!startTime) startTime = timestamp;
-      const elapsed = timestamp - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const current = start + distance * progress;
-
-      window.scrollTo(0, current);
-
-      if (progress < 1) {
-        windowAnimationFrameId = requestAnimationFrame(step);
-      } else {
-        windowScrollInProgress = false;
+    return new Promise((resolve) => {
+      if (windowScrollInProgress) {
+        resolve(); // ako je već u toku, odmah se rešavamo da ne blokiramo
+        return;
       }
-    }
 
-    windowAnimationFrameId = requestAnimationFrame(step);
+      if (windowAnimationFrameId) {
+        cancelAnimationFrame(windowAnimationFrameId);
+        windowAnimationFrameId = null;
+      }
+
+      windowScrollInProgress = true;
+
+      const start = window.scrollY || window.pageYOffset;
+      const target = start + distance;
+      let startTime = null;
+
+      function step(timestamp) {
+        if (!startTime) startTime = timestamp;
+        const elapsed = timestamp - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const current = start + distance * progress;
+
+        window.scrollTo(0, current);
+
+        if (progress < 1) {
+          windowAnimationFrameId = requestAnimationFrame(step);
+        } else {
+          windowScrollInProgress = false;
+          resolve(); // animacija završena
+        }
+      }
+
+      windowAnimationFrameId = requestAnimationFrame(step);
+    });
   }
 
   function resetAnimations() {
@@ -371,7 +376,12 @@ document.addEventListener('DOMContentLoaded', function () {
     windowScrollInProgress = false;
   }
 
-  function updateBlogShow(title, text, imgSrc) {
+  // delay funkcija za čekanje
+  function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  async function updateBlogShow(title, text, imgSrc) {
     const showBlogTitle = document.getElementById('show-blog-title');
     const showBlogText = document.getElementById('show-blog-text');
     const showBlogImg = document.querySelector('#blog-show img');
@@ -386,15 +396,16 @@ document.addEventListener('DOMContentLoaded', function () {
     window.scrollTo(0, 0);
     if (scrollDiv) scrollDiv.scrollTop = 0;
 
+    // Pokreni smooth scroll div-a sa malim delay-jem (može i bez await da ne blokira)
     setTimeout(() => {
       if (scrollDiv) {
         smoothScroll(scrollDiv, 15000);
       }
     }, 1500);
 
-    scrollTimeoutId = setTimeout(() => {
-      smoothWindowScrollBy(170, 4000);
-    }, 1500);
+    // Sačekaj 2.5s pa pokreni glatko skrolovanje prozora
+    await delay(1500);
+    await smoothWindowScrollBy(170, 2000);
   }
 
   const articles = document.querySelectorAll('.blog-article');
@@ -416,13 +427,8 @@ document.addEventListener('DOMContentLoaded', function () {
         resetAnimations();
       });
     });
-
   }
 });
-
-
-
-
 
 
 
