@@ -321,14 +321,9 @@ document.addEventListener('DOMContentLoaded', function () {
     animationFrameId = requestAnimationFrame(step);
   }
 
-  // Sad smoothWindowScrollBy vraća Promise koji se rešava na kraju animacije
   function smoothWindowScrollBy(distance, duration) {
     return new Promise((resolve) => {
-      if (windowScrollInProgress) {
-        resolve(); // ako je već u toku, odmah se rešavamo da ne blokiramo
-        return;
-      }
-
+      // Uklonjena zaštita od paralelnih animacija da bi animacija uvek krenula
       if (windowAnimationFrameId) {
         cancelAnimationFrame(windowAnimationFrameId);
         windowAnimationFrameId = null;
@@ -352,7 +347,7 @@ document.addEventListener('DOMContentLoaded', function () {
           windowAnimationFrameId = requestAnimationFrame(step);
         } else {
           windowScrollInProgress = false;
-          resolve(); // animacija završena
+          resolve();
         }
       }
 
@@ -376,7 +371,6 @@ document.addEventListener('DOMContentLoaded', function () {
     windowScrollInProgress = false;
   }
 
-  // delay funkcija za čekanje
   function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
@@ -396,16 +390,14 @@ document.addEventListener('DOMContentLoaded', function () {
     window.scrollTo(0, 0);
     if (scrollDiv) scrollDiv.scrollTop = 0;
 
-    // Pokreni smooth scroll div-a sa malim delay-jem (može i bez await da ne blokira)
     setTimeout(() => {
       if (scrollDiv) {
         smoothScroll(scrollDiv, 15000);
       }
     }, 1500);
 
-    // Sačekaj 2.5s pa pokreni glatko skrolovanje prozora
-    await delay(1500);
-    await smoothWindowScrollBy(170, 2000);
+    await delay(2500);
+    await smoothWindowScrollBy(170, 1300);
   }
 
   const articles = document.querySelectorAll('.blog-article');
@@ -429,6 +421,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
+
 
 
 
