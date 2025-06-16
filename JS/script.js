@@ -252,15 +252,11 @@ document.querySelectorAll('.nav-link').forEach((link) => {
         return
       }
       if(e.target.textContent==='USLUGE'){
-       if(document.getElementById('blog').style.display ==='block' || document.getElementById('gallery' ).style.display=== 'block'){
-        if(window.innerWidth<768){
-        window.scrollBy(0,100)
-        return
-        }
-      } 
         window.scrollBy(0,-220)
-        
-        
+        return
+      }
+      if(e.target.textContent==='CENOVNIK'){
+        window.scrollBy(0,-20)
         return
       }
       if(window.innerWidth<768){
