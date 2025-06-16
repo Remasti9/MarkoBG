@@ -245,7 +245,7 @@ document.querySelectorAll('.nav-link').forEach((link) => {
         if(window.innerWidth>992){
           document.getElementById('main-mobile-phone-break').style.display='none';
         } else {
-          document.getElementById('main-mobile-phone-break').style.display='block';
+          document.getElementById('main-mobile-phone-break').style.display='none';
         }
         
         window.scrollTo(0,0)
