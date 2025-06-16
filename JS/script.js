@@ -254,7 +254,7 @@ document.querySelectorAll('.nav-link').forEach((link) => {
       if(e.target.textContent==='USLUGE'){
        if(document.getElementById('blog').style.display ==='block' || document.getElementById('gallery' ).style.display=== 'block'){
         if(window.innerWidth<768){
-        window.scrollBy(0,0)
+        window.scrollBy(0,100)
         return
         }
       } 
