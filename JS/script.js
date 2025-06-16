@@ -252,7 +252,10 @@ document.querySelectorAll('.nav-link').forEach((link) => {
         return
       }
       if(e.target.textContent==='USLUGE'){
-      
+       if(document.getElementById('blog').style.display ==='block' || document.getElementById('gallery' ).style.display=== 'block'){
+        window.scrollBy(0,0)
+        return
+      } 
         window.scrollBy(0,-220)
         
         
