@@ -267,30 +267,14 @@ window.addEventListener('scroll', () => {
 
 // Takođe proveri poziciju odmah po učitavanju stranice
 checkArticlePosition();
-
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
-    
-
-    
-    
-
-    
-    
-
-
-    
   }
 
+
+
+
+  if(window.innerWidth >992){q
+
+ 
 document.addEventListener('DOMContentLoaded', function () {
   let animationFrameId = null;
   let scrollTimeoutId = null;
@@ -468,7 +452,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }, { passive: true });
   });
 });
-
+ }
 
 
 
