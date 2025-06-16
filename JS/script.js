@@ -253,7 +253,7 @@ document.querySelectorAll('.nav-link').forEach((link) => {
       }
       if(e.target.textContent==='USLUGE'){
       
-        window.scrollBy(0,-150)
+        window.scrollBy(0,-230)
         
         
         return
