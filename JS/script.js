@@ -255,6 +255,7 @@ document.querySelectorAll('.nav-link').forEach((link) => {
       
         window.scrollBy(0,-220)
         
+        
         return
       }
       if(window.innerWidth<768){
