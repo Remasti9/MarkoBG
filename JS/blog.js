@@ -268,27 +268,6 @@ window.addEventListener('scroll', () => {
 // Takođe proveri poziciju odmah po učitavanju stranice
 checkArticlePosition();
 
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
-    
-
-    
-    
-
-    
-    
-
-
-    
   }
 
 document.addEventListener('DOMContentLoaded', function () {
