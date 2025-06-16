@@ -645,7 +645,7 @@ z-index: 99999999999999999999999999999999999999 !important;
   .margin{
     display: block;
     margin-bottom: 40px;
-    width: 70% !important;
+    width: 100% !important;
   }
   
   .no-p-sm{

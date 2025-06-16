@@ -408,7 +408,7 @@ function mainMobilePhone(){
     mobilePhone.style.display='none';
     mobileNav.style.display='block';
   } else {
-    mobilePhone.style.display='block';
+    mobilePhone.style.display='none';
     mobileNav.style.display='none';
   }
 }
