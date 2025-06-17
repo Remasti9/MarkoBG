@@ -281,8 +281,13 @@ document.querySelectorAll('.nav-link').forEach((link) => {
       ) {
         window.scrollBy(0, 120); // prilagodi po potrebi
         return;
-      } else if(clickedText === 'CENOVNIK' && isMobile && (previousSection !== 'BLOG' || previousSection !== 'GALERIJA') && (window.innerWidth<992)){
-        window.scrollBy(0, 100); // prilagodi po potrebi
+      } else if(
+        clickedText === 'CENOVNIK' && 
+        isMobile && 
+        (previousSection !== 'BLOG' || previousSection !== 'GALERIJA') && 
+         (window.innerWidth<992))
+         {
+        window.scrollBy(0, -50); // prilagodi po potrebi
         return;
       }
 
