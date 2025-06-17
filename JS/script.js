@@ -281,7 +281,7 @@ document.querySelectorAll('.nav-link').forEach((link) => {
       ) {
         window.scrollBy(0, 120); // prilagodi po potrebi
         return;
-      } else if(isMobile && (window.innerWidth<992)){
+      } else if(isMobile && (previousSection !== 'BLOG' || previousSection !== 'GALERIJA') && (window.innerWidth<992)){
         window.scrollBy(0, 0); // prilagodi po potrebi
         return;
       }
