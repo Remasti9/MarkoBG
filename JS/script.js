@@ -311,7 +311,7 @@ document.querySelectorAll('.nav-link').forEach((link) => {
       } else {
         window.scrollBy(0, -60);
       }
-    }, 500);
+    }, 1100);
 
     switcher = true;
   });
