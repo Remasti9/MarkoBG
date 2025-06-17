@@ -287,7 +287,7 @@ document.querySelectorAll('.nav-link').forEach((link) => {
         (previousSection !== 'BLOG' || previousSection !== 'GALERIJA') && 
          (window.innerWidth<992))
          {
-        window.scrollBy(0, -50); // prilagodi po potrebi
+        window.scrollBy(0, -70); // prilagodi po potrebi
         return;
       }
 
