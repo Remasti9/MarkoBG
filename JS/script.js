@@ -276,7 +276,8 @@ document.querySelectorAll('.nav-link').forEach((link) => {
       if (
         isMobile &&
         clickedText === 'CENOVNIK' &&
-        (previousSection === 'BLOG' || previousSection === 'GALERIJA')
+        (previousSection === 'BLOG' || previousSection === 'GALERIJA') &&
+        (window.innerWidth<992)
       ) {
         window.scrollBy(0, 120); // prilagodi po potrebi
         return;
@@ -304,6 +305,10 @@ document.querySelectorAll('.nav-link').forEach((link) => {
         window.scrollBy(0, -220);
         return;
       }
+      if (clickedText === 'CENOVNIK') {
+        window.scrollBy(0, -20);
+        return;
+      }
 
       // Default scroll
       if (window.innerWidth < 768) {
@@ -311,7 +316,7 @@ document.querySelectorAll('.nav-link').forEach((link) => {
       } else {
         window.scrollBy(0, -60);
       }
-    }, 1100);
+    }, 1000);
 
     switcher = true;
   });
