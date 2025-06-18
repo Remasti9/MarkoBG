@@ -620,7 +620,7 @@ z-index: 99999999999999999999999999999999999999 !important;
    font-size: 3rem;
   }
   .call-frame{
-            bottom: 4%;
+           bottom: 3.8%;
         left: 10%;
         gap: 40px;
         display: flex
@@ -628,6 +628,7 @@ z-index: 99999999999999999999999999999999999999 !important;
         flex-direction: row;
         width: 80%;
         background: rgb(2, 114, 218);
+        padding-bottom: 5px;
   }
   .call-frame::before{
     content: "";
