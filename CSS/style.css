@@ -629,6 +629,7 @@ z-index: 99999999999999999999999999999999999999 !important;
         width: 80%;
         background: rgb(2, 114, 218);
         padding-bottom: 5px;
+        padding-top: 3px;
   }
   .call-frame::before{
     content: "";
