@@ -637,7 +637,7 @@ z-index: 99999999999999999999999999999999999999 !important;
     width: 150px;
     background: rgb(2, 114, 218);
     position: absolute;
-    left: -50px;
+    left: -150px;
     top: 0;
     z-index: 9999;
   }
@@ -647,7 +647,7 @@ z-index: 99999999999999999999999999999999999999 !important;
     width: 150px;
     background: rgb(2, 114, 218);
     position: absolute;
-    right: -50px;
+    right: -150px;
     top: 0;
     z-index: 9999;
   }
