@@ -484,7 +484,15 @@ section.blanc{
   list-style-type: none;
   width: fit-content;
   margin-left: 4rem;
-  
+}
+@media (max-width:375px) {
+  #main-mobile-nav li,
+#main-mobile-nav-icons li{
+  display: inline;
+  list-style-type: none;
+  width: fit-content;
+  margin-left: 3rem;
+}
 }
 
 #main-mobile-nav a,
