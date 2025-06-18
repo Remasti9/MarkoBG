@@ -633,7 +633,7 @@ z-index: 99999999999999999999999999999999999999 !important;
   }
   .call-frame::before{
     content: "";
-    height: 65px;
+    height: 68px;
     width: 150px;
     background: rgb(2, 114, 218);
     position: absolute;
@@ -643,7 +643,7 @@ z-index: 99999999999999999999999999999999999999 !important;
   }
   .call-frame::after{
     content: "";
-    height: 65px;
+    height: 68px;
     width: 150px;
     background: rgb(2, 114, 218);
     position: absolute;
