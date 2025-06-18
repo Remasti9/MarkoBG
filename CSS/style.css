@@ -620,9 +620,38 @@ z-index: 99999999999999999999999999999999999999 !important;
    font-size: 3rem;
   }
   .call-frame{
-    bottom: 25%;
-    gap: 40px;
+            bottom: 6%;
+        left: 10%;
+        gap: 40px;
+        display: flex
+;
+        flex-direction: row;
+        width: 80%;
+        background: rgba(200, 200, 200, .5);
   }
+  .call-frame::before{
+    content: "";
+    height: 60px;
+    width: 50px;
+    background: rgba(200, 200, 200, .5);
+    position: absolute;
+    left: -50px;
+    top: 0;
+    z-index: 9999;
+  }
+  .call-frame::after{
+    content: "";
+    height: 60px;
+    width: 50px;
+    background: rgba(200, 200, 200, .5);
+    position: absolute;
+    right: -50px;
+    top: 0;
+    z-index: 9999;
+  }
+
+
+
   .d-sm-flex {
     display: flex !important ;
       flex-direction: column-reverse !important;
