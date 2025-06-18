@@ -620,20 +620,20 @@ z-index: 99999999999999999999999999999999999999 !important;
    font-size: 3rem;
   }
   .call-frame{
-            bottom: 4.5%;
+            bottom: 0%;
         left: 10%;
         gap: 40px;
         display: flex
 ;
         flex-direction: row;
         width: 80%;
-        background: rgba(200, 200, 200, .5);
+        background: rgb(2, 114, 218);
   }
   .call-frame::before{
     content: "";
     height: 60px;
     width: 50px;
-    background: rgba(200, 200, 200, .5);
+    background: rgb(2, 114, 218);
     position: absolute;
     left: -50px;
     top: 0;
@@ -643,7 +643,7 @@ z-index: 99999999999999999999999999999999999999 !important;
     content: "";
     height: 60px;
     width: 50px;
-    background: rgba(200, 200, 200, .5);
+    background: rgb(2, 114, 218);
     position: absolute;
     right: -50px;
     top: 0;
