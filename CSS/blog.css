@@ -39,6 +39,7 @@ padding:5px ;
   font-size: 30px;
   cursor: pointer;
   z-index: 9999999999999999999999999999;
+  transition: top 0.3s ease;
 }
 #blog-show-close:hover{
     font-weight: 600;
@@ -52,9 +53,9 @@ padding:5px ;
 #blog-show-close {
   position: fixed;
   top: 80px;
-   padding: 0 6px;
+   padding:0 6px 2px 6px;
   font-size: 20px;
-  
+  font-weight: normal;
 }
 }
 
