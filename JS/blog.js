@@ -455,21 +455,23 @@ document.getElementById("blog-show-close").addEventListener("click", () => {
 
 
 const target = document.querySelector('#blog-show');
-
+if(window.innerWidth < 993){
  observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (!entry.isIntersecting && (window.innerWidth < 993)) {
+    if (!entry.isIntersecting ) {
       document.getElementById('blog-show-close').style.position='absolute';
     } else{
       document.getElementById('blog-show-close').style.position='fixed';
     }
   });
 }, {
-  threshold: 0.1 // Posmatraj ako bar 10% elementa izlazi iz vidokruga
+  threshold: .1 // Posmatraj ako bar 10% elementa izlazi iz vidokruga
 });
 
 if (target) {
   observer.observe(target);
+}
+
 }
 
 
