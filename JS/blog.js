@@ -454,26 +454,33 @@ document.getElementById("blog-show-close").addEventListener("click", () => {
 });
 
 
-const target = document.querySelector('#blog-show');
-if(window.innerWidth < 993){
- observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting ) {
-      document.getElementById('blog-show-close').style.position='absolute';
-    } else{
-      document.getElementById('blog-show-close').style.position='fixed';
-    }
+const target = document.querySelector('.show-blog-text');
+const blogImg = document.querySelector('#blog-show img');
+
+
+if (window.innerWidth < 993) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const closeBtn = document.getElementById('blog-show-close');
+
+      // ako JE u viewportu (i makar 1px se vidi), fiksiraj dugme
+      if (entry.isIntersecting) {
+        closeBtn.style.position = 'fixed';
+        blogImg.style.marginBottom='0px';
+      } else {
+        // ako NIJE u viewportu uopšte — ceo element je nestao
+        closeBtn.style.position = 'absolute';
+        blogImg.style.marginBottom='40px';
+      }
+    });
+  }, {
+    threshold: 0 // čim makar 1px uđe/izađe, observer reaguje
   });
-}, {
-  threshold: .1 // Posmatraj ako bar 10% elementa izlazi iz vidokruga
-});
 
-if (target) {
-  observer.observe(target);
+  if (target) {
+    observer.observe(target);
+  }
 }
-
-}
-
 
 
 
