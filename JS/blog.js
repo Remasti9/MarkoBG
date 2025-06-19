@@ -458,6 +458,7 @@ const target = document.querySelector('.show-blog-text');
 const blogImg = document.querySelector('#blog-show img');
 
 
+function setBlogShow () {
 if (window.innerWidth < 993) {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -481,6 +482,10 @@ if (window.innerWidth < 993) {
     observer.observe(target);
   }
 }
+}
+
+window.addEventListener('click', setBlogShow);
+window.addEventListener('resize', setBlogShow);
 
 
 
