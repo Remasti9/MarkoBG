@@ -190,7 +190,7 @@ document.querySelectorAll('.nav-link').forEach((link) => {
 
   link.addEventListener('click', e => {
     const clickedText = link.firstChild.textContent.trim();
-
+document.getElementById('blog-show').style.display='none';
     // Zapamti prethodnu sekciju
     if (document.getElementById('blog').style.display === 'block') {
       previousSection = 'BLOG';

@@ -426,6 +426,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     link.addEventListener('click', function (event) {
       event.preventDefault();
+      document.getElementById('blog-show').style.display='block';
       updateBlogShow(h2, div, imgSrc);
     });
   });
@@ -447,6 +448,29 @@ document.addEventListener('DOMContentLoaded', function () {
     }, { passive: true });
   });
 });
+
+document.getElementById("blog-show-close").addEventListener("click", () => {
+  document.getElementById("blog-show").style.display = "none";
+});
+
+
+const target = document.querySelector('#blog-show');
+
+ observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting && (window.innerWidth < 993)) {
+      document.getElementById('blog-show-close').style.position='absolute';
+    } else{
+      document.getElementById('blog-show-close').style.position='fixed';
+    }
+  });
+}, {
+  threshold: 0.1 // Posmatraj ako bar 10% elementa izlazi iz vidokruga
+});
+
+if (target) {
+  observer.observe(target);
+}
 
 
 
