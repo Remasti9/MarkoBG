@@ -375,8 +375,7 @@ document.addEventListener('DOMContentLoaded', function () {
         cancelAnimationFrame(windowAnimationFrameId);
         windowAnimationFrameId = null;
       }
-      windowScrollInProgress = false;
-      console.log('[resetAnimations] Resetujem windowScrollInProgress');
+    
     }
   }
 
@@ -413,8 +412,7 @@ document.addEventListener('DOMContentLoaded', function () {
     await startDivScroll(scrollDiv, 25000);
     await delay(1000);
 
-    windowScrollInProgress = false; // osiguranje
-    await smoothWindowScrollBy(170, 1300);
+   
   }
 
   const articles = document.querySelectorAll('.blog-article');

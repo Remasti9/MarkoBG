@@ -109,6 +109,8 @@ locateControl.onAdd = function(map) {
     div.style.textAlign = 'center'; 
     div.style.lineHeight = '30px'; 
 
+    L.DomEvent.disableClickPropagation(div);
+
     div.onclick = function() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
