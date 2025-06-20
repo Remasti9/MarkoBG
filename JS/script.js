@@ -273,6 +273,14 @@ document.getElementById('blog-show').style.display='none';
         window.scrollBy(0, -20); // prilagodi po potrebi
         return;
       }
+      if (
+        isMobile &&
+        clickedText === 'KONTAKT' &&
+        (previousSection === 'BLOG' || previousSection === 'GALERIJA')
+      ) {
+        window.scrollBy(0, 100); // prilagodi po potrebi
+        return;
+      }
 
       // Posebno ponašanje za CENOVNIK ako dolaziš iz BLOG ili GALERIJA
       if (
