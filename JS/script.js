@@ -278,7 +278,7 @@ document.getElementById('blog-show').style.display='none';
         clickedText === 'KONTAKT' &&
         (previousSection === 'BLOG' || previousSection === 'GALERIJA')
       ) {
-        window.scrollBy(0, 100); // prilagodi po potrebi
+        window.scrollBy(0, 130); // prilagodi po potrebi
         return;
       }
 
