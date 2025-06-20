@@ -485,6 +485,48 @@ if (window.innerWidth < 993) {
 window.addEventListener('click', setBlogShow);
 window.addEventListener('resize', setBlogShow);
 
+function restartBlogAnimations() {
+  const blogShow = document.getElementById('blog-show');
+  if (!blogShow) return;
+
+  // Selektuj elemente kojima treba animacija - po tvom HTML-u:
+  const textEl = blogShow.querySelector('.show-blog-text'); // ima animate__backInRight
+  const imgEl = blogShow.querySelector('img.img-fluid');   // ima animate__backInLeft
+
+  if (textEl) {
+    textEl.classList.remove('animate__animated', 'animate__backInRight', 'wow');
+    void textEl.offsetWidth; // trigger reflow
+    textEl.classList.add('wow', 'animate__animated', 'animate__backInRight');
+  }
+
+  if (imgEl) {
+    imgEl.classList.remove('animate__animated', 'animate__backInLeft', 'wow');
+    void imgEl.offsetWidth; // trigger reflow
+    imgEl.classList.add('wow', 'animate__animated', 'animate__backInLeft');
+  }
+}
+
+// MutationObserver koji prati promenu atributa style na #blog-show
+const blogShow = document.getElementById('blog-show');
+
+if (blogShow) {
+  let lastDisplay = window.getComputedStyle(blogShow).display;
+
+  const observer = new MutationObserver(mutations => {
+    mutations.forEach(mutation => {
+      if (mutation.attributeName === 'style') {
+        const currentDisplay = window.getComputedStyle(blogShow).display;
+        // Ako je display promenjen sa none na block, restartuj animacije
+        if (lastDisplay === 'none' && currentDisplay === 'block') {
+          restartBlogAnimations();
+        }
+        lastDisplay = currentDisplay;
+      }
+    });
+  });
+
+  observer.observe(blogShow, { attributes: true });
+}
 
 
 
