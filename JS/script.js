@@ -365,14 +365,12 @@ function adjustAboutUS(){
 
 
 window.addEventListener('load', () => {
- setMainImg();
   positionOfLogoBig();
   heroTextAnimate();
   mainMobilePhone();
   window.scrollTo(0, 0); 
 });
 window.onresize =()=>{
-  setMainImg();
   positionOfLogoBig();
   adjustAboutUS();
   mainMobilePhone();
@@ -504,30 +502,7 @@ observer.observe(document.body, { childList: true, subtree: true });
 // Ponovi proveru na svake 1000ms (1 sekundu)
 setInterval(hideElfsightLink, 1000);
 
-//settings of imgMain sizes on a different screen
-const mainImg = document.getElementById('main-img');
 
-function setMainImg () {
-  if(window.innerWidth>=576 && window.innerWidth <= 750){
-    mainImg.src='images/750x750-template.png'
-     mainImg.style.aspectRatio='1/.7'
-  } else if(window.innerWidth>=751 && window.innerWidth <=1000){
-    mainImg.src='images/1000px.webP'
-     mainImg.style.aspectRatio='1/.6'
-  } else if (window.innerWidth>=1001 && window.innerWidth<=1199) {
-   mainImg.src='images/1200.jpg'
-     mainImg.style.aspectRatio='1/.5'
-  } 
-  else if(window.innerWidth<=575) {
-      mainImg.src='images/576x1024.png'
-    mainImg.style.aspectRatio='1/1.3'
-  }
-  else {
-    mainImg.src='images/Adobe Express - file.jpg'
-    mainImg.style.aspectRatio='2.7/1'
-  
-  }
-}
    //SLIDER-GALLERY
 const galleryCards = document.querySelectorAll('.card-last > div');
 const popUp = document.getElementById('gallery-pop-up-slide');
