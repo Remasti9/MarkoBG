@@ -25,7 +25,7 @@ function setMainImg () {
     mainImg.style.aspectRatio='1/1.3'
   }
   else {
-    mainImg.src='images/Adobe Express - file.jpg'
+    mainImg.src='images/mainDesktop.webP'
     mainImg.style.aspectRatio='2.7/1'
   
   }
