@@ -1,10 +1,6 @@
-window.addEventListener('load',()=>{
-    setMainImg();
-});
 
-window.onresize = ()=>{
-    setMainImg();
-}
+
+
 
 //settings of imgMain sizes on a different screen
 const mainImg = document.getElementById('main-img');
@@ -30,3 +26,11 @@ function setMainImg () {
   
   }
 }
+
+
+window.addEventListener('load',()=>{
+    setMainImg();
+});
+window.addEventListener('resize',()=>{
+    setMainImg();
+});
