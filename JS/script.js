@@ -652,3 +652,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+
+
+
+
+
+
+document.querySelectorAll('div.eapps-widget-toolbar-panel-share-block-actions-item-facebook a').forEach(a => {
+    const url = "http://www.facebook.com/sharer.php?u=beograd-selidbe.rs";
+    a.href = url;
+    a.setAttribute("rel", "noopener noreferrer");
+    a.onclick = function(e) {
+        window.open(url, 'facebook', 'width=600,height=400');
+        return false;
+    };
+});
