@@ -21,7 +21,7 @@ function setMainImg () {
     mainImg.style.aspectRatio='1/1.3'
   }
   else {
-    mainImg.src='images/mainDesktop.webP'
+    mainImg.src='images/naslovna2.png'
     mainImg.style.aspectRatio='2.7/1'
   
   }
