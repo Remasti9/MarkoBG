@@ -1129,7 +1129,7 @@ main,
 }
 #landing{
   opacity: 0;
-  animation: showingLanding .7s forwards .01s;
+  animation: showingLanding 1s forwards .01s;
 }
 
 @keyframes showingLanding {
