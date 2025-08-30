@@ -1117,3 +1117,14 @@ button[class^="CloseComponent__PopupCloseControlContainer"] {
     max-width: 100%;
   }
 }
+
+.body-background,
+#landing{
+  opacity: 0;
+  animation: showingLanding 1s forwards .7s;
+}
+
+@keyframes showingLanding {
+  0%{opacity: 0;}
+  100%{opacity: 1;}
+}
