@@ -17,11 +17,11 @@ function setMainImg () {
      mainImg.style.aspectRatio='1/.5'
   } 
   else if(window.innerWidth<=575) {
-      mainImg.src='images/mainMobile.webP'
+      mainImg.src='images/mainMobile1.webP'
     mainImg.style.aspectRatio='1/1.3'
   }
   else {
-    mainImg.src='images/najnovije 2.png'
+    mainImg.src='images/imgDesktop.png'
     mainImg.style.aspectRatio='2.7/1'
   
   }
