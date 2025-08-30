@@ -412,7 +412,10 @@ section.blanc{
   
 }
 @media (min-width:993px) {
-  .disappear-large-logo{ display: none;}
+  .disappear-large-logo{ display: none;
+                          opacity: 0;
+                        animation: showingLanding 1s forwards .1s;}
+  
 }
 
 
