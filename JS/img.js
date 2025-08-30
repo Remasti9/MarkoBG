@@ -17,7 +17,7 @@ function setMainImg () {
      mainImg.style.aspectRatio='1/.5'
   } 
   else if(window.innerWidth<=575) {
-      mainImg.src='images/mainMobile1.webP'
+      mainImg.src='images/imgMobile1.webP'
     mainImg.style.aspectRatio='1/1.3'
   }
   else {
