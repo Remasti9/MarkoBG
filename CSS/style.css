@@ -1117,11 +1117,15 @@ button[class^="CloseComponent__PopupCloseControlContainer"] {
     max-width: 100%;
   }
 }
-
-.body-background,
+main,
+#main-mobile-phone-break,
+.body-background{
+  opacity: 0;
+  animation: showingLanding .5s forwards 1s;
+}
 #landing{
   opacity: 0;
-  animation: showingLanding 1s forwards .7s;
+  animation: showingLanding 1s forwards .5s;
 }
 
 @keyframes showingLanding {
