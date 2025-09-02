@@ -1125,7 +1125,7 @@ main,
 #main-mobile-phone-break,
 .body-background{
   opacity: 0;
-  animation: showingLanding 2s forwards 1s;
+  animation: showingLanding 1s forwards 2s;
 }
 #landing{
   opacity: 0;
