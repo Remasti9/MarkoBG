@@ -414,7 +414,7 @@ section.blanc{
 @media (min-width:993px) {
   .disappear-large-logo{ display: none;
                           opacity: 0;
-                        animation: showingLanding 1s forwards .1s;}
+                        animation: showingLanding 1s forwards 1s;}
   
 }
 
@@ -1125,11 +1125,11 @@ main,
 #main-mobile-phone-break,
 .body-background{
   opacity: 0;
-  animation: showingLanding 1s forwards 2s;
+  animation: showingLanding 1s forwards 1s;
 }
 #landing{
   opacity: 0;
-  animation: showingLanding 2s forwards ;
+  animation: showingLanding 1.7s forwards ;
 }
 
 @keyframes showingLanding {
