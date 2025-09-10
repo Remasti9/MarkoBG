@@ -416,10 +416,10 @@ function handleBodyImg() {
  // console.log(scrollPosition);
    if(window.innerWidth>768){
     if (scrollPosition < 5000) {
-      bodyBg.src = './images/material/body2.jpg'; 
+      bodyBg.src = './images/material/bodyImg1.webp'; 
       bodyBg.style.marginTop='0px';
     } else {
-      bodyBg.src = './images/material/body.jpg'; 
+      bodyBg.src = './images/material/bodyImg2.webp'; 
       bodyBg.style.marginTop='0px';
     }
    } else{
