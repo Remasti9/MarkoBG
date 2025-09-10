@@ -324,9 +324,14 @@ document.getElementById('blog-show').style.display='none';
         return;
       }
       if (clickedText === 'CENOVNIK') {
-        window.scrollBy(0, -20);
+        window.scrollBy(0, 0);
         return;
       }
+      if (clickedText === 'KONTAKT') {
+        window.scrollBy(0, 440);
+        return;
+      }
+     
 
       // Default scroll
       if (window.innerWidth < 768) {
