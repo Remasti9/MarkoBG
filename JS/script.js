@@ -222,7 +222,7 @@ document.getElementById('blog-show').style.display='none';
       } else {
         document.getElementById('about-us-small').style.display = 'none';
       }
-      document.querySelector('.breaking-section').style.display = 'block';
+      document.querySelector('.breaking-section').style.display = 'none';
       document.querySelector('.breaking-section').style.backgroundColor = 'rgba(243, 244, 246,1)';
       document.getElementById('blog').style.display = 'block';
       document.getElementById('contact').style.display = 'block';
