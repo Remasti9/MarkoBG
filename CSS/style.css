@@ -540,6 +540,7 @@ section.blanc{
   display: none;
   width: 100%;
   min-height: 100vh;
+  background-image: url('../Images/blog/blogbg.webp');
 }
 
 
