@@ -499,7 +499,7 @@ section.blanc{
   margin-left: 3rem;
 }
 }
-@media (max-width:325px) {
+@media (max-width:350px) {
   #main-mobile-nav li,
 #main-mobile-nav-icons li{
   display: inline;
