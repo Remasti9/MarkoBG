@@ -496,7 +496,7 @@ section.blanc{
   display: inline;
   list-style-type: none;
   width: fit-content;
-  margin-left: 3rem;
+  margin-left: 2.6rem;
 }
 }
 @media (max-width:350px) {
