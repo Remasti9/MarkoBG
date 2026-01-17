@@ -31,7 +31,8 @@ function sendForm(firstNameId, emailId, messageId) {
         from_name: name,  // Ime osobe koja šalje poruku
         from_email: email, // Email adresa osobe koja šalje poruku
         message: message, // Sadržaj poruke
-        to_email: "vdmmarko@gmail.com", // Tvoj fiksni e-mail
+        // to_email: "vdmmarko@gmail.com", // Tvoj fiksni e-mail
+        to_email: "selidbeplavislon@gmail.com", // Tvoj fiksni e-mail
     };
     
 
