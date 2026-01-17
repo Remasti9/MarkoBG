@@ -37,7 +37,7 @@ function sendForm(firstNameId, emailId, messageId) {
     
 
     // Slanje emaila putem EmailJS
-    emailjs.send("service_pe5828p", "template_1bazftn", templateParams)
+    email.send("service_pe5828p", "template_1bazftn", templateParams)
         .then(function (response) {
             console.log("Uspešno poslato!", response.status, response.text);
             alert("Poruka je uspešno poslata!");
