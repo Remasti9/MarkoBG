@@ -653,7 +653,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+// IIFE (self-contained) da nema redeklaracije promenljivih
+(() => {
+  // Funkcija koja zatamnjuje tekst u recenzijama
+  const fixReviewTextColor = () => {
+    // Timestampi
+    document.querySelectorAll('div[data-state="closed"]').forEach(el => {
+      if (el.textContent.trim().startsWith('пре')) {
+        el.style.color = "#1d222a"; // tamno siva, dovoljan kontrast
+      }
+    });
 
+    // "Прочитај више" dugmad
+    document.querySelectorAll('.es-text-shortener-control').forEach(el => {
+      if (el.textContent.trim() === "Прочитај више") {
+        el.style.color = "#9f0f28;" // crvena koja se ističe, ali nije previše agresivna
+        el.style.fontWeight = "bold"; // da se istakne kao dugme
+      }
+    });
+  };
+
+  // Kreiramo lokalni MutationObserver koji ne kolidira sa drugim observerima
+  const localObserver = new MutationObserver(() => {
+    fixReviewTextColor();
+  });
+
+  // Observer prati ceo body jer Elfsight može da re-renderuje DOM
+  localObserver.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+
+  // Pokrenemo funkciju odmah da se boja postavi odmah
+  fixReviewTextColor();
+})();
 
 
 
