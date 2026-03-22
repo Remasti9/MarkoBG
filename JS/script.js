@@ -667,7 +667,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // "Прочитај више" dugmad
     document.querySelectorAll('.es-text-shortener-control').forEach(el => {
       if (el.textContent.trim() === "Прочитај више") {
-        el.style.color = "#9f0f28;" // crvena koja se ističe, ali nije previše agresivna
+        el.style.color = "#9f0f28"; // crvena koja se ističe, ali nije previše agresivna
         el.style.fontWeight = "bold"; // da se istakne kao dugme
       }
     });
