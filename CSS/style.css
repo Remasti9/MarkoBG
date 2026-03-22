@@ -1154,3 +1154,7 @@ main,
   0%{opacity: 0;}
   100%{opacity: 1;}
 }
+
+.reviews-widget .es-review-info-date {
+  color: #374151 !important;
+}
