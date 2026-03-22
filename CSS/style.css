@@ -1155,3 +1155,13 @@ main,
   100%{opacity: 1;}
 }
 
+
+/* Trenutno resenje za problem sa dva hamburgera na srednjim ekranima (iznad 992px, ispod 1224px) je da se sakrije onaj u navbaru, jer onaj koji se pojavi na srednjim ekranima ima funkcionalnost i ne pravi probleme, dok onaj u navbaru pravi problem jer se pojavljuje i na velikim ekranima gde ne treba da se pojavljuje. Ovo nije idealno resenje, ali je trenutno najbolje resenje koje sam mogao da smislim bez prevelikog menjanja strukture HTML-a i JavaScript-a. */
+@media (min-width: 993px) and (max-width: 1224px) {
+
+  /* Sakrij DRUGI blok (onaj u navbaru) */
+  .navbar-collapse #main-mobile-nav-icons {
+    display: none !important;
+  }
+
+}
