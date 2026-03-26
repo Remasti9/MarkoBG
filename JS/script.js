@@ -207,7 +207,8 @@ document.getElementById('blog-show').style.display='none';
     document.getElementById('blog').style.display = 'none';
     document.getElementById('gallery').style.display = 'none';
     document.getElementById('contact').style.display = 'none';
-    document.getElementById('footer').style.display = 'none';
+   document.getElementById('footer')?.style && 
+(document.getElementById('footer').style.display = 'none');
 
     if (clickedText === 'O nama') {
       if (window.innerWidth > 1014) {
