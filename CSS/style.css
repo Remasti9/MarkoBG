@@ -69,6 +69,8 @@ body::before {
 
 #reviewsLarge, #reviewsSmall{
   margin-top: 10px;
+  min-height: 320px;
+  width: 100%;
   
 }
 nav b, nav strong{
