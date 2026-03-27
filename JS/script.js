@@ -690,7 +690,37 @@ document.addEventListener("DOMContentLoaded", function () {
 })();
 
 
+// Resavanje problema sa Google recenzijama - uklanjanje "Google Reviews Widget" linka iz lighthause
+(function () {
+  // 🔒 sprečava duplo pokretanje skripte
+  if (window.__shareObserverInitialized) return;
+  window.__shareObserverInitialized = true;
 
+  const observer = new MutationObserver(() => {
+    const links = document.querySelectorAll('a[href="javascript:void(0)"]');
+
+    links.forEach(link => {
+      // već obrađeno
+      if (link.dataset.fixed) return;
+
+      const onclick = link.getAttribute('onclick') || "";
+
+      // samo facebook share linkovi
+      if (onclick.includes('facebook.com/sharer')) {
+        link.href = "https://www.facebook.com/sharer/sharer.php?u=https://beograd-selidbe.rs";
+        link.removeAttribute('onclick');
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+        link.dataset.fixed = "true";
+      }
+    });
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+})();
 
 
 
