@@ -1027,7 +1027,8 @@ async function runRoute() {
   renderStage('done');
   countUp($('#kmCounter'), res.km, 700, v => kmFmt.format(Math.round(v * 10) / 10));
   toast(T.routeOk(fmtKm(res.km)));
-  update();
+  const rr = update();
+  if (rr && rr.hasCargo && !lastQuote && !leadAutoOpened) { leadAutoOpened = true; setTimeout(openLead, 1700); }
 }
 function resetRoute() {
   state.distance = null; state.durationMin = null; state.routeSource = null;
@@ -1102,27 +1103,47 @@ function onSubmitSuccess(r) {
   $('#quoteModule').hidden = true;
   $('#sentModule').hidden = false;
   $('#mobileBar').classList.add('translate-y-full');
+  closeLead();
   openModal();
   setTimeout(() => countUp($('#modalTotal'), r.total, 1200, v => numFmt.format(Math.round(v / 10) * 10)), 450);
   clearSaved();
 }
-function openModal() {
-  $('#successModal').classList.add('open');
-  $('#successModal').setAttribute('aria-hidden', 'false');
+function showDialog(id, focusSel) {
+  const m = $('#' + id);
+  m.classList.add('open');
+  m.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
-  setTimeout(() => $('#modalClose').focus(), 400);
+  if (focusSel) setTimeout(() => { const f = $(focusSel); if (f) f.focus(); }, 350);
 }
-function closeModal() {
-  $('#successModal').classList.remove('open');
-  $('#successModal').setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = '';
+function hideDialog(id) {
+  const m = $('#' + id);
+  m.classList.remove('open');
+  m.setAttribute('aria-hidden', 'true');
+  if (!$$('.modal.open').length) document.body.style.overflow = '';
 }
+const openModal = () => showDialog('successModal', '#modalClose');
+const closeModal = () => hideDialog('successModal');
+let leadAutoOpened = false;
+function openLead() {
+  const r = calculate();
+  if (lastQuote) { $('#modalTotal').textContent = numFmt.format(lastQuote.total); openModal(); return; }
+  if (!r.hasCargo) { toast(T.needItems); $('#inventory').scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+  if (state.distance == null) { toast(T.needRoute); $('#mapStage').scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+  $('#leadSummary').innerHTML = $('#checklist').innerHTML;
+  $('#leadCare').innerHTML = $('#careList').innerHTML;
+  $('#leadCare').hidden = !$('#careList').children.length;
+  $('#toast').classList.remove('show');
+  showFormMsg(null);
+  showDialog('leadModal', $('#leadName').value.trim() ? '#leadPhone' : '#leadName');
+}
+const closeLead = () => hideDialog('leadModal');
 function resetAll() {
   state = freshState();
   lastQuote = null;
   clearSaved();
   ['leadName', 'leadPhone', 'leadWebsite', 'manualKm'].forEach(id => { $('#' + id).value = ''; $('#' + id).classList.remove('invalid'); });
   $('#manualKmWrap').hidden = true;
+  leadAutoOpened = false;
   showFormMsg(null);
   $('#quoteModule').hidden = false;
   $('#sentModule').hidden = true;
@@ -1210,7 +1231,14 @@ function bindCalc() {
   ['leadName', 'leadPhone'].forEach(id => $('#' + id).addEventListener('input', e => e.target.classList.remove('invalid')));
   $('#modalClose').addEventListener('click', closeModal);
   $('#successModal').addEventListener('click', e => { if (e.target.id === 'successModal') closeModal(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape' && $('#successModal').classList.contains('open')) closeModal(); });
+  $$('[data-open-lead]').forEach(b => b.addEventListener('click', e => { e.preventDefault(); openLead(); }));
+  $('#leadClose').addEventListener('click', closeLead);
+  $('#leadModal').addEventListener('click', e => { if (e.target.id === 'leadModal') closeLead(); });
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    if ($('#successModal').classList.contains('open')) closeModal();
+    else if ($('#leadModal').classList.contains('open')) closeLead();
+  });
   $('#newQuoteBtn').addEventListener('click', resetAll);
   $('#showReceiptBtn').addEventListener('click', () => { if (lastQuote) { $('#modalTotal').textContent = numFmt.format(lastQuote.total); openModal(); } });
   window.addEventListener('resize', () => { if (state.distance != null && !state.simulating) placeElephant('end'); });
