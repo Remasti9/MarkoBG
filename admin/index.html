@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="sr-Latn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin | Plavi Slon</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/ikona-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap">
+<link rel="stylesheet" href="/assets/style.css?v=26b6a89f">
+<style>
+.tab-btn.active { background: rgba(76,195,245,.12); color: #fff; box-shadow: inset 0 0 0 1px rgba(76,195,245,.5); }
+.st-Novo { background: rgba(76,195,245,.12); color: #7dd3fc; border-color: rgba(76,195,245,.4); }
+.st-U-obradi { background: rgba(251,191,36,.12); color: #fcd34d; border-color: rgba(251,191,36,.4); }
+.st-Zavrseno { background: rgba(52,211,153,.12); color: #6ee7b7; border-color: rgba(52,211,153,.4); }
+.lead-row.unread { border-color: rgba(76,195,245,.45); }
+.num { width: 100%; background: rgba(4,13,31,.65); border: 1px solid rgba(255,255,255,.1); border-radius: .7rem; color: #e2e8f0; padding: .55rem .7rem; font-variant-numeric: tabular-nums; }
+.num:focus { outline: none; border-color: #4cc3f5; }
+.num.changed { border-color: #fbbf24; }
+</style>
+</head>
+<body class="font-sans bg-brand-900 text-slate-200 min-h-screen antialiased">
+<section id="loginView" class="min-h-screen flex items-center justify-center p-4">
+  <form id="loginForm" class="glass w-full max-w-sm p-7" novalidate>
+    <img src="/assets/logo-belo-360.png" alt="Plavi Slon" class="h-20 mx-auto">
+    <h1 class="mt-5 text-center font-display text-2xl font-bold text-white">Administracija</h1>
+    <label class="block mt-6 text-xs uppercase tracking-widest text-slate-500 mb-1.5" for="email">Email</label>
+    <input id="email" type="email" class="field" autocomplete="username" required>
+    <label class="block mt-4 text-xs uppercase tracking-widest text-slate-500 mb-1.5" for="password">Lozinka</label>
+    <input id="password" type="password" class="field" autocomplete="current-password" required>
+    <button id="loginBtn" type="submit" class="btn-primary w-full mt-6 py-3.5 rounded-xl text-sm">Prijavi se</button>
+    <p id="loginErr" class="mt-4 text-sm text-rose-300 text-center" hidden></p>
+  </form>
+</section>
+<div id="appView" hidden>
+  <header class="sticky top-0 z-30 border-b border-white/[0.06] bg-brand-900/85 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center gap-3">
+      <img src="/assets/znak-belo-160.png" alt="" class="h-8">
+      <div class="font-display font-semibold tracking-[.18em] text-white mr-auto">PLAVI SLON <span class="text-slate-500 text-xs tracking-widest">ADMIN</span></div>
+      <nav class="flex gap-1 p-1 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+        <button class="tab-btn active px-4 py-2 rounded-lg text-sm font-bold text-slate-400" data-tab="leads">Zahtevi <span id="newBadge" class="ml-1 px-1.5 rounded-md bg-acc text-brand-900 text-[11px]" hidden>0</span></button>
+        <button class="tab-btn px-4 py-2 rounded-lg text-sm font-bold text-slate-400" data-tab="prices">Cene</button>
+      </nav>
+      <button id="notifyBtn" class="btn-ghost px-3 py-2 rounded-lg text-xs font-bold" title="Obaveštenja na ovom uređaju">🔔 Obaveštenja</button>
+      <span id="userEmail" class="hidden md:inline text-xs text-slate-500"></span>
+      <button id="logoutBtn" class="btn-ghost px-3 py-2 rounded-lg text-xs font-bold">Odjava</button>
+    </div>
+  </header>
+    <main id="tab-leads" class="max-w-7xl mx-auto px-4 py-6">
+    <div class="flex flex-wrap items-center gap-2">
+      <div id="filters" class="flex flex-wrap gap-1.5"></div>
+      <input id="search" type="search" class="field !py-2 !text-sm max-w-xs ml-auto" placeholder="Pretraga: ime, telefon, adresa">
+    </div>
+    <div class="mt-5 grid lg:grid-cols-12 gap-5">
+      <div id="leadList" class="lg:col-span-5 space-y-2"></div>
+      <div class="lg:col-span-7"><div id="leadDetail" class="glass p-6 lg:sticky lg:top-24 text-slate-500 text-sm">Izaberite zahtev sa liste.</div></div>
+    </div>
+  </main>
+    <main id="tab-prices" class="max-w-5xl mx-auto px-4 py-6" hidden>
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <div>
+        <h2 class="font-display text-2xl font-bold text-white">Cenovnik kalkulatora</h2>
+        <p class="text-sm text-slate-400">Sve cene su u dinarima. Izmene važe na sajtu odmah posle čuvanja.</p>
+      </div>
+      <div class="flex gap-2">
+        <button id="resetPrices" class="btn-ghost px-4 py-2.5 rounded-xl text-sm font-bold">Vrati početne</button>
+        <button id="savePrices" class="btn-primary px-5 py-2.5 rounded-xl text-sm">Sačuvaj cene</button>
+      </div>
+    </div>
+    <div id="priceForm" class="mt-6 space-y-5"></div>
+  </main>
+</div>
+<div id="toast" class="fixed left-1/2 bottom-8 z-[80] -translate-x-1/2 translate-y-4 opacity-0 pointer-events-none">
+  <div class="px-4 py-3 rounded-xl bg-brand-800/95 border border-acc/40 text-sm text-slate-100"><span id="toastText"></span></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+(() => {
+'use strict';
+const SUPABASE_URL = 'https://shyztfqmtdeaypxdglnn.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_uJbb69mVtnOhPihP2FYNsA_PtBjunsL';
+const STATUSES = ['Novo', 'U obradi', 'Završeno'];
+const FLAGS = { sr: '🇷🇸', en: '🇬🇧', ru: '🇷🇺' };
+const DEFAULT_RULES = {
+  kombi_start: 3000, kamion_start: 6000,
+  kombi_km: 70, kamion_km: 110,
+  kombi_m3: 15, kamion_m3: 30,
+  cena_m3: 1300,
+  min_selidba: 10000, min_kombi: 6000,
+  sprat_bez_lifta: [0, 10, 20, 30, 40, 50, 60],
+  sprat_sa_liftom: [0, 0, 10, 15, 15, 20, 20],
+  kutija_rad: 400, kutija_troslojna: 240, kutija_petoslojna: 300, kutija_garderober: 1500,
+  zastita: 500,
+  teski: { pianino: [12000, 3000], tapec: [6000, 2000], sef: [12000, 3000] },
+  montaza: {
+    orman1: [2000, 1500], orman2: [3000, 1500], orman3: [4500, 2000],
+    klizni: [6500, 4500], stakleni: [8000, 6000],
+    sto: [2500, 1500], krevet: [2500, 1500], ugaona: [3000, 1500],
+    luster: [1500, 1500], krevetac: [2000, 1500]
+  },
+  zaokruzi: 100
+};
+const GROUPS = [
+  { t: 'Vozila', f: [
+    ['kombi_start', 'Kombi – start', 'RSD'], ['kamion_start', 'Kamion – start', 'RSD'],
+    ['kombi_km', 'Kombi – po km', 'RSD/km'], ['kamion_km', 'Kamion – po km', 'RSD/km'],
+    ['kombi_m3', 'Kombi – kapacitet', 'm³'], ['kamion_m3', 'Kamion – kapacitet (jedna tura)', 'm³']] },
+  { t: 'Osnovno', f: [
+    ['cena_m3', 'Cena po kubiku (nošenje)', 'RSD/m³'], ['min_selidba', 'Minimum – selidba', 'RSD'],
+    ['min_kombi', 'Minimum – samo kombi', 'RSD'], ['zaokruzi', 'Zaokruživanje na', 'RSD'],
+    ['zastita', 'Zaštita po komadu (TV, ogledalo, računar…)', 'RSD']] },
+  { t: 'Pakovanje (mi pakujemo)', f: [
+    ['kutija_rad', 'Rad po kutiji', 'RSD'], ['kutija_troslojna', 'Troslojna kutija', 'RSD'],
+    ['kutija_petoslojna', 'Petoslojna / velika kutija', 'RSD'], ['kutija_garderober', 'Garderober kutija', 'RSD']] }
+];
+const FLOOR_NAMES = ['Prizemlje', '1.', '2.', '3.', '4.', '5.', '6+'];
+const HEAVY_NAMES = { pianino: 'Pianino / klavir', tapec: 'TA peć', sef: 'Sef' };
+const MD_NAMES = {
+  orman1: 'Orman jednokrilni', orman2: 'Orman dvokrilni', orman3: 'Orman trokrilni', klizni: 'Orman klizni',
+  stakleni: 'Orman sa staklom', sto: 'Sto', krevet: 'Krevet', ugaona: 'Ugaona garnitura', luster: 'Luster', krevetac: 'Dečiji krevetac'
+};
+const MIRROR = {
+  kombi_start: ['startni_trosak', 'start_fee'], cena_m3: ['cena_po_kubiku', 'volume_price'],
+  kombi_km: ['cena_po_kilometru', 'distance_price'], min_selidba: ['minimalna_cena', 'min_price']
+};
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const money = n => n == null || n === '' ? '—' : new Intl.NumberFormat('sr-RS').format(Math.round(n)) + ' RSD';
+const clone = o => JSON.parse(JSON.stringify(o));
+const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+let leads = [], filter = 'Novo', selected = null, configRow = null, rules = clone(DEFAULT_RULES), channel = null;
+const seen = new Set(JSON.parse(localStorage.getItem('ps.admin.seen') || '[]'));
+let toastT;
+function toast(msg) {
+  $('#toastText').textContent = msg;
+  $('#toast').classList.add('show');
+  clearTimeout(toastT); toastT = setTimeout(() => $('#toast').classList.remove('show'), 3200);
+}
+async function checkAdmin(user) {
+  const { data, error } = await db.from('admini').select('email').eq('email', (user.email || '').toLowerCase()).maybeSingle();
+  return !error && !!data;
+}
+async function enter(session) {
+  if (!session) { $('#loginView').hidden = false; $('#appView').hidden = true; return; }
+  if (!(await checkAdmin(session.user))) {
+    await db.auth.signOut();
+    showLoginErr('Ovaj nalog nema pristup administraciji.');
+    return;
+  }
+  $('#loginView').hidden = true; $('#appView').hidden = false;
+  $('#userEmail').textContent = session.user.email;
+  await Promise.all([loadLeads(), loadConfig()]);
+  subscribe();
+}
+function showLoginErr(m) { const el = $('#loginErr'); el.textContent = m; el.hidden = !m; }
+$('#loginForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  showLoginErr('');
+  const btn = $('#loginBtn'); btn.disabled = true; btn.textContent = 'Prijavljujem…';
+  const { data, error } = await db.auth.signInWithPassword({ email: $('#email').value.trim(), password: $('#password').value });
+  btn.disabled = false; btn.textContent = 'Prijavi se';
+  if (error) { showLoginErr('Pogrešan email ili lozinka.'); return; }
+  enter(data.session);
+});
+$('#logoutBtn').addEventListener('click', async () => { if (channel) db.removeChannel(channel); await db.auth.signOut(); location.reload(); });
+const normStatus = s => STATUSES.includes(s) ? s : (s ? s : 'Novo');
+const stClass = s => 'st-' + normStatus(s).replace('š', 's').replace('Završeno', 'Zavrseno').replace(' ', '-');
+const det = l => { let d = l.detalji; if (typeof d === 'string') { try { d = JSON.parse(d); } catch (e) { d = null; } } return d || {}; };
+const fmtDate = s => s ? new Date(s).toLocaleString('sr-RS', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }) : '';
+async function loadLeads() {
+  let res = await db.from('leads').select('*').order('created_at', { ascending: false }).limit(1000);
+  if (res.error) res = await db.from('leads').select('*').order('id', { ascending: false }).limit(1000);
+  if (res.error) { toast('Greška pri učitavanju: ' + res.error.message); return; }
+  leads = res.data || [];
+  renderFilters(); renderList();
+}
+function renderFilters() {
+  const count = s => leads.filter(l => normStatus(l.status) === s).length;
+  const opts = [['Novo', 'Novo'], ['U obradi', 'U obradi'], ['Završeno', 'Završeno'], ['sve', 'Svi']];
+  $('#filters').innerHTML = opts.map(([v, t]) => `<button class="tab-btn ${filter === v ? 'active' : ''} px-3 py-2 rounded-lg text-sm font-bold text-slate-400 border border-white/[0.06]" data-f="${v}">${t} <span class="text-xs opacity-70">${v === 'sve' ? leads.length : count(v)}</span></button>`).join('');
+  const n = count('Novo'); $('#newBadge').hidden = !n; $('#newBadge').textContent = n;
+  document.title = (n ? `(${n}) ` : '') + 'Admin | Plavi Slon';
+}
+function renderList() {
+  const q = $('#search').value.trim().toLowerCase();
+  const rows = leads.filter(l => (filter === 'sve' || normStatus(l.status) === filter) &&
+    (!q || [l.ime, l.telefon, l.pocetna_adresa, l.krajnja_adresa].join(' ').toLowerCase().includes(q)));
+  $('#leadList').innerHTML = rows.length ? rows.map(l => {
+    const d = det(l);
+    return `<button class="lead-row glass !rounded-2xl w-full text-left p-4 ${selected === l.id ? '!border-acc' : ''} ${!seen.has(String(l.id)) && normStatus(l.status) === 'Novo' ? 'unread' : ''}" data-id="${esc(l.id)}">
+      <div class="flex items-center gap-2">
+        <span class="text-lg leading-none">${FLAGS[d.jezik] || '🇷🇸'}</span>
+        <span class="font-bold text-white truncate">${esc(l.ime || 'Bez imena')}</span>
+        <span class="ml-auto text-[11px] font-bold px-2 py-0.5 rounded-md border ${stClass(l.status)}">${esc(normStatus(l.status))}</span>
+      </div>
+      <div class="mt-1.5 text-xs text-slate-400 truncate">${esc(l.pocetna_adresa || '—')} → ${esc(l.krajnja_adresa || '—')}</div>
+      <div class="mt-1.5 flex justify-between text-xs"><span class="text-slate-500">${fmtDate(l.created_at)}</span><span class="font-bold text-price tabular">${money(l.ukupna_cena)}</span></div>
+    </button>`;
+  }).join('') : '<div class="text-sm text-slate-500 p-4">Nema zahteva.</div>';
+}
+function markSeen(id) { seen.add(String(id)); localStorage.setItem('ps.admin.seen', JSON.stringify([...seen].slice(-2000))); }
+function renderDetail() {
+  const l = leads.find(x => x.id === selected);
+  const box = $('#leadDetail');
+  if (!l) { box.innerHTML = 'Izaberite zahtev sa liste.'; return; }
+  const d = det(l);
+  const tel = String(l.telefon || '').replace(/[^\d+]/g, '');
+  const maps = (l.pocetna_adresa && l.krajnja_adresa) ? 'https://www.google.com/maps/dir/?api=1&origin=' + encodeURIComponent(l.pocetna_adresa) + '&destination=' + encodeURIComponent(l.krajnja_adresa) : null;
+  const floor = p => p ? `${p.sprat === 0 ? 'prizemlje' : p.sprat + '. sprat'}${p.lift ? ', ima lift' : ', bez lifta'}` : '—';
+  const inv = (d.inventar || []).map(i => `<tr class="border-t border-white/[0.05]"><td class="py-1.5 pr-2">${esc(i.naziv)}${i.demontaza ? ' <span class="text-acc text-[10px] font-bold">DEM</span>' : ''}${i.montaza ? ' <span class="text-acc text-[10px] font-bold">MON</span>' : ''}</td><td class="py-1.5 text-right tabular">${esc(i.kom)}</td><td class="py-1.5 text-right tabular text-slate-500">${esc(i.m3)} m³</td></tr>`).join('');
+  const calc = (d.obracun || []).map(o => `<div class="flex justify-between gap-3 py-1"><div><div class="text-slate-200">${esc(o.stavka)}</div>${o.opis ? `<div class="text-[11px] text-slate-500">${esc(o.opis)}</div>` : ''}</div><div class="font-bold text-price tabular shrink-0">${money(o.iznos)}</div></div>`).join('');
+  box.className = 'glass p-6 lg:sticky lg:top-24';
+  box.innerHTML = `
+    <div class="flex flex-wrap items-start gap-3">
+      <div class="mr-auto"><div class="text-2xl font-display font-bold text-white">${FLAGS[d.jezik] || '🇷🇸'} ${esc(l.ime || 'Bez imena')}</div><div class="text-xs text-slate-500 mt-1">${fmtDate(l.created_at)}</div></div>
+      <select id="stSel" class="field !w-auto !py-2 !text-sm">${STATUSES.map(s => `<option ${normStatus(l.status) === s ? 'selected' : ''}>${s}</option>`).join('')}</select>
+    </div>
+    <div class="mt-5 flex flex-wrap gap-2">
+      <a href="tel:${esc(tel)}" class="btn-primary px-4 py-2.5 rounded-xl text-sm">📞 ${esc(l.telefon)}</a>
+      <a href="viber://chat?number=${encodeURIComponent(tel)}" class="btn-ghost px-4 py-2.5 rounded-xl text-sm font-bold">Viber</a>
+      <a href="https://wa.me/${esc(tel.replace('+', ''))}" target="_blank" rel="noopener" class="btn-ghost px-4 py-2.5 rounded-xl text-sm font-bold">WhatsApp</a>
+      ${maps ? `<a href="${maps}" target="_blank" rel="noopener" class="btn-ghost px-4 py-2.5 rounded-xl text-sm font-bold">Ruta na mapi</a>` : ''}
+    </div>
+    <div class="mt-5 rounded-2xl border border-price/25 bg-price/[0.05] p-4 flex items-center justify-between">
+      <span class="text-xs uppercase tracking-widest text-slate-400">Procena sa sajta</span><span class="font-display text-3xl font-bold text-price tabular">${money(l.ukupna_cena)}</span>
+    </div>
+    ${d.napomena ? `<div class="mt-3 rounded-xl border border-amber-400/30 bg-amber-400/10 px-4 py-2.5 text-sm text-amber-200">${esc(d.napomena)}</div>` : ''}
+    <dl class="mt-5 grid sm:grid-cols-2 gap-x-6 gap-y-3 text-sm">
+      <div><dt class="text-[11px] uppercase tracking-widest text-slate-500">Odakle</dt><dd class="text-white">${esc(l.pocetna_adresa || '—')}</dd><dd class="text-xs text-slate-400">${floor(d.utovar)}</dd></div>
+      <div><dt class="text-[11px] uppercase tracking-widest text-slate-500">Dokle</dt><dd class="text-white">${esc(l.krajnja_adresa || '—')}</dd><dd class="text-xs text-slate-400">${floor(d.istovar)}</dd></div>
+      <div><dt class="text-[11px] uppercase tracking-widest text-slate-500">Usluga</dt><dd>${esc(d.usluga || '—')}</dd></div>
+      <div><dt class="text-[11px] uppercase tracking-widest text-slate-500">Prostor</dt><dd>${esc([d.prostor, d.velicina, l.kvadratura ? l.kvadratura + ' m²' : ''].filter(Boolean).join(' · ') || '—')}</dd></div>
+      <div><dt class="text-[11px] uppercase tracking-widest text-slate-500">Ruta</dt><dd>${l.udaljenost_km != null ? esc(l.udaljenost_km) + ' km' : '—'}${d.trajanje_min ? ' · ~' + esc(d.trajanje_min) + ' min' : ''}${d.ruta_izvor ? ' · ' + esc(d.ruta_izvor) : ''}</dd></div>
+      <div><dt class="text-[11px] uppercase tracking-widest text-slate-500">Tovar</dt><dd>${l.zapremina_m3 != null ? esc(l.zapremina_m3) + ' m³' : '—'}${d.vozilo ? ' · ' + esc(d.vozilo) : ''}${d.ture > 1 ? ' · ' + esc(d.ture) + ' ture' : ''}</dd></div>
+      <div><dt class="text-[11px] uppercase tracking-widest text-slate-500">Pakovanje</dt><dd>${esc(d.pakovanje || '—')}</dd></div>
+    </dl>
+    ${inv ? `<h3 class="mt-6 text-xs font-extrabold tracking-[.2em] uppercase text-slate-500">Inventar</h3><table class="mt-2 w-full text-sm"><tbody>${inv}</tbody></table>` : ''}
+    ${calc ? `<h3 class="mt-6 text-xs font-extrabold tracking-[.2em] uppercase text-slate-500">Obračun</h3><div class="mt-2 text-sm">${calc}</div>` : ''}
+    <div class="mt-8 pt-5 border-t border-white/[0.06] flex justify-end"><button id="delBtn" class="px-4 py-2.5 rounded-xl text-sm font-bold text-rose-300 border border-rose-400/30 hover:bg-rose-500/10">Obriši zahtev</button></div>`;
+  $('#stSel').addEventListener('change', e => setStatus(l, e.target.value));
+  $('#delBtn').addEventListener('click', () => removeLead(l));
+}
+async function setStatus(l, value) {
+  const old = l.status; l.status = value;
+  const { error } = await db.from('leads').update({ status: value }).eq('id', l.id);
+  if (error) { l.status = old; toast('Nije sačuvano: ' + error.message); }
+  else toast('Status: ' + value);
+  renderFilters(); renderList(); renderDetail();
+}
+async function removeLead(l) {
+  if (!confirm(`Obrisati zahtev od „${l.ime || 'bez imena'}“? Ovo ne može da se vrati.`)) return;
+  const { data, error } = await db.from('leads').delete().eq('id', l.id).select();
+  if (error || !data || !data.length) { toast('Brisanje nije uspelo' + (error ? ': ' + error.message : ' (nema dozvolu).')); return; }
+  leads = leads.filter(x => x.id !== l.id); selected = null;
+  renderFilters(); renderList(); renderDetail(); toast('Zahtev je obrisan.');
+}
+$('#filters').addEventListener('click', e => { const b = e.target.closest('[data-f]'); if (!b) return; filter = b.dataset.f; renderFilters(); renderList(); });
+$('#search').addEventListener('input', renderList);
+$('#leadList').addEventListener('click', e => {
+  const b = e.target.closest('[data-id]'); if (!b) return;
+  const l = leads.find(x => String(x.id) === b.dataset.id); if (!l) return;
+  selected = l.id; markSeen(l.id); renderList(); renderDetail();
+  if (window.innerWidth < 1024) $('#leadDetail').scrollIntoView({ behavior: 'smooth' });
+});
+function beep() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    [0, .18].forEach((t, i) => {
+      const o = ctx.createOscillator(), g = ctx.createGain();
+      o.frequency.value = i ? 1046 : 784; o.connect(g); g.connect(ctx.destination);
+      g.gain.setValueAtTime(.0001, ctx.currentTime + t); g.gain.exponentialRampToValueAtTime(.25, ctx.currentTime + t + .02); g.gain.exponentialRampToValueAtTime(.0001, ctx.currentTime + t + .25);
+      o.start(ctx.currentTime + t); o.stop(ctx.currentTime + t + .3);
+    });
+  } catch (e) { }
+}
+function subscribe() {
+  channel = db.channel('leads-live')
+    .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'leads' }, ({ new: l }) => {
+      if (leads.some(x => x.id === l.id)) return;
+      leads.unshift(l); renderFilters(); renderList();
+      beep(); toast('Novi zahtev: ' + (l.ime || ''));
+      if ('Notification' in window && Notification.permission === 'granted') {
+        try { new Notification('Novi zahtev – Plavi Slon', { body: `${l.ime || ''} · ${l.telefon || ''} · ${money(l.ukupna_cena)}`, icon: '/assets/ikona-192.png' }); } catch (e) { }
+      }
+    })
+    .on('postgres_changes', { event: 'DELETE', schema: 'public', table: 'leads' }, ({ old }) => {
+      leads = leads.filter(x => x.id !== old.id); renderFilters(); renderList();
+    })
+    .subscribe();
+}
+$('#notifyBtn').addEventListener('click', async () => {
+  if (!('Notification' in window)) { toast('Ovaj pregledač ne podržava obaveštenja.'); return; }
+  const p = await Notification.requestPermission();
+  toast(p === 'granted' ? 'Obaveštenja su uključena na ovom uređaju.' : 'Obaveštenja nisu dozvoljena.');
+  beep();
+});
+function mergeRules(src) {
+  const r = clone(DEFAULT_RULES);
+  if (!src || typeof src !== 'object') return r;
+  Object.keys(r).forEach(k => {
+    const v = src[k];
+    if (v == null) return;
+    if (Array.isArray(r[k])) { if (Array.isArray(v) && v.length === r[k].length) r[k] = v.map(Number); }
+    else if (typeof r[k] === 'object') Object.keys(r[k]).forEach(s => { if (Array.isArray(v[s]) && v[s].length === 2) r[k][s] = v[s].map(Number); });
+    else if (Number.isFinite(Number(v))) r[k] = Number(v);
+  });
+  return r;
+}
+async function loadConfig() {
+  const { data, error } = await db.from('config').select('*').order('id', { ascending: true }).limit(1);
+  if (error) { toast('Cene nisu učitane: ' + error.message); return; }
+  configRow = data && data[0] || null;
+  let p = configRow && configRow.pravila;
+  if (typeof p === 'string') { try { p = JSON.parse(p); } catch (e) { p = null; } }
+  rules = mergeRules(p);
+  renderPrices();
+}
+const inp = (path, val, step) => `<input class="num" type="number" min="0" step="${step || 'any'}" data-path="${path}" value="${val}">`;
+function card(title, inner, note) {
+  return `<section class="glass p-5 sm:p-6"><h3 class="font-display text-lg font-bold text-white">${title}</h3>${note ? `<p class="text-xs text-slate-500 mt-1">${note}</p>` : ''}<div class="mt-4">${inner}</div></section>`;
+}
+function renderPrices() {
+  let html = GROUPS.map(g => card(g.t, `<div class="grid sm:grid-cols-2 gap-4">${g.f.map(([k, l, u]) =>
+    `<label class="block"><span class="block text-xs text-slate-400 mb-1.5">${l} <span class="text-slate-600">(${u})</span></span>${inp(k, rules[k])}</label>`).join('')}</div>`)).join('');
+  const floorRow = (k, t) => `<tr><td class="py-2 pr-3 text-sm text-slate-300 whitespace-nowrap">${t}</td>${rules[k].map((v, i) => `<td class="p-1">${inp(k + '.' + i, v, 1)}</td>`).join('')}</tr>`;
+  html += card('Dodatak za sprat (%)', `<div class="overflow-x-auto"><table class="w-full min-w-[560px]"><thead><tr><th></th>${FLOOR_NAMES.map(f => `<th class="text-[11px] text-slate-500 font-bold pb-1">${f}</th>`).join('')}</tr></thead><tbody>${floorRow('sprat_bez_lifta', 'Bez lifta')}${floorRow('sprat_sa_liftom', 'Sa liftom')}</tbody></table></div>`,
+    'Procenat na ceo iznos selidbe. Računa se posebno za utovar i za istovar i sabira se. Za 7. sprat i više bez lifta kalkulator traži poziv.');
+  html += card('Teški predmeti', `<div class="space-y-3">${Object.keys(rules.teski).map(k => `<div class="grid grid-cols-[1fr_8rem_8rem] gap-3 items-center"><span class="text-sm text-slate-300">${HEAVY_NAMES[k] || k}</span>${inp('teski.' + k + '.0', rules.teski[k][0])}${inp('teski.' + k + '.1', rules.teski[k][1])}</div>`).join('')}</div>`,
+    'Prva kolona: osnovna cena po komadu. Druga: dodatak po spratu bez lifta.');
+  html += card('Montaža i demontaža (po komadu)', `<div class="grid grid-cols-[1fr_7rem_7rem] gap-x-3 gap-y-2 items-center"><span></span><span class="text-[11px] text-slate-500 font-bold">Montaža</span><span class="text-[11px] text-slate-500 font-bold">Demontaža</span>${Object.keys(rules.montaza).map(k => `<span class="text-sm text-slate-300">${MD_NAMES[k] || k}</span>${inp('montaza.' + k + '.0', rules.montaza[k][0])}${inp('montaza.' + k + '.1', rules.montaza[k][1])}`).join('')}</div>`);
+  $('#priceForm').innerHTML = html;
+}
+function readForm() {
+  const r = clone(rules);
+  for (const el of $$('#priceForm [data-path]')) {
+    const v = Number(el.value);
+    if (el.value === '' || !Number.isFinite(v) || v < 0) { el.focus(); throw new Error('Neispravan broj u polju.'); }
+    const p = el.dataset.path.split('.');
+    let o = r; for (let i = 0; i < p.length - 1; i++) o = o[p[i]];
+    o[p[p.length - 1]] = v;
+  }
+  if (r.zaokruzi < 1) r.zaokruzi = 1;
+  return r;
+}
+$('#priceForm').addEventListener('input', e => { if (e.target.dataset.path) e.target.classList.add('changed'); });
+$('#savePrices').addEventListener('click', async () => {
+  let r;
+  try { r = readForm(); } catch (e) { toast(e.message); return; }
+  const payload = { pravila: r };
+  const cols = configRow ? Object.keys(configRow) : [];
+  Object.entries(MIRROR).forEach(([k, names]) => names.forEach(n => { if (cols.includes(n)) payload[n] = r[k]; }));
+  if (cols.includes('dodatak_za_sprat')) payload.dodatak_za_sprat = r.sprat_bez_lifta[1];
+  if (cols.includes('floor_price')) payload.floor_price = r.sprat_bez_lifta[1];
+  if (cols.includes('updated_at')) payload.updated_at = new Date().toISOString();
+  const btn = $('#savePrices'); btn.disabled = true;
+  const res = configRow
+    ? await db.from('config').update(payload).eq('id', configRow.id).select()
+    : await db.from('config').insert(Object.assign({ id: 1 }, payload)).select();
+  btn.disabled = false;
+  if (res.error || !res.data || !res.data.length) { toast('Nije sačuvano' + (res.error ? ': ' + res.error.message : ' (nema dozvolu).')); return; }
+  configRow = res.data[0]; rules = r; renderPrices();
+  toast('Cene su sačuvane i važe na sajtu.');
+});
+$('#resetPrices').addEventListener('click', () => {
+  if (!confirm('Vratiti sve cene na početne vrednosti? (Postaje važeće tek kad kliknete Sačuvaj.)')) return;
+  rules = clone(DEFAULT_RULES); renderPrices(); $$('#priceForm .num').forEach(x => x.classList.add('changed'));
+});
+$$('.tab-btn[data-tab]').forEach(b => b.addEventListener('click', () => {
+  $$('.tab-btn[data-tab]').forEach(x => x.classList.toggle('active', x === b));
+  $('#tab-leads').hidden = b.dataset.tab !== 'leads';
+  $('#tab-prices').hidden = b.dataset.tab !== 'prices';
+}));
+db.auth.getSession().then(({ data }) => enter(data.session));
+})();
+</script>
+</body>
+</html>
