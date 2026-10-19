@@ -7,7 +7,7 @@ const CONFIG = {
   placeId: 'ChIJh9O5UJ57WkcRpyjV8zggx-U',
   phone: '+381654343363',
   leadStatus: 'Novo',
-  storageKey: 'ps.calc.v3',
+  storageKey: 'ps.calc.v4',
   simMs: 1500
 };
 const DEFAULT_RULES = {
@@ -27,7 +27,6 @@ const DEFAULT_RULES = {
     sto: [2500, 1500], krevet: [2500, 1500], ugaona: [3000, 1500],
     luster: [1500, 1500], krevetac: [2000, 1500]
   },
-  kutija_po_m2: 0.4,
   zaokruzi: 100
 };
 const HTML_LANG = (document.documentElement.lang || 'sr').toLowerCase();
@@ -47,7 +46,6 @@ const TXT = {
     pkg: { sami: ['Pakujete sami', 'Vi pakujete kutije, mi nosimo i vozimo.'], mi: ['Mi pakujemo', 'Rad po kutiji + materijal (kutije).'] },
     boxTypes: { troslojna: 'Troslojne kutije', petoslojna: 'Petoslojne kutije' },
     vehicles: { kombi: 'Kombi', kamion: 'Kamion' },
-    boxesAuto: n => `${n} kutija dodato automatski`,
     volume: 'Zapremina', items: 'Komada', route: 'Ruta',
     cargoEmpty: 'Kliknite na stvari u inventaru – pojaviće se ovde u vozilu.',
     cargoFill: (v, p) => `Popunjenost vozila (${v}): ${p}%`,
@@ -75,7 +73,6 @@ const TXT = {
     errDb: 'Slanje trenutno nije moguće. Pozovite nas ili pokušajte ponovo za par minuta.',
     sending: 'Šaljem zahtev…', send: 'Pošalji zahtev i vidi cenu',
     thanks: (ime, tel) => `Hvala${ime ? ', ' + ime : ''}! Javljamo vam se uskoro na ${tel} da potvrdimo termin.`,
-    presetToast: 'Kutije su dodate prema kvadraturi – stvari dodajte po komadu.',
     lines: {
       vehicle: v => `Vozilo – ${v}`, vehicleSub: 'izlazak vozila i ekipe',
       volume: 'Zapremina stvari', transport: 'Transport',
@@ -102,7 +99,6 @@ const TXT = {
     pkg: { sami: ['You pack', 'You pack the boxes, we carry and drive.'], mi: ['We pack', 'Labour per box + materials (boxes).'] },
     boxTypes: { troslojna: 'Three-layer boxes', petoslojna: 'Five-layer boxes' },
     vehicles: { kombi: 'Van', kamion: 'Truck' },
-    boxesAuto: n => `${n} boxes added automatically`,
     volume: 'Volume', items: 'Items', route: 'Route',
     cargoEmpty: 'Click items in the inventory – they will appear here in the vehicle.',
     cargoFill: (v, p) => `Vehicle load (${v}): ${p}%`,
@@ -130,7 +126,6 @@ const TXT = {
     errDb: 'Sending is not possible right now. Please call us or try again in a few minutes.',
     sending: 'Sending…', send: 'Send request and see the price',
     thanks: (ime, tel) => `Thank you${ime ? ', ' + ime : ''}! We will call you shortly on ${tel} to confirm the date.`,
-    presetToast: 'Boxes were added by floor area – add other items one by one.',
     lines: {
       vehicle: v => `Vehicle – ${v}`, vehicleSub: 'vehicle and crew dispatch',
       volume: 'Volume of items', transport: 'Transport',
@@ -157,7 +152,6 @@ const TXT = {
     pkg: { sami: ['Упаковываете сами', 'Вы пакуете коробки, мы несём и везём.'], mi: ['Упаковываем мы', 'Работа за коробку + материалы (коробки).'] },
     boxTypes: { troslojna: 'Трёхслойные коробки', petoslojna: 'Пятислойные коробки' },
     vehicles: { kombi: 'Фургон', kamion: 'Грузовик' },
-    boxesAuto: n => `Автоматически добавлено коробок: ${n}`,
     volume: 'Объём', items: 'Предметов', route: 'Маршрут',
     cargoEmpty: 'Нажимайте на вещи в списке – они появятся здесь, в машине.',
     cargoFill: (v, p) => `Загрузка (${v}): ${p}%`,
@@ -185,7 +179,6 @@ const TXT = {
     errDb: 'Отправка сейчас невозможна. Позвоните нам или попробуйте через несколько минут.',
     sending: 'Отправляю…', send: 'Отправить заявку и узнать цену',
     thanks: (ime, tel) => `Спасибо${ime ? ', ' + ime : ''}! Мы скоро перезвоним на ${tel}, чтобы согласовать дату.`,
-    presetToast: 'Коробки добавлены по площади – остальные вещи добавляйте поштучно.',
     lines: {
       vehicle: v => `Транспорт – ${v}`, vehicleSub: 'выезд машины и бригады',
       volume: 'Объём вещей', transport: 'Перевозка',
@@ -387,7 +380,7 @@ function freshState() {
   const counts = {}, md = {};
   Object.keys(ITEMS).forEach(k => { counts[k] = 0; if (ITEMS[k].md) md[k] = { d: false, m: false }; });
   return {
-    mode: 'selidba', type: 'stan', size: null, sqm: 60, counts, md, tab: 'dnevna',
+    mode: 'selidba', type: 'stan', size: null, sqm: null, counts, md, tab: 'dnevna',
     pkg: 'sami', boxType: 'troslojna',
     from: { addr: '', floor: 0, lift: false, loc: null },
     to: { addr: '', floor: 0, lift: false, loc: null },
@@ -765,9 +758,8 @@ function renderSizes() {
       <span class="block font-bold text-white text-sm">${T.sizes[id]}</span>
       <span class="block text-[11px] text-slate-500">~${sqm} m²</span>
     </button>`).join('');
-  $('#sqmWrap').hidden = !state.size;
-  $('#sqmRange').value = state.sqm;
-  $('#sqmValue').textContent = state.sqm;
+  const sq = $('#sqmInput');
+  if (sq && document.activeElement !== sq) sq.value = state.sqm ? state.sqm : '';
 }
 function renderTabs() {
   const r = calculate();
@@ -935,7 +927,6 @@ function update() {
     if (t) { t.textContent = r.catCounts[id]; t.className = 'text-[10px] font-extrabold tabular px-1.5 py-0.5 rounded-md ' + (r.catCounts[id] ? 'bg-acc text-brand-900' : 'bg-white/[0.06] text-slate-500'); }
   });
   $('#invVolume').textContent = fmtVol(r.volume);
-  $('#sqmBoxes').textContent = T.boxesAuto(state.counts.kutija);
   $('#vehicleName').textContent = T.vehicles[r.vehicle];
   $('#vehicleTag').textContent = T.vehicles[r.vehicle].toUpperCase();
   $('#cargoBox').style.width = r.isTruck ? '72%' : '48%';
@@ -966,7 +957,7 @@ function update() {
   const row = (ok, icn, text) => `<div class="flex items-center gap-2.5"><span class="w-6 h-6 rounded-lg flex items-center justify-center shrink-0 ${ok ? 'bg-price/15 text-price' : 'bg-white/[0.05] text-slate-600'}">${ic(ok ? 'check' : icn, 'w-3.5 h-3.5')}</span><span class="${ok ? 'text-slate-200' : 'text-slate-500'}">${text}</span></div>`;
   $('#checklist').innerHTML = [
     row(true, state.mode === 'kombi' ? 'truck' : 'boxes', T.modes[state.mode][0]),
-    row(!!size, 'home', size ? `${T.types[state.type]} · ${T.sizes[size[0]]} · ${state.sqm} m²` : T.check.space),
+    row(!!(size || state.sqm), 'home', (size || state.sqm) ? [T.types[state.type], size ? T.sizes[size[0]] : '', state.sqm ? state.sqm + ' m²' : ''].filter(Boolean).join(' · ') : T.check.space),
     row(r.hasCargo, 'boxes', r.hasCargo ? T.checkItems(r.itemCount, fmtVol(r.volume), T.vehicles[r.vehicle]) : T.check.items),
     row(state.distance != null, 'route', state.distance != null ? T.checkRoute(fmtKm(state.distance), T.floorShort(Number(state.from.floor), state.from.lift), T.floorShort(Number(state.to.floor), state.to.lift)) : T.check.route)
   ].join('');
@@ -982,7 +973,7 @@ function update() {
   }
   $('#careList').innerHTML = care.map(([icn, t]) => `<span class="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-1 rounded-full bg-acc/10 text-acc-soft border border-acc/30">${ic(icn, 'w-3 h-3')}${escapeHtml(t)}</span>`).join('');
   $('#floorWarn').hidden = !r.callUs;
-  const done = { 1: !!state.size || state.mode === 'kombi', 2: r.itemCount > 0, 3: state.distance != null, 4: false };
+  const done = { 1: !!state.size || !!state.sqm || state.mode === 'kombi', 2: r.itemCount > 0, 3: state.distance != null, 4: false };
   $$('.calc-step').forEach(el => el.classList.toggle('done', !!done[el.dataset.cs]));
   $('#mobileVolume').textContent = fmtVol(r.volume);
   $('#mobileVehicle').textContent = '· ' + T.vehicles[r.vehicle];
@@ -1052,7 +1043,7 @@ function leadPayload(r, extra) {
     telefon: $('#leadPhone').value.trim(),
     pocetna_adresa: state.from.addr,
     krajnja_adresa: state.to.addr,
-    kvadratura: state.size ? Math.round(state.sqm) : null,
+    kvadratura: state.sqm ? Math.round(state.sqm) : null,
     udaljenost_km: state.distance,
     zapremina_m3: Math.round(r.volume * 10) / 10,
     ukupna_cena: Math.round(r.total),
@@ -1139,7 +1130,6 @@ function resetAll() {
   renderCalc();
   $('#kalkulator').scrollIntoView({ behavior: 'smooth' });
 }
-const boxesForSqm = sqm => Math.round(sqm * R.kutija_po_m2);
 function changeCount(id, delta, fromArt) {
   state.counts[id] = Math.max(0, (state.counts[id] || 0) + delta);
   if (fromArt || delta > 0) {
@@ -1159,23 +1149,19 @@ function bindCalc() {
   $('#spaceTypes').addEventListener('click', e => {
     const b = e.target.closest('[data-type]'); if (!b) return;
     state.type = b.dataset.type;
-    if (state.type === 'kancelarija' && state.size !== 'office') { state.size = 'office'; state.sqm = 80; state.counts.kutija = boxesForSqm(80); toast(T.presetToast); }
+    if (state.type === 'kancelarija' && state.size !== 'office') state.size = 'office';
     else if (state.type !== 'kancelarija' && state.size === 'office') state.size = null;
     renderSpaceTypes(); renderSizes(); renderTabs(); renderInventory(); update();
   });
   $('#spaceSizes').addEventListener('click', e => {
     const b = e.target.closest('[data-size]'); if (!b) return;
-    const s = SPACE_SIZES.find(x => x[0] === b.dataset.size);
-    state.size = s[0]; state.sqm = s[1];
-    if (s[0] === 'office') state.type = 'kancelarija'; else if (state.type === 'kancelarija') state.type = 'stan';
-    state.counts.kutija = boxesForSqm(state.sqm);
+    state.size = b.dataset.size;
+    if (state.size === 'office') state.type = 'kancelarija'; else if (state.type === 'kancelarija') state.type = 'stan';
     renderSpaceTypes(); renderSizes(); renderTabs(); renderInventory(); update();
-    toast(T.presetToast);
   });
-  $('#sqmRange').addEventListener('input', e => {
-    state.sqm = Number(e.target.value);
-    state.counts.kutija = boxesForSqm(state.sqm);
-    $('#sqmValue').textContent = state.sqm;
+  $('#sqmInput').addEventListener('input', e => {
+    const v = parseInt(String(e.target.value).replace(/\D/g, ''), 10);
+    state.sqm = v > 0 ? Math.min(v, 5000) : null;
     update();
   });
   $('#invTabs').addEventListener('click', e => {
