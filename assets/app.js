@@ -744,18 +744,20 @@ function renderModes() {
 }
 function renderSpaceTypes() {
   $('#spaceTypes').innerHTML = SPACE_TYPES.map(([id, icn]) => `
-    <button type="button" class="tilt-card pointer-glow p-4 ${state.type === id ? 'active' : ''}" data-type="${id}" aria-pressed="${state.type === id}">
+    <button type="button" class="tilt-card pointer-glow p-3 sm:p-4 flex sm:block items-center gap-3 ${state.type === id ? 'active' : ''}" data-type="${id}" aria-pressed="${state.type === id}">
       <span class="tilt-dot"></span>
-      <span class="tilt-icon text-slate-400 block mb-2.5">${ic(icn, 'w-7 h-7')}</span>
-      <span class="block font-bold text-white text-sm sm:text-base">${T.types[id]}</span>
-      <span class="hidden sm:block text-[11px] text-slate-500">${T.typeSubs[id]}</span>
+      <span class="tilt-icon text-slate-400 block shrink-0 sm:mb-2.5">${ic(icn, 'w-6 h-6 sm:w-7 sm:h-7')}</span>
+      <span class="block min-w-0 pr-5 sm:pr-0">
+        <span class="block font-bold text-white text-sm sm:text-base break-words">${T.types[id]}</span>
+        <span class="block text-[11px] text-slate-500">${T.typeSubs[id]}</span>
+      </span>
     </button>`).join('');
 }
 function renderSizes() {
   $('#spaceSizes').innerHTML = SPACE_SIZES.map(([id, sqm]) => `
     <button type="button" class="tilt-card pointer-glow p-4 ${state.size === id ? 'active' : ''}" data-size="${id}" aria-pressed="${state.size === id}">
       <span class="tilt-dot"></span>
-      <span class="block font-bold text-white text-sm">${T.sizes[id]}</span>
+      <span class="block font-bold text-white text-sm hyph pr-4">${T.sizes[id]}</span>
       <span class="block text-[11px] text-slate-500">~${sqm} m²</span>
     </button>`).join('');
   const sq = $('#sqmInput');
@@ -765,8 +767,8 @@ function renderTabs() {
   const r = calculate();
   $('#invTabs').innerHTML = CATS.map(([id, icn]) => `
     <button type="button" role="tab" aria-selected="${state.tab === id}" class="inv-tab ${state.tab === id ? 'active' : ''} flex items-center gap-2 px-3 py-2.5 rounded-xl border border-white/[0.08] bg-white/[0.02] text-slate-400 text-left" data-tab="${id}">
-      <span class="inv-tab-icon shrink-0">${ic(icn, 'w-4 h-4')}</span>
-      <span class="text-xs font-bold leading-tight flex-1 min-w-0">${T.cats[id]}</span>
+      <span class="inv-tab-icon shrink-0 hidden sm:inline">${ic(icn, 'w-4 h-4')}</span>
+      <span class="text-xs font-bold leading-tight flex-1 min-w-0 hyph">${T.cats[id]}</span>
       <span class="text-[10px] font-extrabold tabular px-1.5 py-0.5 rounded-md ${r.catCounts[id] ? 'bg-acc text-brand-900' : 'bg-white/[0.06] text-slate-500'}" data-tabcount="${id}">${r.catCounts[id]}</span>
     </button>`).join('');
 }
@@ -787,7 +789,7 @@ function renderInventory() {
       ${it.heavy || it.protect ? `<span class="absolute top-2 left-2 z-10 text-[9px] font-extrabold uppercase tracking-wider px-1.5 py-0.5 rounded bg-acc/15 text-acc border border-acc/30">${T.special}</span>` : ''}
       <div class="item-art" data-act="inc" data-id="${it.id}" role="button" tabindex="-1" aria-label="+ ${escapeHtml(it.label)}">${illSvg(it.id)}</div>
       <div class="mt-2 px-1 flex-1">
-        <div class="text-sm font-bold text-white leading-tight">${escapeHtml(it.label)}</div>
+        <div class="text-[13px] sm:text-sm font-bold text-white leading-tight hyph">${escapeHtml(it.label)}</div>
         <div class="text-[11px] text-slate-500 mt-0.5 tabular">${volFmt.format(it.vol)} m³</div>
       </div>
       <div class="mt-2 flex justify-center">
@@ -812,10 +814,10 @@ function renderRouteControls() {
 }
 function renderPackaging() {
   $('#packaging').innerHTML = ['sami', 'mi'].map(p => `
-    <button type="button" class="tilt-card pointer-glow p-4 ${state.pkg === p ? 'active' : ''}" data-pkg="${p}" aria-pressed="${state.pkg === p}">
+    <button type="button" class="tilt-card pointer-glow p-3 sm:p-4 ${state.pkg === p ? 'active' : ''}" data-pkg="${p}" aria-pressed="${state.pkg === p}">
       <span class="tilt-dot"></span>
       <span class="tilt-icon text-slate-400 block mb-2">${ic(p === 'sami' ? 'user' : 'package', 'w-6 h-6')}</span>
-      <span class="block font-bold text-white text-sm">${T.pkg[p][0]}</span>
+      <span class="block font-bold text-white text-sm hyph pr-4">${T.pkg[p][0]}</span>
       <span class="block text-[11px] text-slate-500 mt-0.5 leading-snug">${T.pkg[p][1]}</span>
     </button>`).join('');
   $('#boxTypeWrap').hidden = state.pkg !== 'mi';
