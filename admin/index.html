@@ -2,7 +2,8 @@
 <html lang="sr-Latn">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#061430">
 <meta name="robots" content="noindex, nofollow">
 <title>Admin | Plavi Slon</title>
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/ikona-32.png">
@@ -19,6 +20,11 @@
 .num { width: 100%; background: rgba(4,13,31,.65); border: 1px solid rgba(255,255,255,.1); border-radius: .7rem; color: #e2e8f0; padding: .55rem .7rem; font-variant-numeric: tabular-nums; }
 .num:focus { outline: none; border-color: #4cc3f5; }
 .num.changed { border-color: #fbbf24; }
+html, body { overflow-x: hidden; overflow-x: clip; }
+@media (max-width: 1023px) {
+  #detailCol { display: none; }
+  #detailCol.open { display: block; position: fixed; inset: 0; z-index: 40; overflow-y: auto; background: #061430; padding: 1rem; }
+}
 </style>
 </head>
 <body class="font-sans bg-brand-900 text-slate-200 min-h-screen antialiased">
@@ -36,26 +42,26 @@
 </section>
 <div id="appView" hidden>
   <header class="sticky top-0 z-30 border-b border-white/[0.06] bg-brand-900/85 backdrop-blur-xl">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center gap-3">
-      <img src="/assets/znak-belo-160.png" alt="" class="h-8">
-      <div class="font-display font-semibold tracking-[.18em] text-white mr-auto">PLAVI SLON <span class="text-slate-500 text-xs tracking-widest">ADMIN</span></div>
-      <nav class="flex gap-1 p-1 rounded-xl bg-white/[0.03] border border-white/[0.06]">
-        <button class="tab-btn active px-4 py-2 rounded-lg text-sm font-bold text-slate-400" data-tab="leads">Zahtevi <span id="newBadge" class="ml-1 px-1.5 rounded-md bg-acc text-brand-900 text-[11px]" hidden>0</span></button>
-        <button class="tab-btn px-4 py-2 rounded-lg text-sm font-bold text-slate-400" data-tab="prices">Cene</button>
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center gap-2 sm:gap-3">
+      <img src="/assets/znak-belo-160.png" alt="" class="h-7 sm:h-8">
+      <div class="font-display font-semibold text-sm sm:text-base tracking-[.1em] sm:tracking-[.18em] text-white mr-auto whitespace-nowrap">PLAVI SLON <span class="text-slate-500 text-[10px] sm:text-xs tracking-widest">ADMIN</span></div>
+      <nav class="order-last sm:order-none w-full sm:w-auto flex gap-1 p-1 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+        <button class="tab-btn active flex-1 sm:flex-none px-4 py-2 rounded-lg text-sm font-bold text-slate-400" data-tab="leads">Zahtevi <span id="newBadge" class="ml-1 px-1.5 rounded-md bg-acc text-brand-900 text-[11px]" hidden>0</span></button>
+        <button class="tab-btn flex-1 sm:flex-none px-4 py-2 rounded-lg text-sm font-bold text-slate-400" data-tab="prices">Cene</button>
       </nav>
-      <button id="notifyBtn" class="btn-ghost px-3 py-2 rounded-lg text-xs font-bold" title="Obaveštenja na ovom uređaju">🔔 Obaveštenja</button>
+      <button id="notifyBtn" class="btn-ghost px-3 py-2 rounded-lg text-xs font-bold" title="Obaveštenja na ovom uređaju" aria-label="Obaveštenja">🔔<span class="hidden sm:inline"> Obaveštenja</span></button>
       <span id="userEmail" class="hidden md:inline text-xs text-slate-500"></span>
-      <button id="logoutBtn" class="btn-ghost px-3 py-2 rounded-lg text-xs font-bold">Odjava</button>
+      <button id="logoutBtn" class="btn-ghost px-2.5 sm:px-3 py-2 rounded-lg text-xs font-bold">Odjava</button>
     </div>
   </header>
     <main id="tab-leads" class="max-w-7xl mx-auto px-4 py-6">
     <div class="flex flex-wrap items-center gap-2">
       <div id="filters" class="flex flex-wrap gap-1.5"></div>
-      <input id="search" type="search" class="field !py-2 !text-sm max-w-xs ml-auto" placeholder="Pretraga: ime, telefon, adresa">
+      <input id="search" type="search" class="field !py-2 !text-sm w-full sm:max-w-xs sm:ml-auto" placeholder="Pretraga: ime, telefon, adresa">
     </div>
     <div class="mt-5 grid lg:grid-cols-12 gap-5">
-      <div id="leadList" class="lg:col-span-5 space-y-2"></div>
-      <div class="lg:col-span-7"><div id="leadDetail" class="glass p-6 lg:sticky lg:top-24 text-slate-500 text-sm">Izaberite zahtev sa liste.</div></div>
+      <div id="leadList" class="lg:col-span-5 space-y-2 min-w-0"></div>
+      <div id="detailCol" class="lg:col-span-7 min-w-0"><div id="leadDetail" class="glass p-6 lg:sticky lg:top-24 text-slate-500 text-sm">Izaberite zahtev sa liste.</div></div>
     </div>
   </main>
     <main id="tab-prices" class="max-w-5xl mx-auto px-4 py-6" hidden>
@@ -190,17 +196,20 @@ function renderList() {
     (!q || [l.ime, l.telefon, l.pocetna_adresa, l.krajnja_adresa].join(' ').toLowerCase().includes(q)));
   $('#leadList').innerHTML = rows.length ? rows.map(l => {
     const d = det(l);
-    return `<button class="lead-row glass !rounded-2xl w-full text-left p-4 ${selected === l.id ? '!border-acc' : ''} ${!seen.has(String(l.id)) && normStatus(l.status) === 'Novo' ? 'unread' : ''}" data-id="${esc(l.id)}">
+    return `<button class="lead-row glass !rounded-2xl w-full min-w-0 overflow-hidden text-left p-4 ${selected === l.id ? '!border-acc' : ''} ${!seen.has(String(l.id)) && normStatus(l.status) === 'Novo' ? 'unread' : ''}" data-id="${esc(l.id)}">
       <div class="flex items-center gap-2">
         <span class="text-lg leading-none">${FLAGS[d.jezik] || '🇷🇸'}</span>
-        <span class="font-bold text-white truncate">${esc(l.ime || 'Bez imena')}</span>
-        <span class="ml-auto text-[11px] font-bold px-2 py-0.5 rounded-md border ${stClass(l.status)}">${esc(normStatus(l.status))}</span>
+        <span class="font-bold text-white truncate min-w-0">${esc(l.ime || 'Bez imena')}</span>
+        <span class="ml-auto shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-md border ${stClass(l.status)}">${esc(normStatus(l.status))}</span>
       </div>
       <div class="mt-1.5 text-xs text-slate-400 truncate">${esc(l.pocetna_adresa || '—')} → ${esc(l.krajnja_adresa || '—')}</div>
-      <div class="mt-1.5 flex justify-between text-xs"><span class="text-slate-500">${fmtDate(l.created_at)}</span><span class="font-bold text-price tabular">${money(l.ukupna_cena)}</span></div>
+      <div class="mt-1.5 flex justify-between gap-2 text-xs"><span class="text-slate-500">${fmtDate(l.created_at)}</span><span class="font-bold text-price tabular shrink-0">${money(l.ukupna_cena)}</span></div>
     </button>`;
   }).join('') : '<div class="text-sm text-slate-500 p-4">Nema zahteva.</div>';
 }
+function hideDetail() { $('#detailCol').classList.remove('open'); document.body.style.overflow = ''; }
+function closeDetail() { if (history.state && history.state.detalj) history.back(); else hideDetail(); }
+window.addEventListener('popstate', hideDetail);
 function markSeen(id) { seen.add(String(id)); localStorage.setItem('ps.admin.seen', JSON.stringify([...seen].slice(-2000))); }
 function renderDetail() {
   const l = leads.find(x => x.id === selected);
@@ -212,10 +221,11 @@ function renderDetail() {
   const floor = p => p ? `${p.sprat === 0 ? 'prizemlje' : p.sprat + '. sprat'}${p.lift ? ', ima lift' : ', bez lifta'}` : '—';
   const inv = (d.inventar || []).map(i => `<tr class="border-t border-white/[0.05]"><td class="py-1.5 pr-2">${esc(i.naziv)}${i.demontaza ? ' <span class="text-acc text-[10px] font-bold">DEM</span>' : ''}${i.montaza ? ' <span class="text-acc text-[10px] font-bold">MON</span>' : ''}</td><td class="py-1.5 text-right tabular">${esc(i.kom)}</td><td class="py-1.5 text-right tabular text-slate-500">${esc(i.m3)} m³</td></tr>`).join('');
   const calc = (d.obracun || []).map(o => `<div class="flex justify-between gap-3 py-1"><div><div class="text-slate-200">${esc(o.stavka)}</div>${o.opis ? `<div class="text-[11px] text-slate-500">${esc(o.opis)}</div>` : ''}</div><div class="font-bold text-price tabular shrink-0">${money(o.iznos)}</div></div>`).join('');
-  box.className = 'glass p-6 lg:sticky lg:top-24';
+  box.className = 'glass p-5 sm:p-6 lg:sticky lg:top-24 break-words';
   box.innerHTML = `
+    <button type="button" id="backBtn" class="lg:hidden mb-4 btn-ghost px-4 py-2.5 rounded-xl text-sm font-bold">← Nazad na listu</button>
     <div class="flex flex-wrap items-start gap-3">
-      <div class="mr-auto"><div class="text-2xl font-display font-bold text-white">${FLAGS[d.jezik] || '🇷🇸'} ${esc(l.ime || 'Bez imena')}</div><div class="text-xs text-slate-500 mt-1">${fmtDate(l.created_at)}</div></div>
+      <div class="mr-auto min-w-0"><div class="text-2xl font-display font-bold text-white break-words">${FLAGS[d.jezik] || '🇷🇸'} ${esc(l.ime || 'Bez imena')}</div><div class="text-xs text-slate-500 mt-1">${fmtDate(l.created_at)}</div></div>
       <select id="stSel" class="field !w-auto !py-2 !text-sm">${STATUSES.map(s => `<option ${normStatus(l.status) === s ? 'selected' : ''}>${s}</option>`).join('')}</select>
     </div>
     <div class="mt-5 flex flex-wrap gap-2">
@@ -224,7 +234,7 @@ function renderDetail() {
       <a href="https://wa.me/${esc(tel.replace('+', ''))}" target="_blank" rel="noopener" class="btn-ghost px-4 py-2.5 rounded-xl text-sm font-bold">WhatsApp</a>
       ${maps ? `<a href="${maps}" target="_blank" rel="noopener" class="btn-ghost px-4 py-2.5 rounded-xl text-sm font-bold">Ruta na mapi</a>` : ''}
     </div>
-    <div class="mt-5 rounded-2xl border border-price/25 bg-price/[0.05] p-4 flex items-center justify-between">
+    <div class="mt-5 rounded-2xl border border-price/25 bg-price/[0.05] p-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
       <span class="text-xs uppercase tracking-widest text-slate-400">Procena sa sajta</span><span class="font-display text-3xl font-bold text-price tabular">${money(l.ukupna_cena)}</span>
     </div>
     ${d.napomena ? `<div class="mt-3 rounded-xl border border-amber-400/30 bg-amber-400/10 px-4 py-2.5 text-sm text-amber-200">${esc(d.napomena)}</div>` : ''}
@@ -241,6 +251,7 @@ function renderDetail() {
     ${calc ? `<h3 class="mt-6 text-xs font-extrabold tracking-[.2em] uppercase text-slate-500">Obračun</h3><div class="mt-2 text-sm">${calc}</div>` : ''}
     <div class="mt-8 pt-5 border-t border-white/[0.06] flex justify-end"><button id="delBtn" class="px-4 py-2.5 rounded-xl text-sm font-bold text-rose-300 border border-rose-400/30 hover:bg-rose-500/10">Obriši zahtev</button></div>`;
   $('#stSel').addEventListener('change', e => setStatus(l, e.target.value));
+  $('#backBtn').addEventListener('click', closeDetail);
   $('#delBtn').addEventListener('click', () => removeLead(l));
 }
 async function setStatus(l, value) {
@@ -254,7 +265,7 @@ async function removeLead(l) {
   if (!confirm(`Obrisati zahtev od „${l.ime || 'bez imena'}“? Ovo ne može da se vrati.`)) return;
   const { data, error } = await db.from('leads').delete().eq('id', l.id).select();
   if (error || !data || !data.length) { toast('Brisanje nije uspelo' + (error ? ': ' + error.message : ' (nema dozvolu).')); return; }
-  leads = leads.filter(x => x.id !== l.id); selected = null;
+  leads = leads.filter(x => x.id !== l.id); selected = null; closeDetail();
   renderFilters(); renderList(); renderDetail(); toast('Zahtev je obrisan.');
 }
 $('#filters').addEventListener('click', e => { const b = e.target.closest('[data-f]'); if (!b) return; filter = b.dataset.f; renderFilters(); renderList(); });
@@ -263,7 +274,10 @@ $('#leadList').addEventListener('click', e => {
   const b = e.target.closest('[data-id]'); if (!b) return;
   const l = leads.find(x => String(x.id) === b.dataset.id); if (!l) return;
   selected = l.id; markSeen(l.id); renderList(); renderDetail();
-  if (window.innerWidth < 1024) $('#leadDetail').scrollIntoView({ behavior: 'smooth' });
+  if (window.innerWidth < 1024) {
+    $('#detailCol').classList.add('open'); $('#detailCol').scrollTop = 0; document.body.style.overflow = 'hidden';
+    if (!(history.state && history.state.detalj)) history.pushState({ detalj: true }, '');
+  }
 });
 function beep() {
   try {
@@ -328,9 +342,9 @@ function renderPrices() {
   const floorRow = (k, t) => `<tr><td class="py-2 pr-3 text-sm text-slate-300 whitespace-nowrap">${t}</td>${rules[k].map((v, i) => `<td class="p-1">${inp(k + '.' + i, v, 1)}</td>`).join('')}</tr>`;
   html += card('Dodatak za sprat (%)', `<div class="overflow-x-auto"><table class="w-full min-w-[560px]"><thead><tr><th></th>${FLOOR_NAMES.map(f => `<th class="text-[11px] text-slate-500 font-bold pb-1">${f}</th>`).join('')}</tr></thead><tbody>${floorRow('sprat_bez_lifta', 'Bez lifta')}${floorRow('sprat_sa_liftom', 'Sa liftom')}</tbody></table></div>`,
     'Procenat na ceo iznos selidbe. Računa se posebno za utovar i za istovar i sabira se. Za 7. sprat i više bez lifta kalkulator traži poziv.');
-  html += card('Teški predmeti', `<div class="space-y-3">${Object.keys(rules.teski).map(k => `<div class="grid grid-cols-[1fr_8rem_8rem] gap-3 items-center"><span class="text-sm text-slate-300">${HEAVY_NAMES[k] || k}</span>${inp('teski.' + k + '.0', rules.teski[k][0])}${inp('teski.' + k + '.1', rules.teski[k][1])}</div>`).join('')}</div>`,
+  html += card('Teški predmeti', `<div class="space-y-3">${Object.keys(rules.teski).map(k => `<div class="grid grid-cols-[minmax(0,1fr)_5.5rem_5.5rem] sm:grid-cols-[minmax(0,1fr)_8rem_8rem] gap-2 sm:gap-3 items-center"><span class="text-sm text-slate-300">${HEAVY_NAMES[k] || k}</span>${inp('teski.' + k + '.0', rules.teski[k][0])}${inp('teski.' + k + '.1', rules.teski[k][1])}</div>`).join('')}</div>`,
     'Prva kolona: osnovna cena po komadu. Druga: dodatak po spratu bez lifta.');
-  html += card('Montaža i demontaža (po komadu)', `<div class="grid grid-cols-[1fr_7rem_7rem] gap-x-3 gap-y-2 items-center"><span></span><span class="text-[11px] text-slate-500 font-bold">Montaža</span><span class="text-[11px] text-slate-500 font-bold">Demontaža</span>${Object.keys(rules.montaza).map(k => `<span class="text-sm text-slate-300">${MD_NAMES[k] || k}</span>${inp('montaza.' + k + '.0', rules.montaza[k][0])}${inp('montaza.' + k + '.1', rules.montaza[k][1])}`).join('')}</div>`);
+  html += card('Montaža i demontaža (po komadu)', `<div class="grid grid-cols-[minmax(0,1fr)_5.5rem_5.5rem] sm:grid-cols-[minmax(0,1fr)_7rem_7rem] gap-x-2 sm:gap-x-3 gap-y-2 items-center"><span></span><span class="text-[11px] text-slate-500 font-bold">Montaža</span><span class="text-[11px] text-slate-500 font-bold">Demontaža</span>${Object.keys(rules.montaza).map(k => `<span class="text-sm text-slate-300">${MD_NAMES[k] || k}</span>${inp('montaza.' + k + '.0', rules.montaza[k][0])}${inp('montaza.' + k + '.1', rules.montaza[k][1])}`).join('')}</div>`);
   $('#priceForm').innerHTML = html;
 }
 function readForm() {
